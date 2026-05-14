@@ -263,15 +263,15 @@ export default function Home() {
                   cursor: 'pointer'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px)'
-                  e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.1)'
+                  e.currentTarget.style.transform = 'translate(4px, -4px)'
+                  e.currentTarget.style.boxShadow = '-6px 6px 0 #0F172A'
                   const title = e.currentTarget.querySelector('h3')
                   const learnMore = e.currentTarget.querySelector('.learn-more')
                   if (title) title.style.color = '#2563EB'
                   if (learnMore) learnMore.style.transform = 'translateX(4px)'
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.transform = 'translate(0, 0)'
                   e.currentTarget.style.boxShadow = 'none'
                   const title = e.currentTarget.querySelector('h3')
                   const learnMore = e.currentTarget.querySelector('.learn-more')
@@ -326,7 +326,8 @@ export default function Home() {
           </motion.div>
         </div>
       </motion.section>
-
+    
+      {/* Services Section */}
       {/* Services Section */}
       <motion.section
         initial="hidden"
@@ -343,7 +344,7 @@ export default function Home() {
             marginBottom: '48px',
             textAlign: 'center'
           }}>
-            Core Engineering Services
+            Our Services
           </h2>
 
           <motion.div
@@ -387,7 +388,27 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
                 style={{
                   border: '2px solid #0F172A',
-                  overflow: 'hidden'
+                  overflow: 'hidden',
+                  cursor: 'pointer',
+                  transition: 'all 0.4s'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.05)'
+                  e.currentTarget.style.borderColor = '#DC2626'
+                  const numBadge = e.currentTarget.querySelector('.num-badge')
+                  if (numBadge) {
+                    numBadge.style.background = '#2563EB'
+                    numBadge.style.transform = 'rotate(360deg)'
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)'
+                  e.currentTarget.style.borderColor = '#0F172A'
+                  const numBadge = e.currentTarget.querySelector('.num-badge')
+                  if (numBadge) {
+                    numBadge.style.background = '#DC2626'
+                    numBadge.style.transform = 'rotate(0deg)'
+                  }
                 }}
               >
                 <div style={{
@@ -404,18 +425,22 @@ export default function Home() {
                   {service.image}
                 </div>
                 <div style={{ padding: '24px' }}>
-                  <div style={{
-                    width: '40px',
-                    height: '40px',
-                    background: '#DC2626',
-                    color: '#FFF',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontWeight: 900,
-                    fontSize: '18px',
-                    marginBottom: '16px'
-                  }}>
+                  <div 
+                    className="num-badge"
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      background: '#DC2626',
+                      color: '#FFF',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontWeight: 900,
+                      fontSize: '18px',
+                      marginBottom: '16px',
+                      transition: 'all 0.4s'
+                    }}
+                  >
                     {service.num}
                   </div>
                   <h3 style={{
