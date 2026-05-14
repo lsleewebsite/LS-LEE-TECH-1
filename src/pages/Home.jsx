@@ -176,10 +176,10 @@ export default function Home() {
             gap: '24px'
           }}>
             {[
-              { icon: <Icon.Chip />, title: 'Semiconductor', desc: 'Gas plant construction & maintenance for wafer fabrication' },
-              { icon: <Icon.Server />, title: 'Data Center', desc: 'Hydrogen pipeline infrastructure for next-gen power systems' },
-              { icon: <Icon.Plant />, title: 'Industrial Gas & Process', desc: 'Turnkey project engineering and plant maintenance' },
-              { icon: <Icon.H2 />, title: 'New Energy / Hydrogen', desc: 'Infrastructure engineering and tube trailer testing' }
+              { icon: <Icon.Chip />, title: 'Semiconductor', desc: 'Gas process plant construction, integration and maintenance for semiconductor manufacturing.' },
+              { icon: <Icon.Server />, title: 'Data Center', desc: 'Hydrogen pipeline infrastructure and gas systems support for data centre energy requirements.' },
+              { icon: <Icon.Plant />, title: 'Industrial Gas & Process', desc: 'Turnkey project engineering, plant integration and maintenance for gas and process plants.' },
+              { icon: <Icon.H2 />, title: 'New Energy / Hydrogen', desc: 'Hydrogen trailer testing, servicing, refurbishment and certification support.' }
             ].map((industry, i) => (
               <div
                 key={i}
