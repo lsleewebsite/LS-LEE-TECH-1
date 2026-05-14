@@ -33,40 +33,14 @@ export default function Layout({ currentPageName, children }) {
         }}>
           {/* Logo */}
           <Link to="/Home" style={{ textDecoration: 'none' }}>
-            <div style={{ 
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              fontFamily: 'Archivo, sans-serif',
-              fontWeight: 900,
-              fontSize: '18px',
-              letterSpacing: '0.04em',
-              color: '#0A1628'
-            }}>
-              <div style={{
-                width: '42px',
-                height: '42px',
-                background: '#0A1628',
-                color: '#FFFFFF',
-                display: 'grid',
-                placeItems: 'center',
-                fontFamily: 'Archivo',
-                fontWeight: 900,
-                fontSize: '18px',
-                position: 'relative'
-              }}>
-                LS
-                <div style={{
-                  position: 'absolute',
-                  right: '-4px',
-                  top: '-4px',
-                  width: '10px',
-                  height: '10px',
-                  background: '#FF5722'
-                }}></div>
-              </div>
-              <span>LS LEE ENGINEERING</span>
-            </div>
+            <img 
+              src="/LS-LEE-TECH-1/logo.png" 
+              alt="LS Lee Technology" 
+              style={{ 
+                height: '50px',
+                width: 'auto'
+              }} 
+            />
           </Link>
 
           {/* Nav Links */}
@@ -77,7 +51,7 @@ export default function Layout({ currentPageName, children }) {
               style={{
                 textDecoration: 'none',
                 padding: '12px 18px',
-                fontSize: '15px',
+                fontSize: '17px',
                 fontWeight: 600,
                 position: 'relative',
                 color: currentPageName === 'Home' ? '#FF5722' : '#0A1628',
@@ -110,7 +84,7 @@ export default function Layout({ currentPageName, children }) {
                 style={{
                   textDecoration: 'none',
                   padding: '12px 18px',
-                  fontSize: '15px',
+                  fontSize: '17px',
                   fontWeight: 600,
                   position: 'relative',
                   color: currentPageName === 'Industries' ? '#FF5722' : '#0A1628',
@@ -123,7 +97,7 @@ export default function Layout({ currentPageName, children }) {
                 onMouseLeave={(e) => e.currentTarget.style.color = currentPageName === 'Industries' ? '#FF5722' : '#0A1628'}
               >
                 Industries
-                <span style={{ fontSize: '10px' }}>▼</span>
+                <span style={{ fontSize: '11px' }}>▼</span>
                 {currentPageName === 'Industries' && (
                   <div style={{
                     position: 'absolute',
@@ -145,7 +119,7 @@ export default function Layout({ currentPageName, children }) {
                   background: '#FFFFFF',
                   border: '2px solid #0A1628',
                   borderTop: 'none',
-                  minWidth: '260px',
+                  minWidth: '280px',
                   zIndex: 100
                 }}>
                   {industries.map((industry, index) => (
@@ -155,7 +129,7 @@ export default function Layout({ currentPageName, children }) {
                       style={{
                         display: 'block',
                         padding: '16px 20px',
-                        fontSize: '15px',
+                        fontSize: '16px',
                         fontWeight: 500,
                         color: '#0A1628',
                         textDecoration: 'none',
@@ -188,7 +162,7 @@ export default function Layout({ currentPageName, children }) {
                 style={{
                   textDecoration: 'none',
                   padding: '12px 18px',
-                  fontSize: '15px',
+                  fontSize: '17px',
                   fontWeight: 600,
                   position: 'relative',
                   color: currentPageName === item ? '#FF5722' : '#0A1628',
@@ -218,7 +192,7 @@ export default function Layout({ currentPageName, children }) {
                 color: '#FFFFFF',
                 border: '2px solid #0A1628',
                 fontWeight: 700,
-                fontSize: '14px',
+                fontSize: '15px',
                 letterSpacing: '0.04em',
                 transition: 'all 0.15s',
                 cursor: 'pointer',
@@ -259,36 +233,15 @@ export default function Layout({ currentPageName, children }) {
           borderBottom: '2px solid #0A1628'
         }}>
           <div style={{ padding: '48px 32px', borderRight: '2px solid #0A1628' }}>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              fontFamily: 'Archivo, sans-serif',
-              fontWeight: 900,
-              fontSize: '18px',
-              marginBottom: '16px'
-            }}>
-              <div style={{
-                width: '36px',
-                height: '36px',
-                background: '#0A1628',
-                color: '#FFFFFF',
-                display: 'grid',
-                placeItems: 'center',
-                position: 'relative'
-              }}>
-                LS
-                <div style={{
-                  position: 'absolute',
-                  right: '-4px',
-                  top: '-4px',
-                  width: '8px',
-                  height: '8px',
-                  background: '#FF5722'
-                }}></div>
-              </div>
-              <span>LS LEE ENGINEERING</span>
-            </div>
+            <img 
+              src="/LS-LEE-TECH-1/logo.png" 
+              alt="LS Lee Technology" 
+              style={{ 
+                height: '40px',
+                width: 'auto',
+                marginBottom: '16px'
+              }} 
+            />
             <p style={{ fontSize: '13px', color: '#5B6573', lineHeight: 1.6, margin: '16px 0 24px' }}>
               Mechanical engineering contractor serving Singapore's gas and process industries since 2003.
             </p>
