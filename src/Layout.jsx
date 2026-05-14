@@ -38,7 +38,7 @@ export default function Layout({ currentPageName, children }) {
               alt="LS Lee Technology" 
               style={{ 
                 height: '80px',
-                width: 'auto'
+                width: 'auto',
                 marginLeft: '-15px'
               }} 
             />
