@@ -217,7 +217,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Industries Section */}
+{/* Industries Section */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -259,7 +259,24 @@ export default function Home() {
                   padding: '32px',
                   background: '#FFF',
                   border: '2px solid #0F172A',
-                  transition: 'all 0.3s'
+                  transition: 'all 0.3s',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)'
+                  e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.1)'
+                  const title = e.currentTarget.querySelector('h3')
+                  const learnMore = e.currentTarget.querySelector('.learn-more')
+                  if (title) title.style.color = '#2563EB'
+                  if (learnMore) learnMore.style.transform = 'translateX(4px)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.boxShadow = 'none'
+                  const title = e.currentTarget.querySelector('h3')
+                  const learnMore = e.currentTarget.querySelector('.learn-more')
+                  if (title) title.style.color = '#0F172A'
+                  if (learnMore) learnMore.style.transform = 'translateX(0)'
                 }}
               >
                 <div style={{
@@ -278,7 +295,8 @@ export default function Home() {
                   fontSize: '20px',
                   fontWeight: 700,
                   marginBottom: '12px',
-                  color: '#0F172A'
+                  color: '#0F172A',
+                  transition: 'color 0.3s'
                 }}>
                   {industry.title}
                 </h3>
@@ -289,14 +307,18 @@ export default function Home() {
                 }}>
                   {industry.desc}
                 </p>
-                <div style={{
-                  marginTop: '16px',
-                  fontSize: '13px',
-                  fontWeight: 700,
-                  color: '#2563EB',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em'
-                }}>
+                <div 
+                  className="learn-more"
+                  style={{
+                    marginTop: '16px',
+                    fontSize: '13px',
+                    fontWeight: 700,
+                    color: '#2563EB',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                    transition: 'transform 0.3s'
+                  }}
+                >
                   Learn More →
                 </div>
               </motion.div>
@@ -411,76 +433,6 @@ export default function Home() {
                     {service.desc}
                   </p>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Why Choose Us */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-        variants={fadeInUp}
-        style={{
-          padding: '80px 32px',
-          background: '#0F172A',
-          color: '#FFF'
-        }}
-      >
-        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
-          <h2 style={{
-            fontSize: '36px',
-            fontWeight: 800,
-            marginBottom: '48px',
-            textAlign: 'center'
-          }}>
-            Why Choose LS Lee
-          </h2>
-
-          <motion.div
-            variants={staggerContainer}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-              gap: '32px'
-            }}
-          >
-            {[
-              { icon: '🛡️', title: 'Safety-First Culture', detail: '2.4M Manhours Without Lost-Time Incidents' },
-              { icon: '🔗', title: 'Integrated Group', detail: 'Mechanical + E&I Through Sister Companies' },
-              { icon: '👨‍🔧', title: 'PE-Certified Engineers', detail: 'Professional Engineering Expertise On Staff' },
-              { icon: '🎯', title: 'Vertical Specialists', detail: '20+ Years Focused on Gas & Process Industries' }
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                variants={cardVariant}
-                transition={{ duration: 0.5 }}
-                style={{
-                  padding: '32px',
-                  border: '2px solid #334155',
-                  textAlign: 'center'
-                }}
-              >
-                <div style={{ fontSize: '48px', marginBottom: '16px' }}>
-                  {item.icon}
-                </div>
-                <h3 style={{
-                  fontSize: '18px',
-                  fontWeight: 700,
-                  marginBottom: '8px'
-                }}>
-                  {item.title}
-                </h3>
-                <p style={{
-                  fontSize: '13px',
-                  color: '#94A3B8',
-                  lineHeight: 1.6
-                }}>
-                  {item.detail}
-                </p>
               </motion.div>
             ))}
           </motion.div>
