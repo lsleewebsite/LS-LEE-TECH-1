@@ -65,128 +65,123 @@ const cardVariant = {
 export default function Home() {
   return (
     <div>
+      
       {/* Hero Section */}
       <section style={{
-        padding: '80px 32px 60px',
+        padding: '100px 32px',
         background: '#0F172A',
         color: '#FFF',
-        borderBottom: '2px solid #0F172A'
+        borderBottom: '2px solid #0F172A',
+        position: 'relative',
+        overflow: 'hidden',
+        minHeight: '600px'
       }}>
-        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
+        {/* Hero Image - Right side with curve */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          width: '45%',
+          background: '#374151',
+          clipPath: 'polygon(15% 0, 100% 0, 100% 100%, 0% 100%)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 0
+        }}>
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1.1fr 0.9fr',
-            gap: '60px',
-            alignItems: 'center'
+            textAlign: 'center',
+            color: '#9CA3AF',
+            fontSize: '13px',
+            fontWeight: 600,
+            letterSpacing: '0.1em'
           }}>
-            {/* Left side - Content */}
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                style={{
-                  display: 'inline-block',
-                  padding: '6px 14px',
-                  background: 'rgba(220, 38, 38, 0.15)',
-                  border: '1px solid #DC2626',
-                  marginBottom: '20px',
-                  fontSize: '10px',
-                  fontWeight: 700,
-                  letterSpacing: '0.1em',
-                  color: '#DC2626',
-                  textTransform: 'uppercase'
-                }}
-              >
-                Established 2003
-              </motion.div>
-              
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                style={{
-                  fontSize: 'clamp(32px, 5vw, 56px)',
-                  fontWeight: 800,
-                  marginBottom: '20px',
-                  lineHeight: 1.15
-                }}
-              >
-                20+ Years Delivering Safety-Critical Mechanical Solutions to Singapore's Gas and Process Industries
-              </motion.h1>
-              
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                style={{
-                  fontSize: '16px',
-                  color: 'rgba(255,255,255,0.8)',
-                  marginBottom: '28px',
-                  lineHeight: 1.6
-                }}
-              >
-                LS Lee Technologies brings proven expertise where precision and safety are non-negotiable.
-              </motion.p>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}
-              >
-                <button style={{
-                  padding: '14px 28px',
-                  background: '#DC2626',
-                  color: '#FFF',
-                  border: '2px solid #DC2626',
-                  fontWeight: 700,
-                  fontSize: '13px',
-                  letterSpacing: '0.05em',
-                  textTransform: 'uppercase'
-                }}>
-                  Our Industries →
-                </button>
-                <button style={{
-                  padding: '14px 28px',
-                  background: 'transparent',
-                  color: '#FFF',
-                  border: '2px solid #2563EB',
-                  fontWeight: 700,
-                  fontSize: '13px',
-                  letterSpacing: '0.05em',
-                  textTransform: 'uppercase'
-                }}>
-                  View Projects
-                </button>
-              </motion.div>
-            </div>
+            [ HERO IMAGE ]<br/>
+            <span style={{ fontSize: '10px', opacity: 0.7 }}>Full height cutout</span>
+          </div>
+        </div>
 
-            {/* Right side - Image placeholder */}
+        <div style={{ maxWidth: '1360px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+          <div style={{ maxWidth: '650px' }}>
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               style={{
-                aspectRatio: '4/3',
-                background: '#374151',
-                border: '2px solid #4B5563',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: '4px'
+                display: 'inline-block',
+                padding: '6px 14px',
+                background: 'rgba(220, 38, 38, 0.15)',
+                border: '1px solid #DC2626',
+                marginBottom: '20px',
+                fontSize: '10px',
+                fontWeight: 700,
+                letterSpacing: '0.1em',
+                color: '#DC2626',
+                textTransform: 'uppercase'
               }}
             >
-              <div style={{
-                textAlign: 'center',
-                color: '#9CA3AF',
+              Established 2003
+            </motion.div>
+            
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              style={{
+                fontSize: 'clamp(32px, 5vw, 56px)',
+                fontWeight: 800,
+                marginBottom: '20px',
+                lineHeight: 1.15
+              }}
+            >
+              20+ Years Delivering Safety-Critical Mechanical Solutions to Singapore's Gas and Process Industries
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              style={{
+                fontSize: '16px',
+                color: 'rgba(255,255,255,0.8)',
+                marginBottom: '28px',
+                lineHeight: 1.6
+              }}
+            >
+              LS Lee Technologies brings proven expertise where precision and safety are non-negotiable.
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}
+            >
+              <button style={{
+                padding: '14px 28px',
+                background: '#DC2626',
+                color: '#FFF',
+                border: '2px solid #DC2626',
+                fontWeight: 700,
                 fontSize: '13px',
-                fontWeight: 600,
-                letterSpacing: '0.1em'
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase'
               }}>
-                [ HERO IMAGE ]<br/>
-                <span style={{ fontSize: '10px', opacity: 0.7 }}>800 × 600px</span>
-              </div>
+                Our Industries →
+              </button>
+              <button style={{
+                padding: '14px 28px',
+                background: 'transparent',
+                color: '#FFF',
+                border: '2px solid #2563EB',
+                fontWeight: 700,
+                fontSize: '13px',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase'
+              }}>
+                View Projects
+              </button>
             </motion.div>
           </div>
         </div>
