@@ -30,7 +30,7 @@ export default function Layout({ currentPageName, children }) {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          height: '76px'
+          height: '96px'
         }}>
           {/* Logo */}
           <Link to="/Home" style={{ textDecoration: 'none' }}>
@@ -40,20 +40,20 @@ export default function Layout({ currentPageName, children }) {
               gap: '12px',
               fontFamily: 'Archivo, sans-serif',
               fontWeight: 900,
-              fontSize: '16px',
+              fontSize: '18px',
               letterSpacing: '0.04em',
               color: '#0A1628'
             }}>
               <div style={{
-                width: '36px',
-                height: '36px',
+                width: '42px',
+                height: '42px',
                 background: '#0A1628',
                 color: '#FFFFFF',
                 display: 'grid',
                 placeItems: 'center',
                 fontFamily: 'Archivo',
                 fontWeight: 900,
-                fontSize: '16px',
+                fontSize: '18px',
                 position: 'relative'
               }}>
                 LS
@@ -61,8 +61,8 @@ export default function Layout({ currentPageName, children }) {
                   position: 'absolute',
                   right: '-4px',
                   top: '-4px',
-                  width: '8px',
-                  height: '8px',
+                  width: '10px',
+                  height: '10px',
                   background: '#FF5722'
                 }}></div>
               </div>
@@ -72,37 +72,7 @@ export default function Layout({ currentPageName, children }) {
 
           {/* Nav Links */}
           <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
-            {navItems.map((item) => (
-              <Link
-                key={item}
-                to={`/${item}`}
-                style={{
-                  textDecoration: 'none',
-                  padding: '10px 16px',
-                  fontSize: '14px',
-                  fontWeight: 600,
-                  position: 'relative',
-                  color: currentPageName === item ? '#FF5722' : '#0A1628',
-                  transition: 'color 0.15s'
-                }}
-                onMouseEnter={(e) => e.target.style.color = '#FF5722'}
-                onMouseLeave={(e) => e.target.style.color = currentPageName === item ? '#FF5722' : '#0A1628'}
-              >
-                {item}
-                {currentPageName === item && (
-                  <div style={{
-                    position: 'absolute',
-                    left: '16px',
-                    right: '16px',
-                    bottom: '-27px',
-                    height: '2px',
-                    background: '#FF5722'
-                  }}></div>
-                )}
-              </Link>
-            ))}
-            
-            {/* Industries with Dropdown */}
+            {/* Industries FIRST - with Dropdown */}
             <div
               style={{ position: 'relative' }}
               onMouseEnter={() => setShowIndustriesDropdown(true)}
@@ -112,7 +82,7 @@ export default function Layout({ currentPageName, children }) {
                 to="/Industries"
                 style={{
                   textDecoration: 'none',
-                  padding: '10px 16px',
+                  padding: '12px 18px',
                   fontSize: '14px',
                   fontWeight: 600,
                   position: 'relative',
@@ -120,7 +90,7 @@ export default function Layout({ currentPageName, children }) {
                   transition: 'color 0.15s',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '4px'
+                  gap: '6px'
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.color = '#FF5722'}
                 onMouseLeave={(e) => e.currentTarget.style.color = currentPageName === 'Industries' ? '#FF5722' : '#0A1628'}
@@ -130,45 +100,45 @@ export default function Layout({ currentPageName, children }) {
                 {currentPageName === 'Industries' && (
                   <div style={{
                     position: 'absolute',
-                    left: '16px',
-                    right: '16px',
-                    bottom: '-27px',
+                    left: '18px',
+                    right: '18px',
+                    bottom: '-35px',
                     height: '2px',
                     background: '#FF5722'
                   }}></div>
                 )}
               </Link>
               
-              {/* Dropdown */}
+              {/* Dropdown - CONNECTED */}
               {showIndustriesDropdown && (
                 <div style={{
                   position: 'absolute',
                   top: '100%',
                   left: 0,
-                  marginTop: '27px',
                   background: '#FFFFFF',
                   border: '2px solid #0A1628',
-                  minWidth: '240px',
+                  borderTop: 'none',
+                  minWidth: '260px',
                   zIndex: 100
                 }}>
-                  {industries.map((industry) => (
+                  {industries.map((industry, index) => (
                     <Link
                       key={industry.id}
                       to={`/Industries#${industry.id}`}
                       style={{
                         display: 'block',
-                        padding: '14px 20px',
+                        padding: '16px 20px',
                         fontSize: '14px',
                         fontWeight: 500,
                         color: '#0A1628',
                         textDecoration: 'none',
-                        borderBottom: '1px solid #E6E8EB',
+                        borderBottom: index < industries.length - 1 ? '1px solid #E6E8EB' : 'none',
                         transition: 'all 0.15s'
                       }}
                       onMouseEnter={(e) => {
                         e.target.style.background = '#F4F5F7'
                         e.target.style.color = '#FF5722'
-                        e.target.style.paddingLeft = '24px'
+                        e.target.style.paddingLeft = '28px'
                       }}
                       onMouseLeave={(e) => {
                         e.target.style.background = '#FFFFFF'
@@ -182,10 +152,41 @@ export default function Layout({ currentPageName, children }) {
                 </div>
               )}
             </div>
+
+            {/* Other nav items */}
+            {navItems.map((item) => (
+              <Link
+                key={item}
+                to={`/${item}`}
+                style={{
+                  textDecoration: 'none',
+                  padding: '12px 18px',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  position: 'relative',
+                  color: currentPageName === item ? '#FF5722' : '#0A1628',
+                  transition: 'color 0.15s'
+                }}
+                onMouseEnter={(e) => e.target.style.color = '#FF5722'}
+                onMouseLeave={(e) => e.target.style.color = currentPageName === item ? '#FF5722' : '#0A1628'}
+              >
+                {item}
+                {currentPageName === item && (
+                  <div style={{
+                    position: 'absolute',
+                    left: '18px',
+                    right: '18px',
+                    bottom: '-35px',
+                    height: '2px',
+                    background: '#FF5722'
+                  }}></div>
+                )}
+              </Link>
+            ))}
             
             <Link to="/Contact">
               <button style={{
-                padding: '12px 20px',
+                padding: '14px 24px',
                 background: '#0A1628',
                 color: '#FFFFFF',
                 border: '2px solid #0A1628',
@@ -193,7 +194,8 @@ export default function Layout({ currentPageName, children }) {
                 fontSize: '13px',
                 letterSpacing: '0.04em',
                 transition: 'all 0.15s',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                marginLeft: '8px'
               }}
               onMouseEnter={(e) => {
                 e.target.style.background = '#FF5722'
