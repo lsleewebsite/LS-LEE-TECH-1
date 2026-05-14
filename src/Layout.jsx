@@ -304,7 +304,7 @@ export default function Layout({ currentPageName, children }) {
               Company
             </h5>
             {[{ name: 'Projects', link: '/Projects' }, { name: 'Safety', link: '/Safety' }, { name: 'Careers', link: '#' }].map((item) => (
-              <Link key={item.name} to={item.link} style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500', textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
+              <Link key={item.name} to={item.link} style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
                 onMouseEnter={(e) => e.target.style.color = '#FF5722'}
                 onMouseLeave={(e) => e.target.style.color = '#0A1628'}>
                 {item.name}
