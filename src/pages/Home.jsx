@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 // Icon Components (simple SVG icons)
 const Icon = {
@@ -40,6 +41,27 @@ const Icon = {
   )
 }
 
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 }
+}
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+}
+
+const cardVariant = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 }
+}
+
 export default function Home() {
   return (
     <div>
@@ -52,41 +74,61 @@ export default function Home() {
       }}>
         <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
           <div style={{ maxWidth: '900px' }}>
-            <div style={{
-              display: 'inline-block',
-              padding: '8px 16px',
-              background: 'rgba(220, 38, 38, 0.1)',
-              border: '1px solid #DC2626',
-              marginBottom: '24px',
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.1em',
-              color: '#DC2626',
-              textTransform: 'uppercase'
-            }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              style={{
+                display: 'inline-block',
+                padding: '8px 16px',
+                background: 'rgba(220, 38, 38, 0.1)',
+                border: '1px solid #DC2626',
+                marginBottom: '24px',
+                fontSize: '11px',
+                fontWeight: 700,
+                letterSpacing: '0.1em',
+                color: '#DC2626',
+                textTransform: 'uppercase'
+              }}
+            >
               Established 2003
-            </div>
+            </motion.div>
             
-            <h1 style={{
-              fontSize: 'clamp(40px, 6vw, 72px)',
-              fontWeight: 800,
-              marginBottom: '28px',
-              lineHeight: 1.1
-            }}>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              style={{
+                fontSize: 'clamp(40px, 6vw, 72px)',
+                fontWeight: 800,
+                marginBottom: '28px',
+                lineHeight: 1.1
+              }}
+            >
               20+ Years Delivering Safety-Critical Mechanical Solutions to Singapore's Gas and Process Industries
-            </h1>
+            </motion.h1>
             
-            <p style={{
-              fontSize: '18px',
-              color: 'rgba(255,255,255,0.8)',
-              marginBottom: '40px',
-              lineHeight: 1.6,
-              maxWidth: '600px'
-            }}>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              style={{
+                fontSize: '18px',
+                color: 'rgba(255,255,255,0.8)',
+                marginBottom: '40px',
+                lineHeight: 1.6,
+                maxWidth: '600px'
+              }}
+            >
               LS Lee Technologies brings proven expertise where precision and safety are non-negotiable.
-            </p>
+            </motion.p>
             
-            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}
+            >
               <button style={{
                 padding: '16px 32px',
                 background: '#DC2626',
@@ -111,30 +153,45 @@ export default function Home() {
               }}>
                 View Projects
               </button>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section style={{
-        padding: '80px 32px',
-        background: '#0F172A',
-        borderBottom: '2px solid #DC2626'
-      }}>
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        variants={fadeInUp}
+        style={{
+          padding: '80px 32px',
+          background: '#0F172A',
+          borderBottom: '2px solid #DC2626'
+        }}
+      >
         <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '40px'
-          }}>
+          <motion.div
+            variants={staggerContainer}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '40px'
+            }}
+          >
             {[
               { value: '20+', label: 'Years Experience' },
               { value: '450+', label: 'Projects Delivered' },
               { value: '3,200+', label: 'Trailers Tested' },
               { value: '2.4M', label: 'Safe Manhours' }
             ].map((stat, i) => (
-              <div key={i} style={{ textAlign: 'center' }}>
+              <motion.div
+                key={i}
+                variants={cardVariant}
+                transition={{ duration: 0.5 }}
+                style={{ textAlign: 'center' }}
+              >
                 <div style={{
                   fontSize: '48px',
                   fontWeight: 900,
@@ -152,14 +209,21 @@ export default function Home() {
                 }}>
                   {stat.label}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Industries Section */}
-      <section style={{ padding: '80px 32px', background: '#F8F9FA' }}>
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        variants={fadeInUp}
+        style={{ padding: '80px 32px', background: '#F8F9FA' }}
+      >
         <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
           <h2 style={{
             fontSize: '36px',
@@ -170,19 +234,24 @@ export default function Home() {
             Industries We Serve
           </h2>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '24px'
-          }}>
+          <motion.div
+            variants={staggerContainer}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '24px'
+            }}
+          >
             {[
               { icon: <Icon.Chip />, title: 'Semiconductor', desc: 'Gas process plant construction, integration and maintenance for semiconductor manufacturing.' },
               { icon: <Icon.Server />, title: 'Data Center', desc: 'Hydrogen pipeline infrastructure and gas systems support for data centre energy requirements.' },
               { icon: <Icon.Plant />, title: 'Industrial Gas & Process', desc: 'Turnkey project engineering, plant integration and maintenance for gas and process plants.' },
               { icon: <Icon.H2 />, title: 'New Energy / Hydrogen', desc: 'Hydrogen trailer testing, servicing, refurbishment and certification support.' }
             ].map((industry, i) => (
-              <div
+              <motion.div
                 key={i}
+                variants={cardVariant}
+                transition={{ duration: 0.5 }}
                 className="ind-card"
                 style={{
                   padding: '32px',
@@ -228,14 +297,21 @@ export default function Home() {
                 }}>
                   Learn More →
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Services Section */}
-      <section style={{ padding: '80px 32px', background: '#FFF' }}>
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        variants={fadeInUp}
+        style={{ padding: '80px 32px', background: '#FFF' }}
+      >
         <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
           <h2 style={{
             fontSize: '36px',
@@ -246,11 +322,15 @@ export default function Home() {
             Core Engineering Services
           </h2>
 
-          <div className="services-grid" style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '24px'
-          }}>
+          <motion.div
+            variants={staggerContainer}
+            className="services-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '24px'
+            }}
+          >
             {[
               {
                 num: '01',
@@ -277,10 +357,15 @@ export default function Home() {
                 desc: 'Hose fabrication, repair, maintenance for ultra-low temperature applications'
               }
             ].map((service, i) => (
-              <div key={i} style={{
-                border: '2px solid #0F172A',
-                overflow: 'hidden'
-              }}>
+              <motion.div
+                key={i}
+                variants={cardVariant}
+                transition={{ duration: 0.5 }}
+                style={{
+                  border: '2px solid #0F172A',
+                  overflow: 'hidden'
+                }}
+              >
                 <div style={{
                   height: '200px',
                   background: '#E5E7EB',
@@ -324,18 +409,25 @@ export default function Home() {
                     {service.desc}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Why Choose Us */}
-      <section style={{
-        padding: '80px 32px',
-        background: '#0F172A',
-        color: '#FFF'
-      }}>
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        variants={fadeInUp}
+        style={{
+          padding: '80px 32px',
+          background: '#0F172A',
+          color: '#FFF'
+        }}
+      >
         <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
           <h2 style={{
             fontSize: '36px',
@@ -346,22 +438,30 @@ export default function Home() {
             Why Choose LS Lee
           </h2>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '32px'
-          }}>
+          <motion.div
+            variants={staggerContainer}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '32px'
+            }}
+          >
             {[
               { icon: '🛡️', title: 'Safety-First Culture', detail: '2.4M Manhours Without Lost-Time Incidents' },
               { icon: '🔗', title: 'Integrated Group', detail: 'Mechanical + E&I Through Sister Companies' },
               { icon: '👨‍🔧', title: 'PE-Certified Engineers', detail: 'Professional Engineering Expertise On Staff' },
               { icon: '🎯', title: 'Vertical Specialists', detail: '20+ Years Focused on Gas & Process Industries' }
             ].map((item, i) => (
-              <div key={i} style={{
-                padding: '32px',
-                border: '2px solid #334155',
-                textAlign: 'center'
-              }}>
+              <motion.div
+                key={i}
+                variants={cardVariant}
+                transition={{ duration: 0.5 }}
+                style={{
+                  padding: '32px',
+                  border: '2px solid #334155',
+                  textAlign: 'center'
+                }}
+              >
                 <div style={{ fontSize: '48px', marginBottom: '16px' }}>
                   {item.icon}
                 </div>
@@ -379,17 +479,24 @@ export default function Home() {
                 }}>
                   {item.detail}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Contact CTA */}
-      <section style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))'
-      }}>
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        variants={fadeInUp}
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))'
+        }}
+      >
         <div style={{
           padding: '60px 32px',
           background: '#0F172A',
@@ -440,7 +547,7 @@ export default function Home() {
             Contact Us →
           </button>
         </div>
-      </section>
+      </motion.section>
     </div>
   )
 }
