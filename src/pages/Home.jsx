@@ -68,13 +68,13 @@ export default function Home() {
       
       {/* Hero Section */}
       <section style={{
-        padding: '100px 32px',
+        padding: '70px 32px 60px',
         background: '#0F172A',
         color: '#FFF',
         borderBottom: '2px solid #0F172A',
         position: 'relative',
         overflow: 'hidden',
-        minHeight: '600px'
+        minHeight: '450px'
       }}>
         {/* Hero Image - Right side with curve */}
         <div style={{
