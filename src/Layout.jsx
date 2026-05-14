@@ -39,6 +39,7 @@ export default function Layout({ currentPageName, children }) {
               style={{ 
                 height: '80px',
                 width: 'auto'
+                marginLeft: '-15px'
               }} 
             />
           </Link>
