@@ -121,7 +121,7 @@ export default function Home() {
                 textTransform: 'uppercase'
               }}
             >
-              Established 2003
+              Established 1989
             </motion.div>
             
             <motion.h1
