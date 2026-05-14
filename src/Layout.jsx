@@ -37,7 +37,7 @@ export default function Layout({ currentPageName, children }) {
               src="/LS-LEE-TECH-1/logo.png" 
               alt="LS Lee Technology" 
               style={{ 
-                height: '50px',
+                height: '80px',
                 width: 'auto'
               }} 
             />
