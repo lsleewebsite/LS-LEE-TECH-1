@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Layout({ currentPageName, children }) {
-  const navItems = ['Home', 'Industries', 'Services', 'Projects', 'Safety', 'Contact']
+  const [showIndustriesDropdown, setShowIndustriesDropdown] = useState(false)
+
+  const navItems = ['Home', 'Services', 'Projects', 'Safety', 'Contact']
+  
+  const industries = [
+    { id: 'semiconductor', name: 'Semiconductor' },
+    { id: 'datacenter', name: 'Data Center' },
+    { id: 'industrial-gas', name: 'Industrial Gas & Process' },
+    { id: 'hydrogen', name: 'New Energy / Hydrogen' }
+  ]
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -12,7 +21,7 @@ export default function Layout({ currentPageName, children }) {
         top: 0,
         zIndex: 50,
         backgroundColor: '#FFFFFF',
-        borderBottom: '2px solid #0F172A'
+        borderBottom: '2px solid #0A1628'
       }}>
         <div style={{
           maxWidth: '1360px',
@@ -21,55 +30,180 @@ export default function Layout({ currentPageName, children }) {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          height: '80px'
+          height: '76px'
         }}>
           {/* Logo */}
           <Link to="/Home" style={{ textDecoration: 'none' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}>
-              <img 
-                src="/src/assets/logo.jpg" 
-                alt="LS Lee Technology"
-                style={{ height: '40px', objectFit: 'contain' }}
-              />
+            <div style={{ 
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              fontFamily: 'Archivo, sans-serif',
+              fontWeight: 900,
+              fontSize: '16px',
+              letterSpacing: '0.04em',
+              color: '#0A1628'
+            }}>
+              <div style={{
+                width: '36px',
+                height: '36px',
+                background: '#0A1628',
+                color: '#FFFFFF',
+                display: 'grid',
+                placeItems: 'center',
+                fontFamily: 'Archivo',
+                fontWeight: 900,
+                fontSize: '16px',
+                position: 'relative'
+              }}>
+                LS
+                <div style={{
+                  position: 'absolute',
+                  right: '-4px',
+                  top: '-4px',
+                  width: '8px',
+                  height: '8px',
+                  background: '#FF5722'
+                }}></div>
+              </div>
+              <span>LS LEE ENGINEERING</span>
             </div>
           </Link>
 
           {/* Nav Links */}
-          <div style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
             {navItems.map((item) => (
               <Link
                 key={item}
                 to={`/${item}`}
                 style={{
                   textDecoration: 'none',
+                  padding: '10px 16px',
                   fontSize: '14px',
                   fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em',
-                  color: currentPageName === item ? '#DC2626' : '#0F172A',
-                  borderBottom: currentPageName === item ? '2px solid #DC2626' : 'none',
-                  paddingBottom: '4px',
-                  transition: 'color 0.2s'
+                  position: 'relative',
+                  color: currentPageName === item ? '#FF5722' : '#0A1628',
+                  transition: 'color 0.15s'
                 }}
-                onMouseEnter={(e) => e.target.style.color = '#DC2626'}
-                onMouseLeave={(e) => e.target.style.color = currentPageName === item ? '#DC2626' : '#0F172A'}
+                onMouseEnter={(e) => e.target.style.color = '#FF5722'}
+                onMouseLeave={(e) => e.target.style.color = currentPageName === item ? '#FF5722' : '#0A1628'}
               >
                 {item}
+                {currentPageName === item && (
+                  <div style={{
+                    position: 'absolute',
+                    left: '16px',
+                    right: '16px',
+                    bottom: '-27px',
+                    height: '2px',
+                    background: '#FF5722'
+                  }}></div>
+                )}
               </Link>
             ))}
             
+            {/* Industries with Dropdown */}
+            <div
+              style={{ position: 'relative' }}
+              onMouseEnter={() => setShowIndustriesDropdown(true)}
+              onMouseLeave={() => setShowIndustriesDropdown(false)}
+            >
+              <Link
+                to="/Industries"
+                style={{
+                  textDecoration: 'none',
+                  padding: '10px 16px',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  position: 'relative',
+                  color: currentPageName === 'Industries' ? '#FF5722' : '#0A1628',
+                  transition: 'color 0.15s',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#FF5722'}
+                onMouseLeave={(e) => e.currentTarget.style.color = currentPageName === 'Industries' ? '#FF5722' : '#0A1628'}
+              >
+                Industries
+                <span style={{ fontSize: '10px' }}>▼</span>
+                {currentPageName === 'Industries' && (
+                  <div style={{
+                    position: 'absolute',
+                    left: '16px',
+                    right: '16px',
+                    bottom: '-27px',
+                    height: '2px',
+                    background: '#FF5722'
+                  }}></div>
+                )}
+              </Link>
+              
+              {/* Dropdown */}
+              {showIndustriesDropdown && (
+                <div style={{
+                  position: 'absolute',
+                  top: '100%',
+                  left: 0,
+                  marginTop: '27px',
+                  background: '#FFFFFF',
+                  border: '2px solid #0A1628',
+                  minWidth: '240px',
+                  zIndex: 100
+                }}>
+                  {industries.map((industry) => (
+                    <Link
+                      key={industry.id}
+                      to={`/Industries#${industry.id}`}
+                      style={{
+                        display: 'block',
+                        padding: '14px 20px',
+                        fontSize: '14px',
+                        fontWeight: 500,
+                        color: '#0A1628',
+                        textDecoration: 'none',
+                        borderBottom: '1px solid #E6E8EB',
+                        transition: 'all 0.15s'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.background = '#F4F5F7'
+                        e.target.style.color = '#FF5722'
+                        e.target.style.paddingLeft = '24px'
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.background = '#FFFFFF'
+                        e.target.style.color = '#0A1628'
+                        e.target.style.paddingLeft = '20px'
+                      }}
+                    >
+                      {industry.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+            
             <Link to="/Contact">
               <button style={{
-                padding: '12px 24px',
-                backgroundColor: '#DC2626',
+                padding: '12px 20px',
+                background: '#0A1628',
                 color: '#FFFFFF',
-                border: '2px solid #DC2626',
+                border: '2px solid #0A1628',
                 fontWeight: 700,
-                fontSize: '12px',
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em'
+                fontSize: '13px',
+                letterSpacing: '0.04em',
+                transition: 'all 0.15s',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = '#FF5722'
+                e.target.style.borderColor = '#FF5722'
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = '#0A1628'
+                e.target.style.borderColor = '#0A1628'
               }}>
-                START PROJECT
+                START PROJECT →
               </button>
             </Link>
           </div>
@@ -83,73 +217,132 @@ export default function Layout({ currentPageName, children }) {
 
       {/* Footer */}
       <footer style={{
-        backgroundColor: '#0F172A',
-        color: '#FFFFFF',
-        padding: '60px 32px 24px',
-        borderTop: '2px solid #0F172A'
+        backgroundColor: '#FFFFFF',
+        borderTop: '10px solid #0A1628'
       }}>
-        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '40px',
-            marginBottom: '40px'
-          }}>
-            {/* Company Info */}
-            <div>
-              <img 
-                src="/src/assets/logo.jpg" 
-                alt="LS Lee Technology"
-                style={{ height: '36px', objectFit: 'contain', marginBottom: '16px' }}
-              />
-              <p style={{ fontSize: '13px', color: '#94A3B8', lineHeight: 1.6 }}>
-                Mechanical engineering contractor serving Singapore's gas and process industries since 2003.
-              </p>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h3 style={{ fontSize: '14px', fontWeight: 700, marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                Quick Links
-              </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {navItems.map((item) => (
-                  <Link
-                    key={item}
-                    to={`/${item}`}
-                    style={{ fontSize: '13px', color: '#94A3B8', textDecoration: 'none' }}
-                    onMouseEnter={(e) => e.target.style.color = '#DC2626'}
-                    onMouseLeave={(e) => e.target.style.color = '#94A3B8'}
-                  >
-                    {item}
-                  </Link>
-                ))}
+        <div style={{
+          maxWidth: '1360px',
+          margin: '0 auto',
+          display: 'grid',
+          gridTemplateColumns: '1.4fr 1fr 1fr 1fr 1fr',
+          gap: 0,
+          borderBottom: '2px solid #0A1628'
+        }}>
+          <div style={{ padding: '48px 32px', borderRight: '2px solid #0A1628' }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              fontFamily: 'Archivo, sans-serif',
+              fontWeight: 900,
+              fontSize: '18px',
+              marginBottom: '16px'
+            }}>
+              <div style={{
+                width: '36px',
+                height: '36px',
+                background: '#0A1628',
+                color: '#FFFFFF',
+                display: 'grid',
+                placeItems: 'center',
+                position: 'relative'
+              }}>
+                LS
+                <div style={{
+                  position: 'absolute',
+                  right: '-4px',
+                  top: '-4px',
+                  width: '8px',
+                  height: '8px',
+                  background: '#FF5722'
+                }}></div>
               </div>
+              <span>LS LEE ENGINEERING</span>
             </div>
-
-            {/* Contact */}
-            <div>
-              <h3 style={{ fontSize: '14px', fontWeight: 700, marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                Contact
-              </h3>
-              <div style={{ fontSize: '13px', color: '#94A3B8', lineHeight: 1.8 }}>
-                <p>L.S.Lee Technology Pte Ltd</p>
-                <p>[Address]</p>
-                <p>T: +65 XXXX XXXX</p>
-                <p>E: info@lslee.com.sg</p>
-              </div>
+            <p style={{ fontSize: '13px', color: '#5B6573', lineHeight: 1.6, margin: '16px 0 24px' }}>
+              Mechanical engineering contractor serving Singapore's gas and process industries since 2003.
+            </p>
+            <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '11px', letterSpacing: '0.08em', color: '#5B6573', lineHeight: 1.7 }}>
+              [ HQ ] SINGAPORE<br/>
+              +65 6XXX XXXX<br/>
+              projects@lslee.com.sg
             </div>
           </div>
+          
+          <div style={{ padding: '48px 32px', borderRight: '2px solid #0A1628' }}>
+            <h5 style={{ fontFamily: 'IBM Plex Mono', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#5B6573', marginBottom: '24px' }}>
+              Industries
+            </h5>
+            {industries.map((industry) => (
+              <Link
+                key={industry.id}
+                to={`/Industries#${industry.id}`}
+                style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
+                onMouseEnter={(e) => e.target.style.color = '#FF5722'}
+                onMouseLeave={(e) => e.target.style.color = '#0A1628'}
+              >
+                {industry.name}
+              </Link>
+            ))}
+          </div>
 
-          {/* Bottom Bar */}
-          <div style={{
-            paddingTop: '24px',
-            borderTop: '1px solid #334155',
-            textAlign: 'center',
-            fontSize: '12px',
-            color: '#64748B'
-          }}>
-            © 2024 L.S.Lee Technology Pte Ltd · Part of Group · Privacy Policy
+          <div style={{ padding: '48px 32px', borderRight: '2px solid #0A1628' }}>
+            <h5 style={{ fontFamily: 'IBM Plex Mono', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#5B6573', marginBottom: '24px' }}>
+              Services
+            </h5>
+            {['Project Engineering', 'Plant Maintenance', 'Trailer Testing', 'Cryogenic Hose'].map((service) => (
+              <a key={service} href="#services" style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
+                onMouseEnter={(e) => e.target.style.color = '#FF5722'}
+                onMouseLeave={(e) => e.target.style.color = '#0A1628'}>
+                {service}
+              </a>
+            ))}
+          </div>
+
+          <div style={{ padding: '48px 32px', borderRight: '2px solid #0A1628' }}>
+            <h5 style={{ fontFamily: 'IBM Plex Mono', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#5B6573', marginBottom: '24px' }}>
+              Company
+            </h5>
+            {[{ name: 'Projects', link: '/Projects' }, { name: 'Safety', link: '/Safety' }, { name: 'Careers', link: '#' }].map((item) => (
+              <Link key={item.name} to={item.link} style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500', textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
+                onMouseEnter={(e) => e.target.style.color = '#FF5722'}
+                onMouseLeave={(e) => e.target.style.color = '#0A1628'}>
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          <div style={{ padding: '48px 32px' }}>
+            <h5 style={{ fontFamily: 'IBM Plex Mono', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#5B6573', marginBottom: '24px' }}>
+              Contact
+            </h5>
+            <Link to="/Contact" style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
+              onMouseEnter={(e) => e.target.style.color = '#FF5722'}
+              onMouseLeave={(e) => e.target.style.color = '#0A1628'}>
+              Start Enquiry
+            </Link>
+          </div>
+        </div>
+
+        <div style={{
+          background: '#0A1628',
+          color: 'rgba(255,255,255,0.6)',
+          padding: '18px 32px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          fontFamily: 'IBM Plex Mono',
+          fontSize: '11px',
+          letterSpacing: '0.1em'
+        }}>
+          <span>© 2026 LS LEE ENGINEERING PTE. LTD. — UEN 200300000X</span>
+          <div style={{ display: 'flex', gap: '24px' }}>
+            <a href="#" style={{ color: 'rgba(255,255,255,0.6)', transition: 'color 0.15s' }}
+              onMouseEnter={(e) => e.target.style.color = '#FF5722'}
+              onMouseLeave={(e) => e.target.style.color = 'rgba(255,255,255,0.6)'}>PRIVACY</a>
+            <a href="#" style={{ color: 'rgba(255,255,255,0.6)', transition: 'color 0.15s' }}
+              onMouseEnter={(e) => e.target.style.color = '#FF5722'}
+              onMouseLeave={(e) => e.target.style.color = 'rgba(255,255,255,0.6)'}>TERMS</a>
           </div>
         </div>
       </footer>
