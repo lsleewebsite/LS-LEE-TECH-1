@@ -29,7 +29,7 @@ export default function Layout({ currentPageName, children }) {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          height: '96px'
+          height: '110px'
         }}>
           {/* Logo */}
           <Link to="/Home" style={{ textDecoration: 'none' }}>
@@ -237,7 +237,7 @@ export default function Layout({ currentPageName, children }) {
               src="/LS-LEE-TECH-1/logo.png" 
               alt="LS Lee Technology" 
               style={{ 
-                height: '40px',
+                height: '60px',
                 width: 'auto',
                 marginBottom: '16px'
               }} 
