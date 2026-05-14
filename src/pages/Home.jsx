@@ -390,25 +390,25 @@ export default function Home() {
                 num: '01',
                 title: 'Project Engineering',
                 image: '[Plant Construction]',
-                desc: 'Gas plant erection, piping systems, metering skids, turnkey delivery'
+                desc: 'Gas plant equipment erection, installation and integration, underground gas piping, steel structure fabrication and metering skid station fabrication.'
               },
               {
                 num: '02',
                 title: 'Plant Maintenance',
                 image: '[Maintenance Work]',
-                desc: 'Routine & shutdown maintenance, emergency response, long-term contracts'
+                desc: 'Process plant routine and shutdown maintenance, including metering skid and underground pipeline servicing.'
               },
               {
                 num: '03',
                 title: 'Hydrogen Trailer Testing',
                 image: '[Testing Equipment]',
-                desc: 'Acoustic testing, certification, refurbishment, regulatory compliance'
+                desc: 'HP tube testing, certification, servicing and refurbishment support for tube trailers and related skids.'
               },
               {
                 num: '04',
                 title: 'Cryogenic Systems',
                 image: '[Cryogenic Hose]',
-                desc: 'Hose fabrication, repair, maintenance for ultra-low temperature applications'
+                desc: 'Cryogenic hose fabrication, repair and maintenance for industrial gas applications.'
               }
             ].map((service, i) => (
               <motion.div
