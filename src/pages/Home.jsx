@@ -67,24 +67,52 @@ export default function Home() {
     <div>
       {/* Hero Section */}
       <section style={{
-        padding: '120px 32px 80px',
+        padding: '80px 32px 60px',
         background: '#0F172A',
         color: '#FFF',
-        borderBottom: '2px solid #0F172A'
+        borderBottom: '2px solid #0F172A',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
-          <div style={{ maxWidth: '900px' }}>
+        {/* Background placeholder image */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'linear-gradient(135deg, #1E293B 0%, #0F172A 100%)',
+          opacity: 0.6
+        }}>
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            fontSize: '14px',
+            fontWeight: 600,
+            color: '#475569',
+            letterSpacing: '0.1em',
+            textAlign: 'center'
+          }}>
+            [ HERO IMAGE PLACEHOLDER ]<br/>
+            <span style={{ fontSize: '11px', opacity: 0.6 }}>1920 × 800px recommended</span>
+          </div>
+        </div>
+
+        <div style={{ maxWidth: '1360px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+          <div style={{ maxWidth: '800px' }}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               style={{
                 display: 'inline-block',
-                padding: '8px 16px',
-                background: 'rgba(220, 38, 38, 0.1)',
+                padding: '6px 14px',
+                background: 'rgba(220, 38, 38, 0.15)',
                 border: '1px solid #DC2626',
-                marginBottom: '24px',
-                fontSize: '11px',
+                marginBottom: '20px',
+                fontSize: '10px',
                 fontWeight: 700,
                 letterSpacing: '0.1em',
                 color: '#DC2626',
@@ -99,10 +127,10 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               style={{
-                fontSize: 'clamp(40px, 6vw, 72px)',
+                fontSize: 'clamp(32px, 5vw, 56px)',
                 fontWeight: 800,
-                marginBottom: '28px',
-                lineHeight: 1.1
+                marginBottom: '20px',
+                lineHeight: 1.15
               }}
             >
               20+ Years Delivering Safety-Critical Mechanical Solutions to Singapore's Gas and Process Industries
@@ -113,11 +141,11 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               style={{
-                fontSize: '18px',
+                fontSize: '16px',
                 color: 'rgba(255,255,255,0.8)',
-                marginBottom: '40px',
+                marginBottom: '28px',
                 lineHeight: 1.6,
-                maxWidth: '600px'
+                maxWidth: '560px'
               }}
             >
               LS Lee Technologies brings proven expertise where precision and safety are non-negotiable.
@@ -130,24 +158,24 @@ export default function Home() {
               style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}
             >
               <button style={{
-                padding: '16px 32px',
+                padding: '14px 28px',
                 background: '#DC2626',
                 color: '#FFF',
                 border: '2px solid #DC2626',
                 fontWeight: 700,
-                fontSize: '14px',
+                fontSize: '13px',
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase'
               }}>
                 Our Industries →
               </button>
               <button style={{
-                padding: '16px 32px',
+                padding: '14px 28px',
                 background: 'transparent',
                 color: '#FFF',
                 border: '2px solid #2563EB',
                 fontWeight: 700,
-                fontSize: '14px',
+                fontSize: '13px',
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase'
               }}>
@@ -157,7 +185,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Stats Section */}
       <motion.section
         initial="hidden"
