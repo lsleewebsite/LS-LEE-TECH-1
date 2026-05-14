@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 
 export default function Layout({ currentPageName, children }) {
   const [showIndustriesDropdown, setShowIndustriesDropdown] = useState(false)
-
-  const navItems = ['Home', 'Services', 'Projects', 'Safety', 'Contact']
   
   const industries = [
     { id: 'semiconductor', name: 'Semiconductor' },
@@ -21,7 +19,8 @@ export default function Layout({ currentPageName, children }) {
         top: 0,
         zIndex: 50,
         backgroundColor: '#FFFFFF',
-        borderBottom: '2px solid #0A1628'
+        borderBottom: '2px solid #0A1628',
+        fontFamily: 'IBM Plex Sans, system-ui, sans-serif'
       }}>
         <div style={{
           maxWidth: '1360px',
@@ -72,7 +71,35 @@ export default function Layout({ currentPageName, children }) {
 
           {/* Nav Links */}
           <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
-            {/* Industries FIRST - with Dropdown */}
+            {/* HOME FIRST */}
+            <Link
+              to="/Home"
+              style={{
+                textDecoration: 'none',
+                padding: '12px 18px',
+                fontSize: '15px',
+                fontWeight: 600,
+                position: 'relative',
+                color: currentPageName === 'Home' ? '#FF5722' : '#0A1628',
+                transition: 'color 0.15s'
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#FF5722'}
+              onMouseLeave={(e) => e.target.style.color = currentPageName === 'Home' ? '#FF5722' : '#0A1628'}
+            >
+              Home
+              {currentPageName === 'Home' && (
+                <div style={{
+                  position: 'absolute',
+                  left: '18px',
+                  right: '18px',
+                  bottom: '-35px',
+                  height: '2px',
+                  background: '#FF5722'
+                }}></div>
+              )}
+            </Link>
+
+            {/* INDUSTRIES SECOND - with Dropdown */}
             <div
               style={{ position: 'relative' }}
               onMouseEnter={() => setShowIndustriesDropdown(true)}
@@ -83,7 +110,7 @@ export default function Layout({ currentPageName, children }) {
                 style={{
                   textDecoration: 'none',
                   padding: '12px 18px',
-                  fontSize: '14px',
+                  fontSize: '15px',
                   fontWeight: 600,
                   position: 'relative',
                   color: currentPageName === 'Industries' ? '#FF5722' : '#0A1628',
@@ -128,7 +155,7 @@ export default function Layout({ currentPageName, children }) {
                       style={{
                         display: 'block',
                         padding: '16px 20px',
-                        fontSize: '14px',
+                        fontSize: '15px',
                         fontWeight: 500,
                         color: '#0A1628',
                         textDecoration: 'none',
@@ -153,15 +180,15 @@ export default function Layout({ currentPageName, children }) {
               )}
             </div>
 
-            {/* Other nav items */}
-            {navItems.map((item) => (
+            {/* Rest of nav items */}
+            {['Services', 'Projects', 'Safety', 'Contact'].map((item) => (
               <Link
                 key={item}
                 to={`/${item}`}
                 style={{
                   textDecoration: 'none',
                   padding: '12px 18px',
-                  fontSize: '14px',
+                  fontSize: '15px',
                   fontWeight: 600,
                   position: 'relative',
                   color: currentPageName === item ? '#FF5722' : '#0A1628',
@@ -191,11 +218,12 @@ export default function Layout({ currentPageName, children }) {
                 color: '#FFFFFF',
                 border: '2px solid #0A1628',
                 fontWeight: 700,
-                fontSize: '13px',
+                fontSize: '14px',
                 letterSpacing: '0.04em',
                 transition: 'all 0.15s',
                 cursor: 'pointer',
-                marginLeft: '8px'
+                marginLeft: '8px',
+                fontFamily: 'IBM Plex Sans, system-ui, sans-serif'
               }}
               onMouseEnter={(e) => {
                 e.target.style.background = '#FF5722'
