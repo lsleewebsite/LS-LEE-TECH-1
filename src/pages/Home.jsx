@@ -72,7 +72,8 @@ export default function Home() {
         color: '#FFF',
         borderBottom: '2px solid #0F172A',
         position: 'relative',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        minHeight: '500px'
       }}>
         {/* Background placeholder image */}
         <div style={{
@@ -81,26 +82,36 @@ export default function Home() {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'linear-gradient(135deg, #1E293B 0%, #0F172A 100%)',
-          opacity: 0.6
+          background: '#374151',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 0
         }}>
           <div style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
+            textAlign: 'center',
+            color: '#9CA3AF',
             fontSize: '14px',
             fontWeight: 600,
-            color: '#475569',
-            letterSpacing: '0.1em',
-            textAlign: 'center'
+            letterSpacing: '0.1em'
           }}>
             [ HERO IMAGE PLACEHOLDER ]<br/>
-            <span style={{ fontSize: '11px', opacity: 0.6 }}>1920 × 800px recommended</span>
+            <span style={{ fontSize: '11px', opacity: 0.7 }}>1920 × 600px recommended</span>
           </div>
         </div>
 
-        <div style={{ maxWidth: '1360px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        {/* Dark overlay */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.75) 100%)',
+          zIndex: 1
+        }}></div>
+
+        <div style={{ maxWidth: '1360px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
           <div style={{ maxWidth: '800px' }}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -185,6 +196,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
       {/* Stats Section */}
       <motion.section
         initial="hidden"
