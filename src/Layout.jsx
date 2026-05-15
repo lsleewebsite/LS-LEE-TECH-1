@@ -118,8 +118,7 @@ export default function Layout({ currentPageName, children }) {
                   top: '100%',
                   left: 0,
                   background: '#FFFFFF',
-                  border: '2px solid #0A1628',
-                  borderTop: 'none',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                   minWidth: '280px',
                   zIndex: 100
                 }}>
