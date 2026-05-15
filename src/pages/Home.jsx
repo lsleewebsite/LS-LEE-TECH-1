@@ -446,19 +446,23 @@ export default function Home() {
                   e.currentTarget.style.transform = 'scale(1.05)'
                   e.currentTarget.style.borderColor = '#DC2626'
                   const numBadge = e.currentTarget.querySelector('.num-badge')
+                  const learnMore = e.currentTarget.querySelector('.service-learn-more')
                   if (numBadge) {
                     numBadge.style.background = '#2563EB'
                     numBadge.style.transform = 'rotate(360deg)'
                   }
+                  if (learnMore) learnMore.style.transform = 'translateX(4px)'
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'scale(1)'
                   e.currentTarget.style.borderColor = '#0F172A'
                   const numBadge = e.currentTarget.querySelector('.num-badge')
+                  const learnMore = e.currentTarget.querySelector('.service-learn-more')
                   if (numBadge) {
                     numBadge.style.background = '#DC2626'
                     numBadge.style.transform = 'rotate(0deg)'
                   }
+                  if (learnMore) learnMore.style.transform = 'translateX(0)'
                 }}
               >
                 <div style={{
@@ -504,6 +508,25 @@ export default function Home() {
                     fontSize: '13px',
                     color: '#64748B',
                     lineHeight: 1.6
+                    marginBottom: '16px'
+                      }}>
+                        {service.desc}
+                      </p>
+                      <div 
+                        className="service-learn-more"
+                        style={{
+                          fontSize: '13px',
+                          fontWeight: 700,
+                          color: '#2563EB',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.05em',
+                          transition: 'transform 0.4s',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        Learn More →
+                      </div>
+                    </div>
                   }}>
                     {service.desc}
                   </p>
