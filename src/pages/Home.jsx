@@ -501,6 +501,316 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* Project Portfolio Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        variants={fadeInUp}
+        style={{ padding: '80px 32px', background: '#FFF' }}
+      >
+        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
+          <h2 style={{
+            fontSize: '36px',
+            fontWeight: 800,
+            marginBottom: '48px',
+            textAlign: 'center'
+          }}>
+            Selected Project Portfolio
+          </h2>
+
+          <motion.div
+            variants={staggerContainer}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '24px',
+              marginBottom: '48px'
+            }}
+          >
+            {[
+              { title: 'Fab-14 UHP Gas Distribution', scope: 'PROJECT ENGINEERING', desc: 'Design, fabrication, and installation of ultra-high-purity gas distribution network for new wafer fab expansion.', loc: 'Woodlands' },
+              { title: 'ASU Plant Turnaround', scope: 'MAINTENANCE', desc: 'Major shutdown coordination and equipment overhaul across air separation unit cold box and compressor systems.', loc: 'Jurong Island' },
+              { title: 'H₂ Tube Trailer Recertification', scope: 'TESTING & CERTIFICATION', desc: 'DOT recertification program for fleet of 40+ hydrogen tube trailers serving regional industrial customers.', loc: 'Tuas' }
+            ].map((project, i) => (
+              <motion.div
+                key={i}
+                variants={cardVariant}
+                transition={{ duration: 0.5 }}
+                style={{
+                  border: '2px solid #0F172A',
+                  overflow: 'hidden',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translate(2px, -2px)'
+                  e.currentTarget.style.boxShadow = '-4px 4px 0 #0F172A'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translate(0, 0)'
+                  e.currentTarget.style.boxShadow = 'none'
+                }}
+              >
+                <div style={{
+                  height: '180px',
+                  background: '#E5E7EB',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '12px',
+                  color: '#64748B',
+                  fontWeight: 600,
+                  borderBottom: '2px solid #0F172A'
+                }}>
+                  [ PROJECT IMAGE ]
+                </div>
+                <div style={{ padding: '24px' }}>
+                  <h3 style={{
+                    fontSize: '18px',
+                    fontWeight: 700,
+                    marginBottom: '8px'
+                  }}>
+                    {project.title}
+                  </h3>
+                  <div style={{
+                    fontSize: '10px',
+                    fontWeight: 700,
+                    color: '#DC2626',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em',
+                    marginBottom: '12px'
+                  }}>
+                    {project.scope}
+                  </div>
+                  <p style={{
+                    fontSize: '13px',
+                    color: '#64748B',
+                    lineHeight: 1.6,
+                    marginBottom: '12px'
+                  }}>
+                    {project.desc}
+                  </p>
+                  <div style={{
+                    fontSize: '10px',
+                    color: '#94A3B8',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em',
+                    fontWeight: 600
+                  }}>
+                    {project.loc}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* See More Button */}
+          <div style={{ textAlign: 'center' }}>
+            <button style={{
+              padding: '16px 32px',
+              background: '#DC2626',
+              color: '#FFF',
+              border: '2px solid #DC2626',
+              fontWeight: 700,
+              fontSize: '14px',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              cursor: 'pointer',
+              transition: 'all 0.3s'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = '#B91C1C'
+              e.target.style.borderColor = '#B91C1C'
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = '#DC2626'
+              e.target.style.borderColor = '#DC2626'
+            }}
+            >
+              See More Projects →
+            </button>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Safety Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        variants={fadeInUp}
+        style={{ padding: '80px 32px', background: '#F8F9FA' }}
+      >
+        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
+          <h2 style={{
+            fontSize: '36px',
+            fontWeight: 800,
+            marginBottom: '48px',
+            textAlign: 'center'
+          }}>
+            Safety First, Always
+          </h2>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '48px',
+            marginBottom: '48px'
+          }}>
+            {/* Left - Statement */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              style={{
+                padding: '40px',
+                background: '#FFF',
+                border: '2px solid #0F172A'
+              }}
+            >
+              <div style={{
+                fontSize: '28px',
+                fontWeight: 800,
+                marginBottom: '20px',
+                lineHeight: 1.2
+              }}>
+                2.4 Million Safe Manhours Without Lost-Time Incident
+              </div>
+              <p style={{
+                fontSize: '14px',
+                color: '#64748B',
+                lineHeight: 1.6,
+                marginBottom: '16px'
+              }}>
+                Our safety culture is built on accountability, training, and frontline ownership. Every technician, every engineer, every supervisor — empowered to stop work if conditions aren't right.
+              </p>
+              <p style={{
+                fontSize: '14px',
+                color: '#64748B',
+                lineHeight: 1.6
+              }}>
+                From daily toolbox talks to advanced HAZOP reviews, safety is integrated into project planning, execution, and closeout.
+              </p>
+            </motion.div>
+
+            {/* Right - Certifications */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: '16px'
+              }}>
+                {[
+                  { mark: 'Q', issuer: 'SAC-SINGLAS', title: 'ISO 9001:2015', sub: 'Quality Management' },
+                  { mark: 'O', issuer: 'SAC-SINGLAS', title: 'ISO 45001', sub: 'OH&S Management' },
+                  { mark: '★', issuer: 'WSH COUNCIL', title: 'bizSAFE STAR', sub: 'Workplace Safety' },
+                  { mark: 'P', issuer: 'BCA', title: 'CoreTrade', sub: 'Plumbing & Piping' }
+                ].map((cert, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      padding: '24px',
+                      background: '#FFF',
+                      border: '2px solid #0F172A',
+                      transition: 'all 0.3s',
+                      cursor: 'pointer'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = '#0F172A'
+                      e.currentTarget.style.color = '#FFF'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = '#FFF'
+                      e.currentTarget.style.color = '#0F172A'
+                    }}
+                  >
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'flex-start',
+                      marginBottom: '16px'
+                    }}>
+                      <div style={{
+                        width: '36px',
+                        height: '36px',
+                        border: '2px solid currentColor',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontWeight: 800,
+                        fontSize: '14px'
+                      }}>
+                        {cert.mark}
+                      </div>
+                      <div style={{
+                        fontSize: '9px',
+                        opacity: 0.6,
+                        textAlign: 'right',
+                        fontWeight: 600,
+                        letterSpacing: '0.1em'
+                      }}>
+                        {cert.issuer}
+                      </div>
+                    </div>
+                    <h4 style={{
+                      fontSize: '14px',
+                      fontWeight: 700,
+                      marginBottom: '4px'
+                    }}>
+                      {cert.title}
+                    </h4>
+                    <div style={{
+                      fontSize: '10px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.1em',
+                      opacity: 0.6
+                    }}>
+                      {cert.sub}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* See More Button */}
+          <div style={{ textAlign: 'center' }}>
+            <button style={{
+              padding: '16px 32px',
+              background: '#DC2626',
+              color: '#FFF',
+              border: '2px solid #DC2626',
+              fontWeight: 700,
+              fontSize: '14px',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              cursor: 'pointer',
+              transition: 'all 0.3s'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = '#B91C1C'
+              e.target.style.borderColor = '#B91C1C'
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = '#DC2626'
+              e.target.style.borderColor = '#DC2626'
+            }}
+            >
+              See More →
+            </button>
+          </div>
+        </div>
+      </motion.section>
+
       {/* Contact CTA */}
       <motion.section
         initial="hidden"
