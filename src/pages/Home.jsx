@@ -135,7 +135,7 @@ export default function Home() {
                 lineHeight: 1.15
               }}
             >
-              20+ Years Delivering Safety-Critical Mechanical Solutions to Singapore's Gas and Process Industries
+              37+ Years Delivering Safety-Critical Mechanical Solutions to Singapore's Gas and Process Industries
             </motion.h1>
             
             <motion.p
@@ -210,10 +210,10 @@ export default function Home() {
             }}
           >
             {[
-              { value: '20+', label: 'Years Experience' },
-              { value: '450+', label: 'Projects Delivered' },
-              { value: '3,200+', label: 'Trailers Tested' },
-              { value: '2.4M', label: 'Safe Manhours' }
+              { value: '37+', label: 'Years Experience' },
+              { value: 'XX', label: 'Lorem ipsum dolor' },
+              { value: '3,200+', label: 'Sit amet consectetur' },
+              { value: '2.4M', label: 'Adipiscing elit sed' }
             ].map((stat, i) => (
               <motion.div
                 key={i}
