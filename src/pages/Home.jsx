@@ -501,7 +501,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Project Portfolio Section */}
+     {/* Project Portfolio Section */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -542,15 +542,23 @@ export default function Home() {
                   border: '2px solid #0F172A',
                   overflow: 'hidden',
                   cursor: 'pointer',
-                  transition: 'all 0.3s'
+                  transition: 'all 0.4s'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translate(2px, -2px)'
-                  e.currentTarget.style.boxShadow = '-4px 4px 0 #0F172A'
+                  e.currentTarget.style.transform = 'scale(1.05)'
+                  e.currentTarget.style.borderColor = '#DC2626'
+                  const scope = e.currentTarget.querySelector('.project-scope')
+                  const loc = e.currentTarget.querySelector('.project-loc')
+                  if (scope) scope.style.color = '#2563EB'
+                  if (loc) loc.style.transform = 'translateX(4px)'
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translate(0, 0)'
-                  e.currentTarget.style.boxShadow = 'none'
+                  e.currentTarget.style.transform = 'scale(1)'
+                  e.currentTarget.style.borderColor = '#0F172A'
+                  const scope = e.currentTarget.querySelector('.project-scope')
+                  const loc = e.currentTarget.querySelector('.project-loc')
+                  if (scope) scope.style.color = '#DC2626'
+                  if (loc) loc.style.transform = 'translateX(0)'
                 }}
               >
                 <div style={{
@@ -574,14 +582,18 @@ export default function Home() {
                   }}>
                     {project.title}
                   </h3>
-                  <div style={{
-                    fontSize: '10px',
-                    fontWeight: 700,
-                    color: '#DC2626',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em',
-                    marginBottom: '12px'
-                  }}>
+                  <div 
+                    className="project-scope"
+                    style={{
+                      fontSize: '10px',
+                      fontWeight: 700,
+                      color: '#DC2626',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.1em',
+                      marginBottom: '12px',
+                      transition: 'color 0.4s'
+                    }}
+                  >
                     {project.scope}
                   </div>
                   <p style={{
@@ -592,14 +604,18 @@ export default function Home() {
                   }}>
                     {project.desc}
                   </p>
-                  <div style={{
-                    fontSize: '10px',
-                    color: '#94A3B8',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em',
-                    fontWeight: 600
-                  }}>
-                    {project.loc}
+                  <div 
+                    className="project-loc"
+                    style={{
+                      fontSize: '10px',
+                      color: '#94A3B8',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.1em',
+                      fontWeight: 600,
+                      transition: 'transform 0.4s'
+                    }}
+                  >
+                    📍 {project.loc}
                   </div>
                 </div>
               </motion.div>
@@ -721,16 +737,28 @@ export default function Home() {
                       padding: '24px',
                       background: '#FFF',
                       border: '2px solid #0F172A',
-                      transition: 'all 0.3s',
+                      transition: 'all 0.4s',
                       cursor: 'pointer'
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#0F172A'
-                      e.currentTarget.style.color = '#FFF'
+                      e.currentTarget.style.transform = 'scale(1.05)'
+                      e.currentTarget.style.borderColor = '#2563EB'
+                      const mark = e.currentTarget.querySelector('.cert-mark')
+                      if (mark) {
+                        mark.style.transform = 'rotate(15deg)'
+                        mark.style.borderColor = '#DC2626'
+                        mark.style.color = '#DC2626'
+                      }
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = '#FFF'
-                      e.currentTarget.style.color = '#0F172A'
+                      e.currentTarget.style.transform = 'scale(1)'
+                      e.currentTarget.style.borderColor = '#0F172A'
+                      const mark = e.currentTarget.querySelector('.cert-mark')
+                      if (mark) {
+                        mark.style.transform = 'rotate(0deg)'
+                        mark.style.borderColor = '#0F172A'
+                        mark.style.color = '#0F172A'
+                      }
                     }}
                   >
                     <div style={{
@@ -739,16 +767,21 @@ export default function Home() {
                       alignItems: 'flex-start',
                       marginBottom: '16px'
                     }}>
-                      <div style={{
-                        width: '36px',
-                        height: '36px',
-                        border: '2px solid currentColor',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontWeight: 800,
-                        fontSize: '14px'
-                      }}>
+                      <div 
+                        className="cert-mark"
+                        style={{
+                          width: '36px',
+                          height: '36px',
+                          border: '2px solid #0F172A',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontWeight: 800,
+                          fontSize: '14px',
+                          transition: 'all 0.4s',
+                          color: '#0F172A'
+                        }}
+                      >
                         {cert.mark}
                       </div>
                       <div style={{
