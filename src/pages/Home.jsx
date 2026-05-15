@@ -247,7 +247,38 @@ export default function Home() {
       </motion.section>
 
 {/* Industries Section */}
-     ].map((industry, i) => (
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        variants={fadeInUp}
+        style={{ padding: '80px 32px', background: '#F8F9FA' }}
+      >
+        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
+          <h2 style={{
+            fontSize: '36px',
+            fontWeight: 800,
+            marginBottom: '48px',
+            textAlign: 'center'
+          }}>
+            Industries We Serve
+          </h2>
+
+          <motion.div
+            variants={staggerContainer}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '24px'
+            }}
+          >
+            {[
+              { icon: <Icon.Chip />, title: 'Semiconductor', desc: 'Gas process plant construction, integration and maintenance for semiconductor manufacturing.' },
+              { icon: <Icon.Server />, title: 'Data Center', desc: 'Hydrogen pipeline infrastructure and gas systems support for data centre energy requirements.' },
+              { icon: <Icon.Plant />, title: 'Industrial Gas & Process', desc: 'Turnkey project engineering, plant integration and maintenance for gas and process plants.' },
+              { icon: <Icon.H2 />, title: 'New Energy / Hydrogen', desc: 'Hydrogen trailer testing, servicing, refurbishment and certification support.' }
+            ].map((industry, i) => (
               <motion.div
                 key={i}
                 variants={cardVariant}
@@ -330,8 +361,10 @@ export default function Home() {
                 </div>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+      </motion.section>
     
-      {/* Services Section */}
       {/* Services Section */}
       <motion.section
         initial="hidden"
