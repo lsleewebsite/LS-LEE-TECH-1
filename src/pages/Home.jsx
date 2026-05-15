@@ -212,8 +212,8 @@ export default function Home() {
             {[
               { value: '37+', label: 'Years Of Experience' },
               { value: 'XX', label: 'Lorem ipsum dolor' },
-              { value: '3,200+', label: 'Sit amet consectetur' },
-              { value: '2.4M', label: 'Adipiscing elit sed' }
+              { value: 'XX', label: 'Sit amet consectetur' },
+              { value: 'XX', label: 'Adipiscing elit sed' }
             ].map((stat, i) => (
               <motion.div
                 key={i}
