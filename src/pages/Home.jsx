@@ -98,65 +98,76 @@ export default function Home() {
             letterSpacing: '0.1em'
           }}>
             [ HERO IMAGE ]<br/>
-            <span style={{ fontSize: '10px', opacity: 0.7 }}>Full height cutout</span>
+            <span style={{ fontSize: '11px', opacity: 0.7 }}>1920 × 1080px</span>
           </div>
         </div>
 
-        <div style={{ maxWidth: '1360px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div style={{ maxWidth: '650px' }}>
+        {/* Content Container */}
+        <div style={{ 
+          maxWidth: '1360px', 
+          margin: '0 auto',
+          position: 'relative',
+          zIndex: 1
+        }}>
+          <div style={{
+            maxWidth: '650px'
+          }}>
+            {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               style={{
                 display: 'inline-block',
-                padding: '6px 14px',
+                padding: '8px 16px',
                 background: 'rgba(220, 38, 38, 0.15)',
                 border: '1px solid #DC2626',
-                marginBottom: '20px',
-                fontSize: '10px',
+                marginBottom: '24px',
+                fontSize: '11px',
                 fontWeight: 700,
                 letterSpacing: '0.1em',
-                color: '#DC2626',
-                textTransform: 'uppercase'
+                color: '#DC2626'
               }}
             >
-              Established 1989
+              EST. 2003
             </motion.div>
-            
+
+            {/* Title */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               style={{
-                fontSize: 'clamp(32px, 5vw, 56px)',
-                fontWeight: 800,
-                marginBottom: '20px',
-                lineHeight: 1.15
+                fontSize: '48px',
+                fontWeight: 900,
+                lineHeight: 1.1,
+                marginBottom: '20px'
               }}
             >
-              37+ Years Delivering Safety-Critical Mechanical Solutions to Singapore's Gas and Process Industries
+              20+ Years Delivering Safety-Critical Mechanical Solutions to Singapore's Gas and Process Industries
             </motion.h1>
-            
+
+            {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               style={{
                 fontSize: '16px',
-                color: 'rgba(255,255,255,0.8)',
-                marginBottom: '28px',
-                lineHeight: 1.6
+                color: '#94A3B8',
+                lineHeight: 1.6,
+                marginBottom: '32px'
               }}
             >
-              LS Lee Technologies brings proven expertise where precision and safety are non-negotiable.
+              From semiconductor gas plants to hydrogen trailer servicing — LS Lee Engineering delivers mechanical solutions backed by decades of experience.
             </motion.p>
-            
+
+            {/* Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}
+              style={{ display: 'flex', gap: '16px' }}
             >
               <button style={{
                 padding: '14px 28px',
@@ -165,20 +176,22 @@ export default function Home() {
                 border: '2px solid #DC2626',
                 fontWeight: 700,
                 fontSize: '13px',
+                textTransform: 'uppercase',
                 letterSpacing: '0.05em',
-                textTransform: 'uppercase'
+                cursor: 'pointer'
               }}>
-                Our Industries →
+                Our Industries
               </button>
               <button style={{
                 padding: '14px 28px',
                 background: 'transparent',
                 color: '#FFF',
-                border: '2px solid #2563EB',
+                border: '2px solid #FFF',
                 fontWeight: 700,
                 fontSize: '13px',
+                textTransform: 'uppercase',
                 letterSpacing: '0.05em',
-                textTransform: 'uppercase'
+                cursor: 'pointer'
               }}>
                 View Projects
               </button>
@@ -246,7 +259,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-{/* Industries Section */}
+      {/* Industries Section */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -501,14 +514,14 @@ export default function Home() {
         </div>
       </motion.section>
 
-     {/* Project Portfolio Section */}
+      {/* Project Portfolio Section */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
         variants={fadeInUp}
-        style={{ padding: '80px 32px', background: '#FFF' }}
+        style={{ padding: '80px 32px', background: '#F8F9FA' }}
       >
         <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
           <h2 style={{
@@ -542,7 +555,8 @@ export default function Home() {
                   border: '2px solid #0F172A',
                   overflow: 'hidden',
                   cursor: 'pointer',
-                  transition: 'all 0.4s'
+                  transition: 'all 0.4s',
+                  background: '#FFF'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'scale(1.05)'
@@ -658,7 +672,7 @@ export default function Home() {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
         variants={fadeInUp}
-        style={{ padding: '80px 32px', background: '#F8F9FA' }}
+        style={{ padding: '80px 32px', background: '#FFF' }}
       >
         <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
           <h2 style={{
@@ -684,7 +698,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               style={{
                 padding: '40px',
-                background: '#FFF',
+                background: '#F8F9FA',
                 border: '2px solid #0F172A'
               }}
             >
@@ -901,7 +915,8 @@ export default function Home() {
             fontWeight: 700,
             fontSize: '13px',
             textTransform: 'uppercase',
-            letterSpacing: '0.05em'
+            letterSpacing: '0.05em',
+            cursor: 'pointer'
           }}>
             Contact Us →
           </button>
