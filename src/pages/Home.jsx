@@ -507,29 +507,25 @@ export default function Home() {
                   <p style={{
                     fontSize: '13px',
                     color: '#64748B',
-                    lineHeight: 1.6
+                    lineHeight: 1.6,
                     marginBottom: '16px'
-                      }}>
-                        {service.desc}
-                      </p>
-                      <div 
-                        className="service-learn-more"
-                        style={{
-                          fontSize: '13px',
-                          fontWeight: 700,
-                          color: '#2563EB',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.05em',
-                          transition: 'transform 0.4s',
-                          cursor: 'pointer'
-                        }}
-                      >
-                        Learn More →
-                      </div>
-                    </div>
                   }}>
                     {service.desc}
                   </p>
+                  <div 
+                    className="service-learn-more"
+                    style={{
+                      fontSize: '13px',
+                      fontWeight: 700,
+                      color: '#2563EB',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em',
+                      transition: 'transform 0.4s',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Learn More →
+                  </div>
                 </div>
               </motion.div>
             ))}
