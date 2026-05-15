@@ -252,8 +252,6 @@ img { max-width: 100%; display: block; }
   transition: transform 0.15s;
 }
 .ind-card:hover {
-  transform: translate(2px, -2px);
-  box-shadow: -4px 4px 0 var(--ink);
 }
 .ind-top {
   display: flex;
