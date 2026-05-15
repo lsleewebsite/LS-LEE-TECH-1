@@ -247,38 +247,7 @@ export default function Home() {
       </motion.section>
 
 {/* Industries Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-        variants={fadeInUp}
-        style={{ padding: '80px 32px', background: '#F8F9FA' }}
-      >
-        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
-          <h2 style={{
-            fontSize: '36px',
-            fontWeight: 800,
-            marginBottom: '48px',
-            textAlign: 'center'
-          }}>
-            Industries We Serve
-          </h2>
-
-          <motion.div
-            variants={staggerContainer}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: '24px'
-            }}
-          >
-            {[
-              { icon: <Icon.Chip />, title: 'Semiconductor', desc: 'Gas process plant construction, integration and maintenance for semiconductor manufacturing.' },
-              { icon: <Icon.Server />, title: 'Data Center', desc: 'Hydrogen pipeline infrastructure and gas systems support for data centre energy requirements.' },
-              { icon: <Icon.Plant />, title: 'Industrial Gas & Process', desc: 'Turnkey project engineering, plant integration and maintenance for gas and process plants.' },
-              { icon: <Icon.H2 />, title: 'New Energy / Hydrogen', desc: 'Hydrogen trailer testing, servicing, refurbishment and certification support.' }
-            ].map((industry, i) => (
+     ].map((industry, i) => (
               <motion.div
                 key={i}
                 variants={cardVariant}
@@ -288,44 +257,53 @@ export default function Home() {
                   padding: '32px',
                   background: '#FFF',
                   border: '2px solid #0F172A',
-                  transition: 'all 0.3s',
+                  transition: 'all 0.4s',
                   cursor: 'pointer'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translate(4px, -4px)'
-                  e.currentTarget.style.boxShadow = '-6px 6px 0 #0F172A'
-                  const title = e.currentTarget.querySelector('h3')
+                  e.currentTarget.style.transform = 'scale(1.05)'
+                  e.currentTarget.style.borderColor = '#DC2626'
+                  const icon = e.currentTarget.querySelector('.ind-icon')
                   const learnMore = e.currentTarget.querySelector('.learn-more')
-                  if (title) title.style.color = '#2563EB'
+                  if (icon) {
+                    icon.style.borderColor = '#2563EB'
+                    icon.style.transform = 'rotate(15deg)'
+                  }
                   if (learnMore) learnMore.style.transform = 'translateX(4px)'
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translate(0, 0)'
-                  e.currentTarget.style.boxShadow = 'none'
-                  const title = e.currentTarget.querySelector('h3')
+                  e.currentTarget.style.transform = 'scale(1)'
+                  e.currentTarget.style.borderColor = '#0F172A'
+                  const icon = e.currentTarget.querySelector('.ind-icon')
                   const learnMore = e.currentTarget.querySelector('.learn-more')
-                  if (title) title.style.color = '#0F172A'
+                  if (icon) {
+                    icon.style.borderColor = '#0F172A'
+                    icon.style.transform = 'rotate(0deg)'
+                  }
                   if (learnMore) learnMore.style.transform = 'translateX(0)'
                 }}
               >
-                <div style={{
-                  width: '64px',
-                  height: '64px',
-                  border: '2px solid #0F172A',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '20px',
-                  color: '#0F172A'
-                }}>
+                <div 
+                  className="ind-icon"
+                  style={{
+                    width: '64px',
+                    height: '64px',
+                    border: '2px solid #0F172A',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '20px',
+                    color: '#0F172A',
+                    transition: 'all 0.4s'
+                  }}
+                >
                   {industry.icon}
                 </div>
                 <h3 style={{
                   fontSize: '20px',
                   fontWeight: 700,
                   marginBottom: '12px',
-                  color: '#0F172A',
-                  transition: 'color 0.3s'
+                  color: '#0F172A'
                 }}>
                   {industry.title}
                 </h3>
@@ -345,16 +323,13 @@ export default function Home() {
                     color: '#2563EB',
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em',
-                    transition: 'transform 0.3s'
+                    transition: 'transform 0.4s'
                   }}
                 >
                   Learn More →
                 </div>
               </motion.div>
             ))}
-          </motion.div>
-        </div>
-      </motion.section>
     
       {/* Services Section */}
       {/* Services Section */}
