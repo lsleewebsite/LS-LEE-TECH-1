@@ -357,6 +357,40 @@ export default function Industries() {
                     ))}
                   </div>
                 </div>
+
+                {/* View Projects Button */}
+                <a 
+                  href={`/Projects#${industry.id}`}
+                  style={{
+                    display: 'inline-block',
+                    padding: '16px 28px',
+                    background: 'transparent',
+                    color: '#0F172A',
+                    border: '2px solid #0F172A',
+                    fontWeight: 700,
+                    fontSize: '14px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                    textDecoration: 'none',
+                    transition: 'all 0.3s',
+                    textAlign: 'center',
+                    cursor: 'pointer'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = '#DC2626'
+                    e.target.style.color = '#FFF'
+                    e.target.style.borderColor = '#DC2626'
+                    e.target.style.transform = 'translateX(4px)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = 'transparent'
+                    e.target.style.color = '#0F172A'
+                    e.target.style.borderColor = '#0F172A'
+                    e.target.style.transform = 'translateX(0)'
+                  }}
+                >
+                  View {industry.title} Projects →
+                </a>
               </motion.div>
             </div>
           </div>
