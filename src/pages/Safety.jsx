@@ -1,21 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
-
-const slideVariants = {
-  enter: (direction) => ({
-    x: direction > 0 ? 1000 : -1000,
-    opacity: 0
-  }),
-  center: {
-    x: 0,
-    opacity: 1
-  },
-  exit: (direction) => ({
-    x: direction < 0 ? 1000 : -1000,
-    opacity: 0
-  })
-}
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -31,7 +16,7 @@ const fadeInUp = {
 
 export default function Safety() {
   const location = useLocation()
-  const [[currentIndex, direction], setPage] = useState([0, 0])
+  const [currentIndex, setCurrentIndex] = useState(0)
   const [showModal, setShowModal] = useState(false)
 
   const certificates = [
@@ -42,7 +27,7 @@ export default function Safety() {
       description: 'Occupational Health & Safety Management System',
       date: '27 March 2020 - 26 March 2023',
       certNumber: 'OSH-20-2239',
-      image: '/path-to-cert-1.jpg',
+      image: '/certificates/cert1.jpg',
       scope: 'Fabrication & Installation of Pipeworks and Related Plant Installation',
       why: 'Independent verification that our safety management systems meet international standards. Reduces your project risk and insurance liability.'
     },
@@ -53,7 +38,7 @@ export default function Safety() {
       description: 'Quality Management System',
       date: '27 March 2020 - 26 March 2023',
       certNumber: 'QS-20-2238',
-      image: '/path-to-cert-2.jpg',
+      image: '/certificates/cert2.jpg',
       scope: 'Fabrication & Installation of Pipeworks and Related Plant Installation',
       why: 'Ensures consistent quality across every phase of your project. Third-party audited processes, not just promises.'
     },
@@ -64,7 +49,7 @@ export default function Safety() {
       description: 'Workplace Safety and Health Excellence',
       date: 'Valid till 26/03/2023',
       certNumber: 'E04940',
-      image: '/path-to-cert-3.jpg',
+      image: '/certificates/cert3.jpg',
       scope: 'Highest level of bizSAFE certification demonstrating exemplary WSH performance',
       why: 'The highest level of workplace safety certification in Singapore. Demonstrates proven safety culture and performance.'
     },
@@ -75,7 +60,7 @@ export default function Safety() {
       description: 'Occupational Health & Safety Management',
       date: '16 March 2016 - 15 March 2019',
       certNumber: 'CIS/200610',
-      image: '/path-to-cert-4.jpg',
+      image: '/certificates/cert4.jpg',
       scope: 'Fabrication and installation of pipeworks and related plants installations',
       why: 'International standard for occupational health and safety. Predecessor to ISO 45001, demonstrating long-term safety commitment.'
     },
@@ -86,7 +71,7 @@ export default function Safety() {
       description: 'Singapore Standard for Occupational H&S Management',
       date: '22 April 2016 - 15 March 2019',
       certNumber: 'CIS/200610',
-      image: '/path-to-cert-5.jpg',
+      image: '/certificates/cert5.jpg',
       scope: 'Fabrication and installation of pipeworks and related plants installations',
       why: 'Singapore national standard for workplace safety. Demonstrates compliance with local regulatory requirements.'
     }
@@ -96,14 +81,61 @@ export default function Safety() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [location])
 
-  const paginate = (newDirection) => {
-    const newIndex = currentIndex + newDirection
-    if (newIndex >= 0 && newIndex < certificates.length) {
-      setPage([newIndex, newDirection])
+  const navigate = (direction) => {
+    if (direction === 'prev') {
+      setCurrentIndex((prev) => (prev === 0 ? certificates.length - 1 : prev - 1))
+    } else {
+      setCurrentIndex((prev) => (prev === certificates.length - 1 ? 0 : prev + 1))
     }
   }
 
-  const currentCert = certificates[currentIndex]
+  const getCardStyle = (index) => {
+    const diff = index - currentIndex
+    const totalCards = certificates.length
+    
+    let position = diff
+    if (diff < -Math.floor(totalCards / 2)) {
+      position = diff + totalCards
+    } else if (diff > Math.floor(totalCards / 2)) {
+      position = diff - totalCards
+    }
+
+    if (position === 0) {
+      // Center card
+      return {
+        transform: 'translateX(0) scale(1) rotateY(0deg)',
+        zIndex: 50,
+        opacity: 1,
+        filter: 'brightness(1)'
+      }
+    } else if (position === -1) {
+      // Left card
+      return {
+        transform: 'translateX(-350px) scale(0.8) rotateY(45deg)',
+        zIndex: 30,
+        opacity: 0.6,
+        filter: 'brightness(0.7)'
+      }
+    } else if (position === 1) {
+      // Right card
+      return {
+        transform: 'translateX(350px) scale(0.8) rotateY(-45deg)',
+        zIndex: 30,
+        opacity: 0.6,
+        filter: 'brightness(0.7)'
+      }
+    } else {
+      // Hidden cards
+      return {
+        transform: position < 0 
+          ? 'translateX(-450px) scale(0.6) rotateY(60deg)'
+          : 'translateX(450px) scale(0.6) rotateY(-60deg)',
+        zIndex: 10,
+        opacity: 0,
+        filter: 'brightness(0.5)'
+      }
+    }
+  }
 
   return (
     <div>
@@ -254,14 +286,13 @@ export default function Safety() {
         </div>
       </motion.section>
 
-      {/* Carousel Section */}
+      {/* 3D Carousel Section */}
       <section style={{
-        padding: '80px 0',
+        padding: '100px 32px',
         background: '#F8F9FA',
-        position: 'relative',
         overflow: 'hidden'
       }}>
-        <div style={{ maxWidth: '1360px', margin: '0 auto', padding: '0 32px' }}>
+        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
           
           <h2 style={{
             fontSize: '36px',
@@ -276,310 +307,223 @@ export default function Safety() {
             fontSize: '15px',
             color: '#64748B',
             textAlign: 'center',
-            marginBottom: '60px',
+            marginBottom: '80px',
             lineHeight: 1.6
           }}>
             Click any certificate to view full documentation
           </p>
 
-          {/* Navigation Arrows */}
-          <button
-            onClick={() => paginate(-1)}
-            disabled={currentIndex === 0}
-            style={{
-              position: 'absolute',
-              left: '32px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              width: '60px',
-              height: '60px',
-              background: '#0F172A',
-              border: '2px solid #0F172A',
-              color: '#FFF',
-              fontSize: '24px',
-              cursor: currentIndex === 0 ? 'not-allowed' : 'pointer',
-              opacity: currentIndex === 0 ? 0.3 : 1,
-              transition: 'all 0.3s',
-              zIndex: 10
-            }}
-            onMouseEnter={(e) => {
-              if (currentIndex !== 0) {
-                e.target.style.background = '#DC2626'
-                e.target.style.borderColor = '#DC2626'
-              }
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = '#0F172A'
-              e.target.style.borderColor = '#0F172A'
-            }}
-          >
-            ←
-          </button>
-
-          <button
-            onClick={() => paginate(1)}
-            disabled={currentIndex === certificates.length - 1}
-            style={{
-              position: 'absolute',
-              right: '32px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              width: '60px',
-              height: '60px',
-              background: '#0F172A',
-              border: '2px solid #0F172A',
-              color: '#FFF',
-              fontSize: '24px',
-              cursor: currentIndex === certificates.length - 1 ? 'not-allowed' : 'pointer',
-              opacity: currentIndex === certificates.length - 1 ? 0.3 : 1,
-              transition: 'all 0.3s',
-              zIndex: 10
-            }}
-            onMouseEnter={(e) => {
-              if (currentIndex !== certificates.length - 1) {
-                e.target.style.background = '#DC2626'
-                e.target.style.borderColor = '#DC2626'
-              }
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = '#0F172A'
-              e.target.style.borderColor = '#0F172A'
-            }}
-          >
-            →
-          </button>
-
-          {/* Carousel Content */}
-          <AnimatePresence initial={false} custom={direction} mode="wait">
-            <motion.div
-              key={currentIndex}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.3 }
-              }}
-              style={{
-                background: '#FFF',
-                border: '3px solid #0F172A',
-                cursor: 'pointer'
-              }}
-              onClick={() => setShowModal(true)}
-            >
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                minHeight: '550px'
-              }}>
-                
-                {/* Certificate Preview */}
-                <div style={{
-                  background: '#E5E7EB',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderRight: '2px solid #0F172A',
-                  padding: '60px',
-                  position: 'relative'
-                }}>
-                  <div style={{
-                    position: 'absolute',
-                    top: '24px',
-                    right: '24px',
-                    padding: '8px 20px',
-                    background: '#DC2626',
-                    color: '#FFF',
-                    fontSize: '12px',
-                    fontWeight: 700,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.08em'
-                  }}>
-                    Click to View Full
-                  </div>
-
-                  <div style={{
-                    fontSize: '18px',
-                    fontWeight: 700,
-                    color: '#DC2626',
-                    marginBottom: '60px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em'
-                  }}>
-                    {String(currentCert.id).padStart(2, '0')} / {String(certificates.length).padStart(2, '0')}
-                  </div>
-                  <div style={{
-                    textAlign: 'center',
-                    color: '#94A3B8'
-                  }}>
-                    <div style={{
-                      fontSize: '16px',
-                      fontWeight: 600,
-                      letterSpacing: '0.1em',
-                      textTransform: 'uppercase',
-                      marginBottom: '12px'
-                    }}>
-                      [ Certificate Preview ]
-                    </div>
-                    <div style={{
-                      fontSize: '13px',
-                      opacity: 0.6
-                    }}>
-                      800 × 1000px
-                    </div>
-                  </div>
-                </div>
-
-                {/* Certificate Info */}
-                <div style={{
-                  padding: '60px 70px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center'
-                }}>
-                  
-                  {/* Issuer Badge */}
-                  <div style={{
-                    display: 'inline-block',
-                    padding: '8px 24px',
-                    background: '#0F172A',
-                    color: '#FFF',
-                    fontSize: '13px',
-                    fontWeight: 700,
-                    letterSpacing: '0.05em',
-                    marginBottom: '24px',
-                    alignSelf: 'flex-start',
-                    textTransform: 'uppercase'
-                  }}>
-                    {currentCert.issuer}
-                  </div>
-
-                  {/* Title */}
-                  <h2 style={{
-                    fontSize: '42px',
-                    fontWeight: 900,
-                    marginBottom: '16px',
-                    lineHeight: 1.1,
-                    color: '#0F172A'
-                  }}>
-                    {currentCert.title}
-                  </h2>
-
-                  {/* Description */}
-                  <div style={{
-                    fontSize: '15px',
-                    color: '#DC2626',
-                    fontWeight: 700,
-                    marginBottom: '24px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em'
-                  }}>
-                    {currentCert.description}
-                  </div>
-
-                  {/* Why This Matters */}
-                  <p style={{
-                    fontSize: '15px',
-                    color: '#64748B',
-                    lineHeight: 1.7,
-                    marginBottom: '28px'
-                  }}>
-                    {currentCert.why}
-                  </p>
-
-                  {/* Details Grid */}
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: '1fr 1fr',
-                    gap: '20px',
-                    marginBottom: '32px'
-                  }}>
-                    <div>
-                      <div style={{
-                        fontSize: '11px',
-                        fontWeight: 700,
-                        color: '#94A3B8',
-                        marginBottom: '6px',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.08em'
-                      }}>
-                        Certificate Number
-                      </div>
-                      <div style={{
-                        fontSize: '14px',
-                        color: '#0F172A',
-                        fontWeight: 600,
-                        fontFamily: 'monospace'
-                      }}>
-                        {currentCert.certNumber}
-                      </div>
-                    </div>
-                    <div>
-                      <div style={{
-                        fontSize: '11px',
-                        fontWeight: 700,
-                        color: '#94A3B8',
-                        marginBottom: '6px',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.08em'
-                      }}>
-                        Validity Period
-                      </div>
-                      <div style={{
-                        fontSize: '14px',
-                        color: '#0F172A',
-                        fontWeight: 600
-                      }}>
-                        {currentCert.date}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* View Full Button */}
-                  <div style={{
-                    padding: '14px 28px',
-                    background: '#DC2626',
-                    color: '#FFF',
-                    border: '2px solid #DC2626',
-                    fontWeight: 700,
-                    fontSize: '13px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em',
-                    textAlign: 'center',
-                    transition: 'all 0.3s'
-                  }}>
-                    View Full Certificate →
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Dots Indicator */}
+          {/* 3D Carousel Container */}
           <div style={{
+            position: 'relative',
+            height: '600px',
             display: 'flex',
+            alignItems: 'center',
             justifyContent: 'center',
-            gap: '12px',
-            marginTop: '40px'
+            perspective: '2000px'
           }}>
-            {certificates.map((cert, index) => (
-              <button
-                key={cert.id}
-                onClick={() => setPage([index, index > currentIndex ? 1 : -1])}
-                style={{
-                  width: currentIndex === index ? '40px' : '12px',
-                  height: '12px',
-                  background: currentIndex === index ? '#DC2626' : '#D1D5DB',
-                  border: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s',
-                  borderRadius: '6px'
-                }}
-              />
-            ))}
+            
+            {/* Certificate Cards */}
+            <div style={{
+              position: 'relative',
+              width: '600px',
+              height: '600px',
+              transformStyle: 'preserve-3d'
+            }}>
+              {certificates.map((cert, index) => {
+                const style = getCardStyle(index)
+                const isCenter = index === currentIndex
+
+                return (
+                  <div
+                    key={cert.id}
+                    onClick={() => isCenter ? setShowModal(true) : setCurrentIndex(index)}
+                    style={{
+                      position: 'absolute',
+                      left: '50%',
+                      top: '50%',
+                      marginLeft: '-250px',
+                      marginTop: '-300px',
+                      width: '500px',
+                      height: '600px',
+                      background: '#FFF',
+                      border: '3px solid #0F172A',
+                      cursor: 'pointer',
+                      transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+                      transformStyle: 'preserve-3d',
+                      boxShadow: isCenter ? '0 20px 60px rgba(0,0,0,0.3)' : '0 10px 30px rgba(0,0,0,0.2)',
+                      ...style
+                    }}
+                  >
+                    {/* Certificate Preview */}
+                    <div style={{
+                      width: '100%',
+                      height: '100%',
+                      background: '#E5E7EB',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '40px',
+                      position: 'relative'
+                    }}>
+                      {isCenter && (
+                        <div style={{
+                          position: 'absolute',
+                          top: '20px',
+                          right: '20px',
+                          padding: '8px 16px',
+                          background: '#DC2626',
+                          color: '#FFF',
+                          fontSize: '11px',
+                          fontWeight: 700,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.08em'
+                        }}>
+                          Click to View
+                        </div>
+                      )}
+
+                      <div style={{
+                        fontSize: '80px',
+                        fontWeight: 900,
+                        color: '#D1D5DB',
+                        marginBottom: '20px',
+                        lineHeight: 1
+                      }}>
+                        {String(cert.id).padStart(2, '0')}
+                      </div>
+                      
+                      <div style={{
+                        textAlign: 'center',
+                        color: '#94A3B8'
+                      }}>
+                        <div style={{
+                          fontSize: '14px',
+                          fontWeight: 600,
+                          letterSpacing: '0.1em',
+                          textTransform: 'uppercase',
+                          marginBottom: '12px'
+                        }}>
+                          [ Certificate Preview ]
+                        </div>
+                        <div style={{
+                          fontSize: '16px',
+                          fontWeight: 700,
+                          color: isCenter ? '#0F172A' : '#94A3B8',
+                          marginTop: '20px'
+                        }}>
+                          {cert.title}
+                        </div>
+                        <div style={{
+                          fontSize: '12px',
+                          color: '#DC2626',
+                          fontWeight: 600,
+                          marginTop: '8px',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.05em'
+                        }}>
+                          {cert.issuer}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={() => navigate('prev')}
+              style={{
+                position: 'absolute',
+                left: '0',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                width: '60px',
+                height: '60px',
+                background: '#0F172A',
+                border: '2px solid #0F172A',
+                color: '#FFF',
+                fontSize: '24px',
+                cursor: 'pointer',
+                transition: 'all 0.3s',
+                zIndex: 100
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = '#DC2626'
+                e.target.style.borderColor = '#DC2626'
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = '#0F172A'
+                e.target.style.borderColor = '#0F172A'
+              }}
+            >
+              ←
+            </button>
+
+            <button
+              onClick={() => navigate('next')}
+              style={{
+                position: 'absolute',
+                right: '0',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                width: '60px',
+                height: '60px',
+                background: '#0F172A',
+                border: '2px solid #0F172A',
+                color: '#FFF',
+                fontSize: '24px',
+                cursor: 'pointer',
+                transition: 'all 0.3s',
+                zIndex: 100
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = '#DC2626'
+                e.target.style.borderColor = '#DC2626'
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = '#0F172A'
+                e.target.style.borderColor = '#0F172A'
+              }}
+            >
+              →
+            </button>
+          </div>
+
+          {/* Text Below Carousel */}
+          <div style={{
+            textAlign: 'center',
+            marginTop: '60px'
+          }}>
+            <h3 style={{
+              fontSize: '24px',
+              fontWeight: 700,
+              color: '#0F172A',
+              marginBottom: '12px'
+            }}>
+              {certificates[currentIndex].title}
+            </h3>
+            <p style={{
+              fontSize: '14px',
+              color: '#DC2626',
+              fontWeight: 600,
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              marginBottom: '16px'
+            }}>
+              {certificates[currentIndex].issuer}
+            </p>
+            <p style={{
+              fontSize: '15px',
+              color: '#64748B',
+              lineHeight: 1.7,
+              maxWidth: '700px',
+              margin: '0 auto'
+            }}>
+              {certificates[currentIndex].why}
+            </p>
           </div>
         </div>
       </section>
@@ -659,7 +603,7 @@ export default function Safety() {
                   color: '#D1D5DB',
                   lineHeight: 1
                 }}>
-                  {String(currentCert.id).padStart(2, '0')}
+                  {String(certificates[currentIndex].id).padStart(2, '0')}
                 </div>
                 <div style={{
                   fontSize: '18px',
@@ -674,7 +618,7 @@ export default function Safety() {
                   fontSize: '16px',
                   opacity: 0.7
                 }}>
-                  {currentCert.title}
+                  {certificates[currentIndex].title}
                 </div>
               </div>
             </div>
@@ -690,7 +634,7 @@ export default function Safety() {
                 marginBottom: '16px',
                 color: '#0F172A'
               }}>
-                {currentCert.title}
+                {certificates[currentIndex].title}
               </h3>
               <div style={{
                 fontSize: '15px',
@@ -700,7 +644,7 @@ export default function Safety() {
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em'
               }}>
-                Issued by {currentCert.issuer}
+                Issued by {certificates[currentIndex].issuer}
               </div>
               <p style={{
                 fontSize: '16px',
@@ -708,7 +652,7 @@ export default function Safety() {
                 lineHeight: 1.7,
                 marginBottom: '24px'
               }}>
-                {currentCert.why}
+                {certificates[currentIndex].why}
               </p>
               <div style={{
                 padding: '20px',
@@ -731,7 +675,7 @@ export default function Safety() {
                   color: '#0F172A',
                   lineHeight: 1.6
                 }}>
-                  {currentCert.scope}
+                  {certificates[currentIndex].scope}
                 </div>
               </div>
               <div style={{
@@ -756,7 +700,7 @@ export default function Safety() {
                     fontWeight: 600,
                     fontFamily: 'monospace'
                   }}>
-                    {currentCert.certNumber}
+                    {certificates[currentIndex].certNumber}
                   </div>
                 </div>
                 <div>
@@ -775,7 +719,7 @@ export default function Safety() {
                     color: '#0F172A',
                     fontWeight: 600
                   }}>
-                    {currentCert.date}
+                    {certificates[currentIndex].date}
                   </div>
                 </div>
               </div>
