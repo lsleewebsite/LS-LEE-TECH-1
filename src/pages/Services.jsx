@@ -2,43 +2,6 @@ import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
 
-// Icon Components
-const Icon = {
-  Wrench: () => (
-    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-    </svg>
-  ),
-  Gauge: () => (
-    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M12 2v4"/>
-      <path d="m6.8 15-3.5 2"/>
-      <path d="m20.7 7-3.5 2"/>
-      <path d="M6.8 9 3.3 7"/>
-      <path d="m20.7 17-3.5-2"/>
-      <path d="m9 22 3-8 3 8"/>
-      <path d="M8 22h8"/>
-      <path d="M18 18.7a9 9 0 1 0-12 0"/>
-    </svg>
-  ),
-  Trailer: () => (
-    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M10 17h4V5H2v12h3"/>
-      <circle cx="6" cy="17" r="2"/>
-      <path d="M14 17h5l4-8V6h-8v11z"/>
-      <circle cx="18" cy="17" r="2"/>
-    </svg>
-  ),
-  Snow: () => (
-    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M2 12h20"/>
-      <path d="M12 2v20"/>
-      <path d="m4.93 4.93 14.14 14.14"/>
-      <path d="m4.93 19.07 14.14-14.14"/>
-    </svg>
-  )
-}
-
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
   visible: { 
@@ -74,98 +37,90 @@ export default function Services() {
     {
       id: 'project-engineering',
       num: '01',
-      icon: <Icon.Wrench />,
       title: 'Project Engineering',
-      tagline: 'Turnkey Mechanical Construction from Design to Commissioning',
-      description: 'From initial concept to final handover, we manage the complete project lifecycle. Our integrated approach combines engineering, fabrication, installation, and commissioning under one accountable contractor.',
-      capabilities: [
-        'Detailed engineering and 3D modeling',
-        'Fabrication shop with certified welders',
-        'Underground piping installation',
-        'Steel structure design and erection',
-        'Gas metering skid fabrication',
-        'Equipment installation and tie-in',
-        'Pre-commissioning and startup'
+      tagline: 'Turnkey Mechanical Construction',
+      description: 'From initial concept to final handover. Gas plant equipment erection, installation and integration, underground gas piping, steel structure fabrication and metering skid station fabrication.',
+      highlights: [
+        'Detailed Engineering & 3D Modeling',
+        'Certified Welding & Fabrication Shop',
+        'Underground Piping Installation',
+        'Steel Structure Design & Erection',
+        'Gas Metering Skid Fabrication',
+        'Equipment Installation & Tie-in'
       ],
-      deliverables: [
-        'As-built drawings',
+      outcomes: [
+        'As-built drawings and documentation',
         'Material test reports (MTRs)',
-        'Weld procedure specifications',
+        'Weld procedure specifications (WPS)',
         'Pressure test certificates',
         'Commissioning reports',
         'O&M manuals'
       ],
-      standards: 'ASME B31.3 • ASME B31.8 • AWS D1.1 • ISO 9001'
+      compliance: 'ASME B31.3 • ASME B31.8 • AWS D1.1 • ISO 9001'
     },
     {
       id: 'plant-maintenance',
       num: '02',
-      icon: <Icon.Gauge />,
       title: 'Plant Maintenance',
-      tagline: 'Keeping Your Operations Running 24/7',
-      description: 'Preventive maintenance programs, shutdown support, and emergency response. We keep your plant running at peak performance while minimizing unplanned downtime and safety incidents.',
-      capabilities: [
-        'Preventive maintenance programs',
-        'Shutdown and turnaround planning',
-        'Emergency repair response',
-        'Rotating equipment overhaul',
-        'Pipeline inspection and repair',
-        'Valve testing and certification',
-        'Leak detection and repair (LDAR)'
+      tagline: '24/7 Operations Support',
+      description: 'Keep your operations running at peak performance. Process plant routine and shutdown maintenance, including metering skid and underground pipeline servicing.',
+      highlights: [
+        'Preventive Maintenance Programs',
+        'Shutdown & Turnaround Planning',
+        'Emergency Repair Response',
+        'Rotating Equipment Overhaul',
+        'Pipeline Inspection & Repair',
+        'Valve Testing & Certification'
       ],
-      deliverables: [
-        'Maintenance schedules',
+      outcomes: [
+        'Maintenance schedules and checklists',
         'Equipment condition reports',
         'Repair documentation',
         'Parts inventory management',
         'Safety work permits',
-        'Incident reports'
+        'Incident response reports'
       ],
-      standards: 'ISO 55000 • API 570 • NFPA 70E • bizSAFE Program'
+      compliance: 'ISO 55000 • API 570 • NFPA 70E • bizSAFE Program'
     },
     {
       id: 'hydrogen-testing',
       num: '03',
-      icon: <Icon.Trailer />,
       title: 'Hydrogen Trailer Testing',
-      tagline: 'Certification and Recertification of Tube Trailers',
-      description: 'Complete testing, certification, and fleet management for hydrogen tube trailers. Our facility handles hydrostatic testing, DOT/ISO recertification, and refurbishment for transport fleets.',
-      capabilities: [
-        'Hydrostatic pressure testing',
-        'DOT and ISO recertification',
-        'Valve and manifold servicing',
-        'Tube bundle inspection',
-        'Leak testing (helium and pressure decay)',
-        'Trailer refurbishment',
-        'Fleet management programs'
+      tagline: 'DOT/ISO Certification & Fleet Management',
+      description: 'Complete testing, certification, and refurbishment for hydrogen tube trailers. HP tube testing, certification, servicing and refurbishment support for tube trailers and related skids.',
+      highlights: [
+        'Hydrostatic Pressure Testing',
+        'DOT and ISO Recertification',
+        'Valve & Manifold Servicing',
+        'Tube Bundle Inspection',
+        'Leak Testing (Helium & Pressure Decay)',
+        'Fleet Management Programs'
       ],
-      deliverables: [
+      outcomes: [
         'DOT/ISO certification documents',
         'Hydrostatic test reports',
         'Valve test certificates',
         'Inspection reports with photos',
-        'Repair records',
+        'Repair and replacement records',
         'Fleet tracking database'
       ],
-      standards: 'DOT CFR 49 Part 180 • ISO 11120 • CGA H2 Standards • SS 559'
+      compliance: 'DOT CFR 49 Part 180 • ISO 11120 • CGA H2 • SS 559'
     },
     {
       id: 'cryogenic-systems',
       num: '04',
-      icon: <Icon.Snow />,
       title: 'Cryogenic Systems',
-      tagline: 'Fabrication and Maintenance of Cryogenic Transfer Equipment',
-      description: 'Custom vacuum-insulated hose assemblies and transfer lines for LIN, LOX, LAR, and LNG service. From fabrication to field repair, we handle the specialized requirements of cryogenic systems.',
-      capabilities: [
-        'Custom hose assembly fabrication',
-        'Vacuum-insulated transfer lines',
-        'End fitting installation and testing',
-        'Hose repair and recertification',
-        'Leak detection and repair',
-        'Emergency replacement service',
-        'Preventive maintenance programs'
+      tagline: 'Vacuum-Insulated Transfer Equipment',
+      description: 'Custom fabrication and maintenance for cryogenic applications. Cryogenic hose fabrication, repair and maintenance for LIN, LOX, LAR, and LNG service.',
+      highlights: [
+        'Custom Hose Assembly Fabrication',
+        'Vacuum-Insulated Transfer Lines',
+        'End Fitting Installation & Testing',
+        'Hose Repair & Recertification',
+        'Leak Detection & Repair',
+        'Emergency Replacement Service'
       ],
-      deliverables: [
+      outcomes: [
         'Pressure test certificates',
         'Vacuum hold test reports',
         'Material certificates',
@@ -173,7 +128,7 @@ export default function Services() {
         'Installation guidelines',
         'Maintenance schedules'
       ],
-      standards: 'CGA Pamphlets • ASME B31.3 Cold Service • PED 2014/68/EU • ISO 21013'
+      compliance: 'CGA Pamphlets • ASME B31.3 • PED 2014/68/EU • ISO 21013'
     }
   ]
 
@@ -212,208 +167,231 @@ export default function Services() {
               lineHeight: 1.6
             }}
           >
-            Four integrated service lines. One accountable contractor. End-to-end execution from design office to plant floor.
+            Four integrated service lines delivering end-to-end mechanical solutions for Singapore's critical infrastructure.
           </motion.p>
         </div>
       </section>
 
-      {/* Services Cards */}
-      <div style={{ background: '#F8F9FA' }}>
-        {services.map((service, index) => (
-          <motion.section
-            key={service.id}
-            id={service.id}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInUp}
-            style={{
-              padding: '80px 32px',
-              borderBottom: '2px solid #0F172A'
-            }}
-          >
-            <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
-              {/* Service Card */}
-              <div style={{
-                background: '#FFF',
-                border: '3px solid #0F172A',
-                padding: '60px',
-                display: 'grid',
-                gridTemplateColumns: '380px 1fr',
-                gap: '60px'
-              }}>
-                
-                {/* Left Side - Header */}
-                <div>
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '20px',
-                    marginBottom: '32px'
-                  }}>
-                    <div style={{
-                      fontSize: '96px',
-                      fontWeight: 900,
-                      color: '#DC2626',
-                      lineHeight: 0.8
-                    }}>
-                      {service.num}
-                    </div>
-                    <div style={{ color: '#0F172A' }}>
-                      {service.icon}
-                    </div>
-                  </div>
-
-                  <h2 style={{
-                    fontSize: '36px',
-                    fontWeight: 900,
-                    marginBottom: '16px',
-                    lineHeight: 1.1,
-                    color: '#0F172A'
-                  }}>
-                    {service.title}
-                  </h2>
-
-                  <p style={{
-                    fontSize: '15px',
-                    color: '#DC2626',
-                    fontWeight: 700,
-                    marginBottom: '24px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.03em'
-                  }}>
-                    {service.tagline}
-                  </p>
-
-                  <p style={{
-                    fontSize: '15px',
-                    color: '#64748B',
-                    lineHeight: 1.7
-                  }}>
-                    {service.description}
-                  </p>
-
-                  {/* Standards Badge */}
-                  <div style={{
-                    marginTop: '32px',
-                    padding: '20px',
-                    background: '#F8F9FA',
-                    border: '2px solid #E5E7EB'
-                  }}>
-                    <div style={{
-                      fontSize: '11px',
-                      fontWeight: 700,
-                      color: '#64748B',
-                      marginBottom: '8px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.08em'
-                    }}>
-                      Standards & Compliance
-                    </div>
-                    <div style={{
-                      fontSize: '12px',
-                      fontWeight: 600,
-                      color: '#0F172A',
-                      lineHeight: 1.6,
-                      fontFamily: 'IBM Plex Mono, monospace'
-                    }}>
-                      {service.standards}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right Side - Details Grid */}
+      {/* Services Sections - Alternating Layout */}
+      {services.map((service, index) => (
+        <motion.section
+          key={service.id}
+          id={service.id}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+          style={{
+            background: index % 2 === 0 ? '#FFF' : '#F8F9FA',
+            borderBottom: '2px solid #0F172A'
+          }}
+        >
+          <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: index % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr',
+              minHeight: '600px'
+            }}>
+              
+              {/* Image Placeholder - Alternates left/right */}
+              <div 
+                style={{
+                  background: '#E5E7EB',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRight: index % 2 === 0 ? '2px solid #0F172A' : 'none',
+                  borderLeft: index % 2 === 1 ? '2px solid #0F172A' : 'none',
+                  order: index % 2 === 0 ? 1 : 2
+                }}
+              >
                 <div style={{
-                  display: 'grid',
-                  gap: '40px'
+                  textAlign: 'center',
+                  color: '#94A3B8'
                 }}>
-                  
-                  {/* Capabilities List */}
-                  <div>
-                    <h3 style={{
-                      fontSize: '14px',
-                      fontWeight: 700,
-                      color: '#0F172A',
-                      marginBottom: '20px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.08em',
-                      borderBottom: '2px solid #DC2626',
-                      paddingBottom: '12px'
-                    }}>
-                      Service Capabilities
-                    </h3>
-                    <div style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(2, 1fr)',
-                      gap: '12px'
-                    }}>
-                      {service.capabilities.map((cap, i) => (
-                        <div
-                          key={i}
-                          style={{
-                            fontSize: '14px',
-                            color: '#0F172A',
-                            paddingLeft: '20px',
-                            position: 'relative',
-                            lineHeight: 1.6
-                          }}
-                        >
-                          <span style={{
-                            position: 'absolute',
-                            left: 0,
-                            color: '#DC2626',
-                            fontWeight: 700
-                          }}>•</span>
-                          {cap}
-                        </div>
-                      ))}
-                    </div>
+                  <div style={{
+                    fontSize: '120px',
+                    fontWeight: 900,
+                    lineHeight: 1,
+                    marginBottom: '16px',
+                    color: '#D1D5DB'
+                  }}>
+                    {service.num}
                   </div>
-
-                  {/* Deliverables List */}
-                  <div>
-                    <h3 style={{
-                      fontSize: '14px',
-                      fontWeight: 700,
-                      color: '#0F172A',
-                      marginBottom: '20px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.08em',
-                      borderBottom: '2px solid #2563EB',
-                      paddingBottom: '12px'
-                    }}>
-                      Typical Deliverables
-                    </h3>
-                    <div style={{
-                      display: 'flex',
-                      flexWrap: 'wrap',
-                      gap: '8px'
-                    }}>
-                      {service.deliverables.map((del, i) => (
-                        <div
-                          key={i}
-                          style={{
-                            padding: '8px 16px',
-                            background: '#F8F9FA',
-                            border: '1px solid #E5E7EB',
-                            fontSize: '13px',
-                            fontWeight: 600,
-                            color: '#0F172A',
-                            borderRadius: '2px'
-                          }}
-                        >
-                          {del}
-                        </div>
-                      ))}
-                    </div>
+                  <div style={{
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase'
+                  }}>
+                    [ Service Image ]
                   </div>
-
+                  <div style={{
+                    fontSize: '11px',
+                    opacity: 0.6,
+                    marginTop: '4px'
+                  }}>
+                    1200 × 800px
+                  </div>
                 </div>
               </div>
+
+              {/* Content - Alternates right/left */}
+              <div style={{
+                padding: '80px 60px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                order: index % 2 === 0 ? 2 : 1
+              }}>
+                
+                {/* Number Badge */}
+                <div style={{
+                  display: 'inline-block',
+                  padding: '8px 20px',
+                  background: '#DC2626',
+                  color: '#FFF',
+                  fontSize: '14px',
+                  fontWeight: 900,
+                  letterSpacing: '0.1em',
+                  marginBottom: '24px',
+                  alignSelf: 'flex-start'
+                }}>
+                  {service.num}
+                </div>
+
+                {/* Title */}
+                <h2 style={{
+                  fontSize: '48px',
+                  fontWeight: 900,
+                  marginBottom: '12px',
+                  lineHeight: 1.1,
+                  color: '#0F172A'
+                }}>
+                  {service.title}
+                </h2>
+
+                {/* Tagline */}
+                <div style={{
+                  fontSize: '16px',
+                  color: '#2563EB',
+                  fontWeight: 700,
+                  marginBottom: '24px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
+                }}>
+                  {service.tagline}
+                </div>
+
+                {/* Description */}
+                <p style={{
+                  fontSize: '16px',
+                  color: '#64748B',
+                  lineHeight: 1.7,
+                  marginBottom: '32px'
+                }}>
+                  {service.description}
+                </p>
+
+                {/* Highlights - Compact List */}
+                <div style={{
+                  background: index % 2 === 0 ? '#F8F9FA' : '#FFF',
+                  padding: '24px 28px',
+                  border: '2px solid #E5E7EB',
+                  marginBottom: '32px'
+                }}>
+                  <div style={{
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    color: '#64748B',
+                    marginBottom: '16px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em'
+                  }}>
+                    Key Capabilities
+                  </div>
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(2, 1fr)',
+                    gap: '8px'
+                  }}>
+                    {service.highlights.map((highlight, i) => (
+                      <div
+                        key={i}
+                        style={{
+                          fontSize: '13px',
+                          color: '#0F172A',
+                          fontWeight: 500,
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '8px'
+                        }}
+                      >
+                        <div style={{
+                          width: '4px',
+                          height: '4px',
+                          background: '#DC2626',
+                          flexShrink: 0
+                        }}></div>
+                        {highlight}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Compliance Badge */}
+                <div style={{
+                  padding: '16px 20px',
+                  background: '#0F172A',
+                  color: '#FFF',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  fontFamily: 'IBM Plex Mono, monospace',
+                  letterSpacing: '0.03em',
+                  marginBottom: '32px'
+                }}>
+                  {service.compliance}
+                </div>
+
+                {/* View Projects Button */}
+                <a 
+                  href={`/Projects#${service.id}`}
+                  style={{
+                    display: 'inline-block',
+                    padding: '16px 32px',
+                    background: 'transparent',
+                    color: '#0F172A',
+                    border: '2px solid #0F172A',
+                    fontWeight: 700,
+                    fontSize: '14px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                    textDecoration: 'none',
+                    transition: 'all 0.3s',
+                    textAlign: 'center',
+                    cursor: 'pointer',
+                    alignSelf: 'flex-start'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = '#DC2626'
+                    e.target.style.color = '#FFF'
+                    e.target.style.borderColor = '#DC2626'
+                    e.target.style.transform = 'translateX(8px)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = 'transparent'
+                    e.target.style.color = '#0F172A'
+                    e.target.style.borderColor = '#0F172A'
+                    e.target.style.transform = 'translateX(0)'
+                  }}
+                >
+                  View Related Projects →
+                </a>
+              </div>
             </div>
-          </motion.section>
-        ))}
-      </div>
+          </div>
+        </motion.section>
+      ))}
 
       {/* CTA Section */}
       <motion.section
