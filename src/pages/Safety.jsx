@@ -14,21 +14,6 @@ const fadeInUp = {
   }
 }
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15
-    }
-  }
-}
-
-const cardVariant = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 }
-}
-
 export default function Safety() {
   const location = useLocation()
   const [selectedCert, setSelectedCert] = useState(null)
@@ -44,7 +29,8 @@ export default function Safety() {
       issuer: 'EQA IMS',
       description: 'Occupational Health & Safety Management System',
       date: '27 March 2020 - 26 March 2023',
-      image: '/path-to-cert-1.jpg', // Replace with actual path
+      certNumber: 'OSH-20-2239',
+      image: '/path-to-cert-1.jpg',
       scope: 'Fabrication & Installation of Pipeworks and Related Plant Installation'
     },
     {
@@ -53,33 +39,37 @@ export default function Safety() {
       issuer: 'EQA IMS',
       description: 'Quality Management System',
       date: '27 March 2020 - 26 March 2023',
+      certNumber: 'QS-20-2238',
       image: '/path-to-cert-2.jpg',
       scope: 'Fabrication & Installation of Pipeworks and Related Plant Installation'
     },
     {
       id: 3,
       title: 'bizSAFE STAR',
-      issuer: 'WSH Council',
-      description: 'Workplace Safety and Health',
+      issuer: 'WSH Council Singapore',
+      description: 'Workplace Safety and Health Excellence',
       date: 'Valid till 26/03/2023',
+      certNumber: 'E04940',
       image: '/path-to-cert-3.jpg',
-      scope: 'Highest level of bizSAFE certification'
+      scope: 'Highest level of bizSAFE certification demonstrating exemplary WSH performance'
     },
     {
       id: 4,
       title: 'BS OHSAS 18001:2007',
-      issuer: 'Certification International',
+      issuer: 'Certification International Singapore',
       description: 'Occupational Health & Safety Management',
       date: '16 March 2016 - 15 March 2019',
+      certNumber: 'CIS/200610',
       image: '/path-to-cert-4.jpg',
       scope: 'Fabrication and installation of pipeworks and related plants installations'
     },
     {
       id: 5,
       title: 'SS 506 Part 1:2009',
-      issuer: 'Certification International',
-      description: 'Occupational Health & Safety Management System',
+      issuer: 'Certification International Singapore',
+      description: 'Singapore Standard for Occupational H&S Management',
       date: '22 April 2016 - 15 March 2019',
+      certNumber: 'CIS/200610',
       image: '/path-to-cert-5.jpg',
       scope: 'Fabrication and installation of pipeworks and related plants installations'
     }
@@ -120,7 +110,7 @@ export default function Safety() {
               lineHeight: 1.6
             }}
           >
-            Safety isn't just a priority—it's the foundation of everything we do. Our certifications demonstrate our commitment to the highest standards in workplace safety and quality management.
+            Third-party verified safety systems and quality controls. Our certifications prove we can execute your project safely and to specification.
           </motion.p>
         </div>
       </section>
@@ -153,7 +143,7 @@ export default function Safety() {
                 lineHeight: 1.2,
                 color: '#0F172A'
               }}>
-                2.4 Million Safe Manhours Without Lost-Time Incident
+                Why Our Safety Record Matters to Your Project
               </h2>
               <p style={{
                 fontSize: '16px',
@@ -161,18 +151,26 @@ export default function Safety() {
                 lineHeight: 1.7,
                 marginBottom: '20px'
               }}>
-                Our safety culture is built on accountability, training, and frontline ownership. Every technician, every engineer, every supervisor—empowered to stop work if conditions aren't right.
+                Every certification on this page represents an independent audit of our safety procedures, quality controls, and management systems. When you hire us, you are hiring a contractor with verified processes, not just promises.
+              </p>
+              <p style={{
+                fontSize: '16px',
+                color: '#64748B',
+                lineHeight: 1.7,
+                marginBottom: '20px'
+              }}>
+                Our ISO 45001 and bizSAFE STAR certifications mean fewer incidents on your site, lower insurance risk, and faster regulatory approvals. Our ISO 9001 certification means consistent quality across every phase of the project.
               </p>
               <p style={{
                 fontSize: '16px',
                 color: '#64748B',
                 lineHeight: 1.7
               }}>
-                From daily toolbox talks to advanced HAZOP reviews, safety is integrated into project planning, execution, and closeout. Our track record speaks for itself.
+                Over 2.4 million manhours without a lost-time incident. That is not luck. That is a documented, audited safety management system doing exactly what it was designed to do.
               </p>
             </div>
 
-            {/* Right - Key Stats */}
+            {/* Right - Key Facts */}
             <div style={{
               background: '#F8F9FA',
               border: '2px solid #0F172A',
@@ -186,7 +184,7 @@ export default function Safety() {
                 textTransform: 'uppercase',
                 letterSpacing: '0.08em'
               }}>
-                Safety by the Numbers
+                Track Record
               </div>
               
               <div style={{
@@ -194,10 +192,10 @@ export default function Safety() {
                 gap: '28px'
               }}>
                 {[
-                  { value: '2.4M+', label: 'Safe Manhours' },
+                  { value: '2.4M+', label: 'Safe Manhours Worked' },
                   { value: '0', label: 'Lost-Time Incidents' },
-                  { value: '100%', label: 'Safety Training Compliance' },
-                  { value: '5', label: 'Major Certifications' }
+                  { value: '5', label: 'Active Safety Certifications' },
+                  { value: '100%', label: 'Project Safety Compliance' }
                 ].map((stat, i) => (
                   <div key={i}>
                     <div style={{
@@ -226,149 +224,147 @@ export default function Safety() {
         </div>
       </motion.section>
 
-      {/* Certifications Grid */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={fadeInUp}
-        style={{
-          padding: '80px 32px',
-          background: '#F8F9FA'
-        }}
-      >
-        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
+      {/* Stacked Certificates Section */}
+      <section style={{
+        padding: '80px 32px',
+        background: '#F8F9FA'
+      }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <h2 style={{
             fontSize: '36px',
             fontWeight: 800,
-            marginBottom: '48px',
+            marginBottom: '16px',
             textAlign: 'center',
             color: '#0F172A'
           }}>
-            Our Certifications
+            Certified Safety & Quality Systems
           </h2>
+          <p style={{
+            fontSize: '15px',
+            color: '#64748B',
+            textAlign: 'center',
+            marginBottom: '60px',
+            lineHeight: 1.6
+          }}>
+            Click any certificate to view the full documentation
+          </p>
 
-          <motion.div
-            variants={staggerContainer}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: '24px'
-            }}
-          >
-            {certificates.map((cert) => (
+          {/* Stacked Cards */}
+          <div style={{
+            display: 'grid',
+            gap: '24px'
+          }}>
+            {certificates.map((cert, index) => (
               <motion.div
                 key={cert.id}
-                variants={cardVariant}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ 
+                  duration: 0.6,
+                  delay: index * 0.1
+                }}
                 onClick={() => setSelectedCert(cert)}
                 style={{
                   background: '#FFF',
-                  border: '2px solid #0F172A',
+                  border: '3px solid #0F172A',
                   cursor: 'pointer',
-                  transition: 'all 0.3s',
-                  overflow: 'hidden'
+                  transition: 'all 0.4s',
+                  position: 'relative',
+                  transform: `translateY(${index * -8}px)`,
+                  zIndex: certificates.length - index
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-8px)'
-                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.15)'
+                  e.currentTarget.style.transform = `translateY(${index * -8 - 12}px) scale(1.02)`
+                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)'
                   e.currentTarget.style.borderColor = '#DC2626'
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.transform = `translateY(${index * -8}px) scale(1)`
                   e.currentTarget.style.boxShadow = 'none'
                   e.currentTarget.style.borderColor = '#0F172A'
                 }}
               >
-                {/* Certificate Preview Image */}
                 <div style={{
-                  height: '320px',
-                  background: '#E5E7EB',
-                  display: 'flex',
+                  display: 'grid',
+                  gridTemplateColumns: '140px 1fr auto',
+                  gap: '32px',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  borderBottom: '2px solid #0F172A',
-                  position: 'relative'
+                  padding: '32px'
                 }}>
+                  
+                  {/* Number Badge */}
                   <div style={{
-                    textAlign: 'center',
-                    color: '#94A3B8'
+                    width: '140px',
+                    height: '140px',
+                    border: '3px solid #0F172A',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: '#F8F9FA'
                   }}>
                     <div style={{
-                      fontSize: '48px',
+                      fontSize: '64px',
                       fontWeight: 900,
-                      marginBottom: '12px',
-                      color: '#D1D5DB'
+                      color: '#DC2626',
+                      lineHeight: 1
                     }}>
-                      {cert.id}
+                      {String(cert.id).padStart(2, '0')}
                     </div>
+                  </div>
+
+                  {/* Certificate Info */}
+                  <div>
+                    <h3 style={{
+                      fontSize: '28px',
+                      fontWeight: 900,
+                      marginBottom: '8px',
+                      color: '#0F172A',
+                      lineHeight: 1.2
+                    }}>
+                      {cert.title}
+                    </h3>
                     <div style={{
                       fontSize: '13px',
-                      fontWeight: 600,
-                      letterSpacing: '0.1em',
-                      textTransform: 'uppercase'
+                      color: '#DC2626',
+                      fontWeight: 700,
+                      marginBottom: '12px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
                     }}>
-                      [ Certificate Preview ]
+                      {cert.issuer}
+                    </div>
+                    <p style={{
+                      fontSize: '14px',
+                      color: '#64748B',
+                      lineHeight: 1.6,
+                      marginBottom: '10px'
+                    }}>
+                      {cert.description}
+                    </p>
+                    <div style={{
+                      fontSize: '12px',
+                      color: '#94A3B8',
+                      fontWeight: 600
+                    }}>
+                      Valid: {cert.date}
                     </div>
                   </div>
-                  
-                  {/* Click to View Badge */}
-                  <div style={{
-                    position: 'absolute',
-                    top: '16px',
-                    right: '16px',
-                    padding: '8px 16px',
-                    background: '#DC2626',
-                    color: '#FFF',
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.08em'
-                  }}>
-                    Click to View
-                  </div>
-                </div>
 
-                {/* Certificate Info */}
-                <div style={{ padding: '24px' }}>
-                  <h3 style={{
-                    fontSize: '20px',
-                    fontWeight: 700,
-                    marginBottom: '8px',
-                    color: '#0F172A'
-                  }}>
-                    {cert.title}
-                  </h3>
+                  {/* Arrow Icon */}
                   <div style={{
-                    fontSize: '12px',
+                    fontSize: '32px',
                     color: '#DC2626',
-                    fontWeight: 700,
-                    marginBottom: '12px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em'
+                    fontWeight: 700
                   }}>
-                    {cert.issuer}
-                  </div>
-                  <p style={{
-                    fontSize: '13px',
-                    color: '#64748B',
-                    lineHeight: 1.6,
-                    marginBottom: '12px'
-                  }}>
-                    {cert.description}
-                  </p>
-                  <div style={{
-                    fontSize: '12px',
-                    color: '#94A3B8',
-                    fontWeight: 600
-                  }}>
-                    {cert.date}
+                    →
                   </div>
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Modal */}
       {selectedCert && (
@@ -445,7 +441,7 @@ export default function Safety() {
                   color: '#D1D5DB',
                   lineHeight: 1
                 }}>
-                  {selectedCert.id}
+                  {String(selectedCert.id).padStart(2, '0')}
                 </div>
                 <div style={{
                   fontSize: '16px',
@@ -510,7 +506,7 @@ export default function Safety() {
                   textTransform: 'uppercase',
                   letterSpacing: '0.08em'
                 }}>
-                  Scope
+                  Certification Scope
                 </div>
                 <div style={{
                   fontSize: '13px',
@@ -520,11 +516,50 @@ export default function Safety() {
                 </div>
               </div>
               <div style={{
-                fontSize: '13px',
-                color: '#94A3B8',
-                fontWeight: 600
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: '12px',
+                marginTop: '16px'
               }}>
-                Valid: {selectedCert.date}
+                <div>
+                  <div style={{
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    color: '#64748B',
+                    marginBottom: '4px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em'
+                  }}>
+                    Certificate Number
+                  </div>
+                  <div style={{
+                    fontSize: '13px',
+                    color: '#0F172A',
+                    fontWeight: 600,
+                    fontFamily: 'monospace'
+                  }}>
+                    {selectedCert.certNumber}
+                  </div>
+                </div>
+                <div>
+                  <div style={{
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    color: '#64748B',
+                    marginBottom: '4px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em'
+                  }}>
+                    Validity Period
+                  </div>
+                  <div style={{
+                    fontSize: '13px',
+                    color: '#0F172A',
+                    fontWeight: 600
+                  }}>
+                    {selectedCert.date}
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -550,14 +585,14 @@ export default function Safety() {
             fontWeight: 800,
             marginBottom: '24px'
           }}>
-            Safety Questions or Compliance Requirements?
+            Need Copies of Our Certifications for Your Tender?
           </h2>
           <p style={{
             fontSize: '16px',
             marginBottom: '32px',
             opacity: 0.9
           }}>
-            Our safety team is here to answer questions about our certifications, safety procedures, or site-specific requirements.
+            We can provide certified copies of all our safety and quality certifications for your procurement or compliance team.
           </p>
           <button style={{
             padding: '16px 36px',
@@ -581,7 +616,7 @@ export default function Safety() {
             e.target.style.color = '#DC2626'
             e.target.style.borderColor = '#FFF'
           }}>
-            Contact Safety Team →
+            Request Certification Package →
           </button>
         </div>
       </motion.section>
