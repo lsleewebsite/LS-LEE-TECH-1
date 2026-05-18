@@ -148,7 +148,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Services Sections */}
+      {/* Services Sections - FULL WIDTH */}
       {services.map((service, index) => (
         <motion.section
           key={service.id}
@@ -162,191 +162,191 @@ export default function Services() {
             borderBottom: '2px solid #0F172A'
           }}
         >
-          <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: 0,
-              height: '450px'
-            }}>
-              
-              {/* Image Section - Fixed Size */}
-              <div 
-                style={{
-                  background: '#E5E7EB',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderRight: '2px solid #0F172A',
-                  order: index % 2 === 0 ? 1 : 2
-                }}
-              >
-                <div style={{
-                  fontSize: '16px',
-                  fontWeight: 700,
-                  color: '#DC2626',
-                  marginBottom: '40px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em'
-                }}>
-                  {service.num}
-                </div>
-                <div style={{
-                  textAlign: 'center',
-                  color: '#94A3B8'
-                }}>
-                  <div style={{
-                    fontSize: '14px',
-                    fontWeight: 600,
-                    letterSpacing: '0.1em',
-                    textTransform: 'uppercase',
-                    marginBottom: '8px'
-                  }}>
-                    [ Service Image ]
-                  </div>
-                  <div style={{
-                    fontSize: '12px',
-                    opacity: 0.6
-                  }}>
-                    1200 × 900px
-                  </div>
-                </div>
-              </div>
-
-              {/* Content Section */}
-              <div style={{
-                padding: '40px 45px',
-                order: index % 2 === 0 ? 2 : 1,
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '30% 70%',
+            gap: 0,
+            height: '450px'
+          }}>
+            
+            {/* Image Section - 30% */}
+            <div 
+              style={{
+                background: '#E5E7EB',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'center'
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRight: '2px solid #0F172A',
+                order: index % 2 === 0 ? 1 : 2
+              }}
+            >
+              <div style={{
+                fontSize: '16px',
+                fontWeight: 700,
+                color: '#DC2626',
+                marginBottom: '40px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em'
               }}>
-                
-                {/* Number Badge */}
-                <div style={{
-                  display: 'inline-block',
-                  padding: '6px 18px',
-                  background: '#0F172A',
-                  color: '#FFF',
-                  fontSize: '13px',
-                  fontWeight: 900,
-                  letterSpacing: '0.1em',
-                  marginBottom: '16px',
-                  alignSelf: 'flex-start'
-                }}>
-                  {service.num}
-                </div>
-
-                {/* Title */}
-                <h2 style={{
-                  fontSize: '38px',
-                  fontWeight: 900,
-                  marginBottom: '10px',
-                  lineHeight: 1.1,
-                  color: '#0F172A'
-                }}>
-                  {service.title}
-                </h2>
-
-                {/* Tagline */}
-                <div style={{
-                  fontSize: '14px',
-                  color: '#DC2626',
-                  fontWeight: 700,
-                  marginBottom: '16px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em'
-                }}>
-                  {service.tagline}
-                </div>
-
-                {/* Description */}
-                <p style={{
-                  fontSize: '14px',
-                  color: '#64748B',
-                  lineHeight: 1.6,
-                  marginBottom: '20px'
-                }}>
-                  {service.description}
-                </p>
-
-                {/* Capabilities */}
-                <div style={{
-                  marginBottom: '20px'
-                }}>
-                  <h3 style={{
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    color: '#0F172A',
-                    marginBottom: '12px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.08em'
-                  }}>
-                    Key Capabilities
-                  </h3>
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '8px'
-                  }}>
-                    {service.capabilities.map((cap, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          fontSize: '12px',
-                          color: '#0F172A',
-                          paddingLeft: '14px',
-                          position: 'relative',
-                          lineHeight: 1.5
-                        }}
-                      >
-                        <span style={{
-                          position: 'absolute',
-                          left: 0,
-                          color: '#DC2626',
-                          fontWeight: 700
-                        }}>•</span>
-                        {cap}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* View Projects Button */}
-                <a 
-                  href={`/Projects#${service.id}`}
-                  style={{
-                    display: 'inline-block',
-                    padding: '12px 24px',
-                    background: 'transparent',
-                    color: '#0F172A',
-                    border: '2px solid #0F172A',
-                    fontWeight: 700,
-                    fontSize: '12px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em',
-                    textDecoration: 'none',
-                    transition: 'all 0.3s',
-                    cursor: 'pointer',
-                    alignSelf: 'flex-start'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.background = '#DC2626'
-                    e.target.style.color = '#FFF'
-                    e.target.style.borderColor = '#DC2626'
-                    e.target.style.transform = 'translateX(4px)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.background = 'transparent'
-                    e.target.style.color = '#0F172A'
-                    e.target.style.borderColor = '#0F172A'
-                    e.target.style.transform = 'translateX(0)'
-                  }}
-                >
-                  View Related Projects →
-                </a>
+                {service.num}
               </div>
+              <div style={{
+                textAlign: 'center',
+                color: '#94A3B8'
+              }}>
+                <div style={{
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  marginBottom: '8px'
+                }}>
+                  [ Service Image ]
+                </div>
+                <div style={{
+                  fontSize: '12px',
+                  opacity: 0.6
+                }}>
+                  800 × 900px
+                </div>
+              </div>
+            </div>
+
+            {/* Content Section - 70% */}
+            <div style={{
+              padding: '40px 80px',
+              order: index % 2 === 0 ? 2 : 1,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              maxWidth: '1200px',
+              margin: index % 2 === 0 ? '0 0 0 auto' : '0 auto 0 0'
+            }}>
+              
+              {/* Number Badge */}
+              <div style={{
+                display: 'inline-block',
+                padding: '6px 18px',
+                background: '#0F172A',
+                color: '#FFF',
+                fontSize: '13px',
+                fontWeight: 900,
+                letterSpacing: '0.1em',
+                marginBottom: '16px',
+                alignSelf: 'flex-start'
+              }}>
+                {service.num}
+              </div>
+
+              {/* Title */}
+              <h2 style={{
+                fontSize: '38px',
+                fontWeight: 900,
+                marginBottom: '10px',
+                lineHeight: 1.1,
+                color: '#0F172A'
+              }}>
+                {service.title}
+              </h2>
+
+              {/* Tagline */}
+              <div style={{
+                fontSize: '14px',
+                color: '#DC2626',
+                fontWeight: 700,
+                marginBottom: '16px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
+              }}>
+                {service.tagline}
+              </div>
+
+              {/* Description */}
+              <p style={{
+                fontSize: '14px',
+                color: '#64748B',
+                lineHeight: 1.6,
+                marginBottom: '20px'
+              }}>
+                {service.description}
+              </p>
+
+              {/* Capabilities */}
+              <div style={{
+                marginBottom: '20px'
+              }}>
+                <h3 style={{
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  color: '#0F172A',
+                  marginBottom: '12px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em'
+                }}>
+                  Key Capabilities
+                </h3>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(2, 1fr)',
+                  gap: '8px'
+                }}>
+                  {service.capabilities.map((cap, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        fontSize: '12px',
+                        color: '#0F172A',
+                        paddingLeft: '14px',
+                        position: 'relative',
+                        lineHeight: 1.5
+                      }}
+                    >
+                      <span style={{
+                        position: 'absolute',
+                        left: 0,
+                        color: '#DC2626',
+                        fontWeight: 700
+                      }}>•</span>
+                      {cap}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* View Projects Button */}
+              <a 
+                href={`/Projects#${service.id}`}
+                style={{
+                  display: 'inline-block',
+                  padding: '12px 24px',
+                  background: 'transparent',
+                  color: '#0F172A',
+                  border: '2px solid #0F172A',
+                  fontWeight: 700,
+                  fontSize: '12px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  textDecoration: 'none',
+                  transition: 'all 0.3s',
+                  cursor: 'pointer',
+                  alignSelf: 'flex-start'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = '#DC2626'
+                  e.target.style.color = '#FFF'
+                  e.target.style.borderColor = '#DC2626'
+                  e.target.style.transform = 'translateX(4px)'
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = 'transparent'
+                  e.target.style.color = '#0F172A'
+                  e.target.style.borderColor = '#0F172A'
+                  e.target.style.transform = 'translateX(0)'
+                }}
+              >
+                View Related Projects →
+              </a>
             </div>
           </div>
         </motion.section>
