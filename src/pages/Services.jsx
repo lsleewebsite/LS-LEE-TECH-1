@@ -2,11 +2,23 @@ import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 60 },
+const slideInFromLeft = {
+  hidden: { opacity: 0, x: -100 },
   visible: { 
     opacity: 1, 
-    y: 0,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut"
+    }
+  }
+}
+
+const slideInFromRight = {
+  hidden: { opacity: 0, x: 100 },
+  visible: { 
+    opacity: 1, 
+    x: 0,
     transition: {
       duration: 0.8,
       ease: "easeOut"
@@ -143,8 +155,8 @@ export default function Services() {
           id={service.id}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={fadeInUp}
+          viewport={{ once: true, amount: 0.4 }}
+          variants={index % 2 === 0 ? slideInFromLeft : slideInFromRight}
           style={{
             background: index % 2 === 0 ? '#FFF' : '#F8F9FA',
             borderBottom: '2px solid #0F172A'
@@ -153,21 +165,20 @@ export default function Services() {
           <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: '1.2fr 1fr',
-              gap: 0
+              gridTemplateColumns: '1fr 1fr',
+              gap: 0,
+              height: '450px'
             }}>
               
-              {/* Image Section */}
+              {/* Image Section - Fixed Size */}
               <div 
                 style={{
                   background: '#E5E7EB',
-                  minHeight: '320px',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
                   borderRight: '2px solid #0F172A',
-                  padding: '40px',
                   order: index % 2 === 0 ? 1 : 2
                 }}
               >
@@ -198,14 +209,14 @@ export default function Services() {
                     fontSize: '12px',
                     opacity: 0.6
                   }}>
-                    1200 × 800px
+                    1200 × 900px
                   </div>
                 </div>
               </div>
 
               {/* Content Section */}
               <div style={{
-                padding: '40px',
+                padding: '40px 45px',
                 order: index % 2 === 0 ? 2 : 1,
                 display: 'flex',
                 flexDirection: 'column',
@@ -215,13 +226,13 @@ export default function Services() {
                 {/* Number Badge */}
                 <div style={{
                   display: 'inline-block',
-                  padding: '8px 20px',
+                  padding: '6px 18px',
                   background: '#0F172A',
                   color: '#FFF',
-                  fontSize: '14px',
+                  fontSize: '13px',
                   fontWeight: 900,
                   letterSpacing: '0.1em',
-                  marginBottom: '20px',
+                  marginBottom: '16px',
                   alignSelf: 'flex-start'
                 }}>
                   {service.num}
@@ -229,9 +240,9 @@ export default function Services() {
 
                 {/* Title */}
                 <h2 style={{
-                  fontSize: '40px',
+                  fontSize: '38px',
                   fontWeight: 900,
-                  marginBottom: '12px',
+                  marginBottom: '10px',
                   lineHeight: 1.1,
                   color: '#0F172A'
                 }}>
@@ -240,10 +251,10 @@ export default function Services() {
 
                 {/* Tagline */}
                 <div style={{
-                  fontSize: '15px',
+                  fontSize: '14px',
                   color: '#DC2626',
                   fontWeight: 700,
-                  marginBottom: '20px',
+                  marginBottom: '16px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.05em'
                 }}>
@@ -252,23 +263,23 @@ export default function Services() {
 
                 {/* Description */}
                 <p style={{
-                  fontSize: '15px',
+                  fontSize: '14px',
                   color: '#64748B',
-                  lineHeight: 1.7,
-                  marginBottom: '28px'
+                  lineHeight: 1.6,
+                  marginBottom: '20px'
                 }}>
                   {service.description}
                 </p>
 
                 {/* Capabilities */}
                 <div style={{
-                  marginBottom: '28px'
+                  marginBottom: '20px'
                 }}>
                   <h3 style={{
-                    fontSize: '12px',
+                    fontSize: '11px',
                     fontWeight: 700,
                     color: '#0F172A',
-                    marginBottom: '16px',
+                    marginBottom: '12px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.08em'
                   }}>
@@ -277,17 +288,17 @@ export default function Services() {
                   <div style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '10px'
+                    gap: '8px'
                   }}>
                     {service.capabilities.map((cap, i) => (
                       <div
                         key={i}
                         style={{
-                          fontSize: '13px',
+                          fontSize: '12px',
                           color: '#0F172A',
-                          paddingLeft: '16px',
+                          paddingLeft: '14px',
                           position: 'relative',
-                          lineHeight: 1.6
+                          lineHeight: 1.5
                         }}
                       >
                         <span style={{
@@ -307,12 +318,12 @@ export default function Services() {
                   href={`/Projects#${service.id}`}
                   style={{
                     display: 'inline-block',
-                    padding: '14px 28px',
+                    padding: '12px 24px',
                     background: 'transparent',
                     color: '#0F172A',
                     border: '2px solid #0F172A',
                     fontWeight: 700,
-                    fontSize: '13px',
+                    fontSize: '12px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em',
                     textDecoration: 'none',
@@ -346,7 +357,7 @@ export default function Services() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.5 }}
-        variants={fadeInUp}
+        variants={slideInFromLeft}
         style={{
           padding: '80px 32px',
           background: '#DC2626',
