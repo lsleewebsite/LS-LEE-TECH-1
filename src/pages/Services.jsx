@@ -40,7 +40,7 @@ export default function Services() {
       title: 'Project Engineering',
       tagline: 'Turnkey Mechanical Construction',
       description: 'Complete project lifecycle management from engineering through commissioning. Gas plant equipment erection, underground piping, steel structure fabrication, and metering skid station construction.',
-      scope: [
+      capabilities: [
         'Detailed Engineering & 3D Modeling',
         'Certified Welding & Fabrication Shop',
         'Underground Piping Installation',
@@ -48,8 +48,7 @@ export default function Services() {
         'Gas Metering Skid Fabrication',
         'Equipment Installation & Commissioning'
       ],
-      standards: 'ASME B31.3 • ASME B31.8 • AWS D1.1 • ISO 9001',
-      color: '#DC2626'
+      standards: 'ASME B31.3 • ASME B31.8 • AWS D1.1 • ISO 9001'
     },
     {
       id: 'plant-maintenance',
@@ -57,7 +56,7 @@ export default function Services() {
       title: 'Plant Maintenance',
       tagline: '24/7 Operations Support',
       description: 'Comprehensive maintenance programs to maximize uptime and asset life. Routine servicing, shutdown coordination, emergency response, and long-term maintenance contracts.',
-      scope: [
+      capabilities: [
         'Preventive Maintenance Programs',
         'Shutdown & Turnaround Planning',
         'Emergency Repair Response',
@@ -65,8 +64,7 @@ export default function Services() {
         'Pipeline Inspection & Repair',
         'Valve Testing & Certification'
       ],
-      standards: 'ISO 55000 • API 570 • NFPA 70E • bizSAFE Program',
-      color: '#2563EB'
+      standards: 'ISO 55000 • API 570 • NFPA 70E • bizSAFE Program'
     },
     {
       id: 'hydrogen-testing',
@@ -74,7 +72,7 @@ export default function Services() {
       title: 'Hydrogen Trailer Testing',
       tagline: 'DOT/ISO Certification & Fleet Management',
       description: 'Specialized testing and certification for hydrogen tube trailers. Hydrostatic testing, DOT/ISO recertification, valve servicing, and comprehensive fleet management programs.',
-      scope: [
+      capabilities: [
         'Hydrostatic Pressure Testing',
         'DOT and ISO Recertification',
         'Valve & Manifold Servicing',
@@ -82,8 +80,7 @@ export default function Services() {
         'Leak Testing (Helium & Pressure)',
         'Fleet Management Programs'
       ],
-      standards: 'DOT CFR 49 Part 180 • ISO 11120 • CGA H2 • SS 559',
-      color: '#059669'
+      standards: 'DOT CFR 49 Part 180 • ISO 11120 • CGA H2 • SS 559'
     },
     {
       id: 'cryogenic-systems',
@@ -91,7 +88,7 @@ export default function Services() {
       title: 'Cryogenic Systems',
       tagline: 'Vacuum-Insulated Transfer Equipment',
       description: 'Custom fabrication and maintenance for cryogenic applications. Vacuum-insulated hose assemblies and transfer lines for LIN, LOX, LAR, and LNG service with full certification.',
-      scope: [
+      capabilities: [
         'Custom Hose Assembly Fabrication',
         'Vacuum-Insulated Transfer Lines',
         'End Fitting Installation & Testing',
@@ -99,8 +96,7 @@ export default function Services() {
         'Leak Detection & Repair',
         'Emergency Replacement Service'
       ],
-      standards: 'CGA Pamphlets • ASME B31.3 • PED 2014/68/EU • ISO 21013',
-      color: '#7C3AED'
+      standards: 'CGA Pamphlets • ASME B31.3 • PED 2014/68/EU • ISO 21013'
     }
   ]
 
@@ -144,182 +140,233 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section style={{
-        padding: '80px 32px',
-        background: '#F8F9FA'
-      }}>
-        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '32px'
-          }}>
-            {services.map((service, index) => (
-              <motion.div
-                key={service.id}
-                id={service.id}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={fadeInUp}
+      {/* Services Sections */}
+      {services.map((service, index) => (
+        <motion.section
+          key={service.id}
+          id={service.id}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+          style={{
+            background: index % 2 === 0 ? '#FFF' : '#F8F9FA',
+            borderBottom: '2px solid #0F172A'
+          }}
+        >
+          <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: 0
+            }}>
+              
+              {/* Image Section */}
+              <div 
                 style={{
-                  background: '#FFF',
-                  border: '3px solid #0F172A',
-                  overflow: 'hidden'
+                  background: '#E5E7EB',
+                  minHeight: '500px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRight: '2px solid #0F172A',
+                  padding: '60px 40px',
+                  order: index % 2 === 0 ? 1 : 2
                 }}
               >
-                {/* Service Header */}
                 <div style={{
-                  padding: '40px',
-                  background: '#0F172A',
-                  color: '#FFF',
-                  borderBottom: `4px solid ${service.color}`
+                  fontSize: '14px',
+                  fontWeight: 700,
+                  color: '#DC2626',
+                  marginBottom: '80px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em'
+                }}>
+                  {service.num}
+                </div>
+                <div style={{
+                  textAlign: 'center',
+                  color: '#94A3B8'
                 }}>
                   <div style={{
-                    fontSize: '72px',
-                    fontWeight: 900,
-                    lineHeight: 0.8,
-                    marginBottom: '20px',
-                    color: service.color
-                  }}>
-                    {service.num}
-                  </div>
-                  <h2 style={{
-                    fontSize: '32px',
-                    fontWeight: 900,
-                    marginBottom: '12px',
-                    lineHeight: 1.1
-                  }}>
-                    {service.title}
-                  </h2>
-                  <div style={{
                     fontSize: '13px',
-                    color: '#94A3B8',
                     fontWeight: 600,
+                    letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    letterSpacing: '0.05em'
+                    marginBottom: '8px'
                   }}>
-                    {service.tagline}
+                    [ Service Image ]
+                  </div>
+                  <div style={{
+                    fontSize: '11px',
+                    opacity: 0.6
+                  }}>
+                    1000 × 750px
+                  </div>
+                </div>
+              </div>
+
+              {/* Content Section */}
+              <div style={{
+                padding: '60px 50px',
+                order: index % 2 === 0 ? 2 : 1
+              }}>
+                
+                {/* Number Badge */}
+                <div style={{
+                  display: 'inline-block',
+                  padding: '8px 20px',
+                  background: '#0F172A',
+                  color: '#FFF',
+                  fontSize: '13px',
+                  fontWeight: 900,
+                  letterSpacing: '0.1em',
+                  marginBottom: '24px'
+                }}>
+                  {service.num}
+                </div>
+
+                {/* Title */}
+                <h2 style={{
+                  fontSize: '40px',
+                  fontWeight: 900,
+                  marginBottom: '12px',
+                  lineHeight: 1.1,
+                  color: '#0F172A'
+                }}>
+                  {service.title}
+                </h2>
+
+                {/* Tagline */}
+                <div style={{
+                  fontSize: '14px',
+                  color: '#DC2626',
+                  fontWeight: 700,
+                  marginBottom: '20px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
+                }}>
+                  {service.tagline}
+                </div>
+
+                {/* Description */}
+                <p style={{
+                  fontSize: '15px',
+                  color: '#64748B',
+                  lineHeight: 1.7,
+                  marginBottom: '32px'
+                }}>
+                  {service.description}
+                </p>
+
+                {/* Capabilities */}
+                <div style={{
+                  marginBottom: '32px'
+                }}>
+                  <h3 style={{
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    color: '#0F172A',
+                    marginBottom: '16px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em'
+                  }}>
+                    Key Capabilities
+                  </h3>
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(2, 1fr)',
+                    gap: '10px'
+                  }}>
+                    {service.capabilities.map((cap, i) => (
+                      <div
+                        key={i}
+                        style={{
+                          fontSize: '13px',
+                          color: '#0F172A',
+                          paddingLeft: '16px',
+                          position: 'relative',
+                          lineHeight: 1.5
+                        }}
+                      >
+                        <span style={{
+                          position: 'absolute',
+                          left: 0,
+                          color: '#DC2626',
+                          fontWeight: 700
+                        }}>•</span>
+                        {cap}
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                {/* Service Body */}
-                <div style={{ padding: '32px' }}>
-                  <p style={{
-                    fontSize: '14px',
-                    color: '#64748B',
-                    lineHeight: 1.6,
-                    marginBottom: '28px'
-                  }}>
-                    {service.description}
-                  </p>
-
-                  {/* Scope of Work */}
+                {/* Standards */}
+                <div style={{
+                  padding: '16px 20px',
+                  background: '#0F172A',
+                  color: '#FFF',
+                  marginBottom: '28px'
+                }}>
                   <div style={{
-                    marginBottom: '28px'
+                    fontSize: '10px',
+                    fontWeight: 700,
+                    color: '#94A3B8',
+                    marginBottom: '6px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em'
                   }}>
-                    <h3 style={{
-                      fontSize: '12px',
-                      fontWeight: 700,
-                      color: '#0F172A',
-                      marginBottom: '16px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.08em'
-                    }}>
-                      Scope of Work
-                    </h3>
-                    <div style={{
-                      display: 'grid',
-                      gap: '8px'
-                    }}>
-                      {service.scope.map((item, i) => (
-                        <div
-                          key={i}
-                          style={{
-                            fontSize: '13px',
-                            color: '#0F172A',
-                            paddingLeft: '20px',
-                            position: 'relative',
-                            lineHeight: 1.5
-                          }}
-                        >
-                          <span style={{
-                            position: 'absolute',
-                            left: 0,
-                            color: service.color,
-                            fontWeight: 900
-                          }}>→</span>
-                          {item}
-                        </div>
-                      ))}
-                    </div>
+                    Standards & Compliance
                   </div>
-
-                  {/* Standards */}
                   <div style={{
-                    padding: '16px',
-                    background: '#F8F9FA',
-                    border: `2px solid ${service.color}`,
-                    marginBottom: '24px'
+                    fontSize: '11px',
+                    fontWeight: 600,
+                    fontFamily: 'IBM Plex Mono, monospace',
+                    letterSpacing: '0.01em',
+                    lineHeight: 1.5
                   }}>
-                    <div style={{
-                      fontSize: '10px',
-                      fontWeight: 700,
-                      color: '#64748B',
-                      marginBottom: '6px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.08em'
-                    }}>
-                      Standards & Compliance
-                    </div>
-                    <div style={{
-                      fontSize: '11px',
-                      fontWeight: 600,
-                      color: '#0F172A',
-                      fontFamily: 'IBM Plex Mono, monospace',
-                      letterSpacing: '0.01em',
-                      lineHeight: 1.5
-                    }}>
-                      {service.standards}
-                    </div>
+                    {service.standards}
                   </div>
-
-                  {/* View Projects Button */}
-                  <a 
-                    href={`/Projects#${service.id}`}
-                    style={{
-                      display: 'block',
-                      padding: '14px 24px',
-                      background: service.color,
-                      color: '#FFF',
-                      border: `2px solid ${service.color}`,
-                      fontWeight: 700,
-                      fontSize: '13px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em',
-                      textDecoration: 'none',
-                      transition: 'all 0.3s',
-                      textAlign: 'center',
-                      cursor: 'pointer'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.target.style.background = '#0F172A'
-                      e.target.style.borderColor = '#0F172A'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.background = service.color
-                      e.target.style.borderColor = service.color
-                    }}
-                  >
-                    View Related Projects →
-                  </a>
                 </div>
-              </motion.div>
-            ))}
+
+                {/* View Projects Button */}
+                <a 
+                  href={`/Projects#${service.id}`}
+                  style={{
+                    display: 'inline-block',
+                    padding: '14px 28px',
+                    background: 'transparent',
+                    color: '#0F172A',
+                    border: '2px solid #0F172A',
+                    fontWeight: 700,
+                    fontSize: '13px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                    textDecoration: 'none',
+                    transition: 'all 0.3s',
+                    cursor: 'pointer'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = '#DC2626'
+                    e.target.style.color = '#FFF'
+                    e.target.style.borderColor = '#DC2626'
+                    e.target.style.transform = 'translateX(4px)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = 'transparent'
+                    e.target.style.color = '#0F172A'
+                    e.target.style.borderColor = '#0F172A'
+                    e.target.style.transform = 'translateX(0)'
+                  }}
+                >
+                  View Related Projects →
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </motion.section>
+      ))}
 
       {/* CTA Section */}
       <motion.section
