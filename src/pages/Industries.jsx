@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { useLocation } from 'react-router-dom'
 
 // Icon Components
 const Icon = {
@@ -47,26 +48,35 @@ const Icon = {
 }
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 }
-}
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
+  hidden: { opacity: 0, y: 60 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
     transition: {
-      staggerChildren: 0.15
+      duration: 0.8,
+      ease: "easeOut"
     }
   }
 }
 
-const cardVariant = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 }
-}
-
 export default function Industries() {
+  const location = useLocation()
+
+  // Scroll to section on load if hash is present
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '')
+      setTimeout(() => {
+        const element = document.getElementById(id)
+        if (element) {
+          const yOffset = -120 // Offset for fixed header
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
+          window.scrollTo({ top: y, behavior: 'smooth' })
+        }
+      }, 100)
+    }
+  }, [location])
+
   const industries = [
     {
       id: 'semiconductor',
@@ -208,8 +218,7 @@ export default function Industries() {
           id={industry.id}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.3 }}
           variants={fadeInUp}
           style={{
             padding: '100px 32px',
@@ -225,12 +234,7 @@ export default function Industries() {
               alignItems: 'start'
             }}>
               {/* Left Column - Icon & Title */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
+              <div>
                 <div style={{
                   width: '120px',
                   height: '120px',
@@ -266,19 +270,13 @@ export default function Industries() {
                 }}>
                   {industry.description}
                 </p>
-              </motion.div>
+              </div>
 
               {/* Right Column - Details */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                style={{
-                  display: 'grid',
-                  gap: '32px'
-                }}
-              >
+              <div style={{
+                display: 'grid',
+                gap: '32px'
+              }}>
                 {/* Capabilities */}
                 <div style={{
                   padding: '40px',
@@ -310,7 +308,7 @@ export default function Industries() {
                           color: '#0F172A'
                         }}
                       >
-                        <div style={{ color: '#DC2626', marginTop: '2px' }}>
+                        <div style={{ color: '#DC2626', marginTop: '2px', flexShrink: 0 }}>
                           <Icon.Check />
                         </div>
                         <span>{cap}</span>
@@ -349,7 +347,7 @@ export default function Industries() {
                           fontSize: '14px'
                         }}
                       >
-                        <div style={{ color: '#DC2626', marginTop: '2px' }}>
+                        <div style={{ color: '#DC2626', marginTop: '2px', flexShrink: 0 }}>
                           <Icon.Check />
                         </div>
                         <span>{app}</span>
@@ -391,7 +389,7 @@ export default function Industries() {
                 >
                   View {industry.title} Projects →
                 </a>
-              </motion.div>
+              </div>
             </div>
           </div>
         </motion.section>
@@ -401,8 +399,7 @@ export default function Industries() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        viewport={{ once: true, amount: 0.5 }}
         variants={fadeInUp}
         style={{
           padding: '80px 32px',
