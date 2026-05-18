@@ -65,18 +65,22 @@ export default function Industries() {
   // Scroll to section on load if hash is present
   useEffect(() => {
     if (location.hash) {
+      // If there's a hash, scroll to that section
       const id = location.hash.replace('#', '')
       setTimeout(() => {
         const element = document.getElementById(id)
         if (element) {
-          const yOffset = -120 // Offset for fixed header
+          const yOffset = -120
           const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
           window.scrollTo({ top: y, behavior: 'smooth' })
         }
       }, 100)
+    } else {
+      // If no hash, scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }, [location])
-
+  
   const industries = [
     {
       id: 'semiconductor',
