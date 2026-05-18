@@ -5,12 +5,12 @@ import { useLocation } from 'react-router-dom'
 // Icon Components
 const Icon = {
   Wrench: () => (
-    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
     </svg>
   ),
   Gauge: () => (
-    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M12 2v4"/>
       <path d="m6.8 15-3.5 2"/>
       <path d="m20.7 7-3.5 2"/>
@@ -22,7 +22,7 @@ const Icon = {
     </svg>
   ),
   Trailer: () => (
-    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M10 17h4V5H2v12h3"/>
       <circle cx="6" cy="17" r="2"/>
       <path d="M14 17h5l4-8V6h-8v11z"/>
@@ -30,16 +30,11 @@ const Icon = {
     </svg>
   ),
   Snow: () => (
-    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M2 12h20"/>
       <path d="M12 2v20"/>
       <path d="m4.93 4.93 14.14 14.14"/>
       <path d="m4.93 19.07 14.14-14.14"/>
-    </svg>
-  ),
-  Check: () => (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.5">
-      <polyline points="3,10 8,15 17,4" />
     </svg>
   )
 }
@@ -82,7 +77,7 @@ export default function Services() {
       icon: <Icon.Wrench />,
       title: 'Project Engineering',
       tagline: 'Turnkey Mechanical Construction from Design to Commissioning',
-      description: 'Gas plant equipment erection, installation and integration, underground gas piping, steel structure fabrication and metering skid station fabrication. We handle the complete project lifecycle from engineering through startup.',
+      description: 'From initial concept to final handover, we manage the complete project lifecycle. Our integrated approach combines engineering, fabrication, installation, and commissioning under one accountable contractor.',
       capabilities: [
         'Detailed engineering and 3D modeling',
         'Fabrication shop with certified welders',
@@ -90,22 +85,17 @@ export default function Services() {
         'Steel structure design and erection',
         'Gas metering skid fabrication',
         'Equipment installation and tie-in',
-        'Pre-commissioning and startup support'
+        'Pre-commissioning and startup'
       ],
       deliverables: [
-        'As-built drawings and documentation',
+        'As-built drawings',
         'Material test reports (MTRs)',
-        'Weld procedure specifications (WPS)',
+        'Weld procedure specifications',
         'Pressure test certificates',
         'Commissioning reports',
         'O&M manuals'
       ],
-      standards: [
-        'ASME B31.3 - Process Piping',
-        'ASME B31.8 - Gas Transmission',
-        'AWS D1.1 - Structural Welding',
-        'ISO 9001 Quality Management'
-      ]
+      standards: 'ASME B31.3 • ASME B31.8 • AWS D1.1 • ISO 9001'
     },
     {
       id: 'plant-maintenance',
@@ -113,7 +103,7 @@ export default function Services() {
       icon: <Icon.Gauge />,
       title: 'Plant Maintenance',
       tagline: 'Keeping Your Operations Running 24/7',
-      description: 'Process plant routine and shutdown maintenance, including metering skid and underground pipeline servicing. Preventive maintenance programs, emergency response, and turnaround support.',
+      description: 'Preventive maintenance programs, shutdown support, and emergency response. We keep your plant running at peak performance while minimizing unplanned downtime and safety incidents.',
       capabilities: [
         'Preventive maintenance programs',
         'Shutdown and turnaround planning',
@@ -124,19 +114,14 @@ export default function Services() {
         'Leak detection and repair (LDAR)'
       ],
       deliverables: [
-        'Maintenance schedules and checklists',
+        'Maintenance schedules',
         'Equipment condition reports',
         'Repair documentation',
-        'Replacement parts inventory',
+        'Parts inventory management',
         'Safety work permits',
         'Incident reports'
       ],
-      standards: [
-        'ISO 55000 - Asset Management',
-        'API 570 - Piping Inspection',
-        'NFPA 70E - Electrical Safety',
-        'bizSAFE Program compliance'
-      ]
+      standards: 'ISO 55000 • API 570 • NFPA 70E • bizSAFE Program'
     },
     {
       id: 'hydrogen-testing',
@@ -144,14 +129,14 @@ export default function Services() {
       icon: <Icon.Trailer />,
       title: 'Hydrogen Trailer Testing',
       tagline: 'Certification and Recertification of Tube Trailers',
-      description: 'HP tube testing, certification, servicing and refurbishment support for tube trailers and related skids. Hydrostatic testing, DOT/ISO recertification, and fleet management services.',
+      description: 'Complete testing, certification, and fleet management for hydrogen tube trailers. Our facility handles hydrostatic testing, DOT/ISO recertification, and refurbishment for transport fleets.',
       capabilities: [
         'Hydrostatic pressure testing',
         'DOT and ISO recertification',
         'Valve and manifold servicing',
         'Tube bundle inspection',
         'Leak testing (helium and pressure decay)',
-        'Trailer refurbishment and upgrades',
+        'Trailer refurbishment',
         'Fleet management programs'
       ],
       deliverables: [
@@ -159,15 +144,10 @@ export default function Services() {
         'Hydrostatic test reports',
         'Valve test certificates',
         'Inspection reports with photos',
-        'Repair and replacement records',
+        'Repair records',
         'Fleet tracking database'
       ],
-      standards: [
-        'DOT CFR 49 Part 180',
-        'ISO 11120 - Gas Cylinders',
-        'CGA standards for hydrogen',
-        'Singapore SS 559 - Gas Cylinder Safety'
-      ]
+      standards: 'DOT CFR 49 Part 180 • ISO 11120 • CGA H2 Standards • SS 559'
     },
     {
       id: 'cryogenic-systems',
@@ -175,14 +155,14 @@ export default function Services() {
       icon: <Icon.Snow />,
       title: 'Cryogenic Systems',
       tagline: 'Fabrication and Maintenance of Cryogenic Transfer Equipment',
-      description: 'Cryogenic hose fabrication, repair and maintenance for industrial gas applications. Custom vacuum-insulated assemblies for LIN, LOX, LAR, and LNG service.',
+      description: 'Custom vacuum-insulated hose assemblies and transfer lines for LIN, LOX, LAR, and LNG service. From fabrication to field repair, we handle the specialized requirements of cryogenic systems.',
       capabilities: [
         'Custom hose assembly fabrication',
         'Vacuum-insulated transfer lines',
         'End fitting installation and testing',
         'Hose repair and recertification',
         'Leak detection and repair',
-        'Emergency hose replacement',
+        'Emergency replacement service',
         'Preventive maintenance programs'
       ],
       deliverables: [
@@ -193,12 +173,7 @@ export default function Services() {
         'Installation guidelines',
         'Maintenance schedules'
       ],
-      standards: [
-        'CGA pamphlets for cryogenic service',
-        'ASME B31.3 cold service requirements',
-        'PED 2014/68/EU (European clients)',
-        'ISO 21013 - Cryogenic vessels'
-      ]
+      standards: 'CGA Pamphlets • ASME B31.3 Cold Service • PED 2014/68/EU • ISO 21013'
     }
   ]
 
@@ -223,7 +198,7 @@ export default function Services() {
               lineHeight: 1.1
             }}
           >
-            Our Engineering Capabilities
+            Engineering Services
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -242,210 +217,203 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Services Detail Sections */}
-      {services.map((service, index) => (
-        <motion.section
-          key={service.id}
-          id={service.id}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={fadeInUp}
-          style={{
-            padding: '100px 32px',
-            background: index % 2 === 0 ? '#FFF' : '#F8F9FA',
-            borderBottom: '2px solid #0F172A'
-          }}
-        >
-          <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 2fr',
-              gap: '80px',
-              alignItems: 'start'
-            }}>
-              {/* Left Column - Icon, Number & Title */}
-              <div>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '24px',
-                  marginBottom: '32px'
-                }}>
+      {/* Services Cards */}
+      <div style={{ background: '#F8F9FA' }}>
+        {services.map((service, index) => (
+          <motion.section
+            key={service.id}
+            id={service.id}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeInUp}
+            style={{
+              padding: '80px 32px',
+              borderBottom: '2px solid #0F172A'
+            }}
+          >
+            <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
+              {/* Service Card */}
+              <div style={{
+                background: '#FFF',
+                border: '3px solid #0F172A',
+                padding: '60px',
+                display: 'grid',
+                gridTemplateColumns: '380px 1fr',
+                gap: '60px'
+              }}>
+                
+                {/* Left Side - Header */}
+                <div>
                   <div style={{
-                    width: '120px',
-                    height: '120px',
-                    border: '3px solid #0F172A',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
+                    gap: '20px',
+                    marginBottom: '32px'
+                  }}>
+                    <div style={{
+                      fontSize: '96px',
+                      fontWeight: 900,
+                      color: '#DC2626',
+                      lineHeight: 0.8
+                    }}>
+                      {service.num}
+                    </div>
+                    <div style={{ color: '#0F172A' }}>
+                      {service.icon}
+                    </div>
+                  </div>
+
+                  <h2 style={{
+                    fontSize: '36px',
+                    fontWeight: 900,
+                    marginBottom: '16px',
+                    lineHeight: 1.1,
                     color: '#0F172A'
                   }}>
-                    {service.icon}
-                  </div>
-                  <div style={{
-                    fontSize: '72px',
-                    fontWeight: 900,
+                    {service.title}
+                  </h2>
+
+                  <p style={{
+                    fontSize: '15px',
                     color: '#DC2626',
-                    lineHeight: 1
+                    fontWeight: 700,
+                    marginBottom: '24px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.03em'
                   }}>
-                    {service.num}
+                    {service.tagline}
+                  </p>
+
+                  <p style={{
+                    fontSize: '15px',
+                    color: '#64748B',
+                    lineHeight: 1.7
+                  }}>
+                    {service.description}
+                  </p>
+
+                  {/* Standards Badge */}
+                  <div style={{
+                    marginTop: '32px',
+                    padding: '20px',
+                    background: '#F8F9FA',
+                    border: '2px solid #E5E7EB'
+                  }}>
+                    <div style={{
+                      fontSize: '11px',
+                      fontWeight: 700,
+                      color: '#64748B',
+                      marginBottom: '8px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em'
+                    }}>
+                      Standards & Compliance
+                    </div>
+                    <div style={{
+                      fontSize: '12px',
+                      fontWeight: 600,
+                      color: '#0F172A',
+                      lineHeight: 1.6,
+                      fontFamily: 'IBM Plex Mono, monospace'
+                    }}>
+                      {service.standards}
+                    </div>
                   </div>
                 </div>
-                <h2 style={{
-                  fontSize: '42px',
-                  fontWeight: 900,
-                  marginBottom: '16px',
-                  lineHeight: 1.1
-                }}>
-                  {service.title}
-                </h2>
-                <p style={{
-                  fontSize: '16px',
-                  color: '#DC2626',
-                  fontWeight: 600,
-                  marginBottom: '24px'
-                }}>
-                  {service.tagline}
-                </p>
-                <p style={{
-                  fontSize: '15px',
-                  color: '#64748B',
-                  lineHeight: 1.7
-                }}>
-                  {service.description}
-                </p>
-              </div>
 
-              {/* Right Column - Details */}
-              <div style={{
-                display: 'grid',
-                gap: '24px'
-              }}>
-                {/* Capabilities */}
+                {/* Right Side - Details Grid */}
                 <div style={{
-                  padding: '40px',
-                  background: '#FFF',
-                  border: '2px solid #0F172A'
+                  display: 'grid',
+                  gap: '40px'
                 }}>
-                  <h3 style={{
-                    fontSize: '18px',
-                    fontWeight: 700,
-                    marginBottom: '20px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em'
-                  }}>
-                    Service Capabilities
-                  </h3>
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '12px'
-                  }}>
-                    {service.capabilities.map((cap, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'start',
-                          gap: '12px',
-                          fontSize: '14px',
-                          color: '#0F172A'
-                        }}
-                      >
-                        <div style={{ color: '#DC2626', marginTop: '2px', flexShrink: 0 }}>
-                          <Icon.Check />
+                  
+                  {/* Capabilities List */}
+                  <div>
+                    <h3 style={{
+                      fontSize: '14px',
+                      fontWeight: 700,
+                      color: '#0F172A',
+                      marginBottom: '20px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      borderBottom: '2px solid #DC2626',
+                      paddingBottom: '12px'
+                    }}>
+                      Service Capabilities
+                    </h3>
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(2, 1fr)',
+                      gap: '12px'
+                    }}>
+                      {service.capabilities.map((cap, i) => (
+                        <div
+                          key={i}
+                          style={{
+                            fontSize: '14px',
+                            color: '#0F172A',
+                            paddingLeft: '20px',
+                            position: 'relative',
+                            lineHeight: 1.6
+                          }}
+                        >
+                          <span style={{
+                            position: 'absolute',
+                            left: 0,
+                            color: '#DC2626',
+                            fontWeight: 700
+                          }}>•</span>
+                          {cap}
                         </div>
-                        <span>{cap}</span>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                {/* Deliverables */}
-                <div style={{
-                  padding: '40px',
-                  background: '#0F172A',
-                  color: '#FFF'
-                }}>
-                  <h3 style={{
-                    fontSize: '18px',
-                    fontWeight: 700,
-                    marginBottom: '20px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em'
-                  }}>
-                    Typical Deliverables
-                  </h3>
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '12px'
-                  }}>
-                    {service.deliverables.map((del, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'start',
-                          gap: '12px',
-                          fontSize: '14px'
-                        }}
-                      >
-                        <div style={{ color: '#DC2626', marginTop: '2px', flexShrink: 0 }}>
-                          <Icon.Check />
+                  {/* Deliverables List */}
+                  <div>
+                    <h3 style={{
+                      fontSize: '14px',
+                      fontWeight: 700,
+                      color: '#0F172A',
+                      marginBottom: '20px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      borderBottom: '2px solid #2563EB',
+                      paddingBottom: '12px'
+                    }}>
+                      Typical Deliverables
+                    </h3>
+                    <div style={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: '8px'
+                    }}>
+                      {service.deliverables.map((del, i) => (
+                        <div
+                          key={i}
+                          style={{
+                            padding: '8px 16px',
+                            background: '#F8F9FA',
+                            border: '1px solid #E5E7EB',
+                            fontSize: '13px',
+                            fontWeight: 600,
+                            color: '#0F172A',
+                            borderRadius: '2px'
+                          }}
+                        >
+                          {del}
                         </div>
-                        <span>{del}</span>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                {/* Standards & Codes */}
-                <div style={{
-                  padding: '32px 40px',
-                  background: '#F8F9FA',
-                  border: '2px solid #E5E7EB'
-                }}>
-                  <h3 style={{
-                    fontSize: '14px',
-                    fontWeight: 700,
-                    marginBottom: '16px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.08em',
-                    color: '#64748B'
-                  }}>
-                    Standards & Compliance
-                  </h3>
-                  <div style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    gap: '12px'
-                  }}>
-                    {service.standards.map((std, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          padding: '8px 16px',
-                          background: '#FFF',
-                          border: '1px solid #0F172A',
-                          fontSize: '12px',
-                          fontWeight: 600,
-                          color: '#0F172A',
-                          fontFamily: 'IBM Plex Mono, monospace',
-                          letterSpacing: '0.02em'
-                        }}
-                      >
-                        {std}
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </motion.section>
-      ))}
+          </motion.section>
+        ))}
+      </div>
 
       {/* CTA Section */}
       <motion.section
