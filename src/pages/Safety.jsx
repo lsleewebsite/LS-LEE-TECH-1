@@ -1,6 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
+
+const slideVariants = {
+  enter: (direction) => ({
+    x: direction > 0 ? 1000 : -1000,
+    opacity: 0
+  }),
+  center: {
+    x: 0,
+    opacity: 1
+  },
+  exit: (direction) => ({
+    x: direction < 0 ? 1000 : -1000,
+    opacity: 0
+  })
+}
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -16,11 +31,8 @@ const fadeInUp = {
 
 export default function Safety() {
   const location = useLocation()
-  const [selectedCert, setSelectedCert] = useState(null)
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [location])
+  const [[currentIndex, direction], setPage] = useState([0, 0])
+  const [showModal, setShowModal] = useState(false)
 
   const certificates = [
     {
@@ -31,7 +43,8 @@ export default function Safety() {
       date: '27 March 2020 - 26 March 2023',
       certNumber: 'OSH-20-2239',
       image: '/path-to-cert-1.jpg',
-      scope: 'Fabrication & Installation of Pipeworks and Related Plant Installation'
+      scope: 'Fabrication & Installation of Pipeworks and Related Plant Installation',
+      why: 'Independent verification that our safety management systems meet international standards. Reduces your project risk and insurance liability.'
     },
     {
       id: 2,
@@ -41,7 +54,8 @@ export default function Safety() {
       date: '27 March 2020 - 26 March 2023',
       certNumber: 'QS-20-2238',
       image: '/path-to-cert-2.jpg',
-      scope: 'Fabrication & Installation of Pipeworks and Related Plant Installation'
+      scope: 'Fabrication & Installation of Pipeworks and Related Plant Installation',
+      why: 'Ensures consistent quality across every phase of your project. Third-party audited processes, not just promises.'
     },
     {
       id: 3,
@@ -51,7 +65,8 @@ export default function Safety() {
       date: 'Valid till 26/03/2023',
       certNumber: 'E04940',
       image: '/path-to-cert-3.jpg',
-      scope: 'Highest level of bizSAFE certification demonstrating exemplary WSH performance'
+      scope: 'Highest level of bizSAFE certification demonstrating exemplary WSH performance',
+      why: 'The highest level of workplace safety certification in Singapore. Demonstrates proven safety culture and performance.'
     },
     {
       id: 4,
@@ -61,7 +76,8 @@ export default function Safety() {
       date: '16 March 2016 - 15 March 2019',
       certNumber: 'CIS/200610',
       image: '/path-to-cert-4.jpg',
-      scope: 'Fabrication and installation of pipeworks and related plants installations'
+      scope: 'Fabrication and installation of pipeworks and related plants installations',
+      why: 'International standard for occupational health and safety. Predecessor to ISO 45001, demonstrating long-term safety commitment.'
     },
     {
       id: 5,
@@ -71,9 +87,23 @@ export default function Safety() {
       date: '22 April 2016 - 15 March 2019',
       certNumber: 'CIS/200610',
       image: '/path-to-cert-5.jpg',
-      scope: 'Fabrication and installation of pipeworks and related plants installations'
+      scope: 'Fabrication and installation of pipeworks and related plants installations',
+      why: 'Singapore national standard for workplace safety. Demonstrates compliance with local regulatory requirements.'
     }
   ]
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [location])
+
+  const paginate = (newDirection) => {
+    const newIndex = currentIndex + newDirection
+    if (newIndex >= 0 && newIndex < certificates.length) {
+      setPage([newIndex, newDirection])
+    }
+  }
+
+  const currentCert = certificates[currentIndex]
 
   return (
     <div>
@@ -151,7 +181,7 @@ export default function Safety() {
                 lineHeight: 1.7,
                 marginBottom: '20px'
               }}>
-                Every certification on this page represents an independent audit of our safety procedures, quality controls, and management systems. When you hire us, you are hiring a contractor with verified processes, not just promises.
+                Every certification below represents an independent audit of our safety procedures, quality controls, and management systems. When you hire us, you are hiring a contractor with verified processes, not just promises.
               </p>
               <p style={{
                 fontSize: '16px',
@@ -224,12 +254,15 @@ export default function Safety() {
         </div>
       </motion.section>
 
-      {/* Stacked Certificates Section */}
+      {/* Carousel Section */}
       <section style={{
-        padding: '80px 32px',
-        background: '#F8F9FA'
+        padding: '80px 0',
+        background: '#F8F9FA',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '1360px', margin: '0 auto', padding: '0 32px' }}>
+          
           <h2 style={{
             fontSize: '36px',
             fontWeight: 800,
@@ -246,130 +279,315 @@ export default function Safety() {
             marginBottom: '60px',
             lineHeight: 1.6
           }}>
-            Click any certificate to view the full documentation
+            Click any certificate to view full documentation
           </p>
 
-          {/* Stacked Cards */}
-          <div style={{
-            display: 'grid',
-            gap: '24px'
-          }}>
-            {certificates.map((cert, index) => (
-              <motion.div
-                key={cert.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ 
-                  duration: 0.6,
-                  delay: index * 0.1
-                }}
-                onClick={() => setSelectedCert(cert)}
-                style={{
-                  background: '#FFF',
-                  border: '3px solid #0F172A',
-                  cursor: 'pointer',
-                  transition: 'all 0.4s',
-                  position: 'relative',
-                  transform: `translateY(${index * -8}px)`,
-                  zIndex: certificates.length - index
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = `translateY(${index * -8 - 12}px) scale(1.02)`
-                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)'
-                  e.currentTarget.style.borderColor = '#DC2626'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = `translateY(${index * -8}px) scale(1)`
-                  e.currentTarget.style.boxShadow = 'none'
-                  e.currentTarget.style.borderColor = '#0F172A'
-                }}
-              >
+          {/* Navigation Arrows */}
+          <button
+            onClick={() => paginate(-1)}
+            disabled={currentIndex === 0}
+            style={{
+              position: 'absolute',
+              left: '32px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: '60px',
+              height: '60px',
+              background: '#0F172A',
+              border: '2px solid #0F172A',
+              color: '#FFF',
+              fontSize: '24px',
+              cursor: currentIndex === 0 ? 'not-allowed' : 'pointer',
+              opacity: currentIndex === 0 ? 0.3 : 1,
+              transition: 'all 0.3s',
+              zIndex: 10
+            }}
+            onMouseEnter={(e) => {
+              if (currentIndex !== 0) {
+                e.target.style.background = '#DC2626'
+                e.target.style.borderColor = '#DC2626'
+              }
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = '#0F172A'
+              e.target.style.borderColor = '#0F172A'
+            }}
+          >
+            ←
+          </button>
+
+          <button
+            onClick={() => paginate(1)}
+            disabled={currentIndex === certificates.length - 1}
+            style={{
+              position: 'absolute',
+              right: '32px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: '60px',
+              height: '60px',
+              background: '#0F172A',
+              border: '2px solid #0F172A',
+              color: '#FFF',
+              fontSize: '24px',
+              cursor: currentIndex === certificates.length - 1 ? 'not-allowed' : 'pointer',
+              opacity: currentIndex === certificates.length - 1 ? 0.3 : 1,
+              transition: 'all 0.3s',
+              zIndex: 10
+            }}
+            onMouseEnter={(e) => {
+              if (currentIndex !== certificates.length - 1) {
+                e.target.style.background = '#DC2626'
+                e.target.style.borderColor = '#DC2626'
+              }
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = '#0F172A'
+              e.target.style.borderColor = '#0F172A'
+            }}
+          >
+            →
+          </button>
+
+          {/* Carousel Content */}
+          <AnimatePresence initial={false} custom={direction} mode="wait">
+            <motion.div
+              key={currentIndex}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                opacity: { duration: 0.3 }
+              }}
+              style={{
+                background: '#FFF',
+                border: '3px solid #0F172A',
+                cursor: 'pointer'
+              }}
+              onClick={() => setShowModal(true)}
+            >
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                minHeight: '550px'
+              }}>
+                
+                {/* Certificate Preview */}
                 <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: '140px 1fr auto',
-                  gap: '32px',
+                  background: '#E5E7EB',
+                  display: 'flex',
+                  flexDirection: 'column',
                   alignItems: 'center',
-                  padding: '32px'
+                  justifyContent: 'center',
+                  borderRight: '2px solid #0F172A',
+                  padding: '60px',
+                  position: 'relative'
                 }}>
-                  
-                  {/* Number Badge */}
                   <div style={{
-                    width: '140px',
-                    height: '140px',
-                    border: '3px solid #0F172A',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    background: '#F8F9FA'
+                    position: 'absolute',
+                    top: '24px',
+                    right: '24px',
+                    padding: '8px 20px',
+                    background: '#DC2626',
+                    color: '#FFF',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em'
                   }}>
-                    <div style={{
-                      fontSize: '64px',
-                      fontWeight: 900,
-                      color: '#DC2626',
-                      lineHeight: 1
-                    }}>
-                      {String(cert.id).padStart(2, '0')}
-                    </div>
+                    Click to View Full
                   </div>
 
-                  {/* Certificate Info */}
-                  <div>
-                    <h3 style={{
-                      fontSize: '28px',
-                      fontWeight: 900,
-                      marginBottom: '8px',
-                      color: '#0F172A',
-                      lineHeight: 1.2
+                  <div style={{
+                    fontSize: '18px',
+                    fontWeight: 700,
+                    color: '#DC2626',
+                    marginBottom: '60px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em'
+                  }}>
+                    {String(currentCert.id).padStart(2, '0')} / {String(certificates.length).padStart(2, '0')}
+                  </div>
+                  <div style={{
+                    textAlign: 'center',
+                    color: '#94A3B8'
+                  }}>
+                    <div style={{
+                      fontSize: '16px',
+                      fontWeight: 600,
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
+                      marginBottom: '12px'
                     }}>
-                      {cert.title}
-                    </h3>
+                      [ Certificate Preview ]
+                    </div>
                     <div style={{
                       fontSize: '13px',
-                      color: '#DC2626',
-                      fontWeight: 700,
-                      marginBottom: '12px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em'
+                      opacity: 0.6
                     }}>
-                      {cert.issuer}
+                      800 × 1000px
                     </div>
-                    <p style={{
-                      fontSize: '14px',
-                      color: '#64748B',
-                      lineHeight: 1.6,
-                      marginBottom: '10px'
-                    }}>
-                      {cert.description}
-                    </p>
-                    <div style={{
-                      fontSize: '12px',
-                      color: '#94A3B8',
-                      fontWeight: 600
-                    }}>
-                      Valid: {cert.date}
+                  </div>
+                </div>
+
+                {/* Certificate Info */}
+                <div style={{
+                  padding: '60px 70px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center'
+                }}>
+                  
+                  {/* Issuer Badge */}
+                  <div style={{
+                    display: 'inline-block',
+                    padding: '8px 24px',
+                    background: '#0F172A',
+                    color: '#FFF',
+                    fontSize: '13px',
+                    fontWeight: 700,
+                    letterSpacing: '0.05em',
+                    marginBottom: '24px',
+                    alignSelf: 'flex-start',
+                    textTransform: 'uppercase'
+                  }}>
+                    {currentCert.issuer}
+                  </div>
+
+                  {/* Title */}
+                  <h2 style={{
+                    fontSize: '42px',
+                    fontWeight: 900,
+                    marginBottom: '16px',
+                    lineHeight: 1.1,
+                    color: '#0F172A'
+                  }}>
+                    {currentCert.title}
+                  </h2>
+
+                  {/* Description */}
+                  <div style={{
+                    fontSize: '15px',
+                    color: '#DC2626',
+                    fontWeight: 700,
+                    marginBottom: '24px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em'
+                  }}>
+                    {currentCert.description}
+                  </div>
+
+                  {/* Why This Matters */}
+                  <p style={{
+                    fontSize: '15px',
+                    color: '#64748B',
+                    lineHeight: 1.7,
+                    marginBottom: '28px'
+                  }}>
+                    {currentCert.why}
+                  </p>
+
+                  {/* Details Grid */}
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1fr 1fr',
+                    gap: '20px',
+                    marginBottom: '32px'
+                  }}>
+                    <div>
+                      <div style={{
+                        fontSize: '11px',
+                        fontWeight: 700,
+                        color: '#94A3B8',
+                        marginBottom: '6px',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.08em'
+                      }}>
+                        Certificate Number
+                      </div>
+                      <div style={{
+                        fontSize: '14px',
+                        color: '#0F172A',
+                        fontWeight: 600,
+                        fontFamily: 'monospace'
+                      }}>
+                        {currentCert.certNumber}
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{
+                        fontSize: '11px',
+                        fontWeight: 700,
+                        color: '#94A3B8',
+                        marginBottom: '6px',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.08em'
+                      }}>
+                        Validity Period
+                      </div>
+                      <div style={{
+                        fontSize: '14px',
+                        color: '#0F172A',
+                        fontWeight: 600
+                      }}>
+                        {currentCert.date}
+                      </div>
                     </div>
                   </div>
 
-                  {/* Arrow Icon */}
+                  {/* View Full Button */}
                   <div style={{
-                    fontSize: '32px',
-                    color: '#DC2626',
-                    fontWeight: 700
+                    padding: '14px 28px',
+                    background: '#DC2626',
+                    color: '#FFF',
+                    border: '2px solid #DC2626',
+                    fontWeight: 700,
+                    fontSize: '13px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                    textAlign: 'center',
+                    transition: 'all 0.3s'
                   }}>
-                    →
+                    View Full Certificate →
                   </div>
                 </div>
-              </motion.div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Dots Indicator */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '12px',
+            marginTop: '40px'
+          }}>
+            {certificates.map((cert, index) => (
+              <button
+                key={cert.id}
+                onClick={() => setPage([index, index > currentIndex ? 1 : -1])}
+                style={{
+                  width: currentIndex === index ? '40px' : '12px',
+                  height: '12px',
+                  background: currentIndex === index ? '#DC2626' : '#D1D5DB',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s',
+                  borderRadius: '6px'
+                }}
+              />
             ))}
           </div>
         </div>
       </section>
 
       {/* Modal */}
-      {selectedCert && (
+      {showModal && (
         <div
-          onClick={() => setSelectedCert(null)}
+          onClick={() => setShowModal(false)}
           style={{
             position: 'fixed',
             top: 0,
@@ -402,7 +620,7 @@ export default function Safety() {
           >
             {/* Close Button */}
             <button
-              onClick={() => setSelectedCert(null)}
+              onClick={() => setShowModal(false)}
               style={{
                 position: 'absolute',
                 top: '20px',
@@ -424,121 +642,121 @@ export default function Safety() {
             {/* Certificate Image Full Size */}
             <div style={{
               background: '#E5E7EB',
-              minHeight: '600px',
+              minHeight: '700px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '60px'
+              padding: '80px'
             }}>
               <div style={{
                 textAlign: 'center',
                 color: '#94A3B8'
               }}>
                 <div style={{
-                  fontSize: '120px',
+                  fontSize: '140px',
                   fontWeight: 900,
-                  marginBottom: '20px',
+                  marginBottom: '24px',
                   color: '#D1D5DB',
                   lineHeight: 1
                 }}>
-                  {String(selectedCert.id).padStart(2, '0')}
+                  {String(currentCert.id).padStart(2, '0')}
                 </div>
                 <div style={{
-                  fontSize: '16px',
+                  fontSize: '18px',
                   fontWeight: 600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  marginBottom: '12px'
+                  marginBottom: '16px'
                 }}>
-                  [ Full Certificate Image ]
+                  [ Full Certificate Scan ]
                 </div>
                 <div style={{
-                  fontSize: '14px',
+                  fontSize: '16px',
                   opacity: 0.7
                 }}>
-                  {selectedCert.title}
+                  {currentCert.title}
                 </div>
               </div>
             </div>
 
             {/* Certificate Details */}
             <div style={{
-              padding: '40px',
+              padding: '50px',
               borderTop: '2px solid #0F172A'
             }}>
               <h3 style={{
-                fontSize: '28px',
+                fontSize: '32px',
                 fontWeight: 900,
-                marginBottom: '12px',
+                marginBottom: '16px',
                 color: '#0F172A'
               }}>
-                {selectedCert.title}
+                {currentCert.title}
               </h3>
               <div style={{
-                fontSize: '14px',
+                fontSize: '15px',
                 color: '#DC2626',
                 fontWeight: 700,
-                marginBottom: '20px',
+                marginBottom: '24px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em'
               }}>
-                Issued by {selectedCert.issuer}
+                Issued by {currentCert.issuer}
               </div>
               <p style={{
-                fontSize: '15px',
+                fontSize: '16px',
                 color: '#64748B',
                 lineHeight: 1.7,
-                marginBottom: '16px'
+                marginBottom: '24px'
               }}>
-                {selectedCert.description}
+                {currentCert.why}
               </p>
               <div style={{
-                padding: '16px',
+                padding: '20px',
                 background: '#F8F9FA',
                 border: '1px solid #E5E7EB',
-                marginBottom: '12px'
+                marginBottom: '20px'
               }}>
                 <div style={{
-                  fontSize: '11px',
+                  fontSize: '12px',
                   fontWeight: 700,
                   color: '#64748B',
-                  marginBottom: '6px',
+                  marginBottom: '8px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.08em'
                 }}>
                   Certification Scope
                 </div>
                 <div style={{
-                  fontSize: '13px',
-                  color: '#0F172A'
+                  fontSize: '14px',
+                  color: '#0F172A',
+                  lineHeight: 1.6
                 }}>
-                  {selectedCert.scope}
+                  {currentCert.scope}
                 </div>
               </div>
               <div style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
-                gap: '12px',
-                marginTop: '16px'
+                gap: '16px'
               }}>
                 <div>
                   <div style={{
                     fontSize: '11px',
                     fontWeight: 700,
                     color: '#64748B',
-                    marginBottom: '4px',
+                    marginBottom: '6px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.08em'
                   }}>
                     Certificate Number
                   </div>
                   <div style={{
-                    fontSize: '13px',
+                    fontSize: '14px',
                     color: '#0F172A',
                     fontWeight: 600,
                     fontFamily: 'monospace'
                   }}>
-                    {selectedCert.certNumber}
+                    {currentCert.certNumber}
                   </div>
                 </div>
                 <div>
@@ -546,18 +764,18 @@ export default function Safety() {
                     fontSize: '11px',
                     fontWeight: 700,
                     color: '#64748B',
-                    marginBottom: '4px',
+                    marginBottom: '6px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.08em'
                   }}>
                     Validity Period
                   </div>
                   <div style={{
-                    fontSize: '13px',
+                    fontSize: '14px',
                     color: '#0F172A',
                     fontWeight: 600
                   }}>
-                    {selectedCert.date}
+                    {currentCert.date}
                   </div>
                 </div>
               </div>
