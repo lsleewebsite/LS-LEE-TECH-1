@@ -155,7 +155,7 @@ export default function Layout({ currentPageName, children }) {
             </div>
 
             {/* Rest of nav items */}
-            {['Services', 'Projects', 'Safety', 'Contact'].map((item) => (
+            {['Services', 'Projects', 'Safety'].map((item) => (
               <Link
                 key={item}
                 to={`/${item}`}
@@ -207,7 +207,7 @@ export default function Layout({ currentPageName, children }) {
                 e.target.style.background = '#0A1628'
                 e.target.style.borderColor = '#0A1628'
               }}>
-                START PROJECT →
+                CONTACT →
               </button>
             </Link>
           </div>
