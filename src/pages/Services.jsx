@@ -153,7 +153,7 @@ export default function Services() {
           <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
+              gridTemplateColumns: '1.2fr 1fr',
               gap: 0
             }}>
               
@@ -161,7 +161,7 @@ export default function Services() {
               <div 
                 style={{
                   background: '#E5E7EB',
-                  minHeight: '400px',
+                  minHeight: '320px',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
@@ -175,7 +175,7 @@ export default function Services() {
                   fontSize: '16px',
                   fontWeight: 700,
                   color: '#DC2626',
-                  marginBottom: '60px',
+                  marginBottom: '40px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em'
                 }}>
@@ -198,36 +198,40 @@ export default function Services() {
                     fontSize: '12px',
                     opacity: 0.6
                   }}>
-                    1000 × 750px
+                    1200 × 800px
                   </div>
                 </div>
               </div>
 
               {/* Content Section */}
               <div style={{
-                padding: '50px 45px',
-                order: index % 2 === 0 ? 2 : 1
+                padding: '40px',
+                order: index % 2 === 0 ? 2 : 1,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center'
               }}>
                 
                 {/* Number Badge */}
                 <div style={{
                   display: 'inline-block',
-                  padding: '10px 24px',
+                  padding: '8px 20px',
                   background: '#0F172A',
                   color: '#FFF',
-                  fontSize: '15px',
+                  fontSize: '14px',
                   fontWeight: 900,
                   letterSpacing: '0.1em',
-                  marginBottom: '24px'
+                  marginBottom: '20px',
+                  alignSelf: 'flex-start'
                 }}>
                   {service.num}
                 </div>
 
                 {/* Title */}
                 <h2 style={{
-                  fontSize: '44px',
+                  fontSize: '40px',
                   fontWeight: 900,
-                  marginBottom: '14px',
+                  marginBottom: '12px',
                   lineHeight: 1.1,
                   color: '#0F172A'
                 }}>
@@ -236,10 +240,10 @@ export default function Services() {
 
                 {/* Tagline */}
                 <div style={{
-                  fontSize: '16px',
+                  fontSize: '15px',
                   color: '#DC2626',
                   fontWeight: 700,
-                  marginBottom: '24px',
+                  marginBottom: '20px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.05em'
                 }}>
@@ -248,23 +252,23 @@ export default function Services() {
 
                 {/* Description */}
                 <p style={{
-                  fontSize: '16px',
+                  fontSize: '15px',
                   color: '#64748B',
                   lineHeight: 1.7,
-                  marginBottom: '32px'
+                  marginBottom: '28px'
                 }}>
                   {service.description}
                 </p>
 
                 {/* Capabilities */}
                 <div style={{
-                  marginBottom: '36px'
+                  marginBottom: '28px'
                 }}>
                   <h3 style={{
-                    fontSize: '13px',
+                    fontSize: '12px',
                     fontWeight: 700,
                     color: '#0F172A',
-                    marginBottom: '18px',
+                    marginBottom: '16px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.08em'
                   }}>
@@ -273,15 +277,15 @@ export default function Services() {
                   <div style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '12px'
+                    gap: '10px'
                   }}>
                     {service.capabilities.map((cap, i) => (
                       <div
                         key={i}
                         style={{
-                          fontSize: '14px',
+                          fontSize: '13px',
                           color: '#0F172A',
-                          paddingLeft: '18px',
+                          paddingLeft: '16px',
                           position: 'relative',
                           lineHeight: 1.6
                         }}
@@ -303,17 +307,18 @@ export default function Services() {
                   href={`/Projects#${service.id}`}
                   style={{
                     display: 'inline-block',
-                    padding: '16px 32px',
+                    padding: '14px 28px',
                     background: 'transparent',
                     color: '#0F172A',
                     border: '2px solid #0F172A',
                     fontWeight: 700,
-                    fontSize: '14px',
+                    fontSize: '13px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em',
                     textDecoration: 'none',
                     transition: 'all 0.3s',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    alignSelf: 'flex-start'
                   }}
                   onMouseEnter={(e) => {
                     e.target.style.background = '#DC2626'
