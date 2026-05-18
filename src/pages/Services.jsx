@@ -47,8 +47,7 @@ export default function Services() {
         'Steel Structure Design & Erection',
         'Gas Metering Skid Fabrication',
         'Equipment Installation & Commissioning'
-      ],
-      standards: 'ASME B31.3 • ASME B31.8 • AWS D1.1 • ISO 9001'
+      ]
     },
     {
       id: 'plant-maintenance',
@@ -63,8 +62,7 @@ export default function Services() {
         'Rotating Equipment Overhaul',
         'Pipeline Inspection & Repair',
         'Valve Testing & Certification'
-      ],
-      standards: 'ISO 55000 • API 570 • NFPA 70E • bizSAFE Program'
+      ]
     },
     {
       id: 'hydrogen-testing',
@@ -79,8 +77,7 @@ export default function Services() {
         'Tube Bundle Inspection',
         'Leak Testing (Helium & Pressure)',
         'Fleet Management Programs'
-      ],
-      standards: 'DOT CFR 49 Part 180 • ISO 11120 • CGA H2 • SS 559'
+      ]
     },
     {
       id: 'cryogenic-systems',
@@ -95,8 +92,7 @@ export default function Services() {
         'Hose Repair & Recertification',
         'Leak Detection & Repair',
         'Emergency Replacement Service'
-      ],
-      standards: 'CGA Pamphlets • ASME B31.3 • PED 2014/68/EU • ISO 21013'
+      ]
     }
   ]
 
@@ -165,21 +161,21 @@ export default function Services() {
               <div 
                 style={{
                   background: '#E5E7EB',
-                  minHeight: '500px',
+                  minHeight: '400px',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
                   borderRight: '2px solid #0F172A',
-                  padding: '60px 40px',
+                  padding: '40px',
                   order: index % 2 === 0 ? 1 : 2
                 }}
               >
                 <div style={{
-                  fontSize: '14px',
+                  fontSize: '16px',
                   fontWeight: 700,
                   color: '#DC2626',
-                  marginBottom: '80px',
+                  marginBottom: '60px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em'
                 }}>
@@ -190,7 +186,7 @@ export default function Services() {
                   color: '#94A3B8'
                 }}>
                   <div style={{
-                    fontSize: '13px',
+                    fontSize: '14px',
                     fontWeight: 600,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
@@ -199,7 +195,7 @@ export default function Services() {
                     [ Service Image ]
                   </div>
                   <div style={{
-                    fontSize: '11px',
+                    fontSize: '12px',
                     opacity: 0.6
                   }}>
                     1000 × 750px
@@ -209,17 +205,17 @@ export default function Services() {
 
               {/* Content Section */}
               <div style={{
-                padding: '60px 50px',
+                padding: '50px 45px',
                 order: index % 2 === 0 ? 2 : 1
               }}>
                 
                 {/* Number Badge */}
                 <div style={{
                   display: 'inline-block',
-                  padding: '8px 20px',
+                  padding: '10px 24px',
                   background: '#0F172A',
                   color: '#FFF',
-                  fontSize: '13px',
+                  fontSize: '15px',
                   fontWeight: 900,
                   letterSpacing: '0.1em',
                   marginBottom: '24px'
@@ -229,9 +225,9 @@ export default function Services() {
 
                 {/* Title */}
                 <h2 style={{
-                  fontSize: '40px',
+                  fontSize: '44px',
                   fontWeight: 900,
-                  marginBottom: '12px',
+                  marginBottom: '14px',
                   lineHeight: 1.1,
                   color: '#0F172A'
                 }}>
@@ -240,10 +236,10 @@ export default function Services() {
 
                 {/* Tagline */}
                 <div style={{
-                  fontSize: '14px',
+                  fontSize: '16px',
                   color: '#DC2626',
                   fontWeight: 700,
-                  marginBottom: '20px',
+                  marginBottom: '24px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.05em'
                 }}>
@@ -252,7 +248,7 @@ export default function Services() {
 
                 {/* Description */}
                 <p style={{
-                  fontSize: '15px',
+                  fontSize: '16px',
                   color: '#64748B',
                   lineHeight: 1.7,
                   marginBottom: '32px'
@@ -262,13 +258,13 @@ export default function Services() {
 
                 {/* Capabilities */}
                 <div style={{
-                  marginBottom: '32px'
+                  marginBottom: '36px'
                 }}>
                   <h3 style={{
-                    fontSize: '12px',
+                    fontSize: '13px',
                     fontWeight: 700,
                     color: '#0F172A',
-                    marginBottom: '16px',
+                    marginBottom: '18px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.08em'
                   }}>
@@ -277,17 +273,17 @@ export default function Services() {
                   <div style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '10px'
+                    gap: '12px'
                   }}>
                     {service.capabilities.map((cap, i) => (
                       <div
                         key={i}
                         style={{
-                          fontSize: '13px',
+                          fontSize: '14px',
                           color: '#0F172A',
-                          paddingLeft: '16px',
+                          paddingLeft: '18px',
                           position: 'relative',
-                          lineHeight: 1.5
+                          lineHeight: 1.6
                         }}
                       >
                         <span style={{
@@ -302,45 +298,17 @@ export default function Services() {
                   </div>
                 </div>
 
-                {/* Standards */}
-                <div style={{
-                  padding: '16px 20px',
-                  background: '#0F172A',
-                  color: '#FFF',
-                  marginBottom: '28px'
-                }}>
-                  <div style={{
-                    fontSize: '10px',
-                    fontWeight: 700,
-                    color: '#94A3B8',
-                    marginBottom: '6px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.08em'
-                  }}>
-                    Standards & Compliance
-                  </div>
-                  <div style={{
-                    fontSize: '11px',
-                    fontWeight: 600,
-                    fontFamily: 'IBM Plex Mono, monospace',
-                    letterSpacing: '0.01em',
-                    lineHeight: 1.5
-                  }}>
-                    {service.standards}
-                  </div>
-                </div>
-
                 {/* View Projects Button */}
                 <a 
                   href={`/Projects#${service.id}`}
                   style={{
                     display: 'inline-block',
-                    padding: '14px 28px',
+                    padding: '16px 32px',
                     background: 'transparent',
                     color: '#0F172A',
                     border: '2px solid #0F172A',
                     fontWeight: 700,
-                    fontSize: '13px',
+                    fontSize: '14px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em',
                     textDecoration: 'none',
