@@ -33,28 +33,24 @@ export default function Home() {
   const industries = [
     {
       id: 'semiconductor',
-      icon: '⚡',
       title: 'Semiconductor',
       description: 'Ultra-high purity gas systems, process piping, and cleanroom installations for wafer fabs',
       link: '/Industries#semiconductor'
     },
     {
       id: 'data-center',
-      icon: '🖥️',
       title: 'Data Center',
       description: 'Mission-critical cooling infrastructure, chilled water systems, and precision environmental controls',
       link: '/Industries#data-center'
     },
     {
       id: 'industrial-gas',
-      icon: '🏭',
       title: 'Industrial Gas & Process',
       description: 'Gas distribution networks, cryogenic equipment, and plant automation systems',
       link: '/Industries#industrial-gas'
     },
     {
       id: 'new-energy',
-      icon: '🔋',
       title: 'New Energy / Hydrogen',
       description: 'Hydrogen compression, storage systems, and renewable energy infrastructure',
       link: '/Industries#new-energy'
@@ -64,28 +60,24 @@ export default function Home() {
   const services = [
     {
       id: 'project-engineering',
-      icon: '🔧',
       title: 'Project Engineering',
       description: 'End-to-end mechanical construction from design through commissioning',
       link: '/Services'
     },
     {
       id: 'plant-maintenance',
-      icon: '⚙️',
       title: 'Plant Maintenance',
       description: '24/7 operations support, turnarounds, and preventive maintenance programs',
       link: '/Services'
     },
     {
       id: 'hydrogen-testing',
-      icon: '🧪',
       title: 'Hydrogen Trailer Testing',
       description: 'DOT/ISO certification, hydrostatic testing, and fleet management',
       link: '/Services'
     },
     {
       id: 'cryogenic-systems',
-      icon: '❄️',
       title: 'Cryogenic Systems',
       description: 'Vacuum-insulated hose assemblies and transfer lines for LIN, LOX, LAR, LNG',
       link: '/Services'
@@ -312,26 +304,14 @@ export default function Home() {
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-8px)'
                     e.currentTarget.style.borderColor = '#DC2626'
-                    e.currentTarget.querySelector('.ind-icon').style.transform = 'scale(1.1) rotate(5deg)'
                     e.currentTarget.querySelector('.ind-title').style.color = '#DC2626'
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'translateY(0)'
                     e.currentTarget.style.borderColor = '#0F172A'
-                    e.currentTarget.querySelector('.ind-icon').style.transform = 'scale(1) rotate(0deg)'
                     e.currentTarget.querySelector('.ind-title').style.color = '#0F172A'
                   }}
                 >
-                  <div
-                    className="ind-icon"
-                    style={{
-                      fontSize: '48px',
-                      marginBottom: '20px',
-                      transition: 'all 0.3s'
-                    }}
-                  >
-                    {industry.icon}
-                  </div>
                   <h3
                     className="ind-title"
                     style={{
@@ -421,26 +401,14 @@ export default function Home() {
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-8px)'
                     e.currentTarget.style.borderColor = '#DC2626'
-                    e.currentTarget.querySelector('.svc-icon').style.transform = 'scale(1.1) rotate(-5deg)'
                     e.currentTarget.querySelector('.svc-title').style.color = '#DC2626'
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'translateY(0)'
                     e.currentTarget.style.borderColor = '#0F172A'
-                    e.currentTarget.querySelector('.svc-icon').style.transform = 'scale(1) rotate(0deg)'
                     e.currentTarget.querySelector('.svc-title').style.color = '#0F172A'
                   }}
                 >
-                  <div
-                    className="svc-icon"
-                    style={{
-                      fontSize: '48px',
-                      marginBottom: '20px',
-                      transition: 'all 0.3s'
-                    }}
-                  >
-                    {service.icon}
-                  </div>
                   <h3
                     className="svc-title"
                     style={{
