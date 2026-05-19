@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 // Icon Components (simple SVG icons)
 const Icon = {
@@ -63,6 +64,60 @@ const cardVariant = {
 }
 
 export default function Home() {
+  const industries = [
+    { 
+      icon: <Icon.Chip />, 
+      title: 'Semiconductor', 
+      desc: 'Gas process plant construction, integration and maintenance for semiconductor manufacturing.',
+      link: '/Industries#semiconductor'
+    },
+    { 
+      icon: <Icon.Server />, 
+      title: 'Data Center', 
+      desc: 'Hydrogen pipeline infrastructure and gas systems support for data centre energy requirements.',
+      link: '/Industries#data-center'
+    },
+    { 
+      icon: <Icon.Plant />, 
+      title: 'Industrial Gas & Process', 
+      desc: 'Turnkey project engineering, plant integration and maintenance for gas and process plants.',
+      link: '/Industries#industrial-gas'
+    },
+    { 
+      icon: <Icon.H2 />, 
+      title: 'New Energy / Hydrogen', 
+      desc: 'Hydrogen trailer testing, servicing, refurbishment and certification support.',
+      link: '/Industries#new-energy'
+    }
+  ]
+
+  const services = [
+    {
+      num: '01',
+      title: 'Project Engineering',
+      image: '[Plant Construction]',
+      desc: 'Gas plant equipment erection, installation and integration, underground gas piping, steel structure fabrication and metering skid station fabrication.'
+    },
+    {
+      num: '02',
+      title: 'Plant Maintenance',
+      image: '[Maintenance Work]',
+      desc: 'Process plant routine and shutdown maintenance, including metering skid and underground pipeline servicing.'
+    },
+    {
+      num: '03',
+      title: 'Hydrogen Trailer Testing',
+      image: '[Testing Equipment]',
+      desc: 'HP tube testing, certification, servicing and refurbishment support for tube trailers and related skids.'
+    },
+    {
+      num: '04',
+      title: 'Cryogenic Systems',
+      image: '[Cryogenic Hose]',
+      desc: 'Cryogenic hose fabrication, repair and maintenance for industrial gas applications.'
+    }
+  ]
+
   return (
     <div>
       
@@ -169,32 +224,50 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.8 }}
               style={{ display: 'flex', gap: '16px' }}
             >
-              <button style={{
-                padding: '14px 28px',
-                background: '#DC2626',
-                color: '#FFF',
-                border: '2px solid #DC2626',
-                fontWeight: 700,
-                fontSize: '13px',
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em',
-                cursor: 'pointer'
-              }}>
+              <Link
+                to="/Industries"
+                style={{
+                  padding: '14px 28px',
+                  background: '#DC2626',
+                  color: '#FFF',
+                  border: '2px solid #DC2626',
+                  fontWeight: 700,
+                  fontSize: '13px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  cursor: 'pointer',
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                  transition: 'all 0.3s'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = '#B91C1C'
+                  e.target.style.borderColor = '#B91C1C'
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = '#DC2626'
+                  e.target.style.borderColor = '#DC2626'
+                }}
+              >
                 Our Industries
-              </button>
-              <button style={{
-                padding: '14px 28px',
-                background: 'transparent',
-                color: '#FFF',
-                border: '2px solid #FFF',
-                fontWeight: 700,
-                fontSize: '13px',
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em',
-                cursor: 'pointer'
-              }}>
-                View Projects
-              </button>
+              </Link>
+              <div
+                style={{
+                  padding: '14px 28px',
+                  background: '#374151',
+                  color: '#6B7280',
+                  border: '2px solid #374151',
+                  fontWeight: 700,
+                  fontSize: '13px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  cursor: 'not-allowed',
+                  display: 'inline-block',
+                  opacity: 0.6
+                }}
+              >
+                View Projects (Coming Soon)
+              </div>
             </motion.div>
           </div>
         </div>
@@ -286,92 +359,94 @@ export default function Home() {
               gap: '24px'
             }}
           >
-            {[
-              { icon: <Icon.Chip />, title: 'Semiconductor', desc: 'Gas process plant construction, integration and maintenance for semiconductor manufacturing.' },
-              { icon: <Icon.Server />, title: 'Data Center', desc: 'Hydrogen pipeline infrastructure and gas systems support for data centre energy requirements.' },
-              { icon: <Icon.Plant />, title: 'Industrial Gas & Process', desc: 'Turnkey project engineering, plant integration and maintenance for gas and process plants.' },
-              { icon: <Icon.H2 />, title: 'New Energy / Hydrogen', desc: 'Hydrogen trailer testing, servicing, refurbishment and certification support.' }
-            ].map((industry, i) => (
+            {industries.map((industry, i) => (
               <motion.div
                 key={i}
                 variants={cardVariant}
                 transition={{ duration: 0.5 }}
-                className="ind-card"
-                style={{
-                  padding: '32px',
-                  background: '#FFF',
-                  border: '2px solid #0F172A',
-                  transition: 'all 0.4s',
-                  cursor: 'pointer'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'scale(1.05)'
-                  e.currentTarget.style.borderColor = '#DC2626'
-                  const icon = e.currentTarget.querySelector('.ind-icon')
-                  const learnMore = e.currentTarget.querySelector('.learn-more')
-                  if (icon) {
-                    icon.style.borderColor = '#2563EB'
-                    icon.style.transform = 'rotate(15deg)'
-                  }
-                  if (learnMore) learnMore.style.transform = 'translateX(4px)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'scale(1)'
-                  e.currentTarget.style.borderColor = '#0F172A'
-                  const icon = e.currentTarget.querySelector('.ind-icon')
-                  const learnMore = e.currentTarget.querySelector('.learn-more')
-                  if (icon) {
-                    icon.style.borderColor = '#0F172A'
-                    icon.style.transform = 'rotate(0deg)'
-                  }
-                  if (learnMore) learnMore.style.transform = 'translateX(0)'
-                }}
               >
-                <div 
-                  className="ind-icon"
+                <Link
+                  to={industry.link}
+                  className="ind-card"
                   style={{
-                    width: '64px',
-                    height: '64px',
+                    display: 'block',
+                    padding: '32px',
+                    background: '#FFF',
                     border: '2px solid #0F172A',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: '20px',
-                    color: '#0F172A',
-                    transition: 'all 0.4s'
+                    transition: 'all 0.4s',
+                    cursor: 'pointer',
+                    textDecoration: 'none',
+                    color: 'inherit'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.05)'
+                    e.currentTarget.style.borderColor = '#DC2626'
+                    const icon = e.currentTarget.querySelector('.ind-icon')
+                    const learnMore = e.currentTarget.querySelector('.learn-more')
+                    if (icon) {
+                      icon.style.borderColor = '#2563EB'
+                      icon.style.transform = 'rotate(15deg)'
+                    }
+                    if (learnMore) learnMore.style.transform = 'translateX(4px)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1)'
+                    e.currentTarget.style.borderColor = '#0F172A'
+                    const icon = e.currentTarget.querySelector('.ind-icon')
+                    const learnMore = e.currentTarget.querySelector('.learn-more')
+                    if (icon) {
+                      icon.style.borderColor = '#0F172A'
+                      icon.style.transform = 'rotate(0deg)'
+                    }
+                    if (learnMore) learnMore.style.transform = 'translateX(0)'
                   }}
                 >
-                  {industry.icon}
-                </div>
-                <h3 style={{
-                  fontSize: '20px',
-                  fontWeight: 700,
-                  marginBottom: '12px',
-                  color: '#0F172A'
-                }}>
-                  {industry.title}
-                </h3>
-                <p style={{
-                  fontSize: '14px',
-                  color: '#64748B',
-                  lineHeight: 1.6
-                }}>
-                  {industry.desc}
-                </p>
-                <div 
-                  className="learn-more"
-                  style={{
-                    marginTop: '16px',
-                    fontSize: '13px',
+                  <div 
+                    className="ind-icon"
+                    style={{
+                      width: '64px',
+                      height: '64px',
+                      border: '2px solid #0F172A',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: '20px',
+                      color: '#0F172A',
+                      transition: 'all 0.4s'
+                    }}
+                  >
+                    {industry.icon}
+                  </div>
+                  <h3 style={{
+                    fontSize: '20px',
                     fontWeight: 700,
-                    color: '#2563EB',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em',
-                    transition: 'transform 0.4s'
-                  }}
-                >
-                  Learn More →
-                </div>
+                    marginBottom: '12px',
+                    color: '#0F172A'
+                  }}>
+                    {industry.title}
+                  </h3>
+                  <p style={{
+                    fontSize: '14px',
+                    color: '#64748B',
+                    lineHeight: 1.6
+                  }}>
+                    {industry.desc}
+                  </p>
+                  <div 
+                    className="learn-more"
+                    style={{
+                      marginTop: '16px',
+                      fontSize: '13px',
+                      fontWeight: 700,
+                      color: '#2563EB',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em',
+                      transition: 'transform 0.4s'
+                    }}
+                  >
+                    Learn More →
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
@@ -406,127 +481,109 @@ export default function Home() {
               gap: '24px'
             }}
           >
-            {[
-              {
-                num: '01',
-                title: 'Project Engineering',
-                image: '[Plant Construction]',
-                desc: 'Gas plant equipment erection, installation and integration, underground gas piping, steel structure fabrication and metering skid station fabrication.'
-              },
-              {
-                num: '02',
-                title: 'Plant Maintenance',
-                image: '[Maintenance Work]',
-                desc: 'Process plant routine and shutdown maintenance, including metering skid and underground pipeline servicing.'
-              },
-              {
-                num: '03',
-                title: 'Hydrogen Trailer Testing',
-                image: '[Testing Equipment]',
-                desc: 'HP tube testing, certification, servicing and refurbishment support for tube trailers and related skids.'
-              },
-              {
-                num: '04',
-                title: 'Cryogenic Systems',
-                image: '[Cryogenic Hose]',
-                desc: 'Cryogenic hose fabrication, repair and maintenance for industrial gas applications.'
-              }
-            ].map((service, i) => (
+            {services.map((service, i) => (
               <motion.div
                 key={i}
                 variants={cardVariant}
                 transition={{ duration: 0.5 }}
-                style={{
-                  border: '2px solid #0F172A',
-                  overflow: 'hidden',
-                  cursor: 'pointer',
-                  transition: 'all 0.4s'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'scale(1.05)'
-                  e.currentTarget.style.borderColor = '#DC2626'
-                  const numBadge = e.currentTarget.querySelector('.num-badge')
-                  const learnMore = e.currentTarget.querySelector('.service-learn-more')
-                  if (numBadge) {
-                    numBadge.style.background = '#2563EB'
-                    numBadge.style.transform = 'rotate(360deg)'
-                  }
-                  if (learnMore) learnMore.style.transform = 'translateX(4px)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'scale(1)'
-                  e.currentTarget.style.borderColor = '#0F172A'
-                  const numBadge = e.currentTarget.querySelector('.num-badge')
-                  const learnMore = e.currentTarget.querySelector('.service-learn-more')
-                  if (numBadge) {
-                    numBadge.style.background = '#DC2626'
-                    numBadge.style.transform = 'rotate(0deg)'
-                  }
-                  if (learnMore) learnMore.style.transform = 'translateX(0)'
-                }}
               >
-                <div style={{
-                  height: '200px',
-                  background: '#E5E7EB',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '12px',
-                  color: '#64748B',
-                  fontWeight: 600,
-                  borderBottom: '2px solid #0F172A'
-                }}>
-                  {service.image}
-                </div>
-                <div style={{ padding: '24px' }}>
-                  <div 
-                    className="num-badge"
-                    style={{
-                      width: '40px',
-                      height: '40px',
-                      background: '#DC2626',
-                      color: '#FFF',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontWeight: 900,
-                      fontSize: '18px',
-                      marginBottom: '16px',
-                      transition: 'all 0.4s'
-                    }}
-                  >
-                    {service.num}
-                  </div>
-                  <h3 style={{
-                    fontSize: '18px',
-                    fontWeight: 700,
-                    marginBottom: '12px'
-                  }}>
-                    {service.title}
-                  </h3>
-                  <p style={{
-                    fontSize: '13px',
+                <Link
+                  to="/Services"
+                  style={{
+                    display: 'block',
+                    border: '2px solid #0F172A',
+                    overflow: 'hidden',
+                    cursor: 'pointer',
+                    transition: 'all 0.4s',
+                    textDecoration: 'none',
+                    color: 'inherit'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.05)'
+                    e.currentTarget.style.borderColor = '#DC2626'
+                    const numBadge = e.currentTarget.querySelector('.num-badge')
+                    const learnMore = e.currentTarget.querySelector('.service-learn-more')
+                    if (numBadge) {
+                      numBadge.style.background = '#2563EB'
+                      numBadge.style.transform = 'rotate(360deg)'
+                    }
+                    if (learnMore) learnMore.style.transform = 'translateX(4px)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1)'
+                    e.currentTarget.style.borderColor = '#0F172A'
+                    const numBadge = e.currentTarget.querySelector('.num-badge')
+                    const learnMore = e.currentTarget.querySelector('.service-learn-more')
+                    if (numBadge) {
+                      numBadge.style.background = '#DC2626'
+                      numBadge.style.transform = 'rotate(0deg)'
+                    }
+                    if (learnMore) learnMore.style.transform = 'translateX(0)'
+                  }}
+                >
+                  <div style={{
+                    height: '200px',
+                    background: '#E5E7EB',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '12px',
                     color: '#64748B',
-                    lineHeight: 1.6,
-                    marginBottom: '16px'
+                    fontWeight: 600,
+                    borderBottom: '2px solid #0F172A'
                   }}>
-                    {service.desc}
-                  </p>
-                  <div 
-                    className="service-learn-more"
-                    style={{
-                      fontSize: '13px',
-                      fontWeight: 700,
-                      color: '#2563EB',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em',
-                      transition: 'transform 0.4s',
-                      cursor: 'pointer'
-                    }}
-                  >
-                    Learn More →
+                    {service.image}
                   </div>
-                </div>
+                  <div style={{ padding: '24px' }}>
+                    <div 
+                      className="num-badge"
+                      style={{
+                        width: '40px',
+                        height: '40px',
+                        background: '#DC2626',
+                        color: '#FFF',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontWeight: 900,
+                        fontSize: '18px',
+                        marginBottom: '16px',
+                        transition: 'all 0.4s'
+                      }}
+                    >
+                      {service.num}
+                    </div>
+                    <h3 style={{
+                      fontSize: '18px',
+                      fontWeight: 700,
+                      marginBottom: '12px'
+                    }}>
+                      {service.title}
+                    </h3>
+                    <p style={{
+                      fontSize: '13px',
+                      color: '#64748B',
+                      lineHeight: 1.6,
+                      marginBottom: '16px'
+                    }}>
+                      {service.desc}
+                    </p>
+                    <div 
+                      className="service-learn-more"
+                      style={{
+                        fontSize: '13px',
+                        fontWeight: 700,
+                        color: '#2563EB',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em',
+                        transition: 'transform 0.4s',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      Learn More →
+                    </div>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
@@ -573,7 +630,7 @@ export default function Home() {
                 style={{
                   border: '2px solid #0F172A',
                   overflow: 'hidden',
-                  cursor: 'pointer',
+                  cursor: 'default',
                   transition: 'all 0.4s',
                   background: '#FFF'
                 }}
@@ -657,29 +714,23 @@ export default function Home() {
 
           {/* See More Button */}
           <div style={{ textAlign: 'center' }}>
-            <button style={{
-              padding: '16px 32px',
-              background: '#DC2626',
-              color: '#FFF',
-              border: '2px solid #DC2626',
-              fontWeight: 700,
-              fontSize: '14px',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = '#B91C1C'
-              e.target.style.borderColor = '#B91C1C'
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = '#DC2626'
-              e.target.style.borderColor = '#DC2626'
-            }}
+            <div
+              style={{
+                display: 'inline-block',
+                padding: '16px 32px',
+                background: '#D1D5DB',
+                color: '#6B7280',
+                border: '2px solid #D1D5DB',
+                fontWeight: 700,
+                fontSize: '14px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                cursor: 'not-allowed',
+                opacity: 0.6
+              }}
             >
-              See More Projects →
-            </button>
+              See More Projects (Coming Soon)
+            </div>
           </div>
         </div>
       </motion.section>
@@ -850,29 +901,33 @@ export default function Home() {
 
           {/* See More Button */}
           <div style={{ textAlign: 'center' }}>
-            <button style={{
-              padding: '16px 32px',
-              background: '#DC2626',
-              color: '#FFF',
-              border: '2px solid #DC2626',
-              fontWeight: 700,
-              fontSize: '14px',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = '#B91C1C'
-              e.target.style.borderColor = '#B91C1C'
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = '#DC2626'
-              e.target.style.borderColor = '#DC2626'
-            }}
+            <Link
+              to="/Safety"
+              style={{
+                display: 'inline-block',
+                padding: '16px 32px',
+                background: '#DC2626',
+                color: '#FFF',
+                border: '2px solid #DC2626',
+                fontWeight: 700,
+                fontSize: '14px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                cursor: 'pointer',
+                transition: 'all 0.3s',
+                textDecoration: 'none'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = '#B91C1C'
+                e.target.style.borderColor = '#B91C1C'
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = '#DC2626'
+                e.target.style.borderColor = '#DC2626'
+              }}
             >
               See More →
-            </button>
+            </Link>
           </div>
         </div>
       </motion.section>
