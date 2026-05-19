@@ -85,15 +85,19 @@ export default function Services() {
   ]
 
   useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.replace('#', '')
-      const index = services.findIndex(s => s.id === id)
-      if (index !== -1) {
-        setPage([index, 0])
+    // Check for query parameter to set initial slide
+    const params = new URLSearchParams(location.search)
+    const slideParam = params.get('slide')
+    
+    if (slideParam !== null) {
+      const slideIndex = parseInt(slideParam, 10)
+      if (slideIndex >= 0 && slideIndex < services.length) {
+        setPage([slideIndex, 0])
       }
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
+    
+    // Scroll to top when component loads
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [location])
 
   const paginate = (newDirection) => {
