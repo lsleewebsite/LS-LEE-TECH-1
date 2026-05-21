@@ -215,7 +215,7 @@ export default function Industries() {
         </div>
       </section>
 
-      {/* Sticky Sub-Navigation */}
+     {/* Sticky Sub-Navigation */}
       <div style={{
         position: 'sticky',
         top: '110px',
@@ -230,22 +230,22 @@ export default function Industries() {
           padding: '0 32px',
           display: 'flex',
           justifyContent: 'center',
-          gap: '4px'
+          gap: '12px'
         }}>
           {industries.map((industry) => (
-            <a
+            
               key={industry.id}
               href={`#${industry.id}`}
               style={{
-                padding: '20px 28px',
-                fontSize: '14px',
+                padding: '24px 40px',
+                fontSize: '16px',
                 fontWeight: 600,
                 color: '#0F172A',
                 textDecoration: 'none',
                 borderBottom: '3px solid transparent',
                 transition: 'all 0.2s',
                 fontFamily: 'IBM Plex Sans, system-ui, sans-serif',
-                letterSpacing: '0.02em'
+                letterSpacing: '0.08em'
               }}
               onMouseEnter={(e) => {
                 e.target.style.color = '#DC2626'
