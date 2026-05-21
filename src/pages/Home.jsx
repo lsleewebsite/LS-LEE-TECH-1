@@ -129,16 +129,22 @@ export default function Home() {
 
   return (
     <div>
-      {/* HERO - Side-by-Side Layout - NO STATS */}
-      <section id="home" style={{ background: '#0F172A', padding: '80px 32px' }}>
-        <div className="wrap">
+      {/* HERO */}
+      <section id="home" style={{ background: '#0F172A', position: 'relative', overflow: 'hidden' }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '55% 45%',
+          minHeight: '700px'
+        }}>
+          {/* Left Content */}
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '60px',
-            alignItems: 'center'
+            padding: '100px 80px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            position: 'relative',
+            zIndex: 2
           }}>
-            {/* Left Content */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -147,23 +153,24 @@ export default function Home() {
               <div style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '12px',
-                padding: '8px 16px',
+                gap: '16px',
+                padding: '12px 24px',
                 background: 'rgba(255,255,255,0.1)',
-                marginBottom: '24px'
+                border: '2px solid rgba(255,255,255,0.2)',
+                marginBottom: '32px'
               }}>
                 <div style={{
-                  width: '8px',
-                  height: '8px',
+                  width: '10px',
+                  height: '10px',
                   borderRadius: '50%',
                   background: '#DC2626'
                 }}></div>
                 <span style={{
                   fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '11px',
+                  fontSize: '13px',
                   fontWeight: 700,
                   color: '#FFF',
-                  letterSpacing: '0.12em',
+                  letterSpacing: '0.15em',
                   textTransform: 'uppercase'
                 }}>
                   EST. 1989 — SINGAPORE
@@ -172,7 +179,7 @@ export default function Home() {
 
               <h1 style={{
                 fontFamily: 'Archivo, sans-serif',
-                fontSize: '48px',
+                fontSize: '52px',
                 fontWeight: 900,
                 color: '#FFF',
                 lineHeight: 1.1,
@@ -185,7 +192,8 @@ export default function Home() {
                 fontSize: '18px',
                 color: '#94A3B8',
                 lineHeight: 1.7,
-                marginBottom: '32px'
+                marginBottom: '40px',
+                maxWidth: '550px'
               }}>
                 From semiconductor gas plants to hydrogen trailer servicing, L.S. Lee Technology Pte Ltd delivers safety-critical mechanical solutions backed by decades of frontline experience.
               </p>
@@ -198,7 +206,7 @@ export default function Home() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '10px',
-                  padding: '16px 36px',
+                  padding: '18px 40px',
                   background: '#DC2626',
                   color: '#FFF',
                   border: '2px solid #DC2626',
@@ -228,7 +236,7 @@ export default function Home() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '10px',
-                  padding: '16px 36px',
+                  padding: '18px 40px',
                   background: 'transparent',
                   color: '#FFF',
                   border: '2px solid rgba(255,255,255,0.3)',
@@ -253,54 +261,73 @@ export default function Home() {
                 </a>
               </div>
             </motion.div>
-
-            {/* Right Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              style={{
-                height: '600px',
-                background: '#E5E7EB',
-                border: '2px solid rgba(255,255,255,0.2)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
-              <div style={{ textAlign: 'center' }}>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '12px',
-                  fontWeight: 700,
-                  color: '#64748B',
-                  letterSpacing: '0.1em',
-                  marginBottom: '8px'
-                }}>
-                  [ HERO IMAGE ]
-                </div>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '10px',
-                  color: '#94A3B8',
-                  letterSpacing: '0.1em'
-                }}>
-                  1200 × 900px
-                </div>
-              </div>
-            </motion.div>
           </div>
+
+          {/* Right Image - Full Height Corner to Corner */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            style={{
+              background: '#E5E7EB',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'relative'
+            }}
+          >
+            <div style={{ textAlign: 'center' }}>
+              <div style={{
+                fontFamily: 'IBM Plex Mono, monospace',
+                fontSize: '12px',
+                fontWeight: 700,
+                color: '#64748B',
+                letterSpacing: '0.1em',
+                marginBottom: '8px'
+              }}>
+                [ HERO IMAGE ]
+              </div>
+              <div style={{
+                fontFamily: 'IBM Plex Mono, monospace',
+                fontSize: '10px',
+                color: '#94A3B8',
+                letterSpacing: '0.1em'
+              }}>
+                Full Height Image
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Swoop Divider */}
+          <svg
+            style={{
+              position: 'absolute',
+              left: '55%',
+              top: 0,
+              height: '100%',
+              width: '100px',
+              transform: 'translateX(-100%)',
+              zIndex: 1
+            }}
+            viewBox="0 0 100 700"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M 0 0 Q 100 350, 0 700 L 0 0 Z"
+              fill="#0F172A"
+            />
+          </svg>
         </div>
       </section>
 
-      {/* STATS CARDS - Separate Section - White Background */}
+      {/* STATS CARDS - Dark Background */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
         variants={fadeInUp}
-        style={{ background: '#FFF', padding: '80px 32px' }}
+        style={{ background: '#0F172A', padding: '80px 32px' }}
       >
         <div className="wrap">
           <motion.div
@@ -325,18 +352,20 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
                 style={{
                   padding: '40px 24px',
-                  background: '#FFF',
-                  border: '2px solid #E5E7EB',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '2px solid rgba(255,255,255,0.1)',
                   textAlign: 'center',
                   transition: 'all 0.3s',
                   cursor: 'default'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = '#DC2626'
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.08)'
                   e.currentTarget.style.transform = 'translateY(-4px)'
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = '#E5E7EB'
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
                   e.currentTarget.style.transform = 'translateY(0)'
                 }}
               >
@@ -355,7 +384,7 @@ export default function Home() {
                   fontSize: '11px',
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
-                  color: '#64748B',
+                  color: '#94A3B8',
                   fontWeight: 600
                 }}>
                   {stat.label}
