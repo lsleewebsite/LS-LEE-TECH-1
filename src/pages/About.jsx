@@ -13,15 +13,6 @@ const fadeInUp = {
   },
 }
 
-const Icon = {
-  Shield: () => (
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M12 2 L21 5 V12 C21 17 17 21 12 22 C7 21 3 17 3 12 V5 Z" />
-      <polyline points="8,12 11,15 16,9" />
-    </svg>
-  ),
-}
-
 export default function About() {
   const timeline = [
     {
@@ -56,36 +47,6 @@ export default function About() {
     },
   ]
 
-  const values = [
-    {
-      title: "Safety Without Compromise",
-      description:
-        "Every technician is empowered to stop work. Every procedure is written from real experience, built to prevent mistakes before they happen.",
-    },
-    {
-      title: "Engineers, Not Salespeople",
-      description:
-        "When you call, you speak to someone who has actually built what you are asking about. No handoffs, no translations, no lost context.",
-    },
-    {
-      title: "Institutional Memory",
-      description:
-        "We have been doing this since 1989. Our senior engineers have seen failure modes you will never find in a textbook.",
-    },
-    {
-      title: "Vertical Integration",
-      description:
-        "From engineering to installation to maintenance, we support the full lifecycle because finger-pointing wastes your money and our reputation.",
-    },
-  ]
-
-  const certifications = [
-    { name: "ISO 9001:2015", issuer: "SAC-SINGLAS", scope: "Quality Management Systems" },
-    { name: "ISO 45001:2018", issuer: "SAC-SINGLAS", scope: "Occupational Health & Safety" },
-    { name: "bizSAFE STAR", issuer: "WSH Council", scope: "Workplace Safety & Health" },
-    { name: "ASME U-Stamp", issuer: "ASME", scope: "Pressure Vessel Fabrication" },
-  ]
-
   return (
     <div>
       {/* Hero Section */}
@@ -98,7 +59,11 @@ export default function About() {
         }}
       >
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <div
               style={{
                 fontFamily: "IBM Plex Mono",
@@ -212,7 +177,10 @@ export default function About() {
                 you have not, because our clients care more about uptime than press releases.
               </p>
 
-              <p>The industry changed. We changed with it. What did not change: if your name goes on the drawing, you own the outcome.</p>
+              <p>
+                The industry changed. We changed with it. What did not change: if your name goes on the drawing, you own
+                the outcome.
+              </p>
             </div>
           </div>
         </div>
@@ -303,298 +271,6 @@ export default function About() {
                 </p>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Values Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={fadeInUp}
-        style={{
-          padding: "100px 32px",
-          background: "#0F172A",
-          color: "#FFF",
-        }}
-      >
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <h2
-            style={{
-              fontSize: "42px",
-              fontWeight: 900,
-              marginBottom: "16px",
-              textAlign: "center",
-            }}
-          >
-            How We <span style={{ color: "#DC2626" }}>Actually</span> Work
-          </h2>
-
-          <p
-            style={{
-              fontSize: "18px",
-              color: "#94A3B8",
-              textAlign: "center",
-              marginBottom: "60px",
-              maxWidth: "700px",
-              margin: "0 auto 60px",
-            }}
-          >
-            Not corporate values from a branding deck. Real operating principles.
-          </p>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: "32px",
-            }}
-          >
-            {values.map((value, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                style={{
-                  padding: "40px",
-                  background: "rgba(255,255,255,0.05)",
-                  border: "2px solid rgba(255,255,255,0.1)",
-                  transition: "all 0.3s",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "#DC2626"
-                  e.currentTarget.style.background = "rgba(255,255,255,0.08)"
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"
-                  e.currentTarget.style.background = "rgba(255,255,255,0.05)"
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "24px",
-                    fontWeight: 900,
-                    marginBottom: "16px",
-                    color: "#DC2626",
-                  }}
-                >
-                  {value.title}
-                </h3>
-
-                <p
-                  style={{
-                    fontSize: "15px",
-                    color: "#94A3B8",
-                    lineHeight: 1.7,
-                  }}
-                >
-                  {value.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Team Structure */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={fadeInUp}
-        style={{
-          padding: "100px 32px",
-          background: "#FFF",
-        }}
-      >
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <h2
-            style={{
-              fontSize: "42px",
-              fontWeight: 900,
-              marginBottom: "60px",
-              textAlign: "center",
-            }}
-          >
-            Who You Will Work With
-          </h2>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "32px",
-            }}
-          >
-            {[
-              { dept: "Engineering", count: "12", role: "Project engineers, designers, HAZOP specialists" },
-              { dept: "Project Management", count: "6", role: "Site supervisors, QA/QC, commissioning leads" },
-              { dept: "Field Operations", count: "28", role: "Certified welders, pipefitters, maintenance techs" },
-              { dept: "Testing & Certification", count: "4", role: "NDT technicians, hydrostatic test operators" },
-              { dept: "Safety & Compliance", count: "2", role: "Safety officers, documentation specialists" },
-              { dept: "Administration", count: "3", role: "Procurement, HR, accounts" },
-            ].map((team, i) => (
-              <div
-                key={i}
-                style={{
-                  padding: "32px",
-                  background: "#FFF",
-                  border: "2px solid #E5E7EB",
-                  textAlign: "center",
-                  transition: "all 0.3s",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "#DC2626"
-                  e.currentTarget.style.transform = "translateY(-4px)"
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "#E5E7EB"
-                  e.currentTarget.style.transform = "translateY(0)"
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "48px",
-                    fontWeight: 900,
-                    color: "#DC2626",
-                    marginBottom: "12px",
-                    fontFamily: "Archivo",
-                  }}
-                >
-                  {team.count}
-                </div>
-
-                <h3
-                  style={{
-                    fontSize: "18px",
-                    fontWeight: 700,
-                    marginBottom: "8px",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                  }}
-                >
-                  {team.dept}
-                </h3>
-
-                <p
-                  style={{
-                    fontSize: "13px",
-                    color: "#64748B",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {team.role}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Certifications */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={fadeInUp}
-        style={{
-          padding: "100px 32px",
-          background: "#F8F9FA",
-          borderTop: "2px solid #0F172A",
-        }}
-      >
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 2fr",
-              gap: "60px",
-              alignItems: "start",
-            }}
-          >
-            <div>
-              <div style={{ marginBottom: "24px", color: "#DC2626" }}>
-                <Icon.Shield />
-              </div>
-
-              <h2
-                style={{
-                  fontSize: "42px",
-                  fontWeight: 900,
-                  marginBottom: "24px",
-                  lineHeight: 1.1,
-                }}
-              >
-                Certifications That Actually Matter
-              </h2>
-
-              <p
-                style={{
-                  fontSize: "15px",
-                  color: "#64748B",
-                  lineHeight: 1.7,
-                }}
-              >
-                We maintain the certifications our clients require and auditors verify. No wall-of-logos marketing
-                theatre.
-              </p>
-            </div>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(2, 1fr)",
-                gap: "24px",
-              }}
-            >
-              {certifications.map((cert, i) => (
-                <div
-                  key={i}
-                  style={{
-                    padding: "28px",
-                    background: "#FFF",
-                    border: "2px solid #0F172A",
-                  }}
-                >
-                  <div
-                    style={{
-                      fontFamily: "IBM Plex Mono",
-                      fontSize: "10px",
-                      fontWeight: 700,
-                      color: "#64748B",
-                      letterSpacing: "0.1em",
-                      marginBottom: "8px",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {cert.issuer}
-                  </div>
-
-                  <h3
-                    style={{
-                      fontSize: "18px",
-                      fontWeight: 900,
-                      marginBottom: "8px",
-                      color: "#DC2626",
-                    }}
-                  >
-                    {cert.name}
-                  </h3>
-
-                  <p
-                    style={{
-                      fontSize: "13px",
-                      color: "#64748B",
-                    }}
-                  >
-                    {cert.scope}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </motion.section>
