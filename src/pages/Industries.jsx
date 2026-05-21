@@ -215,6 +215,62 @@ export default function Industries() {
         </div>
       </section>
 
+      {/* Sticky Sub-Navigation */}
+      <div style={{
+        position: 'sticky',
+        top: '110px',
+        zIndex: 40,
+        background: '#FFF',
+        borderBottom: '2px solid #0F172A',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+      }}>
+        <div style={{
+          maxWidth: '1360px',
+          margin: '0 auto',
+          padding: '0 32px',
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '4px'
+        }}>
+          {industries.map((industry) => (
+            
+              key={industry.id}
+              href={`#${industry.id}`}
+              style={{
+                padding: '20px 28px',
+                fontSize: '14px',
+                fontWeight: 600,
+                color: '#0F172A',
+                textDecoration: 'none',
+                borderBottom: '3px solid transparent',
+                transition: 'all 0.2s',
+                fontFamily: 'IBM Plex Sans, system-ui, sans-serif',
+                letterSpacing: '0.02em'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.color = '#DC2626'
+                e.target.style.borderBottomColor = '#DC2626'
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.color = '#0F172A'
+                e.target.style.borderBottomColor = 'transparent'
+              }}
+              onClick={(e) => {
+                e.preventDefault()
+                const element = document.getElementById(industry.id)
+                if (element) {
+                  const yOffset = -180
+                  const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
+                  window.scrollTo({ top: y, behavior: 'smooth' })
+                }
+              }}
+            >
+              {industry.title}
+            </a>
+          ))}
+        </div>
+      </div>
+
       {/* Industries Detail Sections */}
       {industries.map((industry, index) => (
         <motion.section
