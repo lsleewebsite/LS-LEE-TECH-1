@@ -1053,105 +1053,64 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* CONTACT - Dark Background */}
+      {/* CONTACT */}
       <motion.section 
         id="contact" 
         className="section" 
-        style={{ padding: '80px 32px', background: '#0F172A' }}
+        style={{ padding: '80px 32px', background: '#0F172A', textAlign: 'center' }}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
         variants={fadeInUp}
       >
-        <div className="wrap">
-          <div className="ct-split">
-            <div className="ct-left">
-              <h2 style={{ color: '#FFF' }}>Ready to Discuss <span style={{ color: '#DC2626' }}>Your Project?</span></h2>
-              <p className="sub" style={{ color: '#94A3B8' }}>
-                Whether you're scoping a new plant, planning a turnaround, or recertifying a fleet —
-                talk to a project engineer, not a sales rep.
-              </p>
-              <div className="ct-details">
-                <div className="ct-detail"><span className="l">Office</span><span className="v">LS Lee Engineering Pte. Ltd.<br/>Singapore</span></div>
-                <div className="ct-detail"><span className="l">Phone</span><span className="v mono">+65 6XXX XXXX</span></div>
-                <div className="ct-detail"><span className="l">Email</span><span className="v mono">projects@lslee.com.sg</span></div>
-                <div className="ct-detail"><span className="l">Hours</span><span className="v">Mon–Fri · 08:30 – 18:00 SGT<br/>24/7 plant-response on contract</span></div>
-                <div className="ct-detail" style={{ borderBottom: "none" }}><span className="l">Response</span><span className="v">Within 1 business day</span></div>
-              </div>
-            </div>
-            <div className="ct-right">
-              {!submitted ? (
-                <>
-                  <h3>Start a project enquiry</h3>
-                  <div className="form-sub">[ FORM / SECURE TRANSMISSION ]</div>
-                  <form onSubmit={handleSubmit} noValidate>
-                    <div className="form-row two">
-                      <div className={`form-field ${errors.name ? "error" : ""}`}>
-                        <label>Full Name *</label>
-                        <input type="text" value={formData.name} onChange={handleChange("name")} placeholder="Jane Tan" />
-                        {errors.name && <div className="err">⚠ {errors.name}</div>}
-                      </div>
-                      <div className={`form-field ${errors.company ? "error" : ""}`}>
-                        <label>Company *</label>
-                        <input type="text" value={formData.company} onChange={handleChange("company")} placeholder="Operator name" />
-                        {errors.company && <div className="err">⚠ {errors.company}</div>}
-                      </div>
-                    </div>
-                    <div className="form-row two">
-                      <div className={`form-field ${errors.email ? "error" : ""}`}>
-                        <label>Work Email *</label>
-                        <input type="email" value={formData.email} onChange={handleChange("email")} placeholder="jane@operator.com" />
-                        {errors.email && <div className="err">⚠ {errors.email}</div>}
-                      </div>
-                      <div className="form-field">
-                        <label>Phone</label>
-                        <input type="tel" value={formData.phone} onChange={handleChange("phone")} placeholder="+65 …" />
-                      </div>
-                    </div>
-                    <div className="form-row">
-                      <div className={`form-field ${errors.scope ? "error" : ""}`}>
-                        <label>Scope of Enquiry *</label>
-                        <select value={formData.scope} onChange={handleChange("scope")}>
-                          <option value="">Select a scope</option>
-                          <option value="project-engineering">Project Engineering Services</option>
-                          <option value="plant-maintenance">Plant Maintenance &amp; Servicing</option>
-                          <option value="hydrogen-trailer">Hydrogen / Tube Trailer Testing</option>
-                          <option value="cryogenic-hose">Cryogenic Hose Fabrication</option>
-                          <option value="other">Other</option>
-                        </select>
-                        {errors.scope && <div className="err">⚠ {errors.scope}</div>}
-                      </div>
-                    </div>
-                    <div className="form-row">
-                      <div className={`form-field ${errors.message ? "error" : ""}`}>
-                        <label>Project Notes *</label>
-                        <textarea value={formData.message} onChange={handleChange("message")} placeholder="Site, timeline, scope, constraints…" />
-                        {errors.message && <div className="err">⚠ {errors.message}</div>}
-                      </div>
-                    </div>
-                    <button type="submit" className="form-submit">
-                      Send Enquiry <I.Arrow style={{ stroke: "currentColor" }} />
-                    </button>
-                  </form>
-                </>
-              ) : (
-                <div className="form-success">
-                  <div className="check"><I.Check /></div>
-                  <h3 style={{ marginBottom: 8 }}>Enquiry received.</h3>
-                  <p className="mono" style={{ fontSize: 12, letterSpacing: "0.1em", marginBottom: 16, opacity: 0.7 }}>REF · LSL-{Date.now().toString().slice(-6)}</p>
-                  <p style={{ fontSize: 14, opacity: 0.9 }}>
-                    A project engineer will respond within one business day.
-                  </p>
-                  <button onClick={() => { setSubmitted(false); setFormData({ name: "", company: "", email: "", phone: "", scope: "", message: "" }); }} style={{ marginTop: 24, background: "transparent", color: "white", border: "2px solid white", padding: "10px 18px", fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer" }}>
-                    Send Another
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <h2 style={{
+            fontFamily: 'Archivo, sans-serif',
+            fontSize: '48px',
+            fontWeight: 900,
+            marginBottom: '24px',
+            color: '#FFF',
+            lineHeight: 1.2
+          }}>
+            Ready to Discuss <span style={{ color: '#DC2626' }}>Your Project?</span>
+          </h2>
+          <p style={{
+            fontSize: '18px',
+            color: '#94A3B8',
+            marginBottom: '40px',
+            lineHeight: 1.7
+          }}>
+            Whether you're scoping a new plant, planning a turnaround, or recertifying a fleet — talk to a project engineer, not a sales rep.
+          </p>
+          <a href="mailto:projects@lslee.com.sg" style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '10px',
+            padding: '18px 40px',
+            background: '#DC2626',
+            color: '#FFF',
+            border: '2px solid #DC2626',
+            fontFamily: 'Archivo, sans-serif',
+            fontWeight: 700,
+            fontSize: '15px',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em',
+            textDecoration: 'none',
+            cursor: 'pointer',
+            transition: 'all 0.3s'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.background = '#FFF'
+            e.target.style.color = '#DC2626'
+            e.target.style.borderColor = '#FFF'
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.background = '#DC2626'
+            e.target.style.color = '#FFF'
+            e.target.style.borderColor = '#DC2626'
+          }}>
+            Get in Touch <I.Arrow />
+          </a>
         </div>
       </motion.section>
-    </div>
-  )
-}
