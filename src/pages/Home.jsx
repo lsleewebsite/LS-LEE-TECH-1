@@ -129,63 +129,82 @@ export default function Home() {
 
   return (
     <div>
-      {/* HERO */}
-      <section id="home" className="hero">
-        <div className="hero-bg">
-          <div className="hero-image"></div>
-        </div>
-        <div className="hero-content">
-          <div className="wrap">
+      {/* HERO - Side-by-Side Layout - NO STATS */}
+      <section id="home" style={{ background: '#0F172A', padding: '80px 32px' }}>
+        <div className="wrap">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '60px',
+            alignItems: 'center'
+          }}>
+            {/* Left Content */}
             <motion.div
-              style={{ textAlign: 'center', maxWidth: '1000px', margin: '0 auto' }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              <div className="hero-tag mono" style={{ justifyContent: 'center' }}>
-                <span className="dot"></span>
-                <span>EST. 1989 — SINGAPORE</span>
+              <div style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '12px',
+                padding: '8px 16px',
+                background: 'rgba(255,255,255,0.1)',
+                marginBottom: '24px'
+              }}>
+                <div style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  background: '#DC2626'
+                }}></div>
+                <span style={{
+                  fontFamily: 'IBM Plex Mono, monospace',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  color: '#FFF',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase'
+                }}>
+                  EST. 1989 — SINGAPORE
+                </span>
               </div>
-              
-              <motion.h1
-                style={{ margin: '0 auto 24px', fontSize: '48px' }}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                37+ Years Delivering Safety-Critical Mechanical Solutions to Singapore's Gas and Process Industries
-              </motion.h1>
-              
-              <motion.p 
-                className="hero-sub"
-                style={{ margin: '0 auto 32px', maxWidth: '700px' }}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                From semiconductor gas plants to hydrogen trailer servicing, L.S. Lee Technology Pte Ltd
-                delivers safety-critical mechanical solutions backed by decades of frontline
-                experience.
-              </motion.p>
-              
-              <motion.div 
-                className="hero-ctas"
-                style={{ justifyContent: 'center' }}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-              >
+
+              <h1 style={{
+                fontFamily: 'Archivo, sans-serif',
+                fontSize: '48px',
+                fontWeight: 900,
+                color: '#FFF',
+                lineHeight: 1.1,
+                marginBottom: '24px'
+              }}>
+                37+ Years Delivering Safety-Critical Mechanical Solutions
+              </h1>
+
+              <p style={{
+                fontSize: '18px',
+                color: '#94A3B8',
+                lineHeight: 1.7,
+                marginBottom: '32px'
+              }}>
+                From semiconductor gas plants to hydrogen trailer servicing, L.S. Lee Technology Pte Ltd delivers safety-critical mechanical solutions backed by decades of frontline experience.
+              </p>
+
+              <div style={{
+                display: 'flex',
+                gap: '16px'
+              }}>
                 <a href="#industries" style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '10px',
-                  padding: '18px 40px',
+                  padding: '16px 36px',
                   background: '#DC2626',
                   color: '#FFF',
                   border: '2px solid #DC2626',
                   fontFamily: 'Archivo, sans-serif',
                   fontWeight: 700,
-                  fontSize: '15px',
+                  fontSize: '14px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.05em',
                   textDecoration: 'none',
@@ -204,79 +223,148 @@ export default function Home() {
                 }}>
                   Explore Our Industries <I.Arrow />
                 </a>
-                <a href="/projects" className="btn btn-outline">View Projects</a>
-              </motion.div>
+                
+                <a href="/projects" style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  padding: '16px 36px',
+                  background: 'transparent',
+                  color: '#FFF',
+                  border: '2px solid rgba(255,255,255,0.3)',
+                  fontFamily: 'Archivo, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '14px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.borderColor = '#FFF'
+                  e.target.style.background = 'rgba(255,255,255,0.1)'
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.borderColor = 'rgba(255,255,255,0.3)'
+                  e.target.style.background = 'transparent'
+                }}>
+                  View Projects
+                </a>
+              </div>
             </motion.div>
 
-            {/* Stats Cards - SMALLER */}
+            {/* Right Image */}
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.0 }}
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(4, 1fr)',
-                gap: '16px',
-                marginTop: '48px',
-                maxWidth: '1100px',
-                margin: '48px auto 0'
+                height: '600px',
+                background: '#E5E7EB',
+                border: '2px solid rgba(255,255,255,0.2)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}
             >
-              {[
-                { value: '37+', label: 'Years Of Experience' },
-                { value: 'XX', label: 'Sit amet consectetur' },
-                { value: 'XX', label: 'Adipiscing elit sed' },
-                { value: 'XX', label: 'Do eiusmod tempor' }
-              ].map((stat, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1.2 + (i * 0.1) }}
-                  style={{
-                    padding: '20px 16px',
-                    background: 'rgba(255,255,255,0.08)',
-                    border: '2px solid rgba(255,255,255,0.2)',
-                    textAlign: 'center',
-                    transition: 'all 0.3s'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'rgba(255,255,255,0.12)'
-                    e.currentTarget.style.borderColor = '#DC2626'
-                    e.currentTarget.style.transform = 'translateY(-4px)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'rgba(255,255,255,0.08)'
-                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'
-                    e.currentTarget.style.transform = 'translateY(0)'
-                  }}
-                >
-                  <div style={{
-                    fontFamily: 'Archivo, sans-serif',
-                    fontSize: '36px',
-                    fontWeight: 900,
-                    color: '#DC2626',
-                    lineHeight: 1,
-                    marginBottom: '8px'
-                  }}>
-                    {stat.value}
-                  </div>
-                  <div style={{
-                    fontFamily: 'IBM Plex Mono, monospace',
-                    fontSize: '10px',
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    color: 'rgba(255,255,255,0.65)',
-                    fontWeight: 600
-                  }}>
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
+              <div style={{ textAlign: 'center' }}>
+                <div style={{
+                  fontFamily: 'IBM Plex Mono, monospace',
+                  fontSize: '12px',
+                  fontWeight: 700,
+                  color: '#64748B',
+                  letterSpacing: '0.1em',
+                  marginBottom: '8px'
+                }}>
+                  [ HERO IMAGE ]
+                </div>
+                <div style={{
+                  fontFamily: 'IBM Plex Mono, monospace',
+                  fontSize: '10px',
+                  color: '#94A3B8',
+                  letterSpacing: '0.1em'
+                }}>
+                  1200 × 900px
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
+
+      {/* STATS CARDS - Separate Section - White Background */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        variants={fadeInUp}
+        style={{ background: '#FFF', padding: '80px 32px' }}
+      >
+        <div className="wrap">
+          <motion.div
+            variants={staggerContainer}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '24px',
+              maxWidth: '1200px',
+              margin: '0 auto'
+            }}
+          >
+            {[
+              { value: '37+', label: 'Years Of Experience' },
+              { value: 'XX', label: 'Completed Projects' },
+              { value: 'XX', label: 'Industry Certifications' },
+              { value: 'XX', label: 'Team Members' }
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                variants={cardVariant}
+                transition={{ duration: 0.5 }}
+                style={{
+                  padding: '40px 24px',
+                  background: '#FFF',
+                  border: '2px solid #E5E7EB',
+                  textAlign: 'center',
+                  transition: 'all 0.3s',
+                  cursor: 'default'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#DC2626'
+                  e.currentTarget.style.transform = 'translateY(-4px)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = '#E5E7EB'
+                  e.currentTarget.style.transform = 'translateY(0)'
+                }}
+              >
+                <div style={{
+                  fontFamily: 'Archivo, sans-serif',
+                  fontSize: '48px',
+                  fontWeight: 900,
+                  color: '#DC2626',
+                  lineHeight: 1,
+                  marginBottom: '12px'
+                }}>
+                  {stat.value}
+                </div>
+                <div style={{
+                  fontFamily: 'IBM Plex Mono, monospace',
+                  fontSize: '11px',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: '#64748B',
+                  fontWeight: 600
+                }}>
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
 
       {/* INDUSTRIES - White Background */}
       <motion.section 
