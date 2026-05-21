@@ -73,12 +73,6 @@ const I = {
       <polyline points="3,11 8,16 17,4" />
     </svg>
   ),
-  Shield: (p) => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...p}>
-      <path d="M12 2 L21 5 V12 C21 17 17 21 12 22 C7 21 3 17 3 12 V5 Z" />
-      <polyline points="8,12 11,15 16,9" />
-    </svg>
-  ),
 }
 
 // Animation variants
@@ -181,8 +175,34 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                <a href="#industries" className="btn btn-primary">
-                  Explore Our Industries <I.Arrow className="arrow" />
+                <a href="#industries" style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  padding: '18px 40px',
+                  background: '#DC2626',
+                  color: '#FFF',
+                  border: '2px solid #DC2626',
+                  fontFamily: 'Archivo, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '15px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = '#FFF'
+                  e.target.style.color = '#DC2626'
+                  e.target.style.borderColor = '#FFF'
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = '#DC2626'
+                  e.target.style.color = '#FFF'
+                  e.target.style.borderColor = '#DC2626'
+                }}>
+                  Explore Our Industries <I.Arrow />
                 </a>
                 <a href="/projects" className="btn btn-outline">View Projects</a>
               </motion.div>
@@ -267,10 +287,10 @@ export default function Home() {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
         variants={fadeInUp}
-        style={{ background: '#FFF' }}
+        style={{ background: '#FFF', padding: '80px 32px' }}
       >
         <div className="wrap">
-          <div className="sec-head" style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <div className="sec-head" style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '48px', marginBottom: '16px' }}>
               Four Critical <span style={{ color: '#DC2626' }}>Infrastructure Sectors</span>
             </h2>
@@ -362,10 +382,36 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            style={{ textAlign: 'center', marginTop: '64px' }}
+            style={{ textAlign: 'center', marginTop: '48px' }}
           >
-            <a href="/industries" className="btn btn-primary">
-              Explore All Industries <I.Arrow className="arrow" />
+            <a href="/industries" style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              padding: '18px 40px',
+              background: '#DC2626',
+              color: '#FFF',
+              border: '2px solid #DC2626',
+              fontFamily: 'Archivo, sans-serif',
+              fontWeight: 700,
+              fontSize: '15px',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              textDecoration: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.3s'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = '#FFF'
+              e.target.style.color = '#DC2626'
+              e.target.style.borderColor = '#FFF'
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = '#DC2626'
+              e.target.style.color = '#FFF'
+              e.target.style.borderColor = '#DC2626'
+            }}>
+              Explore All Industries <I.Arrow />
             </a>
           </motion.div>
         </div>
@@ -380,10 +426,10 @@ export default function Home() {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
         variants={fadeInUp}
-        style={{ background: '#0F172A', color: '#FFF' }}
+        style={{ background: '#0F172A', color: '#FFF', padding: '80px 32px' }}
       >
         <div className="wrap">
-          <div className="sec-head" style={{ textAlign: 'center', marginBottom: '60px' }}>
+          <div className="sec-head" style={{ textAlign: 'center', marginBottom: '48px' }}>
             <h2 style={{ fontSize: '48px', marginBottom: '16px', color: '#FFF' }}>
               Integrated <span style={{ color: '#DC2626' }}>Engineering Services</span>
             </h2>
@@ -400,7 +446,7 @@ export default function Home() {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '32px'
+              gap: '24px'
             }}
           >
             {[
@@ -439,7 +485,7 @@ export default function Home() {
                 variants={cardVariant}
                 transition={{ duration: 0.5 }}
                 style={{
-                  padding: '48px',
+                  padding: '36px',
                   background: 'rgba(255,255,255,0.05)',
                   border: '2px solid rgba(255,255,255,0.1)',
                   textDecoration: 'none',
@@ -448,7 +494,7 @@ export default function Home() {
                   cursor: 'pointer',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '20px'
+                  gap: '16px'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = '#DC2626'
@@ -470,7 +516,7 @@ export default function Home() {
                 }}>
                   <div style={{
                     fontFamily: 'Archivo, sans-serif',
-                    fontSize: '48px',
+                    fontSize: '40px',
                     fontWeight: 900,
                     color: 'rgba(255,255,255,0.1)',
                     lineHeight: 1
@@ -488,7 +534,7 @@ export default function Home() {
                 <div>
                   <h3 style={{
                     fontFamily: 'Archivo, sans-serif',
-                    fontSize: '28px',
+                    fontSize: '24px',
                     fontWeight: 900,
                     marginBottom: '8px',
                     lineHeight: 1.2,
@@ -509,7 +555,7 @@ export default function Home() {
                 </div>
 
                 <p style={{
-                  fontSize: '15px',
+                  fontSize: '14px',
                   color: '#94A3B8',
                   lineHeight: 1.7,
                   margin: 0
@@ -539,7 +585,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            style={{ textAlign: 'center', marginTop: '48px' }}
+            style={{ textAlign: 'center', marginTop: '40px' }}
           >
             <a href="/services" style={{
               display: 'inline-flex',
@@ -574,7 +620,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* PROJECTS - Asymmetric Masonry Grid - White Background */}
+      {/* PROJECTS - Asymmetric Masonry Grid - White Background - SMALLER */}
       <motion.section 
         id="projects" 
         className="section"
@@ -583,10 +629,10 @@ export default function Home() {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
         variants={fadeInUp}
-        style={{ background: '#FFF', padding: '100px 32px' }}
+        style={{ background: '#FFF', padding: '80px 32px' }}
       >
         <div className="wrap">
-          <div className="sec-head" style={{ textAlign: 'center', marginBottom: '60px' }}>
+          <div className="sec-head" style={{ textAlign: 'center', marginBottom: '48px' }}>
             <h2 style={{ fontSize: '48px', marginBottom: '16px' }}>
               Engineering That <span style={{ color: '#DC2626' }}>Delivers</span>
             </h2>
@@ -595,7 +641,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Asymmetric Masonry Grid */}
+          {/* Asymmetric Masonry Grid - SMALLER */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -604,209 +650,16 @@ export default function Home() {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(12, 1fr)',
-              gap: '24px',
-              marginBottom: '60px'
+              gap: '20px',
+              marginBottom: '40px'
             }}
           >
-            {/* Large Featured Project - Spans 8 columns */}
+            {/* Large Featured Project - Spans 8 columns - SMALLER */}
             <motion.div
               variants={cardVariant}
               transition={{ duration: 0.5 }}
               style={{
                 gridColumn: 'span 8',
-                background: '#FFF',
-                border: '2px solid #E5E7EB',
-                overflow: 'hidden',
-                transition: 'all 0.3s',
-                cursor: 'pointer'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#DC2626'
-                e.currentTarget.style.transform = 'translateY(-4px)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#E5E7EB'
-                e.currentTarget.style.transform = 'translateY(0)'
-              }}
-            >
-              <div style={{
-                height: '400px',
-                background: '#E5E7EB',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderBottom: '2px solid #E5E7EB'
-              }}>
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{
-                    fontFamily: 'IBM Plex Mono, monospace',
-                    fontSize: '12px',
-                    fontWeight: 700,
-                    color: '#64748B',
-                    letterSpacing: '0.1em',
-                    marginBottom: '8px'
-                  }}>
-                    [ FEATURED PROJECT ]
-                  </div>
-                  <div style={{
-                    fontFamily: 'IBM Plex Mono, monospace',
-                    fontSize: '10px',
-                    color: '#94A3B8',
-                    letterSpacing: '0.1em'
-                  }}>
-                    1600 × 900px
-                  </div>
-                </div>
-              </div>
-              <div style={{ padding: '40px' }}>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  color: '#DC2626',
-                  letterSpacing: '0.12em',
-                  marginBottom: '12px'
-                }}>
-                  PROJECT ENGINEERING
-                </div>
-                <h3 style={{
-                  fontFamily: 'Archivo, sans-serif',
-                  fontSize: '32px',
-                  fontWeight: 900,
-                  marginBottom: '12px',
-                  lineHeight: 1.2,
-                  color: '#0F172A'
-                }}>
-                  Fab-14 UHP Gas Distribution
-                </h3>
-                <p style={{
-                  fontSize: '16px',
-                  color: '#64748B',
-                  lineHeight: 1.7,
-                  marginBottom: '24px'
-                }}>
-                  Design, fabrication, and installation of ultra-high-purity gas distribution network for new wafer fab expansion.
-                </p>
-                <div style={{
-                  display: 'flex',
-                  gap: '24px',
-                  paddingTop: '16px',
-                  borderTop: '1px solid #E5E7EB'
-                }}>
-                  <div>
-                    <div style={{
-                      fontFamily: 'IBM Plex Mono, monospace',
-                      fontSize: '10px',
-                      fontWeight: 600,
-                      color: '#94A3B8',
-                      letterSpacing: '0.1em',
-                      marginBottom: '4px'
-                    }}>
-                      LOCATION
-                    </div>
-                    <div style={{ fontSize: '14px', fontWeight: 600, color: '#0F172A' }}>
-                      Woodlands
-                    </div>
-                  </div>
-                  <div>
-                    <div style={{
-                      fontFamily: 'IBM Plex Mono, monospace',
-                      fontSize: '10px',
-                      fontWeight: 600,
-                      color: '#94A3B8',
-                      letterSpacing: '0.1em',
-                      marginBottom: '4px'
-                    }}>
-                      YEAR
-                    </div>
-                    <div style={{ fontSize: '14px', fontWeight: 600, color: '#0F172A' }}>
-                      2024
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Small Project 1 - Spans 4 columns */}
-            <motion.div
-              variants={cardVariant}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              style={{
-                gridColumn: 'span 4',
-                background: '#FFF',
-                border: '2px solid #E5E7EB',
-                overflow: 'hidden',
-                transition: 'all 0.3s',
-                cursor: 'pointer',
-                display: 'flex',
-                flexDirection: 'column'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#DC2626'
-                e.currentTarget.style.transform = 'translateY(-4px)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#E5E7EB'
-                e.currentTarget.style.transform = 'translateY(0)'
-              }}
-            >
-              <div style={{
-                height: '240px',
-                background: '#E5E7EB',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderBottom: '2px solid #E5E7EB'
-              }}>
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{
-                    fontFamily: 'IBM Plex Mono, monospace',
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    color: '#64748B',
-                    letterSpacing: '0.1em'
-                  }}>
-                    [ PROJECT ]
-                  </div>
-                </div>
-              </div>
-              <div style={{ padding: '28px', flex: 1 }}>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '10px',
-                  fontWeight: 700,
-                  color: '#DC2626',
-                  letterSpacing: '0.12em',
-                  marginBottom: '10px'
-                }}>
-                  MAINTENANCE
-                </div>
-                <h3 style={{
-                  fontFamily: 'Archivo, sans-serif',
-                  fontSize: '20px',
-                  fontWeight: 900,
-                  marginBottom: '10px',
-                  lineHeight: 1.2,
-                  color: '#0F172A'
-                }}>
-                  ASU Plant Turnaround
-                </h3>
-                <p style={{
-                  fontSize: '14px',
-                  color: '#64748B',
-                  lineHeight: 1.6
-                }}>
-                  Major shutdown coordination and equipment overhaul across air separation unit.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Medium Project - Spans 5 columns */}
-            <motion.div
-              variants={cardVariant}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              style={{
-                gridColumn: 'span 5',
                 background: '#FFF',
                 border: '2px solid #E5E7EB',
                 overflow: 'hidden',
@@ -838,11 +691,11 @@ export default function Home() {
                     color: '#64748B',
                     letterSpacing: '0.1em'
                   }}>
-                    [ PROJECT ]
+                    [ FEATURED PROJECT ]
                   </div>
                 </div>
               </div>
-              <div style={{ padding: '32px' }}>
+              <div style={{ padding: '28px' }}>
                 <div style={{
                   fontFamily: 'IBM Plex Mono, monospace',
                   fontSize: '10px',
@@ -851,7 +704,7 @@ export default function Home() {
                   letterSpacing: '0.12em',
                   marginBottom: '10px'
                 }}>
-                  TESTING & CERTIFICATION
+                  PROJECT ENGINEERING
                 </div>
                 <h3 style={{
                   fontFamily: 'Archivo, sans-serif',
@@ -861,15 +714,170 @@ export default function Home() {
                   lineHeight: 1.2,
                   color: '#0F172A'
                 }}>
-                  H₂ Tube Trailer Recertification
+                  Fab-14 UHP Gas Distribution
                 </h3>
                 <p style={{
-                  fontSize: '15px',
+                  fontSize: '14px',
                   color: '#64748B',
                   lineHeight: 1.6,
                   marginBottom: '16px'
                 }}>
-                  DOT recertification program for fleet of 40+ hydrogen tube trailers.
+                  Design, fabrication, and installation of ultra-high-purity gas distribution network.
+                </p>
+                <div style={{
+                  fontFamily: 'IBM Plex Mono, monospace',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  color: '#0F172A'
+                }}>
+                  Woodlands · 2024
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Small Project 1 - Spans 4 columns */}
+            <motion.div
+              variants={cardVariant}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              style={{
+                gridColumn: 'span 4',
+                background: '#FFF',
+                border: '2px solid #E5E7EB',
+                overflow: 'hidden',
+                transition: 'all 0.3s',
+                cursor: 'pointer',
+                display: 'flex',
+                flexDirection: 'column'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#DC2626'
+                e.currentTarget.style.transform = 'translateY(-4px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#E5E7EB'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+            >
+              <div style={{
+                height: '180px',
+                background: '#E5E7EB',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderBottom: '2px solid #E5E7EB'
+              }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{
+                    fontFamily: 'IBM Plex Mono, monospace',
+                    fontSize: '10px',
+                    fontWeight: 700,
+                    color: '#64748B',
+                    letterSpacing: '0.1em'
+                  }}>
+                    [ PROJECT ]
+                  </div>
+                </div>
+              </div>
+              <div style={{ padding: '24px', flex: 1 }}>
+                <div style={{
+                  fontFamily: 'IBM Plex Mono, monospace',
+                  fontSize: '10px',
+                  fontWeight: 700,
+                  color: '#DC2626',
+                  letterSpacing: '0.12em',
+                  marginBottom: '8px'
+                }}>
+                  MAINTENANCE
+                </div>
+                <h3 style={{
+                  fontFamily: 'Archivo, sans-serif',
+                  fontSize: '18px',
+                  fontWeight: 900,
+                  marginBottom: '8px',
+                  lineHeight: 1.2,
+                  color: '#0F172A'
+                }}>
+                  ASU Plant Turnaround
+                </h3>
+                <p style={{
+                  fontSize: '13px',
+                  color: '#64748B',
+                  lineHeight: 1.5
+                }}>
+                  Major shutdown coordination across air separation unit.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Medium Project - Spans 5 columns */}
+            <motion.div
+              variants={cardVariant}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              style={{
+                gridColumn: 'span 5',
+                background: '#FFF',
+                border: '2px solid #E5E7EB',
+                overflow: 'hidden',
+                transition: 'all 0.3s',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#DC2626'
+                e.currentTarget.style.transform = 'translateY(-4px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#E5E7EB'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+            >
+              <div style={{
+                height: '200px',
+                background: '#E5E7EB',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderBottom: '2px solid #E5E7EB'
+              }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{
+                    fontFamily: 'IBM Plex Mono, monospace',
+                    fontSize: '10px',
+                    fontWeight: 700,
+                    color: '#64748B',
+                    letterSpacing: '0.1em'
+                  }}>
+                    [ PROJECT ]
+                  </div>
+                </div>
+              </div>
+              <div style={{ padding: '24px' }}>
+                <div style={{
+                  fontFamily: 'IBM Plex Mono, monospace',
+                  fontSize: '10px',
+                  fontWeight: 700,
+                  color: '#DC2626',
+                  letterSpacing: '0.12em',
+                  marginBottom: '8px'
+                }}>
+                  TESTING & CERTIFICATION
+                </div>
+                <h3 style={{
+                  fontFamily: 'Archivo, sans-serif',
+                  fontSize: '20px',
+                  fontWeight: 900,
+                  marginBottom: '8px',
+                  lineHeight: 1.2,
+                  color: '#0F172A'
+                }}>
+                  H₂ Tube Trailer Recertification
+                </h3>
+                <p style={{
+                  fontSize: '14px',
+                  color: '#64748B',
+                  lineHeight: 1.5,
+                  marginBottom: '12px'
+                }}>
+                  DOT recertification program for fleet of 40+ trailers.
                 </p>
                 <div style={{
                   fontFamily: 'IBM Plex Mono, monospace',
@@ -891,7 +899,7 @@ export default function Home() {
                 background: '#0F172A',
                 border: '2px solid #0F172A',
                 color: '#FFF',
-                padding: '40px 28px',
+                padding: '32px 20px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
@@ -912,17 +920,17 @@ export default function Home() {
               }}
             >
               <div style={{
-                fontSize: '64px',
+                fontSize: '56px',
                 fontFamily: 'Archivo, sans-serif',
                 fontWeight: 900,
-                marginBottom: '16px',
+                marginBottom: '12px',
                 lineHeight: 1
               }}>
                 XX
               </div>
               <div style={{
                 fontFamily: 'IBM Plex Mono, monospace',
-                fontSize: '11px',
+                fontSize: '10px',
                 fontWeight: 600,
                 letterSpacing: '0.1em',
                 opacity: 0.8
@@ -953,7 +961,7 @@ export default function Home() {
               }}
             >
               <div style={{
-                height: '200px',
+                height: '160px',
                 background: '#E5E7EB',
                 display: 'flex',
                 alignItems: 'center',
@@ -963,7 +971,7 @@ export default function Home() {
                 <div style={{ textAlign: 'center' }}>
                   <div style={{
                     fontFamily: 'IBM Plex Mono, monospace',
-                    fontSize: '11px',
+                    fontSize: '10px',
                     fontWeight: 700,
                     color: '#64748B',
                     letterSpacing: '0.1em'
@@ -972,33 +980,33 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div style={{ padding: '28px' }}>
+              <div style={{ padding: '24px' }}>
                 <div style={{
                   fontFamily: 'IBM Plex Mono, monospace',
                   fontSize: '10px',
                   fontWeight: 700,
                   color: '#DC2626',
                   letterSpacing: '0.12em',
-                  marginBottom: '10px'
+                  marginBottom: '8px'
                 }}>
                   CRYOGENIC SYSTEMS
                 </div>
                 <h3 style={{
                   fontFamily: 'Archivo, sans-serif',
-                  fontSize: '20px',
+                  fontSize: '18px',
                   fontWeight: 900,
-                  marginBottom: '10px',
+                  marginBottom: '8px',
                   lineHeight: 1.2,
                   color: '#0F172A'
                 }}>
                   LNG Transfer Line Fabrication
                 </h3>
                 <p style={{
-                  fontSize: '14px',
+                  fontSize: '13px',
                   color: '#64748B',
-                  lineHeight: 1.6
+                  lineHeight: 1.5
                 }}>
-                  Custom vacuum-insulated transfer lines for LNG terminal operations.
+                  Vacuum-insulated transfer lines for LNG operations.
                 </p>
               </div>
             </motion.div>
@@ -1012,125 +1020,44 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.4 }}
             style={{ textAlign: 'center' }}
           >
-            <a href="/projects" className="btn btn-primary">
-              View Full Portfolio <I.Arrow className="arrow" />
+            <a href="/projects" style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              padding: '18px 40px',
+              background: '#DC2626',
+              color: '#FFF',
+              border: '2px solid #DC2626',
+              fontFamily: 'Archivo, sans-serif',
+              fontWeight: 700,
+              fontSize: '15px',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              textDecoration: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.3s'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = '#FFF'
+              e.target.style.color = '#DC2626'
+              e.target.style.borderColor = '#FFF'
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = '#DC2626'
+              e.target.style.color = '#FFF'
+              e.target.style.borderColor = '#DC2626'
+            }}>
+              View Full Portfolio <I.Arrow />
             </a>
           </motion.div>
         </div>
       </motion.section>
 
-      {/* SAFETY - Dark Background */}
-      <motion.section 
-        id="safety" 
-        className="section"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-        variants={fadeInUp}
-        style={{ background: '#0F172A', color: '#FFF' }}
-      >
-        <div className="wrap">
-          <div className="sec-head">
-            <div>
-              <h2 style={{ color: '#FFF' }}>Safety First, <span style={{ color: '#DC2626' }}>Always</span></h2>
-            </div>
-            <p className="sec-intro" style={{ color: '#94A3B8' }}>
-              Zero compromise on safety. Certifications, training, and a track record that speaks for itself.
-            </p>
-          </div>
-          <div className="sft-grid">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="sft-stmt">
-                <div className="lg" style={{ color: '#FFF' }}>2.4 Million Safe Manhours Without Lost-Time Incident</div>
-                <p style={{ color: '#94A3B8' }}>
-                  Our safety culture is built on accountability, training, and frontline ownership. Every technician, every engineer, every supervisor — empowered to stop work if conditions aren't right.
-                </p>
-                <p style={{ color: '#94A3B8' }}>
-                  From daily toolbox talks to advanced HAZOP reviews, safety is integrated into project planning, execution, and closeout.
-                </p>
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="cert-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
-                {[
-                  { mark: "Q", issuer: "SAC-SINGLAS", title: "ISO 9001:2015", sub: "Quality Management" },
-                  { mark: "O", issuer: "SAC-SINGLAS", title: "ISO 45001", sub: "OH&S Management" },
-                  { mark: "★", issuer: "WSH COUNCIL", title: "bizSAFE STAR", sub: "Workplace Safety" },
-                ].map((cert, i) => (
-                  <div className="cert" key={i} style={{
-                    background: 'rgba(255,255,255,0.05)',
-                    border: '2px solid rgba(255,255,255,0.1)'
-                  }}>
-                    <div className="cert-top">
-                      <div className="cert-mark" style={{ color: '#DC2626' }}>{cert.mark}</div>
-                      <div className="cert-issuer" style={{ color: '#94A3B8' }}>{cert.issuer}</div>
-                    </div>
-                    <div>
-                      <h4 style={{ color: '#FFF' }}>{cert.title}</h4>
-                      <div className="sub" style={{ color: '#94A3B8' }}>{cert.sub}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                style={{ textAlign: 'center', marginTop: '24px' }}
-              >
-                <a href="/safety" style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  padding: '18px 40px',
-                  background: '#DC2626',
-                  color: '#FFF',
-                  border: '2px solid #DC2626',
-                  fontFamily: 'Archivo, sans-serif',
-                  fontWeight: 700,
-                  fontSize: '15px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.background = '#FFF'
-                  e.target.style.color = '#DC2626'
-                  e.target.style.borderColor = '#FFF'
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.background = '#DC2626'
-                  e.target.style.color = '#FFF'
-                  e.target.style.borderColor = '#DC2626'
-                }}>
-                  See More <I.Arrow />
-                </a>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* CONTACT - White Background */}
+      {/* CONTACT - Dark Background */}
       <motion.section 
         id="contact" 
         className="section" 
-        style={{ paddingTop: 120, paddingBottom: 120, background: '#FFF' }}
+        style={{ padding: '80px 32px', background: '#0F172A' }}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
@@ -1140,8 +1067,8 @@ export default function Home() {
         <div className="wrap">
           <div className="ct-split">
             <div className="ct-left">
-              <h2>Ready to Discuss <span style={{ color: '#DC2626' }}>Your Project?</span></h2>
-              <p className="sub">
+              <h2 style={{ color: '#FFF' }}>Ready to Discuss <span style={{ color: '#DC2626' }}>Your Project?</span></h2>
+              <p className="sub" style={{ color: '#94A3B8' }}>
                 Whether you're scoping a new plant, planning a turnaround, or recertifying a fleet —
                 talk to a project engineer, not a sales rep.
               </p>
