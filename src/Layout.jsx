@@ -74,7 +74,35 @@ export default function Layout({ currentPageName, children }) {
               )}
             </Link>
 
-            {/* INDUSTRIES SECOND - with Dropdown */}
+            {/* ABOUT SECOND */}
+            <Link
+              to="/About"
+              style={{
+                textDecoration: 'none',
+                padding: '12px 18px',
+                fontSize: '17px',
+                fontWeight: 600,
+                position: 'relative',
+                color: currentPageName === 'About' ? '#DC2626' : '#0A1628',
+                transition: 'color 0.15s'
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#DC2626'}
+              onMouseLeave={(e) => e.target.style.color = currentPageName === 'About' ? '#DC2626' : '#0A1628'}
+            >
+              About
+              {currentPageName === 'About' && (
+                <div style={{
+                  position: 'absolute',
+                  left: '18px',
+                  right: '18px',
+                  bottom: '-35px',
+                  height: '2px',
+                  background: '#DC2626'
+                }}></div>
+              )}
+            </Link>
+
+            {/* INDUSTRIES THIRD - with Dropdown */}
             <div
               style={{ position: 'relative' }}
               onMouseEnter={() => setShowIndustriesDropdown(true)}
@@ -286,7 +314,7 @@ export default function Layout({ currentPageName, children }) {
             <h5 style={{ fontFamily: 'IBM Plex Mono', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#5B6573', marginBottom: '24px' }}>
               Company
             </h5>
-            {[{ name: 'Projects', link: '/Projects' }, { name: 'Safety', link: '/Safety' }, { name: 'Careers', link: '#' }].map((item) => (
+            {[{ name: 'About', link: '/About' }, { name: 'Projects', link: '/Projects' }, { name: 'Safety', link: '/Safety' }, { name: 'Careers', link: '#' }].map((item) => (
               <Link key={item.name} to={item.link} style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
                 onMouseEnter={(e) => e.target.style.color = '#DC2626'}
                 onMouseLeave={(e) => e.target.style.color = '#0A1628'}>
