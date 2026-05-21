@@ -55,11 +55,11 @@ export default function Layout({ currentPageName, children }) {
                 fontSize: '17px',
                 fontWeight: 600,
                 position: 'relative',
-                color: currentPageName === 'Home' ? '#FF5722' : '#0A1628',
+                color: currentPageName === 'Home' ? '#DC2626' : '#0A1628',
                 transition: 'color 0.15s'
               }}
-              onMouseEnter={(e) => e.target.style.color = '#FF5722'}
-              onMouseLeave={(e) => e.target.style.color = currentPageName === 'Home' ? '#FF5722' : '#0A1628'}
+              onMouseEnter={(e) => e.target.style.color = '#DC2626'}
+              onMouseLeave={(e) => e.target.style.color = currentPageName === 'Home' ? '#DC2626' : '#0A1628'}
             >
               Home
               {currentPageName === 'Home' && (
@@ -69,7 +69,7 @@ export default function Layout({ currentPageName, children }) {
                   right: '18px',
                   bottom: '-35px',
                   height: '2px',
-                  background: '#FF5722'
+                  background: '#DC2626'
                 }}></div>
               )}
             </Link>
@@ -88,14 +88,14 @@ export default function Layout({ currentPageName, children }) {
                   fontSize: '17px',
                   fontWeight: 600,
                   position: 'relative',
-                  color: currentPageName === 'Industries' ? '#FF5722' : '#0A1628',
+                  color: currentPageName === 'Industries' ? '#DC2626' : '#0A1628',
                   transition: 'color 0.15s',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '6px'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.color = '#FF5722'}
-                onMouseLeave={(e) => e.currentTarget.style.color = currentPageName === 'Industries' ? '#FF5722' : '#0A1628'}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#DC2626'}
+                onMouseLeave={(e) => e.currentTarget.style.color = currentPageName === 'Industries' ? '#DC2626' : '#0A1628'}
               >
                 Industries
                 <span style={{ fontSize: '11px' }}>▼</span>
@@ -106,7 +106,7 @@ export default function Layout({ currentPageName, children }) {
                     right: '18px',
                     bottom: '-35px',
                     height: '2px',
-                    background: '#FF5722'
+                    background: '#DC2626'
                   }}></div>
                 )}
               </Link>
@@ -138,7 +138,7 @@ export default function Layout({ currentPageName, children }) {
                       }}
                       onMouseEnter={(e) => {
                         e.target.style.background = '#F4F5F7'
-                        e.target.style.color = '#FF5722'
+                        e.target.style.color = '#DC2626'
                         e.target.style.paddingLeft = '28px'
                       }}
                       onMouseLeave={(e) => {
@@ -165,11 +165,11 @@ export default function Layout({ currentPageName, children }) {
                   fontSize: '17px',
                   fontWeight: 600,
                   position: 'relative',
-                  color: currentPageName === item ? '#FF5722' : '#0A1628',
+                  color: currentPageName === item ? '#DC2626' : '#0A1628',
                   transition: 'color 0.15s'
                 }}
-                onMouseEnter={(e) => e.target.style.color = '#FF5722'}
-                onMouseLeave={(e) => e.target.style.color = currentPageName === item ? '#FF5722' : '#0A1628'}
+                onMouseEnter={(e) => e.target.style.color = '#DC2626'}
+                onMouseLeave={(e) => e.target.style.color = currentPageName === item ? '#DC2626' : '#0A1628'}
               >
                 {item}
                 {currentPageName === item && (
@@ -179,7 +179,7 @@ export default function Layout({ currentPageName, children }) {
                     right: '18px',
                     bottom: '-35px',
                     height: '2px',
-                    background: '#FF5722'
+                    background: '#DC2626'
                   }}></div>
                 )}
               </Link>
@@ -200,8 +200,8 @@ export default function Layout({ currentPageName, children }) {
                 fontFamily: 'IBM Plex Sans, system-ui, sans-serif'
               }}
               onMouseEnter={(e) => {
-                e.target.style.background = '#FF5722'
-                e.target.style.borderColor = '#FF5722'
+                e.target.style.background = '#DC2626'
+                e.target.style.borderColor = '#DC2626'
               }}
               onMouseLeave={(e) => {
                 e.target.style.background = '#0A1628'
@@ -261,7 +261,7 @@ export default function Layout({ currentPageName, children }) {
                 key={industry.id}
                 to={`/Industries#${industry.id}`}
                 style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
-                onMouseEnter={(e) => e.target.style.color = '#FF5722'}
+                onMouseEnter={(e) => e.target.style.color = '#DC2626'}
                 onMouseLeave={(e) => e.target.style.color = '#0A1628'}
               >
                 {industry.name}
@@ -275,7 +275,7 @@ export default function Layout({ currentPageName, children }) {
             </h5>
             {['Project Engineering', 'Plant Maintenance', 'Trailer Testing', 'Cryogenic Hose'].map((service) => (
               <a key={service} href="#services" style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
-                onMouseEnter={(e) => e.target.style.color = '#FF5722'}
+                onMouseEnter={(e) => e.target.style.color = '#DC2626'}
                 onMouseLeave={(e) => e.target.style.color = '#0A1628'}>
                 {service}
               </a>
@@ -288,7 +288,7 @@ export default function Layout({ currentPageName, children }) {
             </h5>
             {[{ name: 'Projects', link: '/Projects' }, { name: 'Safety', link: '/Safety' }, { name: 'Careers', link: '#' }].map((item) => (
               <Link key={item.name} to={item.link} style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
-                onMouseEnter={(e) => e.target.style.color = '#FF5722'}
+                onMouseEnter={(e) => e.target.style.color = '#DC2626'}
                 onMouseLeave={(e) => e.target.style.color = '#0A1628'}>
                 {item.name}
               </Link>
@@ -300,7 +300,7 @@ export default function Layout({ currentPageName, children }) {
               Contact
             </h5>
             <Link to="/Contact" style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
-              onMouseEnter={(e) => e.target.style.color = '#FF5722'}
+              onMouseEnter={(e) => e.target.style.color = '#DC2626'}
               onMouseLeave={(e) => e.target.style.color = '#0A1628'}>
               Start Enquiry
             </Link>
@@ -321,10 +321,10 @@ export default function Layout({ currentPageName, children }) {
           <span>© 2026 LS LEE ENGINEERING PTE. LTD. — UEN 200300000X</span>
           <div style={{ display: 'flex', gap: '24px' }}>
             <a href="#" style={{ color: 'rgba(255,255,255,0.6)', transition: 'color 0.15s' }}
-              onMouseEnter={(e) => e.target.style.color = '#FF5722'}
+              onMouseEnter={(e) => e.target.style.color = '#DC2626'}
               onMouseLeave={(e) => e.target.style.color = 'rgba(255,255,255,0.6)'}>PRIVACY</a>
             <a href="#" style={{ color: 'rgba(255,255,255,0.6)', transition: 'color 0.15s' }}
-              onMouseEnter={(e) => e.target.style.color = '#FF5722'}
+              onMouseEnter={(e) => e.target.style.color = '#DC2626'}
               onMouseLeave={(e) => e.target.style.color = 'rgba(255,255,255,0.6)'}>TERMS</a>
           </div>
         </div>
