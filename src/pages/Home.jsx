@@ -1198,7 +1198,7 @@ export default function Home() {
             marginBottom: '40px',
             lineHeight: 1.7
           }}>
-            Whether you're scoping a new plant, planning a turnaround, or recertifying a fleet — talk to a project engineer, not a sales rep.
+            Connect with our engineering specialists for professional consultation on your next project. We deliver technical solutions built on decades of industry experience.
           </p>
           <a href="mailto:projects@lslee.com.sg" style={{
             display: 'inline-flex',
