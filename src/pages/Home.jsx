@@ -651,42 +651,156 @@ export default function Home() {
         variants={fadeInUp}
       >
         <div className="wrap">
-          <div className="sec-head">
-            <div>
-              <h2>Our Engineering <span className="accent">Capabilities</span></h2>
-            </div>
+          <div className="sec-head" style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontSize: '48px', marginBottom: '16px' }}>
+              Integrated <span className="accent">Engineering Services</span>
+            </h2>
+            <p style={{ fontSize: '18px', color: '#64748B', maxWidth: '700px', margin: '0 auto' }}>
+              Four core capabilities delivering turnkey mechanical solutions
+            </p>
           </div>
+          
           <motion.div 
-            className="svc-grid"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '32px'
+            }}
           >
             {[
-              { num: "01", icon: <I.Wrench />, title: "Project Engineering", bullets: ["Gas plant equipment erection, installation and integration", "Underground gas piping", "Steel structure fabrication", "Metering skid station fabrication"] },
-              { num: "02", icon: <I.Gauge />, title: "Plant Maintenance", bullets: ["Process plant routine and shutdown maintenance", "Metering skid servicing", "Underground pipeline servicing"] },
-              { num: "03", icon: <I.Trailer />, title: "Hydrogen Trailer Testing", bullets: ["HP tube testing and certification", "Tube trailer servicing", "Tube trailer refurbishment support", "Related skid support"] },
-              { num: "04", icon: <I.Snow />, title: "Cryogenic Systems", bullets: ["Cryogenic hose fabrication", "Cryogenic hose repair", "Cryogenic hose maintenance", "Industrial gas applications"] },
+              { 
+                num: "01", 
+                icon: <I.Wrench />, 
+                title: "Project Engineering", 
+                tag: "Turnkey Mechanical Construction",
+                desc: "Complete project lifecycle from engineering through commissioning for gas plants and process facilities."
+              },
+              { 
+                num: "02", 
+                icon: <I.Gauge />, 
+                title: "Plant Maintenance", 
+                tag: "24/7 Operations Support",
+                desc: "Comprehensive maintenance programs to maximize uptime and asset life across critical infrastructure."
+              },
+              { 
+                num: "03", 
+                icon: <I.Trailer />, 
+                title: "Hydrogen Trailer Testing", 
+                tag: "DOT/ISO Certification",
+                desc: "Specialized testing and certification for hydrogen tube trailers with full fleet management support."
+              },
+              { 
+                num: "04", 
+                icon: <I.Snow />, 
+                title: "Cryogenic Systems", 
+                tag: "Vacuum-Insulated Equipment",
+                desc: "Custom fabrication and maintenance for cryogenic transfer systems and industrial gas applications."
+              },
             ].map((it, i) => (
-              <motion.div 
-                className="svc-row" 
+              <motion.a
+                href="/services"
                 key={i}
                 variants={cardVariant}
                 transition={{ duration: 0.5 }}
+                style={{
+                  padding: '48px',
+                  background: '#FFF',
+                  border: '2px solid #E5E7EB',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  transition: 'all 0.3s',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '20px'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#DC2626'
+                  e.currentTarget.style.transform = 'translateY(-4px)'
+                  e.currentTarget.querySelector('.svc-icon').style.color = '#DC2626'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = '#E5E7EB'
+                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.querySelector('.svc-icon').style.color = '#0F172A'
+                }}
               >
-                <div className="svc-num">{it.num}</div>
-                <div className="svc-title-cell">
-                  <h3>{it.title}</h3>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 8, opacity: 0.7 }}>{it.icon}</div>
+                {/* Number + Icon Row */}
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}>
+                  <div style={{
+                    fontFamily: 'Archivo, sans-serif',
+                    fontSize: '48px',
+                    fontWeight: 900,
+                    color: '#E5E7EB',
+                    lineHeight: 1
+                  }}>
+                    {it.num}
+                  </div>
+                  <div className="svc-icon" style={{ 
+                    color: '#0F172A',
+                    transition: 'color 0.3s'
+                  }}>
+                    {it.icon}
+                  </div>
                 </div>
-                <div className="svc-detail">
-                  <ul className="svc-bullets">
-                    {it.bullets.map(b => <li key={b}>{b}</li>)}
-                  </ul>
+
+                {/* Title + Tag */}
+                <div>
+                  <h3 style={{
+                    fontFamily: 'Archivo, sans-serif',
+                    fontSize: '28px',
+                    fontWeight: 900,
+                    marginBottom: '8px',
+                    lineHeight: 1.2,
+                    color: '#0F172A'
+                  }}>
+                    {it.title}
+                  </h3>
+                  <div style={{
+                    fontFamily: 'IBM Plex Mono, monospace',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    color: '#DC2626',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase'
+                  }}>
+                    {it.tag}
+                  </div>
                 </div>
-                <div className="svc-cta"><a>Detail <I.Arrow /></a></div>
-              </motion.div>
+
+                {/* Description */}
+                <p style={{
+                  fontSize: '15px',
+                  color: '#64748B',
+                  lineHeight: 1.7,
+                  margin: 0
+                }}>
+                  {it.desc}
+                </p>
+
+                {/* Arrow Link */}
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  marginTop: 'auto',
+                  fontSize: '13px',
+                  fontWeight: 700,
+                  color: '#0F172A',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
+                }}>
+                  Learn More <I.Arrow />
+                </div>
+              </motion.a>
             ))}
           </motion.div>
 
@@ -699,12 +813,11 @@ export default function Home() {
             style={{ textAlign: 'center', marginTop: '48px' }}
           >
             <a href="/services" className="btn btn-primary">
-              See More <I.Arrow className="arrow" />
+              View All Services <I.Arrow className="arrow" />
             </a>
           </motion.div>
         </div>
       </motion.section>
-
       {/* PROJECTS - Full-Width Slider */}
       <motion.section 
         id="projects" 
