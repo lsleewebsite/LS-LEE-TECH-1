@@ -129,7 +129,7 @@ export default function Home() {
 
   return (
     <div>
-      {/* HERO - Dark Background */}
+      {/* HERO */}
       <section id="home" className="hero">
         <div className="hero-bg">
           <div className="hero-image"></div>
@@ -148,7 +148,7 @@ export default function Home() {
               </div>
               
               <motion.h1
-                style={{ margin: '0 auto 32px' }}
+                style={{ margin: '0 auto 24px', fontSize: '48px' }}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -158,7 +158,7 @@ export default function Home() {
               
               <motion.p 
                 className="hero-sub"
-                style={{ margin: '0 auto 48px', maxWidth: '700px' }}
+                style={{ margin: '0 auto 32px', maxWidth: '700px' }}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
@@ -208,7 +208,7 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* Stats Cards */}
+            {/* Stats Cards - SMALLER */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -216,10 +216,10 @@ export default function Home() {
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(4, 1fr)',
-                gap: '20px',
-                marginTop: '80px',
+                gap: '16px',
+                marginTop: '48px',
                 maxWidth: '1100px',
-                margin: '80px auto 0'
+                margin: '48px auto 0'
               }}
             >
               {[
@@ -234,7 +234,7 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 1.2 + (i * 0.1) }}
                   style={{
-                    padding: '28px 20px',
+                    padding: '20px 16px',
                     background: 'rgba(255,255,255,0.08)',
                     border: '2px solid rgba(255,255,255,0.2)',
                     textAlign: 'center',
@@ -253,17 +253,17 @@ export default function Home() {
                 >
                   <div style={{
                     fontFamily: 'Archivo, sans-serif',
-                    fontSize: '42px',
+                    fontSize: '36px',
                     fontWeight: 900,
                     color: '#DC2626',
                     lineHeight: 1,
-                    marginBottom: '10px'
+                    marginBottom: '8px'
                   }}>
                     {stat.value}
                   </div>
                   <div style={{
                     fontFamily: 'IBM Plex Mono, monospace',
-                    fontSize: '11px',
+                    fontSize: '10px',
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
                     color: 'rgba(255,255,255,0.65)',
