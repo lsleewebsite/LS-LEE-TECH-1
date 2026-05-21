@@ -233,7 +233,7 @@ export default function Industries() {
           gap: '12px'
         }}>
           {industries.map((industry) => (
-            
+            <a
               key={industry.id}
               href={`#${industry.id}`}
               style={{
