@@ -29,12 +29,12 @@ const Icon = {
 
 export default function About() {
   const timeline = [
-    { year: "1989", event: "Founded", detail: "Established as a mechanical contractor serving Singapore's emerging industrial gas sector" },
-    { year: "1995", event: "First Major Fab Project", detail: "Secured first semiconductor gas distribution project, launching our UHP expertise" },
-    { year: "2003", event: "ISO Certification", detail: "Achieved ISO 9001:2000 certification, formalizing quality management systems" },
-    { year: "2010", event: "Hydrogen Testing Facility", detail: "Commissioned dedicated tube trailer testing facility in Tuas, first of its kind in Singapore" },
-    { year: "2018", event: "Safety Milestone", detail: "Reached 2 million safe manhours without lost-time incident across active projects" },
-    { year: "2024", event: "New Energy Expansion", detail: "Expanded capabilities into hydrogen infrastructure for data center fuel cells and clean energy" }
+    { year: '1989', event: 'Founded', detail: 'Established as a mechanical contractor serving Singapore's emerging industrial gas sector' },
+    { year: '1995', event: 'First Major Fab Project', detail: 'Secured first semiconductor gas distribution project, launching our UHP expertise' },
+    { year: '2003', event: 'ISO Certification', detail: 'Achieved ISO 9001:2000 certification, formalizing quality management systems' },
+    { year: '2010', event: 'Hydrogen Testing Facility', detail: 'Commissioned dedicated tube trailer testing facility in Tuas, first of its kind in Singapore' },
+    { year: '2018', event: 'Safety Milestone', detail: 'Reached 2 million safe manhours without lost-time incident across active projects' },
+    { year: '2024', event: 'New Energy Expansion', detail: 'Expanded capabilities into hydrogen infrastructure for data center fuel cells and clean energy' }
   ]
 
   const values = [
