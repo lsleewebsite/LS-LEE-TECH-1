@@ -272,7 +272,7 @@ export default function Home() {
         <div className="wrap">
           <div className="sec-head" style={{ textAlign: 'center', marginBottom: '80px' }}>
             <h2 style={{ fontSize: '48px', marginBottom: '16px' }}>
-              Four Critical <span className="accent">Infrastructure Sectors</span>
+              Four Critical <span style={{ color: '#DC2626' }}>Infrastructure Sectors</span>
             </h2>
             <p style={{ fontSize: '18px', color: '#64748B', maxWidth: '700px', margin: '0 auto' }}>
               Where safety meets precision engineering
@@ -574,7 +574,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* PROJECTS - Timeline Layout - White Background */}
+      {/* PROJECTS - Asymmetric Masonry Grid - White Background */}
       <motion.section 
         id="projects" 
         className="section"
@@ -586,279 +586,431 @@ export default function Home() {
         style={{ background: '#FFF', padding: '100px 32px' }}
       >
         <div className="wrap">
-          <div className="sec-head" style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <div className="sec-head" style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '48px', marginBottom: '16px' }}>
-              Engineering That <span className="accent">Delivers</span>
+              Engineering That <span style={{ color: '#DC2626' }}>Delivers</span>
             </h2>
             <p style={{ fontSize: '18px', color: '#64748B', maxWidth: '700px', margin: '0 auto' }}>
               From concept to commissioning across Singapore's critical infrastructure
             </p>
           </div>
 
-          {/* Timeline */}
-          <div style={{ position: 'relative', maxWidth: '1100px', margin: '0 auto' }}>
-            {/* Vertical Line */}
-            <div style={{
-              position: 'absolute',
-              left: '50%',
-              top: '0',
-              bottom: '0',
-              width: '2px',
-              background: '#E5E7EB',
-              transform: 'translateX(-50%)'
-            }} />
-
-            {/* Timeline Items */}
-            {[
-              { 
-                year: '2024',
-                title: "Fab-14 UHP Gas Distribution", 
-                scope: "PROJECT ENGINEERING",
-                desc: "Design, fabrication, and installation of ultra-high-purity gas distribution network for new wafer fab expansion.", 
-                loc: "Woodlands",
-                side: 'left'
-              },
-              { 
-                year: '2024',
-                title: "H₂ Tube Trailer Recertification", 
-                scope: "TESTING & CERTIFICATION",
-                desc: "DOT recertification program for fleet of 40+ hydrogen tube trailers serving regional industrial customers.", 
-                loc: "Tuas",
-                side: 'right'
-              },
-              { 
-                year: '2023',
-                title: "ASU Plant Turnaround", 
-                scope: "MAINTENANCE",
-                desc: "Major shutdown coordination and equipment overhaul across air separation unit cold box and compressor systems.", 
-                loc: "Jurong Island",
-                side: 'left'
-              },
-              { 
-                year: '2023',
-                title: "LNG Transfer Line Fabrication", 
-                scope: "CRYOGENIC SYSTEMS",
-                desc: "Custom vacuum-insulated transfer lines for LNG terminal operations with full certification.", 
-                loc: "Jurong Island",
-                side: 'right'
-              },
-            ].map((prj, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                style={{
-                  position: 'relative',
-                  display: 'grid',
-                  gridTemplateColumns: prj.side === 'left' ? '1fr 80px 1fr' : '1fr 80px 1fr',
-                  gap: '0',
-                  marginBottom: i === 3 ? '0' : '60px'
-                }}
-              >
-                {/* Left Content */}
-                {prj.side === 'left' && (
-                  <div style={{ paddingRight: '40px' }}>
-                    <div style={{
-                      background: '#FFF',
-                      border: '2px solid #E5E7EB',
-                      padding: '32px',
-                      transition: 'all 0.3s',
-                      cursor: 'pointer'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = '#DC2626'
-                      e.currentTarget.style.transform = 'translateX(-8px)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = '#E5E7EB'
-                      e.currentTarget.style.transform = 'translateX(0)'
-                    }}>
-                      {/* Image Placeholder */}
-                      <div style={{
-                        height: '200px',
-                        background: '#E5E7EB',
-                        marginBottom: '24px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                      }}>
-                        <div style={{
-                          fontFamily: 'IBM Plex Mono, monospace',
-                          fontSize: '11px',
-                          fontWeight: 700,
-                          color: '#64748B',
-                          letterSpacing: '0.1em'
-                        }}>
-                          [ PROJECT IMAGE ]
-                        </div>
-                      </div>
-
-                      <div style={{
-                        fontFamily: 'IBM Plex Mono, monospace',
-                        fontSize: '10px',
-                        fontWeight: 700,
-                        color: '#DC2626',
-                        letterSpacing: '0.12em',
-                        marginBottom: '10px'
-                      }}>
-                        {prj.scope}
-                      </div>
-                      
-                      <h3 style={{
-                        fontFamily: 'Archivo, sans-serif',
-                        fontSize: '24px',
-                        fontWeight: 900,
-                        marginBottom: '12px',
-                        lineHeight: 1.2,
-                        color: '#0F172A'
-                      }}>
-                        {prj.title}
-                      </h3>
-                      
-                      <p style={{
-                        fontSize: '14px',
-                        color: '#64748B',
-                        lineHeight: 1.7,
-                        marginBottom: '16px'
-                      }}>
-                        {prj.desc}
-                      </p>
-
-                      <div style={{
-                        fontFamily: 'IBM Plex Mono, monospace',
-                        fontSize: '11px',
-                        fontWeight: 600,
-                        color: '#0F172A'
-                      }}>
-                        {prj.loc}
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Center - Year Badge */}
-                <div style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  position: 'relative',
-                  zIndex: 1
-                }}>
+          {/* Asymmetric Masonry Grid */}
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(12, 1fr)',
+              gap: '24px',
+              marginBottom: '60px'
+            }}
+          >
+            {/* Large Featured Project - Spans 8 columns */}
+            <motion.div
+              variants={cardVariant}
+              transition={{ duration: 0.5 }}
+              style={{
+                gridColumn: 'span 8',
+                background: '#FFF',
+                border: '2px solid #E5E7EB',
+                overflow: 'hidden',
+                transition: 'all 0.3s',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#DC2626'
+                e.currentTarget.style.transform = 'translateY(-4px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#E5E7EB'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+            >
+              <div style={{
+                height: '400px',
+                background: '#E5E7EB',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderBottom: '2px solid #E5E7EB'
+              }}>
+                <div style={{ textAlign: 'center' }}>
                   <div style={{
-                    width: '80px',
-                    height: '80px',
-                    borderRadius: '50%',
-                    background: '#DC2626',
-                    border: '4px solid #FFF',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontFamily: 'Archivo, sans-serif',
-                    fontSize: '20px',
-                    fontWeight: 900,
-                    color: '#FFF',
-                    boxShadow: '0 4px 12px rgba(220,38,38,0.3)'
+                    fontFamily: 'IBM Plex Mono, monospace',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    color: '#64748B',
+                    letterSpacing: '0.1em',
+                    marginBottom: '8px'
                   }}>
-                    {prj.year}
+                    [ FEATURED PROJECT ]
+                  </div>
+                  <div style={{
+                    fontFamily: 'IBM Plex Mono, monospace',
+                    fontSize: '10px',
+                    color: '#94A3B8',
+                    letterSpacing: '0.1em'
+                  }}>
+                    1600 × 900px
                   </div>
                 </div>
-
-                {/* Right Content */}
-                {prj.side === 'right' && (
-                  <div style={{ paddingLeft: '40px' }}>
+              </div>
+              <div style={{ padding: '40px' }}>
+                <div style={{
+                  fontFamily: 'IBM Plex Mono, monospace',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  color: '#DC2626',
+                  letterSpacing: '0.12em',
+                  marginBottom: '12px'
+                }}>
+                  PROJECT ENGINEERING
+                </div>
+                <h3 style={{
+                  fontFamily: 'Archivo, sans-serif',
+                  fontSize: '32px',
+                  fontWeight: 900,
+                  marginBottom: '12px',
+                  lineHeight: 1.2,
+                  color: '#0F172A'
+                }}>
+                  Fab-14 UHP Gas Distribution
+                </h3>
+                <p style={{
+                  fontSize: '16px',
+                  color: '#64748B',
+                  lineHeight: 1.7,
+                  marginBottom: '24px'
+                }}>
+                  Design, fabrication, and installation of ultra-high-purity gas distribution network for new wafer fab expansion.
+                </p>
+                <div style={{
+                  display: 'flex',
+                  gap: '24px',
+                  paddingTop: '16px',
+                  borderTop: '1px solid #E5E7EB'
+                }}>
+                  <div>
                     <div style={{
-                      background: '#FFF',
-                      border: '2px solid #E5E7EB',
-                      padding: '32px',
-                      transition: 'all 0.3s',
-                      cursor: 'pointer'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = '#DC2626'
-                      e.currentTarget.style.transform = 'translateX(8px)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = '#E5E7EB'
-                      e.currentTarget.style.transform = 'translateX(0)'
+                      fontFamily: 'IBM Plex Mono, monospace',
+                      fontSize: '10px',
+                      fontWeight: 600,
+                      color: '#94A3B8',
+                      letterSpacing: '0.1em',
+                      marginBottom: '4px'
                     }}>
-                      {/* Image Placeholder */}
-                      <div style={{
-                        height: '200px',
-                        background: '#E5E7EB',
-                        marginBottom: '24px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                      }}>
-                        <div style={{
-                          fontFamily: 'IBM Plex Mono, monospace',
-                          fontSize: '11px',
-                          fontWeight: 700,
-                          color: '#64748B',
-                          letterSpacing: '0.1em'
-                        }}>
-                          [ PROJECT IMAGE ]
-                        </div>
-                      </div>
-
-                      <div style={{
-                        fontFamily: 'IBM Plex Mono, monospace',
-                        fontSize: '10px',
-                        fontWeight: 700,
-                        color: '#DC2626',
-                        letterSpacing: '0.12em',
-                        marginBottom: '10px'
-                      }}>
-                        {prj.scope}
-                      </div>
-                      
-                      <h3 style={{
-                        fontFamily: 'Archivo, sans-serif',
-                        fontSize: '24px',
-                        fontWeight: 900,
-                        marginBottom: '12px',
-                        lineHeight: 1.2,
-                        color: '#0F172A'
-                      }}>
-                        {prj.title}
-                      </h3>
-                      
-                      <p style={{
-                        fontSize: '14px',
-                        color: '#64748B',
-                        lineHeight: 1.7,
-                        marginBottom: '16px'
-                      }}>
-                        {prj.desc}
-                      </p>
-
-                      <div style={{
-                        fontFamily: 'IBM Plex Mono, monospace',
-                        fontSize: '11px',
-                        fontWeight: 600,
-                        color: '#0F172A'
-                      }}>
-                        {prj.loc}
-                      </div>
+                      LOCATION
+                    </div>
+                    <div style={{ fontSize: '14px', fontWeight: 600, color: '#0F172A' }}>
+                      Woodlands
                     </div>
                   </div>
-                )}
+                  <div>
+                    <div style={{
+                      fontFamily: 'IBM Plex Mono, monospace',
+                      fontSize: '10px',
+                      fontWeight: 600,
+                      color: '#94A3B8',
+                      letterSpacing: '0.1em',
+                      marginBottom: '4px'
+                    }}>
+                      YEAR
+                    </div>
+                    <div style={{ fontSize: '14px', fontWeight: 600, color: '#0F172A' }}>
+                      2024
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
 
-                {/* Empty div for spacing when content is on opposite side */}
-                {prj.side === 'left' && <div />}
-                {prj.side === 'right' && <div />}
-              </motion.div>
-            ))}
-          </div>
+            {/* Small Project 1 - Spans 4 columns */}
+            <motion.div
+              variants={cardVariant}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              style={{
+                gridColumn: 'span 4',
+                background: '#FFF',
+                border: '2px solid #E5E7EB',
+                overflow: 'hidden',
+                transition: 'all 0.3s',
+                cursor: 'pointer',
+                display: 'flex',
+                flexDirection: 'column'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#DC2626'
+                e.currentTarget.style.transform = 'translateY(-4px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#E5E7EB'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+            >
+              <div style={{
+                height: '240px',
+                background: '#E5E7EB',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderBottom: '2px solid #E5E7EB'
+              }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{
+                    fontFamily: 'IBM Plex Mono, monospace',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    color: '#64748B',
+                    letterSpacing: '0.1em'
+                  }}>
+                    [ PROJECT ]
+                  </div>
+                </div>
+              </div>
+              <div style={{ padding: '28px', flex: 1 }}>
+                <div style={{
+                  fontFamily: 'IBM Plex Mono, monospace',
+                  fontSize: '10px',
+                  fontWeight: 700,
+                  color: '#DC2626',
+                  letterSpacing: '0.12em',
+                  marginBottom: '10px'
+                }}>
+                  MAINTENANCE
+                </div>
+                <h3 style={{
+                  fontFamily: 'Archivo, sans-serif',
+                  fontSize: '20px',
+                  fontWeight: 900,
+                  marginBottom: '10px',
+                  lineHeight: 1.2,
+                  color: '#0F172A'
+                }}>
+                  ASU Plant Turnaround
+                </h3>
+                <p style={{
+                  fontSize: '14px',
+                  color: '#64748B',
+                  lineHeight: 1.6
+                }}>
+                  Major shutdown coordination and equipment overhaul across air separation unit.
+                </p>
+              </div>
+            </motion.div>
 
+            {/* Medium Project - Spans 5 columns */}
+            <motion.div
+              variants={cardVariant}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              style={{
+                gridColumn: 'span 5',
+                background: '#FFF',
+                border: '2px solid #E5E7EB',
+                overflow: 'hidden',
+                transition: 'all 0.3s',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#DC2626'
+                e.currentTarget.style.transform = 'translateY(-4px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#E5E7EB'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+            >
+              <div style={{
+                height: '280px',
+                background: '#E5E7EB',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderBottom: '2px solid #E5E7EB'
+              }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{
+                    fontFamily: 'IBM Plex Mono, monospace',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    color: '#64748B',
+                    letterSpacing: '0.1em'
+                  }}>
+                    [ PROJECT ]
+                  </div>
+                </div>
+              </div>
+              <div style={{ padding: '32px' }}>
+                <div style={{
+                  fontFamily: 'IBM Plex Mono, monospace',
+                  fontSize: '10px',
+                  fontWeight: 700,
+                  color: '#DC2626',
+                  letterSpacing: '0.12em',
+                  marginBottom: '10px'
+                }}>
+                  TESTING & CERTIFICATION
+                </div>
+                <h3 style={{
+                  fontFamily: 'Archivo, sans-serif',
+                  fontSize: '24px',
+                  fontWeight: 900,
+                  marginBottom: '10px',
+                  lineHeight: 1.2,
+                  color: '#0F172A'
+                }}>
+                  H₂ Tube Trailer Recertification
+                </h3>
+                <p style={{
+                  fontSize: '15px',
+                  color: '#64748B',
+                  lineHeight: 1.6,
+                  marginBottom: '16px'
+                }}>
+                  DOT recertification program for fleet of 40+ hydrogen tube trailers.
+                </p>
+                <div style={{
+                  fontFamily: 'IBM Plex Mono, monospace',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  color: '#0F172A'
+                }}>
+                  Tuas · 2024
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Small Project 2 - Stats Card - Spans 3 columns */}
+            <motion.div
+              variants={cardVariant}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              style={{
+                gridColumn: 'span 3',
+                background: '#0F172A',
+                border: '2px solid #0F172A',
+                color: '#FFF',
+                padding: '40px 28px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                textAlign: 'center',
+                transition: 'all 0.3s',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#DC2626'
+                e.currentTarget.style.borderColor = '#DC2626'
+                e.currentTarget.style.transform = 'translateY(-4px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#0F172A'
+                e.currentTarget.style.borderColor = '#0F172A'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+            >
+              <div style={{
+                fontSize: '64px',
+                fontFamily: 'Archivo, sans-serif',
+                fontWeight: 900,
+                marginBottom: '16px',
+                lineHeight: 1
+              }}>
+                XX
+              </div>
+              <div style={{
+                fontFamily: 'IBM Plex Mono, monospace',
+                fontSize: '11px',
+                fontWeight: 600,
+                letterSpacing: '0.1em',
+                opacity: 0.8
+              }}>
+                COMPLETED PROJECTS
+              </div>
+            </motion.div>
+
+            {/* Wide Project - Spans 4 columns */}
+            <motion.div
+              variants={cardVariant}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              style={{
+                gridColumn: 'span 4',
+                background: '#FFF',
+                border: '2px solid #E5E7EB',
+                overflow: 'hidden',
+                transition: 'all 0.3s',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#DC2626'
+                e.currentTarget.style.transform = 'translateY(-4px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#E5E7EB'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+            >
+              <div style={{
+                height: '200px',
+                background: '#E5E7EB',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderBottom: '2px solid #E5E7EB'
+              }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{
+                    fontFamily: 'IBM Plex Mono, monospace',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    color: '#64748B',
+                    letterSpacing: '0.1em'
+                  }}>
+                    [ PROJECT ]
+                  </div>
+                </div>
+              </div>
+              <div style={{ padding: '28px' }}>
+                <div style={{
+                  fontFamily: 'IBM Plex Mono, monospace',
+                  fontSize: '10px',
+                  fontWeight: 700,
+                  color: '#DC2626',
+                  letterSpacing: '0.12em',
+                  marginBottom: '10px'
+                }}>
+                  CRYOGENIC SYSTEMS
+                </div>
+                <h3 style={{
+                  fontFamily: 'Archivo, sans-serif',
+                  fontSize: '20px',
+                  fontWeight: 900,
+                  marginBottom: '10px',
+                  lineHeight: 1.2,
+                  color: '#0F172A'
+                }}>
+                  LNG Transfer Line Fabrication
+                </h3>
+                <p style={{
+                  fontSize: '14px',
+                  color: '#64748B',
+                  lineHeight: 1.6
+                }}>
+                  Custom vacuum-insulated transfer lines for LNG terminal operations.
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* View All Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            style={{ textAlign: 'center', marginTop: '80px' }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            style={{ textAlign: 'center' }}
           >
             <a href="/projects" className="btn btn-primary">
               View Full Portfolio <I.Arrow className="arrow" />
@@ -988,7 +1140,7 @@ export default function Home() {
         <div className="wrap">
           <div className="ct-split">
             <div className="ct-left">
-              <h2>Ready to Discuss <span className="accent">Your Project?</span></h2>
+              <h2>Ready to Discuss <span style={{ color: '#DC2626' }}>Your Project?</span></h2>
               <p className="sub">
                 Whether you're scoping a new plant, planning a turnaround, or recertifying a fleet —
                 talk to a project engineer, not a sales rep.
