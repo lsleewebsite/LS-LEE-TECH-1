@@ -273,7 +273,7 @@ export default function Industries() {
           position: 'relative'
         }}>
           {industries.map((industry) => (
-            
+            <a
               key={industry.id}
               href={`#${industry.id}`}
               style={{
