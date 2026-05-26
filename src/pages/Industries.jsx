@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
 
@@ -61,26 +61,8 @@ const fadeInUp = {
 
 export default function Industries() {
   const location = useLocation()
+  const [activeSection, setActiveSection] = useState('semiconductor')
 
-  // Scroll to section on load if hash is present
-  useEffect(() => {
-    if (location.hash) {
-      // If there's a hash, scroll to that section
-      const id = location.hash.replace('#', '')
-      setTimeout(() => {
-        const element = document.getElementById(id)
-        if (element) {
-          const yOffset = -120
-          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
-          window.scrollTo({ top: y, behavior: 'smooth' })
-        }
-      }, 100)
-    } else {
-      // If no hash, scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-  }, [location])
-  
   const industries = [
     {
       id: 'semiconductor',
@@ -98,81 +80,143 @@ export default function Industries() {
       ],
       applications: [
         'New fab construction',
-        'Capacity expansion projects',
-        'Process tool installations',
-        'Gas system upgrades',
-        'Preventive maintenance'
+        'Fab upgrades and expansions',
+        'Tool installations',
+        'Process gas system retrofits',
+        'Emergency repairs and troubleshooting'
+      ],
+      projects: [
+        'Multiple 300mm fabs across Singapore',
+        'Gas distribution for advanced node processes',
+        'VMB installations for specialty gases',
+        'Ongoing maintenance contracts with major foundries'
       ]
     },
     {
       id: 'datacenter',
       icon: <Icon.Server />,
       title: 'Data Center',
-      tagline: 'Hydrogen Infrastructure for Next-Gen Power Systems',
-      description: 'Hydrogen pipeline infrastructure and gas systems support for data centre energy requirements. As data centers transition to hydrogen fuel cells for backup power, we deliver the mechanical infrastructure to make it work.',
+      tagline: 'High-Pressure Gas Infrastructure for Next-Gen Power',
+      description: 'Hydrogen and specialty gas infrastructure for data center fuel cells and emergency power systems. As data centers transition to hydrogen-based backup power, we provide the mechanical systems to make it happen safely.',
       capabilities: [
         'Hydrogen pipeline design and installation',
-        'Fuel cell integration support',
-        'Safety system installation',
-        'Leak detection systems',
-        'Emergency shutdown integration',
-        'Compliance and certification'
+        'High-pressure gas storage systems',
+        'Fuel cell integration',
+        'Safety systems and gas detection',
+        'Pressure regulation and control',
+        'Emergency shutdown systems'
       ],
       applications: [
-        'Hydrogen fuel cell backup systems',
-        'Pipeline infrastructure',
-        'Storage system integration',
-        'Safety system installation',
-        'Regulatory compliance support'
+        'Backup power fuel cell systems',
+        'Primary power hydrogen infrastructure',
+        'Hybrid power system integration',
+        'Emergency power redundancy',
+        'Grid-independent installations'
+      ],
+      projects: [
+        'Hydrogen infrastructure for Singapore data centers',
+        'Fuel cell integration projects',
+        'High-pressure storage installations',
+        'Safety system upgrades'
       ]
     },
     {
       id: 'industrial-gas',
       icon: <Icon.Plant />,
       title: 'Industrial Gas & Process',
-      tagline: 'Turnkey Engineering for Gas and Process Plants',
-      description: 'Turnkey project engineering, plant integration and maintenance for gas and process plants. From air separation units to specialty gas production, we handle the full project lifecycle.',
+      tagline: 'Complete Mechanical Scope for Process Plants',
+      description: 'Full-scope mechanical work for air separation units, specialty gas production facilities, and process plants. From new construction to turnarounds, we handle the piping, equipment, and systems that make industrial gas plants run.',
       capabilities: [
-        'Turnkey plant construction',
-        'Process piping installation',
-        'Equipment installation and tie-in',
-        'Shutdown and turnaround support',
-        'Plant maintenance contracts',
-        'Emergency response services'
+        'Cryogenic piping systems',
+        'ASU mechanical installations',
+        'Process equipment installation',
+        'Plant turnarounds and shutdowns',
+        'Piping stress analysis and design',
+        'Pressure vessel installation'
       ],
       applications: [
-        'Air separation units (ASU)',
+        'Air separation plants',
         'Specialty gas production',
-        'Chemical process plants',
-        'Plant expansions',
-        'Turnaround projects',
-        'Long-term maintenance'
+        'Cryogenic storage facilities',
+        'Gas filling plants',
+        'Process plant expansions'
+      ],
+      projects: [
+        'Major ASU installations in Jurong Island',
+        'Specialty gas plant construction',
+        'Plant turnaround projects',
+        'Cryogenic system retrofits'
       ]
     },
     {
       id: 'hydrogen',
       icon: <Icon.H2 />,
       title: 'New Energy / Hydrogen',
-      tagline: 'Tube Trailer Testing and Hydrogen Infrastructure',
-      description: 'Hydrogen trailer testing, servicing, refurbishment and certification support. As the hydrogen economy scales, we provide the testing, certification, and maintenance services to keep tube trailers and transport systems operational.',
+      tagline: 'Testing, Certification & Infrastructure for H₂ Economy',
+      description: 'Hydrogen tube trailer testing, DOT/ISO recertification, and emerging hydrogen infrastructure. We operate Singapore\'s dedicated hydrogen testing facility and are expanding into hydrogen production and distribution systems.',
       capabilities: [
+        'DOT/ISO tube trailer testing',
+        'Cylinder recertification',
         'Hydrostatic and pneumatic testing',
-        'DOT and ISO recertification',
-        'Valve and manifold servicing',
-        'Tube bundle refurbishment',
-        'Leak testing and repair',
-        'Fleet management support'
+        'NDT and ultrasonic inspection',
+        'Hydrogen pipeline construction',
+        'Production facility integration'
       ],
       applications: [
-        'Tube trailer certification',
-        'Fleet testing programs',
-        'Emergency repairs',
-        'Refurbishment projects',
-        'Hydrogen infrastructure support',
-        'Transport system maintenance'
+        'Tube trailer fleet management',
+        'Cylinder testing and certification',
+        'Hydrogen refueling infrastructure',
+        'Green hydrogen production facilities',
+        'Industrial hydrogen distribution'
+      ],
+      projects: [
+        'Singapore\'s first dedicated H₂ testing facility',
+        'Ongoing tube trailer recertification',
+        'Hydrogen infrastructure for industrial clients',
+        'Fleet testing and management services'
       ]
     }
   ]
+
+  // Scroll tracking for active section
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = industries.map(ind => ({
+        id: ind.id,
+        element: document.getElementById(ind.id)
+      })).filter(s => s.element)
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i]
+        const rect = section.element.getBoundingClientRect()
+        if (rect.top <= 300) {
+          setActiveSection(section.id)
+          break
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll() // Check on mount
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Scroll to section on load if hash is present
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '')
+      setTimeout(() => {
+        const element = document.getElementById(id)
+        if (element) {
+          const yOffset = -180
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
+          window.scrollTo({ top: y, behavior: 'smooth' })
+        }
+      }, 100)
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [location])
 
   return (
     <div>
@@ -183,35 +227,30 @@ export default function Industries() {
         color: '#FFF',
         borderBottom: '2px solid #DC2626'
       }}>
-        <div style={{ maxWidth: '1360px', margin: '0 auto', textAlign: 'center' }}>
-          <motion.h1
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            style={{
+          >
+            <h1 style={{
               fontSize: '56px',
               fontWeight: 900,
-              marginBottom: '24px',
-              lineHeight: 1.1
-            }}
-          >
-            Industries We Serve
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            style={{
-              fontSize: '18px',
+              marginBottom: '28px',
+              lineHeight: 1.1,
+              fontFamily: 'Archivo, sans-serif'
+            }}>
+              Industries We <span style={{ color: '#DC2626' }}>Serve</span>
+            </h1>
+            <p style={{
+              fontSize: '20px',
               color: '#94A3B8',
               maxWidth: '800px',
-              margin: '0 auto',
-              lineHeight: 1.6
-            }}
-          >
-            Four high-stakes verticals where uptime, purity, and pressure integrity are non-negotiable.
-            We engineer the mechanical infrastructure that keeps them running.
-          </motion.p>
+              lineHeight: 1.7
+            }}>
+              Specialized mechanical engineering for critical gas and process systems across semiconductor, data center, industrial, and hydrogen sectors.
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -230,30 +269,29 @@ export default function Industries() {
           padding: '0 32px',
           display: 'flex',
           justifyContent: 'center',
-          gap: '12px'
+          gap: '12px',
+          position: 'relative'
         }}>
           {industries.map((industry) => (
-            <a
+            
               key={industry.id}
               href={`#${industry.id}`}
               style={{
                 padding: '24px 40px',
                 fontSize: '16px',
                 fontWeight: 600,
-                color: '#0F172A',
+                color: activeSection === industry.id ? '#DC2626' : '#0F172A',
                 textDecoration: 'none',
-                borderBottom: '3px solid transparent',
                 transition: 'all 0.2s',
                 fontFamily: 'IBM Plex Sans, system-ui, sans-serif',
-                letterSpacing: '0.08em'
+                letterSpacing: '0.08em',
+                position: 'relative'
               }}
               onMouseEnter={(e) => {
                 e.target.style.color = '#DC2626'
-                e.target.style.borderBottomColor = '#DC2626'
               }}
               onMouseLeave={(e) => {
-                e.target.style.color = '#0F172A'
-                e.target.style.borderBottomColor = 'transparent'
+                e.target.style.color = activeSection === industry.id ? '#DC2626' : '#0F172A'
               }}
               onClick={(e) => {
                 e.preventDefault()
@@ -266,6 +304,26 @@ export default function Industries() {
               }}
             >
               {industry.title}
+              
+              {/* Active Indicator Bar */}
+              {activeSection === industry.id && (
+                <motion.div
+                  layoutId="activeIndicator"
+                  style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: '3px',
+                    background: '#DC2626'
+                  }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 500,
+                    damping: 30
+                  }}
+                />
+              )}
             </a>
           ))}
         </div>
@@ -278,177 +336,180 @@ export default function Industries() {
           id={industry.id}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
           variants={fadeInUp}
           style={{
             padding: '100px 32px',
-            background: index % 2 === 0 ? '#FFF' : '#F8F9FA',
-            borderBottom: '2px solid #0F172A'
+            background: index % 2 === 0 ? '#FFF' : '#F8F9FA'
           }}
         >
-          <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            {/* Rest of the industry section content remains the same */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 2fr',
-              gap: '80px',
+              gridTemplateColumns: '120px 1fr',
+              gap: '40px',
+              marginBottom: '48px',
               alignItems: 'start'
             }}>
-              {/* Left Column - Icon & Title */}
+              <div style={{ color: '#DC2626' }}>
+                {industry.icon}
+              </div>
               <div>
                 <div style={{
-                  width: '120px',
-                  height: '120px',
-                  border: '3px solid #0F172A',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '32px',
-                  color: '#0F172A'
+                  display: 'inline-block',
+                  padding: '6px 16px',
+                  background: '#DC2626',
+                  color: '#FFF',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  letterSpacing: '0.1em',
+                  marginBottom: '20px',
+                  fontFamily: 'IBM Plex Mono, monospace'
                 }}>
-                  {industry.icon}
+                  {industry.title.toUpperCase()}
                 </div>
                 <h2 style={{
                   fontSize: '42px',
                   fontWeight: 900,
                   marginBottom: '16px',
-                  lineHeight: 1.1
-                }}>
-                  {industry.title}
-                </h2>
-                <p style={{
-                  fontSize: '16px',
-                  color: '#DC2626',
-                  fontWeight: 600,
-                  marginBottom: '24px'
+                  lineHeight: 1.1,
+                  fontFamily: 'Archivo, sans-serif'
                 }}>
                   {industry.tagline}
-                </p>
+                </h2>
                 <p style={{
-                  fontSize: '15px',
-                  color: '#64748B',
-                  lineHeight: 1.7
+                  fontSize: '18px',
+                  color: '#475569',
+                  lineHeight: 1.7,
+                  maxWidth: '900px'
                 }}>
                   {industry.description}
                 </p>
               </div>
+            </div>
 
-              {/* Right Column - Details */}
+            {/* Content Grid */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: '32px'
+            }}>
+              {/* Capabilities */}
               <div style={{
-                display: 'grid',
-                gap: '32px'
+                padding: '40px',
+                background: index % 2 === 0 ? '#F8F9FA' : '#FFF',
+                border: '2px solid #E5E7EB'
               }}>
-                {/* Capabilities */}
-                <div style={{
-                  padding: '40px',
-                  background: '#FFF',
-                  border: '2px solid #0F172A'
+                <h3 style={{
+                  fontSize: '18px',
+                  fontWeight: 900,
+                  marginBottom: '24px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  fontFamily: 'Archivo, sans-serif'
                 }}>
-                  <h3 style={{
-                    fontSize: '20px',
-                    fontWeight: 700,
-                    marginBottom: '24px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em'
-                  }}>
-                    Our Capabilities
-                  </h3>
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '16px'
-                  }}>
-                    {industry.capabilities.map((cap, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'start',
-                          gap: '12px',
-                          fontSize: '14px',
-                          color: '#0F172A'
-                        }}
-                      >
-                        <div style={{ color: '#DC2626', marginTop: '2px', flexShrink: 0 }}>
-                          <Icon.Check />
-                        </div>
-                        <span>{cap}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Applications */}
-                <div style={{
-                  padding: '40px',
-                  background: '#0F172A',
-                  color: '#FFF'
+                  Core Capabilities
+                </h3>
+                <ul style={{
+                  listStyle: 'none',
+                  padding: 0,
+                  margin: 0
                 }}>
-                  <h3 style={{
-                    fontSize: '20px',
-                    fontWeight: 700,
-                    marginBottom: '24px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em'
-                  }}>
-                    Typical Applications
-                  </h3>
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '16px'
-                  }}>
-                    {industry.applications.map((app, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'start',
-                          gap: '12px',
-                          fontSize: '14px'
-                        }}
-                      >
-                        <div style={{ color: '#DC2626', marginTop: '2px', flexShrink: 0 }}>
-                          <Icon.Check />
-                        </div>
-                        <span>{app}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                  {industry.capabilities.map((cap, i) => (
+                    <li key={i} style={{
+                      display: 'flex',
+                      gap: '12px',
+                      marginBottom: '12px',
+                      fontSize: '14px',
+                      color: '#475569',
+                      lineHeight: 1.6
+                    }}>
+                      <span style={{ color: '#DC2626', flexShrink: 0, marginTop: '2px' }}>
+                        <Icon.Check />
+                      </span>
+                      <span>{cap}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                {/* View Projects Button */}
-                <a 
-                  href={`/Projects#${industry.id}`}
-                  style={{
-                    display: 'inline-block',
-                    padding: '16px 28px',
-                    background: 'transparent',
-                    color: '#0F172A',
-                    border: '2px solid #0F172A',
-                    fontWeight: 700,
-                    fontSize: '14px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em',
-                    textDecoration: 'none',
-                    transition: 'all 0.3s',
-                    textAlign: 'center',
-                    cursor: 'pointer'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.background = '#DC2626'
-                    e.target.style.color = '#FFF'
-                    e.target.style.borderColor = '#DC2626'
-                    e.target.style.transform = 'translateX(4px)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.background = 'transparent'
-                    e.target.style.color = '#0F172A'
-                    e.target.style.borderColor = '#0F172A'
-                    e.target.style.transform = 'translateX(0)'
-                  }}
-                >
-                  View {industry.title} Projects →
-                </a>
+              {/* Applications */}
+              <div style={{
+                padding: '40px',
+                background: index % 2 === 0 ? '#F8F9FA' : '#FFF',
+                border: '2px solid #E5E7EB'
+              }}>
+                <h3 style={{
+                  fontSize: '18px',
+                  fontWeight: 900,
+                  marginBottom: '24px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  fontFamily: 'Archivo, sans-serif'
+                }}>
+                  Applications
+                </h3>
+                <ul style={{
+                  listStyle: 'none',
+                  padding: 0,
+                  margin: 0
+                }}>
+                  {industry.applications.map((app, i) => (
+                    <li key={i} style={{
+                      display: 'flex',
+                      gap: '12px',
+                      marginBottom: '12px',
+                      fontSize: '14px',
+                      color: '#475569',
+                      lineHeight: 1.6
+                    }}>
+                      <span style={{ color: '#DC2626', flexShrink: 0, marginTop: '2px' }}>
+                        <Icon.Check />
+                      </span>
+                      <span>{app}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Projects */}
+              <div style={{
+                padding: '40px',
+                background: index % 2 === 0 ? '#F8F9FA' : '#FFF',
+                border: '2px solid #E5E7EB'
+              }}>
+                <h3 style={{
+                  fontSize: '18px',
+                  fontWeight: 900,
+                  marginBottom: '24px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  fontFamily: 'Archivo, sans-serif'
+                }}>
+                  Representative Projects
+                </h3>
+                <ul style={{
+                  listStyle: 'none',
+                  padding: 0,
+                  margin: 0
+                }}>
+                  {industry.projects.map((proj, i) => (
+                    <li key={i} style={{
+                      display: 'flex',
+                      gap: '12px',
+                      marginBottom: '12px',
+                      fontSize: '14px',
+                      color: '#475569',
+                      lineHeight: 1.6
+                    }}>
+                      <span style={{ color: '#DC2626', flexShrink: 0, marginTop: '2px' }}>
+                        <Icon.Check />
+                      </span>
+                      <span>{proj}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
@@ -462,7 +523,7 @@ export default function Industries() {
         viewport={{ once: true, amount: 0.5 }}
         variants={fadeInUp}
         style={{
-          padding: '80px 32px',
+          padding: '100px 32px',
           background: '#DC2626',
           color: '#FFF',
           textAlign: 'center'
@@ -470,21 +531,25 @@ export default function Industries() {
       >
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <h2 style={{
-            fontSize: '36px',
-            fontWeight: 800,
-            marginBottom: '24px'
+            fontSize: '42px',
+            fontWeight: 900,
+            marginBottom: '24px',
+            lineHeight: 1.2,
+            fontFamily: 'Archivo, sans-serif'
           }}>
-            Ready to Discuss Your Industry-Specific Requirements?
+            Ready to Discuss Your Project?
           </h2>
           <p style={{
-            fontSize: '16px',
-            marginBottom: '32px',
-            opacity: 0.9
+            fontSize: '18px',
+            marginBottom: '40px',
+            opacity: 0.95,
+            lineHeight: 1.7
           }}>
-            Talk to an engineer who understands your vertical. No sales pitch — just technical expertise.
+            Whether you're planning a new installation, expansion, or need ongoing support, we're here to help.
           </p>
-          <button style={{
-            padding: '16px 36px',
+          <a href="/Contact" style={{
+            display: 'inline-block',
+            padding: '18px 40px',
             background: '#FFF',
             color: '#DC2626',
             border: '2px solid #FFF',
@@ -492,8 +557,10 @@ export default function Industries() {
             fontSize: '15px',
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
+            textDecoration: 'none',
             cursor: 'pointer',
-            transition: 'all 0.3s'
+            transition: 'all 0.3s',
+            fontFamily: 'IBM Plex Sans, sans-serif'
           }}
           onMouseEnter={(e) => {
             e.target.style.background = '#0F172A'
@@ -505,8 +572,8 @@ export default function Industries() {
             e.target.style.color = '#DC2626'
             e.target.style.borderColor = '#FFF'
           }}>
-            Contact Our Team →
-          </button>
+            Get in Touch →
+          </a>
         </div>
       </motion.section>
     </div>
