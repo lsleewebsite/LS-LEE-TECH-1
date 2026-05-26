@@ -13,91 +13,246 @@ const fadeInUp = {
   }
 }
 
-export default function Projects() {
+const Icon = {
+  Blueprint: () => (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <line x1="3" y1="9" x2="21" y2="9" />
+      <line x1="9" y1="21" x2="9" y2="9" />
+    </svg>
+  ),
+  Wrench: () => (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+    </svg>
+  ),
+  Check: () => (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  ),
+  Settings: () => (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 1v6m0 6v6m9.22-9.22l-4.24 4.24m-5.96 0L6.78 9.78m12.44 0l-4.24 4.24m-5.96 0L6.78 14.22" />
+    </svg>
+  ),
+  Tool: () => (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+    </svg>
+  ),
+  Book: () => (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+    </svg>
+  )
+}
+
+export default function Services() {
   const [activeFilter, setActiveFilter] = useState('All')
 
-  const filters = ['All', 'Semiconductor', 'Data Center', 'Industrial Gas', 'Hydrogen']
+  const filters = ['All', 'Engineering', 'Fabrication', 'Installation', 'Testing', 'Maintenance', 'Consulting']
 
-  const projects = [
+  const services = [
     {
       id: 1,
-      title: 'Advanced Node Fab Gas Distribution',
-      category: 'Semiconductor',
-      client: 'Major Foundry',
-      year: '2024',
-      scope: 'Complete UHP gas distribution system for 300mm fab',
-      tags: ['UHP Piping', 'VMB Installation', 'Gas Panels'],
-      featured: true
+      title: 'Process Design & Engineering',
+      category: 'Engineering',
+      icon: <Icon.Blueprint />,
+      description: 'Complete engineering scope from concept to detailed design for gas and process systems.',
+      offerings: [
+        'P&ID development',
+        'Equipment specifications',
+        'Piping design and routing',
+        'Stress analysis',
+        'HAZOP studies',
+        '3D modeling and clash detection'
+      ],
+      industries: ['Semiconductor', 'Industrial Gas', 'Hydrogen']
     },
     {
       id: 2,
-      title: 'Data Center Hydrogen Infrastructure',
-      category: 'Data Center',
-      client: 'Singapore Data Center',
-      year: '2024',
-      scope: 'High-pressure hydrogen pipeline and fuel cell integration',
-      tags: ['H2 Pipeline', 'Fuel Cells', 'Safety Systems']
+      title: 'Gas Panel & VMB Fabrication',
+      category: 'Fabrication',
+      icon: <Icon.Tool />,
+      description: 'Custom fabrication of gas panels, valve manifold boxes, and specialty equipment in our workshop.',
+      offerings: [
+        'UHP gas panels',
+        'VMB assemblies',
+        'Custom manifolds',
+        'Pressure vessels',
+        'Specialty brackets and supports',
+        'Clean room compatible fabrication'
+      ],
+      industries: ['Semiconductor', 'Data Center']
     },
     {
       id: 3,
-      title: 'ASU Plant Expansion',
-      category: 'Industrial Gas',
-      client: 'Industrial Gas Producer',
-      year: '2023',
-      scope: 'Mechanical scope for air separation unit capacity upgrade',
-      tags: ['Cryogenic', 'Process Piping', 'Plant Expansion']
+      title: 'Mechanical Installation',
+      category: 'Installation',
+      icon: <Icon.Wrench />,
+      description: 'Full-scope mechanical installation services including piping, equipment, and system integration.',
+      offerings: [
+        'Process piping installation',
+        'Equipment setting and alignment',
+        'Tool hook-up',
+        'Utility connections',
+        'Clean room installations',
+        'Cryogenic systems'
+      ],
+      industries: ['Semiconductor', 'Industrial Gas', 'Data Center']
     },
     {
       id: 4,
-      title: 'Tube Trailer Testing Facility',
-      category: 'Hydrogen',
-      client: 'LS Lee Technology',
-      year: '2010',
-      scope: 'Singapore\'s first dedicated hydrogen tube trailer testing facility',
-      tags: ['DOT Testing', 'ISO Certification', 'Hydrostatic Testing'],
-      featured: true
+      title: 'Pressure Testing & Qualification',
+      category: 'Testing',
+      icon: <Icon.Check />,
+      description: 'Comprehensive testing services to verify system integrity and performance.',
+      offerings: [
+        'Hydrostatic testing',
+        'Pneumatic testing',
+        'Leak testing',
+        'Helium leak detection',
+        'Particle count testing',
+        'Flow verification'
+      ],
+      industries: ['Semiconductor', 'Industrial Gas', 'Hydrogen']
     },
     {
       id: 5,
-      title: 'Specialty Gas Plant Construction',
-      category: 'Industrial Gas',
-      client: 'Specialty Gas Manufacturer',
-      year: '2023',
-      scope: 'Full mechanical installation for specialty gas production facility',
-      tags: ['Gas Production', 'Process Equipment', 'Piping Systems']
+      title: 'Tube Trailer & Cylinder Testing',
+      category: 'Testing',
+      icon: <Icon.Check />,
+      description: 'DOT and ISO certification services for hydrogen and gas storage equipment.',
+      offerings: [
+        'DOT tube trailer recertification',
+        'ISO cylinder testing',
+        'Hydrostatic testing',
+        'Ultrasonic inspection',
+        'Visual inspection',
+        'Documentation and certification'
+      ],
+      industries: ['Hydrogen']
     },
     {
       id: 6,
-      title: 'Fab Tool Hook-Up Package',
-      category: 'Semiconductor',
-      client: 'Semiconductor Manufacturer',
-      year: '2024',
-      scope: 'Gas and utility connections for new process tool installation',
-      tags: ['Tool Hook-Up', 'Gas Integration', 'Commissioning']
+      title: 'Preventive Maintenance Programs',
+      category: 'Maintenance',
+      icon: <Icon.Settings />,
+      description: 'Scheduled maintenance services to maximize uptime and system reliability.',
+      offerings: [
+        'Equipment inspection',
+        'Filter replacement',
+        'Valve maintenance',
+        'System performance checks',
+        'Preventive parts replacement',
+        'Maintenance documentation'
+      ],
+      industries: ['Semiconductor', 'Industrial Gas', 'Data Center']
     },
     {
       id: 7,
-      title: 'Hydrogen Refueling Infrastructure',
-      category: 'Hydrogen',
-      client: 'Industrial Client',
-      year: '2024',
-      scope: 'High-pressure hydrogen distribution and storage system',
-      tags: ['H2 Storage', 'Distribution', 'Safety']
+      title: 'Emergency Repair & Troubleshooting',
+      category: 'Maintenance',
+      icon: <Icon.Wrench />,
+      description: '24/7 emergency response for critical system failures and urgent repairs.',
+      offerings: [
+        'Emergency leak repair',
+        'Component replacement',
+        'System troubleshooting',
+        'Temporary bypass solutions',
+        'Rapid mobilization',
+        'Root cause analysis'
+      ],
+      industries: ['Semiconductor', 'Industrial Gas']
     },
     {
       id: 8,
-      title: 'Clean Room Gas System Retrofit',
-      category: 'Semiconductor',
-      client: 'Semiconductor Fab',
-      year: '2023',
-      scope: 'Upgrade of existing gas delivery system to meet new process requirements',
-      tags: ['Retrofit', 'UHP Systems', 'Cleanroom Work']
+      title: 'Commissioning & Startup',
+      category: 'Testing',
+      icon: <Icon.Check />,
+      description: 'Complete commissioning services from initial startup through performance verification.',
+      offerings: [
+        'Pre-commissioning activities',
+        'System startup',
+        'Performance testing',
+        'Process qualification',
+        'Documentation package',
+        'Training and handover'
+      ],
+      industries: ['Semiconductor', 'Industrial Gas', 'Data Center']
+    },
+    {
+      id: 9,
+      title: 'Technical Consulting',
+      category: 'Consulting',
+      icon: <Icon.Book />,
+      description: 'Expert consulting services for gas system planning, optimization, and troubleshooting.',
+      offerings: [
+        'System audits',
+        'Upgrade planning',
+        'Code compliance review',
+        'Safety assessments',
+        'Capacity studies',
+        'Technology selection'
+      ],
+      industries: ['Semiconductor', 'Industrial Gas', 'Hydrogen']
+    },
+    {
+      id: 10,
+      title: 'Welding & Orbital Welding',
+      category: 'Fabrication',
+      icon: <Icon.Tool />,
+      description: 'ASME-certified welding services including specialty alloys and orbital welding.',
+      offerings: [
+        'Orbital tube welding',
+        'TIG welding',
+        'Specialty alloy welding (316L, Inconel)',
+        'Weld inspection and documentation',
+        'Certified welders',
+        'Clean room welding procedures'
+      ],
+      industries: ['Semiconductor', 'Industrial Gas']
+    },
+    {
+      id: 11,
+      title: 'Pipeline Design & Installation',
+      category: 'Installation',
+      icon: <Icon.Wrench />,
+      description: 'Complete pipeline engineering and installation for high-pressure gas distribution.',
+      offerings: [
+        'Route surveys',
+        'Pipeline design',
+        'High-pressure installation',
+        'Cathodic protection',
+        'Tie-ins and modifications',
+        'As-built documentation'
+      ],
+      industries: ['Hydrogen', 'Data Center', 'Industrial Gas']
+    },
+    {
+      id: 12,
+      title: 'Training & Documentation',
+      category: 'Consulting',
+      icon: <Icon.Book />,
+      description: 'Comprehensive training programs and documentation services.',
+      offerings: [
+        'Operator training',
+        'Maintenance training',
+        'Safety training',
+        'O&M manual development',
+        'As-built drawings',
+        'Compliance documentation'
+      ],
+      industries: ['Semiconductor', 'Industrial Gas', 'Hydrogen']
     }
   ]
 
-  const filteredProjects = activeFilter === 'All' 
-    ? projects 
-    : projects.filter(p => p.category === activeFilter)
+  const filteredServices = activeFilter === 'All' 
+    ? services 
+    : services.filter(s => s.category === activeFilter)
 
   return (
     <div>
@@ -121,7 +276,7 @@ export default function Projects() {
               lineHeight: 1.1,
               fontFamily: 'Archivo, sans-serif'
             }}>
-              Our <span style={{ color: '#DC2626' }}>Projects</span>
+              Our <span style={{ color: '#DC2626' }}>Services</span>
             </h1>
             <p style={{
               fontSize: '20px',
@@ -129,7 +284,7 @@ export default function Projects() {
               maxWidth: '800px',
               lineHeight: 1.7
             }}>
-              A selection of mechanical engineering projects across semiconductor, data center, industrial gas, and hydrogen sectors.
+              Comprehensive mechanical engineering services from design through maintenance for critical gas and process systems.
             </p>
           </motion.div>
         </div>
@@ -194,12 +349,12 @@ export default function Projects() {
             fontFamily: 'IBM Plex Mono',
             letterSpacing: '0.05em'
           }}>
-            Showing {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
+            Showing {filteredServices.length} {filteredServices.length === 1 ? 'service' : 'services'}
           </div>
         </div>
       </section>
 
-      {/* Projects Grid */}
+      {/* Services Grid */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -213,22 +368,21 @@ export default function Projects() {
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
             gap: '32px'
           }}>
-            {filteredProjects.map((project, i) => (
+            {filteredServices.map((service, i) => (
               <motion.div
-                key={project.id}
+                key={service.id}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 style={{
                   background: '#FFF',
                   border: '2px solid #0F172A',
-                  overflow: 'hidden',
+                  padding: '40px',
                   transition: 'all 0.3s',
-                  cursor: 'pointer',
-                  gridColumn: project.featured ? 'span 2' : 'span 1'
+                  cursor: 'pointer'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = '#DC2626'
@@ -241,136 +395,126 @@ export default function Projects() {
                   e.currentTarget.style.boxShadow = 'none'
                 }}
               >
-                {/* Project Image Placeholder */}
+                {/* Icon & Category */}
                 <div style={{
-                  height: project.featured ? '320px' : '220px',
-                  background: '#E5E7EB',
                   display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderBottom: '2px solid #0F172A',
-                  position: 'relative'
+                  justifyContent: 'space-between',
+                  alignItems: 'start',
+                  marginBottom: '24px'
                 }}>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{
-                      fontFamily: 'IBM Plex Mono',
-                      fontSize: '12px',
-                      color: '#64748B',
-                      letterSpacing: '0.1em',
-                      marginBottom: '8px'
-                    }}>
-                      [ PROJECT IMAGE ]
-                    </div>
-                    <div style={{
-                      fontFamily: 'IBM Plex Mono',
-                      fontSize: '10px',
-                      color: '#94A3B8'
-                    }}>
-                      {project.category}
-                    </div>
+                  <div style={{ color: '#DC2626' }}>
+                    {service.icon}
                   </div>
-                  
-                  {/* Featured Badge */}
-                  {project.featured && (
-                    <div style={{
-                      position: 'absolute',
-                      top: '20px',
-                      right: '20px',
-                      padding: '8px 16px',
-                      background: '#DC2626',
-                      color: '#FFF',
-                      fontSize: '11px',
-                      fontWeight: 700,
-                      letterSpacing: '0.1em',
-                      fontFamily: 'IBM Plex Mono'
-                    }}>
-                      FEATURED
-                    </div>
-                  )}
+                  <div style={{
+                    padding: '4px 12px',
+                    background: '#0F172A',
+                    color: '#FFF',
+                    fontSize: '10px',
+                    fontWeight: 700,
+                    letterSpacing: '0.1em',
+                    fontFamily: 'IBM Plex Mono'
+                  }}>
+                    {service.category.toUpperCase()}
+                  </div>
                 </div>
 
-                {/* Project Details */}
-                <div style={{ padding: '32px' }}>
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'start',
-                    marginBottom: '16px'
-                  }}>
-                    <div style={{
-                      display: 'inline-block',
-                      padding: '4px 12px',
-                      background: '#0F172A',
-                      color: '#FFF',
-                      fontSize: '10px',
-                      fontWeight: 700,
-                      letterSpacing: '0.1em',
-                      fontFamily: 'IBM Plex Mono'
-                    }}>
-                      {project.category.toUpperCase()}
-                    </div>
-                    <div style={{
-                      fontSize: '14px',
-                      color: '#64748B',
-                      fontFamily: 'IBM Plex Mono'
-                    }}>
-                      {project.year}
-                    </div>
-                  </div>
+                {/* Title & Description */}
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: 900,
+                  marginBottom: '12px',
+                  lineHeight: 1.2,
+                  fontFamily: 'Archivo',
+                  color: '#0F172A'
+                }}>
+                  {service.title}
+                </h3>
 
-                  <h3 style={{
-                    fontSize: '24px',
-                    fontWeight: 900,
+                <p style={{
+                  fontSize: '15px',
+                  color: '#64748B',
+                  lineHeight: 1.7,
+                  marginBottom: '24px'
+                }}>
+                  {service.description}
+                </p>
+
+                {/* Offerings */}
+                <div style={{
+                  borderTop: '2px solid #E5E7EB',
+                  paddingTop: '20px',
+                  marginBottom: '20px'
+                }}>
+                  <div style={{
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    color: '#0F172A',
                     marginBottom: '12px',
-                    lineHeight: 1.2,
-                    fontFamily: 'Archivo',
-                    color: '#0F172A'
-                  }}>
-                    {project.title}
-                  </h3>
-
-                  <div style={{
-                    fontSize: '13px',
-                    color: '#DC2626',
-                    fontWeight: 600,
-                    marginBottom: '16px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
                     fontFamily: 'IBM Plex Sans'
                   }}>
-                    {project.client}
+                    Key Offerings
                   </div>
-
-                  <p style={{
-                    fontSize: '15px',
-                    color: '#64748B',
-                    lineHeight: 1.7,
-                    marginBottom: '20px'
-                  }}>
-                    {project.scope}
-                  </p>
-
-                  {/* Tags */}
-                  <div style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
+                  <ul style={{
+                    listStyle: 'none',
+                    padding: 0,
+                    margin: 0,
+                    display: 'grid',
                     gap: '8px'
                   }}>
-                    {project.tags.map((tag, j) => (
-                      <span
-                        key={j}
-                        style={{
-                          padding: '6px 12px',
-                          background: '#F8F9FA',
-                          border: '1px solid #E5E7EB',
-                          fontSize: '11px',
-                          color: '#475569',
-                          fontFamily: 'IBM Plex Mono',
-                          letterSpacing: '0.02em'
-                        }}
-                      >
-                        {tag}
-                      </span>
+                    {service.offerings.slice(0, 4).map((offering, j) => (
+                      <li key={j} style={{
+                        fontSize: '13px',
+                        color: '#475569',
+                        paddingLeft: '16px',
+                        position: 'relative',
+                        lineHeight: 1.5
+                      }}>
+                        <span style={{
+                          position: 'absolute',
+                          left: '0',
+                          color: '#DC2626',
+                          fontWeight: 900
+                        }}>•</span>
+                        {offering}
+                      </li>
                     ))}
-                  </div>
+                    {service.offerings.length > 4 && (
+                      <li style={{
+                        fontSize: '12px',
+                        color: '#94A3B8',
+                        paddingLeft: '16px',
+                        fontStyle: 'italic'
+                      }}>
+                        +{service.offerings.length - 4} more...
+                      </li>
+                    )}
+                  </ul>
+                </div>
+
+                {/* Industries Tags */}
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '6px'
+                }}>
+                  {service.industries.map((industry, j) => (
+                    <span
+                      key={j}
+                      style={{
+                        padding: '4px 10px',
+                        background: '#F8F9FA',
+                        border: '1px solid #E5E7EB',
+                        fontSize: '10px',
+                        color: '#64748B',
+                        fontFamily: 'IBM Plex Mono',
+                        letterSpacing: '0.02em'
+                      }}
+                    >
+                      {industry}
+                    </span>
+                  ))}
                 </div>
               </motion.div>
             ))}
@@ -399,7 +543,7 @@ export default function Projects() {
             lineHeight: 1.2,
             fontFamily: 'Archivo'
           }}>
-            Ready to Start Your Project?
+            Need a Custom Solution?
           </h2>
           <p style={{
             fontSize: '18px',
@@ -407,7 +551,7 @@ export default function Projects() {
             opacity: 0.95,
             lineHeight: 1.7
           }}>
-            Whether you're planning a new facility or need support with an existing system, we're here to help.
+            Every project is different. Let's discuss your specific requirements and how we can help.
           </p>
           <a href="/Contact" style={{
             display: 'inline-block',
