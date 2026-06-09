@@ -291,7 +291,7 @@ export default function About() {
               marginTop: "24px",
               maxWidth: "700px"
             }}>
-              35 years of work built by the same people showing up every day. Our team average tenure is over 10 years — in an industry where that is rare.
+              35 years of work built by the same people showing up every day. Our team average tenure is over 10 years, in an industry where that is rare.
             </p>
           </div>
 
