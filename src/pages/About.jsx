@@ -265,7 +265,7 @@ export default function About() {
         </div>
       </motion.section>
 
-      {/* People / Photo Wall */}
+      {/* Clients Carousel */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -273,124 +273,103 @@ export default function About() {
         variants={fadeInUp}
         style={{ padding: "100px 32px", background: "#0F172A", color: "#FFF" }}
       >
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div style={{ marginBottom: "60px" }}>
-            <h2 style={{
-              fontSize: "42px",
-              fontWeight: 900,
-              marginBottom: "16px",
-              fontFamily: "Archivo"
-            }}>
-              Our People
-            </h2>
-            <div style={{ width: "60px", height: "4px", background: "#DC2626" }}></div>
-            <p style={{
-              fontSize: "17px",
-              color: "#94A3B8",
-              lineHeight: 1.7,
-              marginTop: "24px",
-              maxWidth: "700px"
-            }}>
-              35 years of work built by the same people showing up every day. Our team average tenure is over 10 years, in an industry where that is rare.
-            </p>
-          </div>
-
-          {/* Photo Grid */}
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(12, 1fr)",
-            gap: "12px"
+        <div style={{ maxWidth: "1100px", margin: "0 auto", marginBottom: "60px" }}>
+          <h2 style={{
+            fontSize: "42px",
+            fontWeight: 900,
+            marginBottom: "16px",
+            fontFamily: "Archivo"
           }}>
+            Clients We Have Served
+          </h2>
+          <div style={{ width: "60px", height: "4px", background: "#DC2626" }}></div>
+        </div>
 
-            {/* Large left - 6 cols, tall */}
-            <div style={{ gridColumn: "span 6", gridRow: "span 2", height: "460px" }}>
-              <PhotoPlaceholder wide />
-            </div>
+        {/* Carousel Track */}
+        <div style={{ overflow: "hidden", position: "relative" }}>
+          {/* Fade edges */}
+          <div style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            bottom: 0,
+            width: "120px",
+            background: "linear-gradient(to right, #0F172A, transparent)",
+            zIndex: 2
+          }}></div>
+          <div style={{
+            position: "absolute",
+            right: 0,
+            top: 0,
+            bottom: 0,
+            width: "120px",
+            background: "linear-gradient(to left, #0F172A, transparent)",
+            zIndex: 2
+          }}></div>
 
-            {/* Top right 1 - 3 cols */}
-            <div style={{ gridColumn: "span 3", height: "220px" }}>
-              <PhotoPlaceholder />
-            </div>
-
-            {/* Top right stat - 3 cols red */}
-            <div style={{
-              gridColumn: "span 3",
-              height: "220px",
-              background: "#DC2626",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "32px"
-            }}>
-              <div style={{
-                fontSize: "48px",
-                fontWeight: 900,
-                fontFamily: "Archivo",
-                color: "#FFF",
-                lineHeight: 1,
-                marginBottom: "8px"
-              }}>
-                55
-              </div>
-              <div style={{
-                fontFamily: "IBM Plex Mono",
-                fontSize: "11px",
-                color: "rgba(255,255,255,0.8)",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                textAlign: "center"
-              }}>
-                People Strong
-              </div>
-            </div>
-
-            {/* Bottom right 1 - 3 cols */}
-            <div style={{ gridColumn: "span 3", height: "228px" }}>
-              <PhotoPlaceholder />
-            </div>
-
-            {/* Bottom right stat - 3 cols dark */}
-            <div style={{
-              gridColumn: "span 3",
-              height: "228px",
-              background: "#0F172A",
-              border: "2px solid #334155",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "32px"
-            }}>
-              <div style={{
-                fontSize: "48px",
-                fontWeight: 900,
-                fontFamily: "Archivo",
-                color: "#DC2626",
-                lineHeight: 1,
-                marginBottom: "8px"
-              }}>
-                10+
-              </div>
-              <div style={{
-                fontFamily: "IBM Plex Mono",
-                fontSize: "11px",
-                color: "#64748B",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                textAlign: "center"
-              }}>
-                Avg. Years Tenure
-              </div>
-            </div>
-
-            {/* Bottom wide - full width */}
-            <div style={{ gridColumn: "span 12", height: "280px" }}>
-              <PhotoPlaceholder wide />
-            </div>
-
+          {/* Scrolling row */}
+          <div style={{
+            display: "flex",
+            gap: "32px",
+            animation: "scroll 30s linear infinite",
+            width: "max-content"
+          }}>
+            {[...Array(2)].map((_, repeatIndex) => (
+              [
+                "Client A",
+                "Client B",
+                "Client C",
+                "Client D",
+                "Client E",
+                "Client F",
+                "Client G",
+                "Client H",
+                "Client I",
+                "Client J",
+              ].map((client, i) => (
+                <div
+                  key={`${repeatIndex}-${i}`}
+                  style={{
+                    minWidth: "180px",
+                    height: "80px",
+                    background: "rgba(255,255,255,0.05)",
+                    border: "2px solid rgba(255,255,255,0.1)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                    transition: "all 0.3s"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = "#DC2626"
+                    e.currentTarget.style.background = "rgba(255,255,255,0.08)"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"
+                    e.currentTarget.style.background = "rgba(255,255,255,0.05)"
+                  }}
+                >
+                  <div style={{
+                    fontFamily: "IBM Plex Mono",
+                    fontSize: "11px",
+                    color: "#475569",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase"
+                  }}>
+                    {client}
+                  </div>
+                </div>
+              ))
+            ))}
           </div>
         </div>
+
+        <style>{`
+          @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
       </motion.section>
 
       {/* CTA */}
