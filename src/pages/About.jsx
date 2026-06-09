@@ -426,7 +426,7 @@ export default function About() {
             touch, we have probably seen it.
           </p>
 
-          
+          <a
             href="/Contact"
             style={{
               display: "inline-block",
