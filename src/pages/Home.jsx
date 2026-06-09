@@ -185,83 +185,60 @@ export default function Home() {
                 lineHeight: 1.1,
                 marginBottom: '24px'
               }}>
-                37+ Years Delivering Safety-Critical Mechanical Solutions
+                Mechanical & Structural Solutions for Singapore's Process Industry
               </h1>
 
               <p style={{
                 fontSize: '18px',
                 color: '#94A3B8',
                 lineHeight: 1.7,
-                marginBottom: '40px',
+                marginBottom: '32px',
                 maxWidth: '550px'
               }}>
-                From semiconductor gas plants to hydrogen trailer servicing, L.S. Lee Technology Pte Ltd delivers safety-critical mechanical solutions backed by decades of frontline experience.
+                Delivering quality engineering across semiconductor, data center, industrial gas, and hydrogen sectors since 1989.
               </p>
 
+              {/* Three Pillars */}
               <div style={{
                 display: 'flex',
-                gap: '16px'
+                gap: '12px',
+                marginBottom: '40px',
+                flexWrap: 'wrap'
               }}>
-                <a href="#industries" style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  padding: '18px 40px',
-                  background: '#DC2626',
-                  color: '#FFF',
-                  border: '2px solid #DC2626',
-                  fontFamily: 'Archivo, sans-serif',
-                  fontWeight: 700,
-                  fontSize: '14px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.background = '#FFF'
-                  e.target.style.color = '#DC2626'
-                  e.target.style.borderColor = '#FFF'
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.background = '#DC2626'
-                  e.target.style.color = '#FFF'
-                  e.target.style.borderColor = '#DC2626'
-                }}>
-                  Explore Our Industries <I.Arrow />
-                </a>
-                
-                <a href="/projects" style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  padding: '18px 40px',
-                  background: 'transparent',
-                  color: '#FFF',
-                  border: '2px solid rgba(255,255,255,0.3)',
-                  fontFamily: 'Archivo, sans-serif',
-                  fontWeight: 700,
-                  fontSize: '14px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.borderColor = '#FFF'
-                  e.target.style.background = 'rgba(255,255,255,0.1)'
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.borderColor = 'rgba(255,255,255,0.3)'
-                  e.target.style.background = 'transparent'
-                }}>
-                  View Projects
-                </a>
+                {[
+                  { value: '35+', label: 'Years Experience' },
+                  { value: '500+', label: 'Projects Delivered' },
+                  { value: '2.4M', label: 'Safe Manhours' }
+                ].map((pill, i) => (
+                  <div key={i} style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    padding: '10px 20px',
+                    border: '2px solid rgba(220, 38, 38, 0.5)',
+                    background: 'rgba(220, 38, 38, 0.08)'
+                  }}>
+                    <span style={{
+                      fontSize: '18px',
+                      fontWeight: 900,
+                      color: '#DC2626',
+                      fontFamily: 'Archivo, sans-serif'
+                    }}>
+                      {pill.value}
+                    </span>
+                    <span style={{
+                      fontSize: '12px',
+                      fontWeight: 600,
+                      color: '#94A3B8',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      fontFamily: 'IBM Plex Mono'
+                    }}>
+                      {pill.label}
+                    </span>
+                  </div>
+                ))}
               </div>
-            </motion.div>
-          </div>
 
           {/* Right Image - Full Height Corner to Corner */}
           <motion.div
@@ -341,7 +318,7 @@ export default function Home() {
             }}
           >
             {[
-              { value: '37+', label: 'Years Of Experience' },
+              { value: '35+', label: 'Years Of Experience' },
               { value: 'XX', label: 'Completed Projects' },
               { value: 'XX', label: 'Industry Certifications' },
               { value: 'XX', label: 'Team Members' }
