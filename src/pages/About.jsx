@@ -481,7 +481,7 @@ export default function About() {
               e.currentTarget.style.borderColor = "#FFF"
             }}
           >
-            Get in Touch →
+            Get in Touch &#8594;
           </a>
         </div>
       </motion.section>
