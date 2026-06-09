@@ -6,7 +6,7 @@ import About from "./pages/About.jsx"
 import Industries from "./pages/Industries.jsx"
 import Services from "./pages/Services.jsx"
 import Projects from "./pages/Projects.jsx"
-import Safety from "./pages/Safety.jsx"
+import Safety from "./pages/Certifications.jsx"
 import Contact from "./pages/Contact.jsx"
 
 function Wrap({ name, Page }) {
