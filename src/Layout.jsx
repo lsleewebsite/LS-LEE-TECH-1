@@ -183,7 +183,7 @@ export default function Layout({ currentPageName, children }) {
             </div>
 
             {/* Rest of nav items */}
-            {['Services', 'Projects', 'Safety'].map((item) => (
+            {['Services', 'Projects', 'Certifications'].map((item) => (
               <Link
                 key={item}
                 to={`/${item}`}
