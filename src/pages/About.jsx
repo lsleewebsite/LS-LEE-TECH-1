@@ -47,6 +47,17 @@ export default function About() {
     },
   ]
 
+  const team = [
+    { name: "[ Name ]", role: "Managing Director", dept: "Leadership" },
+    { name: "[ Name ]", role: "Operations Manager", dept: "Operations" },
+    { name: "[ Name ]", role: "Chief Engineer", dept: "Engineering" },
+    { name: "[ Name ]", role: "Project Manager", dept: "Projects" },
+    { name: "[ Name ]", role: "Safety Officer", dept: "HSE" },
+    { name: "[ Name ]", role: "Site Supervisor", dept: "Field" },
+    { name: "[ Name ]", role: "QA/QC Engineer", dept: "Quality" },
+    { name: "[ Name ]", role: "Workshop Supervisor", dept: "Fabrication" },
+  ]
+
   return (
     <div>
       {/* Hero Section */}
@@ -98,7 +109,7 @@ export default function About() {
                 maxWidth: "800px",
               }}
             >
-              37 years of mechanical engineering for industries where a single leak, wrong fitting, or missed inspection
+              35 years of mechanical engineering for industries where a single leak, wrong fitting, or missed inspection
               can cost millions in downtime or worse. We are still here because we do not cut corners.
             </p>
           </motion.div>
@@ -275,6 +286,136 @@ export default function About() {
         </div>
       </motion.section>
 
+      {/* People Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeInUp}
+        style={{
+          padding: "100px 32px",
+          background: "#FFF",
+        }}
+      >
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ marginBottom: "60px" }}>
+            <h2
+              style={{
+                fontSize: "42px",
+                fontWeight: 900,
+                marginBottom: "16px",
+                fontFamily: "Archivo",
+              }}
+            >
+              The People Behind the Work
+            </h2>
+            <div style={{ width: "60px", height: "4px", background: "#DC2626" }}></div>
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              gap: "32px",
+            }}
+          >
+            {team.map((person, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08 }}
+                style={{
+                  border: "2px solid #E5E7EB",
+                  overflow: "hidden",
+                  transition: "all 0.3s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "#DC2626"
+                  e.currentTarget.style.transform = "translateY(-4px)"
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "#E5E7EB"
+                  e.currentTarget.style.transform = "translateY(0)"
+                }}
+              >
+                {/* Photo Placeholder */}
+                <div
+                  style={{
+                    height: "220px",
+                    background: "#F8F9FA",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderBottom: "2px solid #E5E7EB",
+                  }}
+                >
+                  {/* Silhouette Icon */}
+                  <svg
+                    width="64"
+                    height="64"
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    style={{ marginBottom: "12px", opacity: 0.3 }}
+                  >
+                    <circle cx="32" cy="24" r="14" fill="#0F172A" />
+                    <path d="M8 56 C8 42 56 42 56 56" fill="#0F172A" />
+                  </svg>
+                  <div
+                    style={{
+                      fontFamily: "IBM Plex Mono",
+                      fontSize: "10px",
+                      color: "#94A3B8",
+                      letterSpacing: "0.1em",
+                    }}
+                  >
+                    [ PHOTO ]
+                  </div>
+                </div>
+
+                {/* Info */}
+                <div style={{ padding: "20px" }}>
+                  <div
+                    style={{
+                      fontFamily: "IBM Plex Mono",
+                      fontSize: "9px",
+                      fontWeight: 700,
+                      color: "#DC2626",
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    {person.dept}
+                  </div>
+                  <h3
+                    style={{
+                      fontSize: "16px",
+                      fontWeight: 900,
+                      marginBottom: "4px",
+                      fontFamily: "Archivo",
+                      color: "#0F172A",
+                    }}
+                  >
+                    {person.name}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "13px",
+                      color: "#64748B",
+                    }}
+                  >
+                    {person.role}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
       {/* CTA Section */}
       <motion.section
         initial="hidden"
@@ -312,7 +453,7 @@ export default function About() {
             touch, we have probably seen it.
           </p>
 
-          <a
+          
             href="/Contact"
             style={{
               display: "inline-block",
