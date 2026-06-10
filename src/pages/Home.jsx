@@ -591,8 +591,8 @@ export default function Home() {
                 num: "01",
                 icon: <I.Wrench />,
                 title: "Project Engineering",
-                tag: "Turnkey Mechanical Construction",
-                desc: "Complete project lifecycle from engineering through commissioning for gas plants and process facilities."
+                tag: "Turnkey Mechanical Structural",
+                desc: "Complete project lifecycle from engineering through commissioning for industrial gas plants and process facilities."
               },
               {
                 num: "02",
@@ -604,9 +604,9 @@ export default function Home() {
               {
                 num: "03",
                 icon: <I.Trailer />,
-                title: "Hydrogen Trailer Testing",
-                tag: "DOT/ISO Certification",
-                desc: "Specialized testing and certification for hydrogen tube trailers with full fleet management support."
+                title: "Servicing & Testing",
+                tag: "Destructive and Non Destructive testing",
+                desc: "Specialized testing and certification for high pressure tube trailers with fleet management support."
               },
               {
                 num: "04",
