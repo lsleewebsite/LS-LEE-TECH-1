@@ -302,78 +302,120 @@ export default function Home() {
         </div>
       </section>
 
-      {/* STATS CARDS - 3 Pillars */}
+      {/* Certifications Carousel */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
         variants={fadeInUp}
-        style={{ background: '#0F172A', padding: '80px 32px' }}
+        style={{ background: "#0F172A", padding: "80px 0" }}
       >
-        <div className="wrap">
-          <motion.div
-            variants={staggerContainer}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '24px',
-              maxWidth: '1200px',
-              margin: '0 auto'
-            }}
-          >
-            {[
-              { value: '25+', label: 'Years Experience' },
-              { value: '500+', label: 'Projects Delivered' },
-              { value: '2.4M', label: 'Safe Manhours' }
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                variants={cardVariant}
-                transition={{ duration: 0.5 }}
-                style={{
-                  padding: '40px 24px',
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '2px solid rgba(255,255,255,0.1)',
-                  textAlign: 'center',
-                  transition: 'all 0.3s',
-                  cursor: 'default'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#DC2626'
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.08)'
-                  e.currentTarget.style.transform = 'translateY(-4px)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
-                  e.currentTarget.style.transform = 'translateY(0)'
-                }}
-              >
-                <div style={{
-                  fontFamily: 'Archivo, sans-serif',
-                  fontSize: '48px',
-                  fontWeight: 900,
-                  color: '#DC2626',
-                  lineHeight: 1,
-                  marginBottom: '12px'
-                }}>
-                  {stat.value}
-                </div>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '11px',
-                  letterSpacing: '0.12em',
-                  textTransform: 'uppercase',
-                  color: '#94A3B8',
-                  fontWeight: 600
-                }}>
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+        <div style={{ maxWidth: "1200px", margin: "0 auto 48px", padding: "0 32px" }}>
+          <h2 style={{
+            fontSize: "32px",
+            fontWeight: 900,
+            color: "#FFF",
+            fontFamily: "Archivo, sans-serif",
+            marginBottom: "12px"
+          }}>
+            Certified. Compliant. <span style={{ color: "#DC2626" }}>Trusted.</span>
+          </h2>
+          <div style={{ width: "60px", height: "4px", background: "#DC2626" }}></div>
         </div>
+
+        {/* Carousel Track */}
+        <div style={{ overflow: "hidden", position: "relative" }}>
+          {/* Fade Left */}
+          <div style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            bottom: 0,
+            width: "150px",
+            background: "linear-gradient(to right, #0F172A, transparent)",
+            zIndex: 2
+          }}></div>
+          {/* Fade Right */}
+          <div style={{
+            position: "absolute",
+            right: 0,
+            top: 0,
+            bottom: 0,
+            width: "150px",
+            background: "linear-gradient(to left, #0F172A, transparent)",
+            zIndex: 2
+          }}></div>
+
+          {/* Scrolling Row */}
+          <div style={{
+            display: "flex",
+            gap: "24px",
+            animation: "certScroll 35s linear infinite",
+            width: "max-content",
+            padding: "8px 0"
+          }}>
+            {[...Array(2)].map((_, repeatIndex) => (
+              [
+                { name: "ISO 9001:2015", issuer: "Quality Management", color: "#FFF" },
+                { name: "ISO 45001:2018", issuer: "Health & Safety", color: "#FFF" },
+                { name: "bizSAFE STAR", issuer: "WSH Council", color: "#DC2626" },
+                { name: "ASME U-Stamp", issuer: "Pressure Vessels", color: "#FFF" },
+                { name: "DOT Approved", issuer: "Cylinder Testing", color: "#FFF" },
+                { name: "bizSAFE Level 5", issuer: "WSH Council", color: "#FFF" },
+                { name: "BCGA Certified", issuer: "Gas Equipment", color: "#FFF" },
+                { name: "NDT Level II", issuer: "Non-Destructive Testing", color: "#FFF" },
+              ].map((cert, i) => (
+                <div
+                  key={`${repeatIndex}-${i}`}
+                  style={{
+                    minWidth: "220px",
+                    padding: "28px 24px",
+                    background: cert.color === "#DC2626" ? "rgba(220, 38, 38, 0.1)" : "rgba(255,255,255,0.05)",
+                    border: `2px solid ${cert.color === "#DC2626" ? "rgba(220,38,38,0.4)" : "rgba(255,255,255,0.1)"}`,
+                    flexShrink: 0,
+                    transition: "all 0.3s"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = "#DC2626"
+                    e.currentTarget.style.background = "rgba(220,38,38,0.1)"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = cert.color === "#DC2626" ? "rgba(220,38,38,0.4)" : "rgba(255,255,255,0.1)"
+                    e.currentTarget.style.background = cert.color === "#DC2626" ? "rgba(220, 38, 38, 0.1)" : "rgba(255,255,255,0.05)"
+                  }}
+                >
+                  <div style={{
+                    fontFamily: "IBM Plex Mono, monospace",
+                    fontSize: "9px",
+                    fontWeight: 700,
+                    color: "#64748B",
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    marginBottom: "10px"
+                  }}>
+                    {cert.issuer}
+                  </div>
+                  <div style={{
+                    fontFamily: "Archivo, sans-serif",
+                    fontSize: "18px",
+                    fontWeight: 900,
+                    color: "#DC2626"
+                  }}>
+                    {cert.name}
+                  </div>
+                </div>
+              ))
+            ))}
+          </div>
+        </div>
+
+        <style>{`
+          @keyframes certScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
       </motion.section>
 
       {/* INDUSTRIES */}
