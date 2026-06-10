@@ -126,7 +126,7 @@ export default function Home() {
       <section id="home" style={{ background: '#0F172A', position: 'relative', overflow: 'hidden' }}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '55% 45%',
+          gridTemplateColumns: '45% 55%',
           minHeight: '700px'
         }}>
           {/* Left Content */}
@@ -161,7 +161,7 @@ export default function Home() {
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase'
                 }}>
-                  EST. 1999 — SINGAPORE
+                  EST. 1989 — SINGAPORE
                 </span>
               </div>
 
@@ -173,7 +173,7 @@ export default function Home() {
                 lineHeight: 1.1,
                 marginBottom: '24px'
               }}>
-                Mechanical & Structural Solutions for the Process Industry
+                Mechanical & Structural Solutions for Singapore's Process Industry
               </h1>
 
               <p style={{
@@ -217,7 +217,7 @@ export default function Home() {
                   Explore Our Industries <I.Arrow />
                 </a>
 
-                <a href="/projects" style={{
+                <a href="/Projects" style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '10px',
@@ -253,12 +253,8 @@ export default function Home() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            style={{
-              position: 'relative',
-              overflow: 'hidden'
-            }}
+            style={{ position: 'relative', overflow: 'hidden' }}
           >
-            {/* Actual Image */}
             <img
               src={`${import.meta.env.BASE_URL}HeroImage.png`}
               alt="LS Lee Technology"
@@ -271,7 +267,6 @@ export default function Home() {
                 filter: 'brightness(0.9) contrast(1.05) saturate(0.85)'
               }}
             />
-
             {/* Dark Navy Overlay */}
             <div style={{
               position: 'absolute',
@@ -279,8 +274,7 @@ export default function Home() {
               background: 'linear-gradient(to right, #0F172A 0%, rgba(15,23,42,0.4) 30%, rgba(15,23,42,0.05) 100%)',
               zIndex: 1
             }}></div>
-
-            {/* Red Accent Line at Bottom */}
+            {/* Red Accent Line */}
             <div style={{
               position: 'absolute',
               bottom: 0,
@@ -296,7 +290,7 @@ export default function Home() {
           <svg
             style={{
               position: 'absolute',
-              left: '55%',
+              left: '45%',
               top: 0,
               height: '100%',
               width: '100px',
@@ -311,105 +305,93 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Certifications Carousel */}
+      {/* CERTIFICATIONS CAROUSEL */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
         variants={fadeInUp}
-        style={{ background: "#0F172A", padding: "80px 0" }}
+        style={{ background: '#F1F5F9', padding: '80px 0' }}
       >
-        <div style={{ maxWidth: "1200px", margin: "0 auto 48px", padding: "0 32px", textAlign: "center" }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto 48px', padding: '0 32px', textAlign: 'center' }}>
           <h2 style={{
-            fontSize: "32px",
+            fontSize: '32px',
             fontWeight: 900,
-            color: "#FFF",
-            fontFamily: "Archivo, sans-serif",
-            marginBottom: "12px"
+            color: '#0F172A',
+            fontFamily: 'Archivo, sans-serif',
+            marginBottom: '12px'
           }}>
-            Certified. Compliant. <span style={{ color: "#DC2626" }}>Trusted.</span>
+            Certified. Compliant. <span style={{ color: '#DC2626' }}>Trusted.</span>
           </h2>
-          <div style={{ width: "60px", height: "4px", background: "#DC2626", margin: "0 auto" }}></div>
+          <div style={{ width: '60px', height: '4px', background: '#DC2626', margin: '0 auto' }}></div>
         </div>
 
-        {/* Carousel Track */}
-        <div style={{ overflow: "hidden", position: "relative" }}>
+        <div style={{ overflow: 'hidden', position: 'relative' }}>
           {/* Fade Left */}
           <div style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            bottom: 0,
-            width: "150px",
-            background: "linear-gradient(to right, #0F172A, transparent)",
-            zIndex: 2
+            position: 'absolute', left: 0, top: 0, bottom: 0, width: '150px',
+            background: 'linear-gradient(to right, #F1F5F9, transparent)', zIndex: 2
           }}></div>
           {/* Fade Right */}
           <div style={{
-            position: "absolute",
-            right: 0,
-            top: 0,
-            bottom: 0,
-            width: "150px",
-            background: "linear-gradient(to left, #0F172A, transparent)",
-            zIndex: 2
+            position: 'absolute', right: 0, top: 0, bottom: 0, width: '150px',
+            background: 'linear-gradient(to left, #F1F5F9, transparent)', zIndex: 2
           }}></div>
 
-          {/* Scrolling Row */}
           <div style={{
-            display: "flex",
-            gap: "24px",
-            animation: "certScroll 35s linear infinite",
-            width: "max-content",
-            padding: "8px 0"
+            display: 'flex',
+            gap: '24px',
+            animation: 'certScroll 35s linear infinite',
+            width: 'max-content',
+            padding: '8px 0'
           }}>
             {[...Array(2)].map((_, repeatIndex) => (
               [
-                { name: "ISO 9001:2015", issuer: "Quality Management", color: "#FFF" },
-                { name: "ISO 45001:2018", issuer: "Health & Safety", color: "#FFF" },
-                { name: "bizSAFE STAR", issuer: "WSH Council", color: "#DC2626" },
-                { name: "ASME U-Stamp", issuer: "Pressure Vessels", color: "#FFF" },
-                { name: "DOT Approved", issuer: "Cylinder Testing", color: "#FFF" },
-                { name: "bizSAFE Level 5", issuer: "WSH Council", color: "#FFF" },
-                { name: "BCGA Certified", issuer: "Gas Equipment", color: "#FFF" },
-                { name: "NDT Level II", issuer: "Non-Destructive Testing", color: "#FFF" },
+                { name: 'ISO 9001:2015', issuer: 'Quality Management' },
+                { name: 'ISO 45001:2018', issuer: 'Health & Safety' },
+                { name: 'bizSAFE STAR', issuer: 'WSH Council', highlight: true },
+                { name: 'ASME U-Stamp', issuer: 'Pressure Vessels' },
+                { name: 'DOT Approved', issuer: 'Cylinder Testing' },
+                { name: 'bizSAFE Level 5', issuer: 'WSH Council' },
+                { name: 'BCGA Certified', issuer: 'Gas Equipment' },
+                { name: 'NDT Level II', issuer: 'Non-Destructive Testing' },
               ].map((cert, i) => (
                 <div
                   key={`${repeatIndex}-${i}`}
                   style={{
-                    minWidth: "220px",
-                    padding: "28px 24px",
-                    background: cert.color === "#DC2626" ? "rgba(220, 38, 38, 0.1)" : "rgba(255,255,255,0.05)",
-                    border: `2px solid ${cert.color === "#DC2626" ? "rgba(220,38,38,0.4)" : "rgba(255,255,255,0.1)"}`,
+                    minWidth: '220px',
+                    padding: '28px 24px',
+                    background: cert.highlight ? 'rgba(220,38,38,0.06)' : '#FFF',
+                    border: `2px solid ${cert.highlight ? 'rgba(220,38,38,0.3)' : '#E5E7EB'}`,
                     flexShrink: 0,
-                    transition: "all 0.3s"
+                    transition: 'all 0.3s'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = "#DC2626"
-                    e.currentTarget.style.background = "rgba(220,38,38,0.1)"
+                    e.currentTarget.style.borderColor = '#DC2626'
+                    e.currentTarget.style.background = 'rgba(220,38,38,0.06)'
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = cert.color === "#DC2626" ? "rgba(220,38,38,0.4)" : "rgba(255,255,255,0.1)"
-                    e.currentTarget.style.background = cert.color === "#DC2626" ? "rgba(220, 38, 38, 0.1)" : "rgba(255,255,255,0.05)"
+                    e.currentTarget.style.borderColor = cert.highlight ? 'rgba(220,38,38,0.3)' : '#E5E7EB'
+                    e.currentTarget.style.background = cert.highlight ? 'rgba(220,38,38,0.06)' : '#FFF'
                   }}
                 >
                   <div style={{
-                    fontFamily: "IBM Plex Mono, monospace",
-                    fontSize: "9px",
+                    fontFamily: 'IBM Plex Mono, monospace',
+                    fontSize: '9px',
                     fontWeight: 700,
-                    color: "#64748B",
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    marginBottom: "10px"
+                    color: '#94A3B8',
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    marginBottom: '10px'
                   }}>
                     {cert.issuer}
                   </div>
                   <div style={{
-                    fontFamily: "Archivo, sans-serif",
-                    fontSize: "18px",
+                    fontFamily: 'Archivo, sans-serif',
+                    fontSize: '18px',
                     fontWeight: 900,
-                    color: "#DC2626"
+                    color: '#DC2626'
                   }}>
                     {cert.name}
                   </div>
@@ -430,17 +412,16 @@ export default function Home() {
       {/* INDUSTRIES */}
       <motion.section
         id="industries"
-        className="section"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.6 }}
         variants={fadeInUp}
         style={{ background: '#FFF', padding: '80px 32px' }}
       >
-        <div className="wrap">
-          <div className="sec-head" style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '48px', marginBottom: '16px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontSize: '48px', fontWeight: 900, marginBottom: '16px', fontFamily: 'Archivo, sans-serif' }}>
               Supporting <span style={{ color: '#DC2626' }}>Key Industries</span>
             </h2>
             <p style={{ fontSize: '18px', color: '#64748B', maxWidth: '700px', margin: '0 auto' }}>
@@ -452,21 +433,17 @@ export default function Home() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '32px'
-            }}
+            viewport={{ once: true, margin: '-50px' }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px' }}
           >
             {[
-              { icon: <I.Chip style={{ width: 80, height: 80 }} />, title: "Semiconductor", tag: "UHP Gas Systems" },
-              { icon: <I.Server style={{ width: 80, height: 80 }} />, title: "Data Center", tag: "H₂ Infrastructure" },
-              { icon: <I.Plant style={{ width: 80, height: 80 }} />, title: "Industrial Gas", tag: "Process Plants" },
-              { icon: <I.H2 style={{ width: 80, height: 80 }} />, title: "New Energy", tag: "Trailer Testing" },
+              { icon: <I.Chip style={{ width: 80, height: 80 }} />, title: 'Semiconductor', tag: 'UHP Gas Systems' },
+              { icon: <I.Server style={{ width: 80, height: 80 }} />, title: 'Data Center', tag: 'H₂ Infrastructure' },
+              { icon: <I.Plant style={{ width: 80, height: 80 }} />, title: 'Industrial Gas', tag: 'Process Plants' },
+              { icon: <I.H2 style={{ width: 80, height: 80 }} />, title: 'New Energy', tag: 'Trailer Testing' },
             ].map((it, i) => (
               <motion.a
-                href="/industries"
+                href="/Industries"
                 key={i}
                 variants={cardVariant}
                 transition={{ duration: 0.5 }}
@@ -499,23 +476,10 @@ export default function Home() {
                   {it.icon}
                 </div>
                 <div>
-                  <h3 style={{
-                    fontFamily: 'Archivo, sans-serif',
-                    fontSize: '24px',
-                    fontWeight: 900,
-                    marginBottom: '8px',
-                    color: '#0F172A'
-                  }}>
+                  <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '24px', fontWeight: 900, marginBottom: '8px', color: '#0F172A' }}>
                     {it.title}
                   </h3>
-                  <div style={{
-                    fontFamily: 'IBM Plex Mono, monospace',
-                    fontSize: '11px',
-                    fontWeight: 600,
-                    color: '#64748B',
-                    letterSpacing: '0.1em',
-                    textTransform: 'uppercase'
-                  }}>
+                  <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 600, color: '#64748B', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                     {it.tag}
                   </div>
                 </div>
@@ -523,60 +487,35 @@ export default function Home() {
             ))}
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            style={{ textAlign: 'center', marginTop: '48px' }}
-          >
-            <a href="/industries" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '10px',
-              padding: '18px 40px',
-              background: '#DC2626',
-              color: '#FFF',
-              border: '2px solid #DC2626',
-              fontFamily: 'Archivo, sans-serif',
-              fontWeight: 700,
-              fontSize: '15px',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              textDecoration: 'none',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
+          <div style={{ textAlign: 'center', marginTop: '48px' }}>
+            <a href="/Industries" style={{
+              display: 'inline-flex', alignItems: 'center', gap: '10px',
+              padding: '18px 40px', background: '#DC2626', color: '#FFF',
+              border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif',
+              fontWeight: 700, fontSize: '15px', textTransform: 'uppercase',
+              letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s'
             }}
-            onMouseEnter={(e) => {
-              e.target.style.background = '#FFF'
-              e.target.style.color = '#DC2626'
-              e.target.style.borderColor = '#FFF'
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = '#DC2626'
-              e.target.style.color = '#FFF'
-              e.target.style.borderColor = '#DC2626'
-            }}>
+            onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
+            onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
               Explore All Industries <I.Arrow />
             </a>
-          </motion.div>
+          </div>
         </div>
       </motion.section>
 
       {/* SERVICES */}
       <motion.section
         id="services"
-        className="section"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.6 }}
         variants={fadeInUp}
         style={{ background: '#0F172A', color: '#FFF', padding: '80px 32px' }}
       >
-        <div className="wrap">
-          <div className="sec-head" style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <h2 style={{ fontSize: '48px', marginBottom: '16px', color: '#FFF' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <h2 style={{ fontSize: '48px', fontWeight: 900, marginBottom: '16px', color: '#FFF', fontFamily: 'Archivo, sans-serif' }}>
               Integrated <span style={{ color: '#DC2626' }}>Engineering Services</span>
             </h2>
             <p style={{ fontSize: '18px', color: '#94A3B8', maxWidth: '700px', margin: '0 auto' }}>
@@ -588,45 +527,17 @@ export default function Home() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '24px'
-            }}
+            viewport={{ once: true, margin: '-50px' }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}
           >
             {[
-              {
-                num: "01",
-                icon: <I.Wrench />,
-                title: "Project Engineering",
-                tag: "Turnkey Mechanical Structural",
-                desc: "Complete project lifecycle from engineering through commissioning for industrial gas plants and process facilities."
-              },
-              {
-                num: "02",
-                icon: <I.Gauge />,
-                title: "Plant Maintenance",
-                tag: "24/7 Operations Support",
-                desc: "Comprehensive maintenance programs to maximize uptime and asset life across critical infrastructure."
-              },
-              {
-                num: "03",
-                icon: <I.Trailer />,
-                title: "Servicing & Testing",
-                tag: "Destructive and Non Destructive testing",
-                desc: "Specialized testing and certification for high pressure tube trailers with fleet management support."
-              },
-              {
-                num: "04",
-                icon: <I.Snow />,
-                title: "Cryogenic Storage & Hoses",
-                tag: "Vacuum-Insulated Equipment",
-                desc: "Custom fabrication and maintenance for cryogenic transfer systems and industrial gas applications."
-              },
+              { num: '01', icon: <I.Wrench />, title: 'Project Engineering', tag: 'Turnkey Mechanical Structural', desc: 'Complete project lifecycle from engineering through commissioning for industrial gas plants and process facilities.' },
+              { num: '02', icon: <I.Gauge />, title: 'Plant Maintenance', tag: '24/7 Operations Support', desc: 'Comprehensive maintenance programs to maximize uptime and asset life across critical infrastructure.' },
+              { num: '03', icon: <I.Trailer />, title: 'Servicing & Testing', tag: 'Destructive and Non Destructive Testing', desc: 'Specialized testing and certification for high pressure tube trailers with fleet management support.' },
+              { num: '04', icon: <I.Snow />, title: 'Cryogenic Storage & Hoses', tag: 'Vacuum-Insulated Equipment', desc: 'Custom fabrication and maintenance for cryogenic transfer systems and industrial gas applications.' },
             ].map((it, i) => (
               <motion.a
-                href="/services"
+                href="/Services"
                 key={i}
                 variants={cardVariant}
                 transition={{ duration: 0.5 }}
@@ -656,13 +567,7 @@ export default function Home() {
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div style={{
-                    fontFamily: 'Archivo, sans-serif',
-                    fontSize: '40px',
-                    fontWeight: 900,
-                    color: 'rgba(255,255,255,0.1)',
-                    lineHeight: 1
-                  }}>
+                  <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '40px', fontWeight: 900, color: 'rgba(255,255,255,0.1)', lineHeight: 1 }}>
                     {it.num}
                   </div>
                   <div className="svc-icon" style={{ color: '#FFF', transition: 'color 0.3s' }}>
@@ -670,101 +575,52 @@ export default function Home() {
                   </div>
                 </div>
                 <div>
-                  <h3 style={{
-                    fontFamily: 'Archivo, sans-serif',
-                    fontSize: '24px',
-                    fontWeight: 900,
-                    marginBottom: '8px',
-                    lineHeight: 1.2,
-                    color: '#FFF'
-                  }}>
+                  <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '24px', fontWeight: 900, marginBottom: '8px', lineHeight: 1.2, color: '#FFF' }}>
                     {it.title}
                   </h3>
-                  <div style={{
-                    fontFamily: 'IBM Plex Mono, monospace',
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    color: '#DC2626',
-                    letterSpacing: '0.1em',
-                    textTransform: 'uppercase'
-                  }}>
+                  <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                     {it.tag}
                   </div>
                 </div>
                 <p style={{ fontSize: '14px', color: '#94A3B8', lineHeight: 1.7, margin: 0 }}>
                   {it.desc}
                 </p>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  marginTop: 'auto',
-                  fontSize: '13px',
-                  fontWeight: 700,
-                  color: '#FFF',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em'
-                }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: 'auto', fontSize: '13px', fontWeight: 700, color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   Learn More <I.Arrow />
                 </div>
               </motion.a>
             ))}
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            style={{ textAlign: 'center', marginTop: '40px' }}
-          >
-            <a href="/services" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '10px',
-              padding: '18px 40px',
-              background: '#DC2626',
-              color: '#FFF',
-              border: '2px solid #DC2626',
-              fontFamily: 'Archivo, sans-serif',
-              fontWeight: 700,
-              fontSize: '15px',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              textDecoration: 'none',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
+          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+            <a href="/Services" style={{
+              display: 'inline-flex', alignItems: 'center', gap: '10px',
+              padding: '18px 40px', background: '#DC2626', color: '#FFF',
+              border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif',
+              fontWeight: 700, fontSize: '15px', textTransform: 'uppercase',
+              letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s'
             }}
-            onMouseEnter={(e) => {
-              e.target.style.background = '#FFF'
-              e.target.style.color = '#DC2626'
-              e.target.style.borderColor = '#FFF'
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = '#DC2626'
-              e.target.style.color = '#FFF'
-              e.target.style.borderColor = '#DC2626'
-            }}>
+            onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
+            onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
               View All Services <I.Arrow />
             </a>
-          </motion.div>
+          </div>
         </div>
       </motion.section>
 
       {/* PROJECTS */}
       <motion.section
         id="projects"
-        className="section"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.6 }}
         variants={fadeInUp}
         style={{ background: '#FFF', padding: '80px 32px' }}
       >
-        <div className="wrap">
-          <div className="sec-head" style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <h2 style={{ fontSize: '48px', marginBottom: '16px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <h2 style={{ fontSize: '48px', fontWeight: 900, marginBottom: '16px', fontFamily: 'Archivo, sans-serif' }}>
               Engineering That <span style={{ color: '#DC2626' }}>Delivers</span>
             </h2>
             <p style={{ fontSize: '18px', color: '#64748B', maxWidth: '700px', margin: '0 auto' }}>
@@ -776,85 +632,25 @@ export default function Home() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(12, 1fr)',
-              gap: '20px',
-              marginBottom: '40px'
-            }}
+            viewport={{ once: true, margin: '-50px' }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '20px', marginBottom: '40px' }}
           >
             {/* Large Featured - 8 cols */}
             <motion.div
               variants={cardVariant}
               transition={{ duration: 0.5 }}
-              style={{
-                gridColumn: 'span 8',
-                background: '#FFF',
-                border: '2px solid #E5E7EB',
-                overflow: 'hidden',
-                transition: 'all 0.3s',
-                cursor: 'pointer'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#DC2626'
-                e.currentTarget.style.transform = 'translateY(-4px)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#E5E7EB'
-                e.currentTarget.style.transform = 'translateY(0)'
-              }}
+              style={{ gridColumn: 'span 8', background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden', transition: 'all 0.3s', cursor: 'pointer' }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-4px)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.transform = 'translateY(0)' }}
             >
-              <div style={{
-                height: '280px',
-                background: '#E5E7EB',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderBottom: '2px solid #E5E7EB'
-              }}>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  color: '#64748B',
-                  letterSpacing: '0.1em'
-                }}>
-                  [ FEATURED PROJECT ]
-                </div>
+              <div style={{ height: '280px', background: '#E5E7EB', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '2px solid #E5E7EB' }}>
+                <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 700, color: '#64748B', letterSpacing: '0.1em' }}>[ FEATURED PROJECT ]</div>
               </div>
               <div style={{ padding: '28px' }}>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '10px',
-                  fontWeight: 700,
-                  color: '#DC2626',
-                  letterSpacing: '0.12em',
-                  marginBottom: '10px'
-                }}>
-                  PROJECT ENGINEERING
-                </div>
-                <h3 style={{
-                  fontFamily: 'Archivo, sans-serif',
-                  fontSize: '24px',
-                  fontWeight: 900,
-                  marginBottom: '10px',
-                  lineHeight: 1.2,
-                  color: '#0F172A'
-                }}>
-                  Fab-14 UHP Gas Distribution
-                </h3>
-                <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.6, marginBottom: '16px' }}>
-                  Design, fabrication, and installation of ultra-high-purity gas distribution network.
-                </p>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  color: '#0F172A'
-                }}>
-                  Woodlands · 2024
-                </div>
+                <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.12em', marginBottom: '10px' }}>PROJECT ENGINEERING</div>
+                <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '24px', fontWeight: 900, marginBottom: '10px', lineHeight: 1.2, color: '#0F172A' }}>Fab-14 UHP Gas Distribution</h3>
+                <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.6, marginBottom: '16px' }}>Design, fabrication, and installation of ultra-high-purity gas distribution network.</p>
+                <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 600, color: '#0F172A' }}>Woodlands · 2024</div>
               </div>
             </motion.div>
 
@@ -862,67 +658,17 @@ export default function Home() {
             <motion.div
               variants={cardVariant}
               transition={{ duration: 0.5, delay: 0.1 }}
-              style={{
-                gridColumn: 'span 4',
-                background: '#FFF',
-                border: '2px solid #E5E7EB',
-                overflow: 'hidden',
-                transition: 'all 0.3s',
-                cursor: 'pointer',
-                display: 'flex',
-                flexDirection: 'column'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#DC2626'
-                e.currentTarget.style.transform = 'translateY(-4px)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#E5E7EB'
-                e.currentTarget.style.transform = 'translateY(0)'
-              }}
+              style={{ gridColumn: 'span 4', background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden', transition: 'all 0.3s', cursor: 'pointer', display: 'flex', flexDirection: 'column' }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-4px)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.transform = 'translateY(0)' }}
             >
-              <div style={{
-                height: '180px',
-                background: '#E5E7EB',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderBottom: '2px solid #E5E7EB'
-              }}>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '10px',
-                  fontWeight: 700,
-                  color: '#64748B',
-                  letterSpacing: '0.1em'
-                }}>
-                  [ PROJECT ]
-                </div>
+              <div style={{ height: '180px', background: '#E5E7EB', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '2px solid #E5E7EB' }}>
+                <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 700, color: '#64748B', letterSpacing: '0.1em' }}>[ PROJECT ]</div>
               </div>
               <div style={{ padding: '24px', flex: 1 }}>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '10px',
-                  fontWeight: 700,
-                  color: '#DC2626',
-                  letterSpacing: '0.12em',
-                  marginBottom: '8px'
-                }}>
-                  MAINTENANCE
-                </div>
-                <h3 style={{
-                  fontFamily: 'Archivo, sans-serif',
-                  fontSize: '18px',
-                  fontWeight: 900,
-                  marginBottom: '8px',
-                  lineHeight: 1.2,
-                  color: '#0F172A'
-                }}>
-                  ASU Plant Turnaround
-                </h3>
-                <p style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.5 }}>
-                  Major shutdown coordination across air separation unit.
-                </p>
+                <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.12em', marginBottom: '8px' }}>MAINTENANCE</div>
+                <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '18px', fontWeight: 900, marginBottom: '8px', lineHeight: 1.2, color: '#0F172A' }}>ASU Plant Turnaround</h3>
+                <p style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.5 }}>Major shutdown coordination across air separation unit.</p>
               </div>
             </motion.div>
 
@@ -930,73 +676,18 @@ export default function Home() {
             <motion.div
               variants={cardVariant}
               transition={{ duration: 0.5, delay: 0.2 }}
-              style={{
-                gridColumn: 'span 5',
-                background: '#FFF',
-                border: '2px solid #E5E7EB',
-                overflow: 'hidden',
-                transition: 'all 0.3s',
-                cursor: 'pointer'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#DC2626'
-                e.currentTarget.style.transform = 'translateY(-4px)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#E5E7EB'
-                e.currentTarget.style.transform = 'translateY(0)'
-              }}
+              style={{ gridColumn: 'span 5', background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden', transition: 'all 0.3s', cursor: 'pointer' }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-4px)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.transform = 'translateY(0)' }}
             >
-              <div style={{
-                height: '200px',
-                background: '#E5E7EB',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderBottom: '2px solid #E5E7EB'
-              }}>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '10px',
-                  fontWeight: 700,
-                  color: '#64748B',
-                  letterSpacing: '0.1em'
-                }}>
-                  [ PROJECT ]
-                </div>
+              <div style={{ height: '200px', background: '#E5E7EB', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '2px solid #E5E7EB' }}>
+                <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 700, color: '#64748B', letterSpacing: '0.1em' }}>[ PROJECT ]</div>
               </div>
               <div style={{ padding: '24px' }}>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '10px',
-                  fontWeight: 700,
-                  color: '#DC2626',
-                  letterSpacing: '0.12em',
-                  marginBottom: '8px'
-                }}>
-                  TESTING & CERTIFICATION
-                </div>
-                <h3 style={{
-                  fontFamily: 'Archivo, sans-serif',
-                  fontSize: '20px',
-                  fontWeight: 900,
-                  marginBottom: '8px',
-                  lineHeight: 1.2,
-                  color: '#0F172A'
-                }}>
-                  H₂ Tube Trailer Recertification
-                </h3>
-                <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.5, marginBottom: '12px' }}>
-                  DOT recertification program for fleet of 40+ trailers.
-                </p>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  color: '#0F172A'
-                }}>
-                  Tuas · 2024
-                </div>
+                <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.12em', marginBottom: '8px' }}>TESTING & CERTIFICATION</div>
+                <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '20px', fontWeight: 900, marginBottom: '8px', lineHeight: 1.2, color: '#0F172A' }}>H₂ Tube Trailer Recertification</h3>
+                <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.5, marginBottom: '12px' }}>DOT recertification program for fleet of 40+ trailers.</p>
+                <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 600, color: '#0F172A' }}>Tuas · 2024</div>
               </div>
             </motion.div>
 
@@ -1004,215 +695,75 @@ export default function Home() {
             <motion.div
               variants={cardVariant}
               transition={{ duration: 0.5, delay: 0.25 }}
-              style={{
-                gridColumn: 'span 3',
-                background: '#0F172A',
-                border: '2px solid #0F172A',
-                color: '#FFF',
-                padding: '32px 20px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                textAlign: 'center',
-                transition: 'all 0.3s',
-                cursor: 'pointer'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#DC2626'
-                e.currentTarget.style.borderColor = '#DC2626'
-                e.currentTarget.style.transform = 'translateY(-4px)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#0F172A'
-                e.currentTarget.style.borderColor = '#0F172A'
-                e.currentTarget.style.transform = 'translateY(0)'
-              }}
+              style={{ gridColumn: 'span 3', background: '#0F172A', border: '2px solid #0F172A', color: '#FFF', padding: '32px 20px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', transition: 'all 0.3s', cursor: 'pointer' }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = '#DC2626'; e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-4px)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = '#0F172A'; e.currentTarget.style.borderColor = '#0F172A'; e.currentTarget.style.transform = 'translateY(0)' }}
             >
-              <div style={{
-                fontSize: '56px',
-                fontFamily: 'Archivo, sans-serif',
-                fontWeight: 900,
-                marginBottom: '12px',
-                lineHeight: 1
-              }}>
-                XX
-              </div>
-              <div style={{
-                fontFamily: 'IBM Plex Mono, monospace',
-                fontSize: '10px',
-                fontWeight: 600,
-                letterSpacing: '0.1em',
-                opacity: 0.8
-              }}>
-                COMPLETED PROJECTS
-              </div>
+              <div style={{ fontSize: '56px', fontFamily: 'Archivo, sans-serif', fontWeight: 900, marginBottom: '12px', lineHeight: 1 }}>XX</div>
+              <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 600, letterSpacing: '0.1em', opacity: 0.8 }}>COMPLETED PROJECTS</div>
             </motion.div>
 
             {/* Wide - 4 cols */}
             <motion.div
               variants={cardVariant}
               transition={{ duration: 0.5, delay: 0.3 }}
-              style={{
-                gridColumn: 'span 4',
-                background: '#FFF',
-                border: '2px solid #E5E7EB',
-                overflow: 'hidden',
-                transition: 'all 0.3s',
-                cursor: 'pointer'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#DC2626'
-                e.currentTarget.style.transform = 'translateY(-4px)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#E5E7EB'
-                e.currentTarget.style.transform = 'translateY(0)'
-              }}
+              style={{ gridColumn: 'span 4', background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden', transition: 'all 0.3s', cursor: 'pointer' }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-4px)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.transform = 'translateY(0)' }}
             >
-              <div style={{
-                height: '160px',
-                background: '#E5E7EB',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderBottom: '2px solid #E5E7EB'
-              }}>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '10px',
-                  fontWeight: 700,
-                  color: '#64748B',
-                  letterSpacing: '0.1em'
-                }}>
-                  [ PROJECT ]
-                </div>
+              <div style={{ height: '160px', background: '#E5E7EB', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '2px solid #E5E7EB' }}>
+                <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 700, color: '#64748B', letterSpacing: '0.1em' }}>[ PROJECT ]</div>
               </div>
               <div style={{ padding: '24px' }}>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '10px',
-                  fontWeight: 700,
-                  color: '#DC2626',
-                  letterSpacing: '0.12em',
-                  marginBottom: '8px'
-                }}>
-                  CRYOGENIC SYSTEMS
-                </div>
-                <h3 style={{
-                  fontFamily: 'Archivo, sans-serif',
-                  fontSize: '18px',
-                  fontWeight: 900,
-                  marginBottom: '8px',
-                  lineHeight: 1.2,
-                  color: '#0F172A'
-                }}>
-                  LNG Transfer Line Fabrication
-                </h3>
-                <p style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.5 }}>
-                  Vacuum-insulated transfer lines for LNG operations.
-                </p>
+                <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.12em', marginBottom: '8px' }}>CRYOGENIC SYSTEMS</div>
+                <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '18px', fontWeight: 900, marginBottom: '8px', lineHeight: 1.2, color: '#0F172A' }}>LNG Transfer Line Fabrication</h3>
+                <p style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.5 }}>Vacuum-insulated transfer lines for LNG operations.</p>
               </div>
             </motion.div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            style={{ textAlign: 'center' }}
-          >
-            <a href="/projects" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '10px',
-              padding: '18px 40px',
-              background: '#DC2626',
-              color: '#FFF',
-              border: '2px solid #DC2626',
-              fontFamily: 'Archivo, sans-serif',
-              fontWeight: 700,
-              fontSize: '15px',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              textDecoration: 'none',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
+          <div style={{ textAlign: 'center' }}>
+            <a href="/Projects" style={{
+              display: 'inline-flex', alignItems: 'center', gap: '10px',
+              padding: '18px 40px', background: '#DC2626', color: '#FFF',
+              border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif',
+              fontWeight: 700, fontSize: '15px', textTransform: 'uppercase',
+              letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s'
             }}
-            onMouseEnter={(e) => {
-              e.target.style.background = '#FFF'
-              e.target.style.color = '#DC2626'
-              e.target.style.borderColor = '#FFF'
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = '#DC2626'
-              e.target.style.color = '#FFF'
-              e.target.style.borderColor = '#DC2626'
-            }}>
+            onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
+            onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
               View Full Portfolio <I.Arrow />
             </a>
-          </motion.div>
+          </div>
         </div>
       </motion.section>
 
       {/* CONTACT */}
       <motion.section
         id="contact"
-        className="section"
         style={{ padding: '80px 32px', background: '#0F172A', textAlign: 'center' }}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.6 }}
         variants={fadeInUp}
       >
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <h2 style={{
-            fontFamily: 'Archivo, sans-serif',
-            fontSize: '48px',
-            fontWeight: 900,
-            marginBottom: '24px',
-            color: '#FFF',
-            lineHeight: 1.2
-          }}>
+          <h2 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '48px', fontWeight: 900, marginBottom: '24px', color: '#FFF', lineHeight: 1.2 }}>
             Ready to Discuss <span style={{ color: '#DC2626' }}>Your Project?</span>
           </h2>
-          <p style={{
-            fontSize: '18px',
-            color: '#94A3B8',
-            marginBottom: '40px',
-            lineHeight: 1.7
-          }}>
+          <p style={{ fontSize: '18px', color: '#94A3B8', marginBottom: '40px', lineHeight: 1.7 }}>
             Connect with our engineering specialists for professional consultation on your next project. We deliver technical solutions built on decades of industry experience.
           </p>
           <a href="mailto:projects@lslee.com.sg" style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '10px',
-            padding: '18px 40px',
-            background: '#DC2626',
-            color: '#FFF',
-            border: '2px solid #DC2626',
-            fontFamily: 'Archivo, sans-serif',
-            fontWeight: 700,
-            fontSize: '15px',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-            textDecoration: 'none',
-            cursor: 'pointer',
-            transition: 'all 0.3s'
+            display: 'inline-flex', alignItems: 'center', gap: '10px',
+            padding: '18px 40px', background: '#DC2626', color: '#FFF',
+            border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif',
+            fontWeight: 700, fontSize: '15px', textTransform: 'uppercase',
+            letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s'
           }}
-          onMouseEnter={(e) => {
-            e.target.style.background = '#FFF'
-            e.target.style.color = '#DC2626'
-            e.target.style.borderColor = '#FFF'
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.background = '#DC2626'
-            e.target.style.color = '#FFF'
-            e.target.style.borderColor = '#DC2626'
-          }}>
+          onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
+          onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
             Get in Touch <I.Arrow />
           </a>
         </div>
