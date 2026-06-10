@@ -258,6 +258,7 @@ export default function Home() {
               overflow: 'hidden'
             }}
           >
+            {/* Actual Image */}
             <img
               src={`${import.meta.env.BASE_URL}HeroImage.png`}
               alt="LS Lee Technology"
@@ -266,29 +267,30 @@ export default function Home() {
                 height: '100%',
                 objectFit: 'cover',
                 objectPosition: 'center',
-                display: 'block'
+                display: 'block',
+                filter: 'brightness(0.75) contrast(1.1) saturate(0.7)'
               }}
             />
-          </motion.div>
 
-          {/* Swoop Divider */}
-          <svg
-            style={{
+            {/* Dark Navy Overlay */}
+            <div style={{
               position: 'absolute',
-              left: '55%',
-              top: 0,
-              height: '100%',
-              width: '100px',
-              transform: 'translateX(-100%)',
+              inset: 0,
+              background: 'linear-gradient(to right, #0F172A 0%, rgba(15,23,42,0.5) 40%, rgba(15,23,42,0.15) 100%)',
               zIndex: 1
-            }}
-            viewBox="0 0 100 700"
-            preserveAspectRatio="none"
-          >
-            <path d="M 0 0 Q 100 350, 0 700 L 0 0 Z" fill="#0F172A" />
-          </svg>
-        </div>
-      </section>
+            }}></div>
+
+            {/* Red Accent Line at Bottom */}
+            <div style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: '3px',
+              background: '#DC2626',
+              zIndex: 2
+            }}></div>
+          </motion.div>
 
       {/* Certifications Carousel */}
       <motion.section
