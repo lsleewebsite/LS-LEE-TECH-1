@@ -161,7 +161,7 @@ export default function Home() {
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase'
                 }}>
-                  EST. 1989 — SINGAPORE
+                  EST. 1999 — SINGAPORE
                 </span>
               </div>
 
@@ -173,7 +173,7 @@ export default function Home() {
                 lineHeight: 1.1,
                 marginBottom: '24px'
               }}>
-                Mechanical & Structural Solutions for Singapore's Process Industry
+                Mechanical & Structural Solutions for the Process Industry
               </h1>
 
               <p style={{
@@ -323,7 +323,7 @@ export default function Home() {
             }}
           >
             {[
-              { value: '35+', label: 'Years Experience' },
+              { value: '25+', label: 'Years Experience' },
               { value: '500+', label: 'Projects Delivered' },
               { value: '2.4M', label: 'Safe Manhours' }
             ].map((stat, i) => (
