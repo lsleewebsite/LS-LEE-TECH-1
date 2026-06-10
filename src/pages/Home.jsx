@@ -255,18 +255,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             style={{ position: 'relative', overflow: 'hidden' }}
           >
-            <img
-              src={`${import.meta.env.BASE_URL}HeroImage.png`}
-              alt="LS Lee Technology"
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
-                display: 'block',
-                filter: 'brightness(0.9) contrast(1.05) saturate(0.85)'
-              }}
-            />
+  
             {/* Dark Navy Overlay */}
             <div style={{
               position: 'absolute',
