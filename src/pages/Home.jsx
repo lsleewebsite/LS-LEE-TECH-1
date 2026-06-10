@@ -292,6 +292,25 @@ export default function Home() {
             }}></div>
           </motion.div>
 
+          {/* Swoop Divider */}
+          <svg
+            style={{
+              position: 'absolute',
+              left: '55%',
+              top: 0,
+              height: '100%',
+              width: '100px',
+              transform: 'translateX(-100%)',
+              zIndex: 1
+            }}
+            viewBox="0 0 100 700"
+            preserveAspectRatio="none"
+          >
+            <path d="M 0 0 Q 100 350, 0 700 L 0 0 Z" fill="#0F172A" />
+          </svg>
+        </div>
+      </section>
+
       {/* Certifications Carousel */}
       <motion.section
         initial="hidden"
