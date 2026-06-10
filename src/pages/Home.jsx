@@ -311,7 +311,7 @@ export default function Home() {
         variants={fadeInUp}
         style={{ background: "#0F172A", padding: "80px 0" }}
       >
-        <div style={{ maxWidth: "1200px", margin: "0 auto 48px", padding: "0 32px" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto 48px", padding: "0 32px", textAlign: "center" }}>
           <h2 style={{
             fontSize: "32px",
             fontWeight: 900,
@@ -321,7 +321,7 @@ export default function Home() {
           }}>
             Certified. Compliant. <span style={{ color: "#DC2626" }}>Trusted.</span>
           </h2>
-          <div style={{ width: "60px", height: "4px", background: "#DC2626" }}></div>
+          <div style={{ width: "60px", height: "4px", background: "#DC2626", margin: "0 auto" }}></div>
         </div>
 
         {/* Carousel Track */}
