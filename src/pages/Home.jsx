@@ -432,7 +432,7 @@ export default function Home() {
         <div className="wrap">
           <div className="sec-head" style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '48px', marginBottom: '16px' }}>
-              Four Critical <span style={{ color: '#DC2626' }}>Infrastructure Sectors</span>
+              Supporting <span style={{ color: '#DC2626' }}>Key Industries</span>
             </h2>
             <p style={{ fontSize: '18px', color: '#64748B', maxWidth: '700px', margin: '0 auto' }}>
               Where safety meets precision engineering
