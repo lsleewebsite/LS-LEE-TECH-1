@@ -254,33 +254,21 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             style={{
-              background: '#E5E7EB',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              position: 'relative'
+              position: 'relative',
+              overflow: 'hidden'
             }}
           >
-            <div style={{ textAlign: 'center' }}>
-              <div style={{
-                fontFamily: 'IBM Plex Mono, monospace',
-                fontSize: '12px',
-                fontWeight: 700,
-                color: '#64748B',
-                letterSpacing: '0.1em',
-                marginBottom: '8px'
-              }}>
-                [ HERO IMAGE ]
-              </div>
-              <div style={{
-                fontFamily: 'IBM Plex Mono, monospace',
-                fontSize: '10px',
-                color: '#94A3B8',
-                letterSpacing: '0.1em'
-              }}>
-                Full Height Image
-              </div>
-            </div>
+            <img
+              src={`${import.meta.env.BASE_URL}HeroImage.png`}
+              alt="LS Lee Technology"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                display: 'block'
+              }}
+            />
           </motion.div>
 
           {/* Swoop Divider */}
