@@ -611,7 +611,7 @@ export default function Home() {
               {
                 num: "04",
                 icon: <I.Snow />,
-                title: "Cryogenic Systems",
+                title: "Cryogenic Storage & Hoses",
                 tag: "Vacuum-Insulated Equipment",
                 desc: "Custom fabrication and maintenance for cryogenic transfer systems and industrial gas applications."
               },
