@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
-// Icons
 const I = {
   Chip: (p) => (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="2" {...p}>
@@ -82,10 +81,7 @@ const fadeInUp = {
 
 const staggerContainer = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 }
-  }
+  visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
 }
 
 const cardVariant = {
@@ -113,10 +109,7 @@ export default function Home() {
     if (!formData.email.trim() || !formData.email.includes('@')) newErrors.email = 'Valid email required'
     if (!formData.scope) newErrors.scope = 'Please select a scope'
     if (!formData.message.trim()) newErrors.message = 'Project notes required'
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors)
-      return
-    }
+    if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return }
     setSubmitted(true)
   }
 
@@ -124,124 +117,35 @@ export default function Home() {
     <div>
       {/* HERO */}
       <section id="home" style={{ background: '#0F172A', position: 'relative', overflow: 'hidden' }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '45% 55%',
-          minHeight: '700px'
-        }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '45% 55%', minHeight: '700px' }}>
+
           {/* Left Content */}
-          <div style={{
-            padding: '100px 80px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            position: 'relative',
-            zIndex: 2
-          }}>
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '16px',
-                padding: '12px 24px',
-                background: 'rgba(255,255,255,0.1)',
-                border: '2px solid rgba(255,255,255,0.2)',
-                marginBottom: '32px'
-              }}>
+          <div style={{ padding: '100px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', zIndex: 2 }}>
+            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '16px', padding: '12px 24px', background: 'rgba(255,255,255,0.1)', border: '2px solid rgba(255,255,255,0.2)', marginBottom: '32px' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#DC2626' }}></div>
-                <span style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '13px',
-                  fontWeight: 700,
-                  color: '#FFF',
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase'
-                }}>
+                <span style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '13px', fontWeight: 700, color: '#FFF', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
                   EST. 1999 — SINGAPORE
                 </span>
               </div>
 
-              <h1 style={{
-                fontFamily: 'Archivo, sans-serif',
-                fontSize: '52px',
-                fontWeight: 900,
-                color: '#FFF',
-                lineHeight: 1.1,
-                marginBottom: '24px'
-              }}>
+              <h1 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '52px', fontWeight: 900, color: '#FFF', lineHeight: 1.1, marginBottom: '24px' }}>
                 Mechanical & Structural Solutions for Singapore's Process Industry
               </h1>
 
-              <p style={{
-                fontSize: '18px',
-                color: '#94A3B8',
-                lineHeight: 1.7,
-                marginBottom: '40px',
-                maxWidth: '550px'
-              }}>
+              <p style={{ fontSize: '18px', color: '#94A3B8', lineHeight: 1.7, marginBottom: '40px', maxWidth: '550px' }}>
                 Delivering quality mechanical and structural engineering solutions to the process industry, guided by a track record built over decades.
               </p>
 
               <div style={{ display: 'flex', gap: '16px' }}>
-                <a href="#industries" style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  padding: '18px 40px',
-                  background: '#DC2626',
-                  color: '#FFF',
-                  border: '2px solid #DC2626',
-                  fontFamily: 'Archivo, sans-serif',
-                  fontWeight: 700,
-                  fontSize: '14px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.background = '#FFF'
-                  e.target.style.color = '#DC2626'
-                  e.target.style.borderColor = '#FFF'
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.background = '#DC2626'
-                  e.target.style.color = '#FFF'
-                  e.target.style.borderColor = '#DC2626'
-                }}>
+                <a href="#industries" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: '#DC2626', color: '#FFF', border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
+                  onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
+                  onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
                   Explore Our Industries <I.Arrow />
                 </a>
-
-                <a href="/Projects" style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  padding: '18px 40px',
-                  background: 'transparent',
-                  color: '#FFF',
-                  border: '2px solid rgba(255,255,255,0.3)',
-                  fontFamily: 'Archivo, sans-serif',
-                  fontWeight: 700,
-                  fontSize: '14px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.borderColor = '#FFF'
-                  e.target.style.background = 'rgba(255,255,255,0.1)'
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.borderColor = 'rgba(255,255,255,0.3)'
-                  e.target.style.background = 'transparent'
-                }}>
+                <a href="/Projects" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: 'transparent', color: '#FFF', border: '2px solid rgba(255,255,255,0.3)', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
+                  onMouseEnter={(e) => { e.target.style.borderColor = '#FFF'; e.target.style.background = 'rgba(255,255,255,0.1)' }}
+                  onMouseLeave={(e) => { e.target.style.borderColor = 'rgba(255,255,255,0.3)'; e.target.style.background = 'transparent' }}>
                   View Projects
                 </a>
               </div>
@@ -249,46 +153,20 @@ export default function Home() {
           </div>
 
           {/* Right Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            style={{ position: 'relative', overflow: 'hidden' }}
-          >
-  
-            {/* Dark Navy Overlay */}
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              background: 'linear-gradient(to right, #0F172A 0%, rgba(15,23,42,0.4) 30%, rgba(15,23,42,0.05) 100%)',
-              zIndex: 1
-            }}></div>
+          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }} style={{ position: 'relative', overflow: 'hidden' }}>
+            <img
+              src={`${import.meta.env.BASE_URL}HeroImage.png`}
+              alt="LS Lee Technology"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            />
+            {/* Gradient Overlay Only */}
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, #0F172A 0%, rgba(15,23,42,0.4) 30%, rgba(15,23,42,0.05) 100%)', zIndex: 1 }}></div>
             {/* Red Accent Line */}
-            <div style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              right: 0,
-              height: '3px',
-              background: '#DC2626',
-              zIndex: 2
-            }}></div>
+            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '3px', background: '#DC2626', zIndex: 2 }}></div>
           </motion.div>
 
           {/* Swoop Divider */}
-          <svg
-            style={{
-              position: 'absolute',
-              left: '45%',
-              top: 0,
-              height: '100%',
-              width: '100px',
-              transform: 'translateX(-100%)',
-              zIndex: 1
-            }}
-            viewBox="0 0 100 700"
-            preserveAspectRatio="none"
-          >
+          <svg style={{ position: 'absolute', left: '45%', top: 0, height: '100%', width: '100px', transform: 'translateX(-100%)', zIndex: 1 }} viewBox="0 0 100 700" preserveAspectRatio="none">
             <path d="M 0 0 Q 100 350, 0 700 L 0 0 Z" fill="#0F172A" />
           </svg>
         </div>
@@ -296,45 +174,21 @@ export default function Home() {
 
       {/* CERTIFICATIONS CAROUSEL */}
       <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-        variants={fadeInUp}
+        initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }} variants={fadeInUp}
         style={{ background: '#F1F5F9', padding: '80px 0' }}
       >
         <div style={{ maxWidth: '1200px', margin: '0 auto 48px', padding: '0 32px', textAlign: 'center' }}>
-          <h2 style={{
-            fontSize: '32px',
-            fontWeight: 900,
-            color: '#0F172A',
-            fontFamily: 'Archivo, sans-serif',
-            marginBottom: '12px'
-          }}>
+          <h2 style={{ fontSize: '32px', fontWeight: 900, color: '#0F172A', fontFamily: 'Archivo, sans-serif', marginBottom: '12px' }}>
             Certified. Compliant. <span style={{ color: '#DC2626' }}>Trusted.</span>
           </h2>
           <div style={{ width: '60px', height: '4px', background: '#DC2626', margin: '0 auto' }}></div>
         </div>
 
         <div style={{ overflow: 'hidden', position: 'relative' }}>
-          {/* Fade Left */}
-          <div style={{
-            position: 'absolute', left: 0, top: 0, bottom: 0, width: '150px',
-            background: 'linear-gradient(to right, #F1F5F9, transparent)', zIndex: 2
-          }}></div>
-          {/* Fade Right */}
-          <div style={{
-            position: 'absolute', right: 0, top: 0, bottom: 0, width: '150px',
-            background: 'linear-gradient(to left, #F1F5F9, transparent)', zIndex: 2
-          }}></div>
+          <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '150px', background: 'linear-gradient(to right, #F1F5F9, transparent)', zIndex: 2 }}></div>
+          <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: '150px', background: 'linear-gradient(to left, #F1F5F9, transparent)', zIndex: 2 }}></div>
 
-          <div style={{
-            display: 'flex',
-            gap: '24px',
-            animation: 'certScroll 35s linear infinite',
-            width: 'max-content',
-            padding: '8px 0'
-          }}>
+          <div style={{ display: 'flex', gap: '24px', animation: 'certScroll 35s linear infinite', width: 'max-content', padding: '8px 0' }}>
             {[...Array(2)].map((_, repeatIndex) => (
               [
                 { name: 'ISO 9001:2015', issuer: 'Quality Management' },
@@ -346,44 +200,13 @@ export default function Home() {
                 { name: 'BCGA Certified', issuer: 'Gas Equipment' },
                 { name: 'NDT Level II', issuer: 'Non-Destructive Testing' },
               ].map((cert, i) => (
-                <div
-                  key={`${repeatIndex}-${i}`}
-                  style={{
-                    minWidth: '220px',
-                    padding: '28px 24px',
-                    background: cert.highlight ? 'rgba(220,38,38,0.06)' : '#FFF',
-                    border: `2px solid ${cert.highlight ? 'rgba(220,38,38,0.3)' : '#E5E7EB'}`,
-                    flexShrink: 0,
-                    transition: 'all 0.3s'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#DC2626'
-                    e.currentTarget.style.background = 'rgba(220,38,38,0.06)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = cert.highlight ? 'rgba(220,38,38,0.3)' : '#E5E7EB'
-                    e.currentTarget.style.background = cert.highlight ? 'rgba(220,38,38,0.06)' : '#FFF'
-                  }}
+                <div key={`${repeatIndex}-${i}`}
+                  style={{ minWidth: '220px', padding: '28px 24px', background: cert.highlight ? 'rgba(220,38,38,0.06)' : '#FFF', border: `2px solid ${cert.highlight ? 'rgba(220,38,38,0.3)' : '#E5E7EB'}`, flexShrink: 0, transition: 'all 0.3s' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.background = 'rgba(220,38,38,0.06)' }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = cert.highlight ? 'rgba(220,38,38,0.3)' : '#E5E7EB'; e.currentTarget.style.background = cert.highlight ? 'rgba(220,38,38,0.06)' : '#FFF' }}
                 >
-                  <div style={{
-                    fontFamily: 'IBM Plex Mono, monospace',
-                    fontSize: '9px',
-                    fontWeight: 700,
-                    color: '#94A3B8',
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    marginBottom: '10px'
-                  }}>
-                    {cert.issuer}
-                  </div>
-                  <div style={{
-                    fontFamily: 'Archivo, sans-serif',
-                    fontSize: '18px',
-                    fontWeight: 900,
-                    color: '#DC2626'
-                  }}>
-                    {cert.name}
-                  </div>
+                  <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '9px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '10px' }}>{cert.issuer}</div>
+                  <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '18px', fontWeight: 900, color: '#DC2626' }}>{cert.name}</div>
                 </div>
               ))
             ))}
@@ -399,93 +222,40 @@ export default function Home() {
       </motion.section>
 
       {/* INDUSTRIES */}
-      <motion.section
-        id="industries"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.6 }}
-        variants={fadeInUp}
-        style={{ background: '#FFF', padding: '80px 32px' }}
-      >
+      <motion.section id="industries" initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }} variants={fadeInUp} style={{ background: '#FFF', padding: '80px 32px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '48px', fontWeight: 900, marginBottom: '16px', fontFamily: 'Archivo, sans-serif' }}>
               Supporting <span style={{ color: '#DC2626' }}>Key Industries</span>
             </h2>
-            <p style={{ fontSize: '18px', color: '#64748B', maxWidth: '700px', margin: '0 auto' }}>
-              Where safety meets precision engineering
-            </p>
+            <p style={{ fontSize: '18px', color: '#64748B', maxWidth: '700px', margin: '0 auto' }}>Where safety meets precision engineering</p>
           </div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-50px' }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px' }}
-          >
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }} style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px' }}>
             {[
               { icon: <I.Chip style={{ width: 80, height: 80 }} />, title: 'Semiconductor', tag: 'UHP Gas Systems' },
               { icon: <I.Server style={{ width: 80, height: 80 }} />, title: 'Data Center', tag: 'H₂ Infrastructure' },
               { icon: <I.Plant style={{ width: 80, height: 80 }} />, title: 'Industrial Gas', tag: 'Process Plants' },
               { icon: <I.H2 style={{ width: 80, height: 80 }} />, title: 'New Energy', tag: 'Trailer Testing' },
             ].map((it, i) => (
-              <motion.a
-                href="/Industries"
-                key={i}
-                variants={cardVariant}
-                transition={{ duration: 0.5 }}
-                style={{
-                  padding: '60px 32px',
-                  background: '#FFF',
-                  border: '2px solid #E5E7EB',
-                  textAlign: 'center',
-                  textDecoration: 'none',
-                  color: 'inherit',
-                  transition: 'all 0.3s',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: '24px'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#DC2626'
-                  e.currentTarget.style.transform = 'translateY(-8px)'
-                  e.currentTarget.querySelector('.ind-icon-large').style.color = '#DC2626'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = '#E5E7EB'
-                  e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.querySelector('.ind-icon-large').style.color = '#0F172A'
-                }}
+              <motion.a href="/Industries" key={i} variants={cardVariant} transition={{ duration: 0.5 }}
+                style={{ padding: '60px 32px', background: '#FFF', border: '2px solid #E5E7EB', textAlign: 'center', textDecoration: 'none', color: 'inherit', transition: 'all 0.3s', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-8px)'; e.currentTarget.querySelector('.ind-icon-large').style.color = '#DC2626' }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.querySelector('.ind-icon-large').style.color = '#0F172A' }}
               >
-                <div className="ind-icon-large" style={{ color: '#0F172A', transition: 'color 0.3s' }}>
-                  {it.icon}
-                </div>
+                <div className="ind-icon-large" style={{ color: '#0F172A', transition: 'color 0.3s' }}>{it.icon}</div>
                 <div>
-                  <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '24px', fontWeight: 900, marginBottom: '8px', color: '#0F172A' }}>
-                    {it.title}
-                  </h3>
-                  <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 600, color: '#64748B', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                    {it.tag}
-                  </div>
+                  <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '24px', fontWeight: 900, marginBottom: '8px', color: '#0F172A' }}>{it.title}</h3>
+                  <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 600, color: '#64748B', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{it.tag}</div>
                 </div>
               </motion.a>
             ))}
           </motion.div>
 
           <div style={{ textAlign: 'center', marginTop: '48px' }}>
-            <a href="/Industries" style={{
-              display: 'inline-flex', alignItems: 'center', gap: '10px',
-              padding: '18px 40px', background: '#DC2626', color: '#FFF',
-              border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif',
-              fontWeight: 700, fontSize: '15px', textTransform: 'uppercase',
-              letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s'
-            }}
-            onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
-            onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
+            <a href="/Industries" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: '#DC2626', color: '#FFF', border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
+              onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
+              onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
               Explore All Industries <I.Arrow />
             </a>
           </div>
@@ -493,87 +263,36 @@ export default function Home() {
       </motion.section>
 
       {/* SERVICES */}
-      <motion.section
-        id="services"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.6 }}
-        variants={fadeInUp}
-        style={{ background: '#0F172A', color: '#FFF', padding: '80px 32px' }}
-      >
+      <motion.section id="services" initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }} variants={fadeInUp} style={{ background: '#0F172A', color: '#FFF', padding: '80px 32px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <h2 style={{ fontSize: '48px', fontWeight: 900, marginBottom: '16px', color: '#FFF', fontFamily: 'Archivo, sans-serif' }}>
               Integrated <span style={{ color: '#DC2626' }}>Engineering Services</span>
             </h2>
-            <p style={{ fontSize: '18px', color: '#94A3B8', maxWidth: '700px', margin: '0 auto' }}>
-              Four core capabilities delivering turnkey mechanical solutions
-            </p>
+            <p style={{ fontSize: '18px', color: '#94A3B8', maxWidth: '700px', margin: '0 auto' }}>Four core capabilities delivering turnkey mechanical solutions</p>
           </div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-50px' }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}
-          >
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }} style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}>
             {[
               { num: '01', icon: <I.Wrench />, title: 'Project Engineering', tag: 'Turnkey Mechanical Structural', desc: 'Complete project lifecycle from engineering through commissioning for industrial gas plants and process facilities.' },
               { num: '02', icon: <I.Gauge />, title: 'Plant Maintenance', tag: '24/7 Operations Support', desc: 'Comprehensive maintenance programs to maximize uptime and asset life across critical infrastructure.' },
               { num: '03', icon: <I.Trailer />, title: 'Servicing & Testing', tag: 'Destructive and Non Destructive Testing', desc: 'Specialized testing and certification for high pressure tube trailers with fleet management support.' },
               { num: '04', icon: <I.Snow />, title: 'Cryogenic Storage & Hoses', tag: 'Vacuum-Insulated Equipment', desc: 'Custom fabrication and maintenance for cryogenic transfer systems and industrial gas applications.' },
             ].map((it, i) => (
-              <motion.a
-                href="/Services"
-                key={i}
-                variants={cardVariant}
-                transition={{ duration: 0.5 }}
-                style={{
-                  padding: '36px',
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '2px solid rgba(255,255,255,0.1)',
-                  textDecoration: 'none',
-                  color: 'inherit',
-                  transition: 'all 0.3s',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '16px'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#DC2626'
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.08)'
-                  e.currentTarget.style.transform = 'translateY(-4px)'
-                  e.currentTarget.querySelector('.svc-icon').style.color = '#DC2626'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
-                  e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.querySelector('.svc-icon').style.color = '#FFF'
-                }}
+              <motion.a href="/Services" key={i} variants={cardVariant} transition={{ duration: 0.5 }}
+                style={{ padding: '36px', background: 'rgba(255,255,255,0.05)', border: '2px solid rgba(255,255,255,0.1)', textDecoration: 'none', color: 'inherit', transition: 'all 0.3s', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '16px' }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.querySelector('.svc-icon').style.color = '#DC2626' }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.querySelector('.svc-icon').style.color = '#FFF' }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '40px', fontWeight: 900, color: 'rgba(255,255,255,0.1)', lineHeight: 1 }}>
-                    {it.num}
-                  </div>
-                  <div className="svc-icon" style={{ color: '#FFF', transition: 'color 0.3s' }}>
-                    {it.icon}
-                  </div>
+                  <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '40px', fontWeight: 900, color: 'rgba(255,255,255,0.1)', lineHeight: 1 }}>{it.num}</div>
+                  <div className="svc-icon" style={{ color: '#FFF', transition: 'color 0.3s' }}>{it.icon}</div>
                 </div>
                 <div>
-                  <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '24px', fontWeight: 900, marginBottom: '8px', lineHeight: 1.2, color: '#FFF' }}>
-                    {it.title}
-                  </h3>
-                  <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                    {it.tag}
-                  </div>
+                  <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '24px', fontWeight: 900, marginBottom: '8px', lineHeight: 1.2, color: '#FFF' }}>{it.title}</h3>
+                  <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{it.tag}</div>
                 </div>
-                <p style={{ fontSize: '14px', color: '#94A3B8', lineHeight: 1.7, margin: 0 }}>
-                  {it.desc}
-                </p>
+                <p style={{ fontSize: '14px', color: '#94A3B8', lineHeight: 1.7, margin: 0 }}>{it.desc}</p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: 'auto', fontSize: '13px', fontWeight: 700, color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   Learn More <I.Arrow />
                 </div>
@@ -582,15 +301,9 @@ export default function Home() {
           </motion.div>
 
           <div style={{ textAlign: 'center', marginTop: '40px' }}>
-            <a href="/Services" style={{
-              display: 'inline-flex', alignItems: 'center', gap: '10px',
-              padding: '18px 40px', background: '#DC2626', color: '#FFF',
-              border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif',
-              fontWeight: 700, fontSize: '15px', textTransform: 'uppercase',
-              letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s'
-            }}
-            onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
-            onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
+            <a href="/Services" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: '#DC2626', color: '#FFF', border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
+              onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
+              onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
               View All Services <I.Arrow />
             </a>
           </div>
@@ -598,40 +311,20 @@ export default function Home() {
       </motion.section>
 
       {/* PROJECTS */}
-      <motion.section
-        id="projects"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.6 }}
-        variants={fadeInUp}
-        style={{ background: '#FFF', padding: '80px 32px' }}
-      >
+      <motion.section id="projects" initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }} variants={fadeInUp} style={{ background: '#FFF', padding: '80px 32px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <h2 style={{ fontSize: '48px', fontWeight: 900, marginBottom: '16px', fontFamily: 'Archivo, sans-serif' }}>
               Engineering That <span style={{ color: '#DC2626' }}>Delivers</span>
             </h2>
-            <p style={{ fontSize: '18px', color: '#64748B', maxWidth: '700px', margin: '0 auto' }}>
-              From concept to commissioning across Singapore's critical infrastructure
-            </p>
+            <p style={{ fontSize: '18px', color: '#64748B', maxWidth: '700px', margin: '0 auto' }}>From concept to commissioning across Singapore's critical infrastructure</p>
           </div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-50px' }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '20px', marginBottom: '40px' }}
-          >
-            {/* Large Featured - 8 cols */}
-            <motion.div
-              variants={cardVariant}
-              transition={{ duration: 0.5 }}
-              style={{ gridColumn: 'span 8', background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden', transition: 'all 0.3s', cursor: 'pointer' }}
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }} style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '20px', marginBottom: '40px' }}>
+
+            <motion.div variants={cardVariant} transition={{ duration: 0.5 }} style={{ gridColumn: 'span 8', background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden', transition: 'all 0.3s', cursor: 'pointer' }}
               onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-4px)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.transform = 'translateY(0)' }}
-            >
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.transform = 'translateY(0)' }}>
               <div style={{ height: '280px', background: '#E5E7EB', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '2px solid #E5E7EB' }}>
                 <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 700, color: '#64748B', letterSpacing: '0.1em' }}>[ FEATURED PROJECT ]</div>
               </div>
@@ -643,14 +336,9 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Small - 4 cols */}
-            <motion.div
-              variants={cardVariant}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              style={{ gridColumn: 'span 4', background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden', transition: 'all 0.3s', cursor: 'pointer', display: 'flex', flexDirection: 'column' }}
+            <motion.div variants={cardVariant} transition={{ duration: 0.5, delay: 0.1 }} style={{ gridColumn: 'span 4', background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden', transition: 'all 0.3s', cursor: 'pointer', display: 'flex', flexDirection: 'column' }}
               onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-4px)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.transform = 'translateY(0)' }}
-            >
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.transform = 'translateY(0)' }}>
               <div style={{ height: '180px', background: '#E5E7EB', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '2px solid #E5E7EB' }}>
                 <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 700, color: '#64748B', letterSpacing: '0.1em' }}>[ PROJECT ]</div>
               </div>
@@ -661,14 +349,9 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Medium - 5 cols */}
-            <motion.div
-              variants={cardVariant}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              style={{ gridColumn: 'span 5', background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden', transition: 'all 0.3s', cursor: 'pointer' }}
+            <motion.div variants={cardVariant} transition={{ duration: 0.5, delay: 0.2 }} style={{ gridColumn: 'span 5', background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden', transition: 'all 0.3s', cursor: 'pointer' }}
               onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-4px)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.transform = 'translateY(0)' }}
-            >
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.transform = 'translateY(0)' }}>
               <div style={{ height: '200px', background: '#E5E7EB', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '2px solid #E5E7EB' }}>
                 <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 700, color: '#64748B', letterSpacing: '0.1em' }}>[ PROJECT ]</div>
               </div>
@@ -680,26 +363,16 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Stats Card - 3 cols */}
-            <motion.div
-              variants={cardVariant}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              style={{ gridColumn: 'span 3', background: '#0F172A', border: '2px solid #0F172A', color: '#FFF', padding: '32px 20px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', transition: 'all 0.3s', cursor: 'pointer' }}
+            <motion.div variants={cardVariant} transition={{ duration: 0.5, delay: 0.25 }} style={{ gridColumn: 'span 3', background: '#0F172A', border: '2px solid #0F172A', color: '#FFF', padding: '32px 20px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', transition: 'all 0.3s', cursor: 'pointer' }}
               onMouseEnter={(e) => { e.currentTarget.style.background = '#DC2626'; e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-4px)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = '#0F172A'; e.currentTarget.style.borderColor = '#0F172A'; e.currentTarget.style.transform = 'translateY(0)' }}
-            >
+              onMouseLeave={(e) => { e.currentTarget.style.background = '#0F172A'; e.currentTarget.style.borderColor = '#0F172A'; e.currentTarget.style.transform = 'translateY(0)' }}>
               <div style={{ fontSize: '56px', fontFamily: 'Archivo, sans-serif', fontWeight: 900, marginBottom: '12px', lineHeight: 1 }}>XX</div>
               <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 600, letterSpacing: '0.1em', opacity: 0.8 }}>COMPLETED PROJECTS</div>
             </motion.div>
 
-            {/* Wide - 4 cols */}
-            <motion.div
-              variants={cardVariant}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              style={{ gridColumn: 'span 4', background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden', transition: 'all 0.3s', cursor: 'pointer' }}
+            <motion.div variants={cardVariant} transition={{ duration: 0.5, delay: 0.3 }} style={{ gridColumn: 'span 4', background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden', transition: 'all 0.3s', cursor: 'pointer' }}
               onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-4px)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.transform = 'translateY(0)' }}
-            >
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.transform = 'translateY(0)' }}>
               <div style={{ height: '160px', background: '#E5E7EB', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '2px solid #E5E7EB' }}>
                 <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 700, color: '#64748B', letterSpacing: '0.1em' }}>[ PROJECT ]</div>
               </div>
@@ -709,18 +382,13 @@ export default function Home() {
                 <p style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.5 }}>Vacuum-insulated transfer lines for LNG operations.</p>
               </div>
             </motion.div>
+
           </motion.div>
 
           <div style={{ textAlign: 'center' }}>
-            <a href="/Projects" style={{
-              display: 'inline-flex', alignItems: 'center', gap: '10px',
-              padding: '18px 40px', background: '#DC2626', color: '#FFF',
-              border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif',
-              fontWeight: 700, fontSize: '15px', textTransform: 'uppercase',
-              letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s'
-            }}
-            onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
-            onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
+            <a href="/Projects" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: '#DC2626', color: '#FFF', border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
+              onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
+              onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
               View Full Portfolio <I.Arrow />
             </a>
           </div>
@@ -728,15 +396,7 @@ export default function Home() {
       </motion.section>
 
       {/* CONTACT */}
-      <motion.section
-        id="contact"
-        style={{ padding: '80px 32px', background: '#0F172A', textAlign: 'center' }}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.6 }}
-        variants={fadeInUp}
-      >
+      <motion.section id="contact" style={{ padding: '80px 32px', background: '#0F172A', textAlign: 'center' }} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }} variants={fadeInUp}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <h2 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '48px', fontWeight: 900, marginBottom: '24px', color: '#FFF', lineHeight: 1.2 }}>
             Ready to Discuss <span style={{ color: '#DC2626' }}>Your Project?</span>
@@ -744,15 +404,9 @@ export default function Home() {
           <p style={{ fontSize: '18px', color: '#94A3B8', marginBottom: '40px', lineHeight: 1.7 }}>
             Connect with our engineering specialists for professional consultation on your next project. We deliver technical solutions built on decades of industry experience.
           </p>
-          <a href="mailto:projects@lslee.com.sg" style={{
-            display: 'inline-flex', alignItems: 'center', gap: '10px',
-            padding: '18px 40px', background: '#DC2626', color: '#FFF',
-            border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif',
-            fontWeight: 700, fontSize: '15px', textTransform: 'uppercase',
-            letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s'
-          }}
-          onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
-          onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
+          <a href="mailto:projects@lslee.com.sg" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: '#DC2626', color: '#FFF', border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
+            onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
+            onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
             Get in Touch <I.Arrow />
           </a>
         </div>
