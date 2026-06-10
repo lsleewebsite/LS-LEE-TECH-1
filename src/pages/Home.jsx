@@ -268,7 +268,7 @@ export default function Home() {
                 objectFit: 'cover',
                 objectPosition: 'center',
                 display: 'block',
-                filter: 'brightness(0.75) contrast(1.1) saturate(0.7)'
+                filter: 'brightness(0.9) contrast(1.05) saturate(0.85)'
               }}
             />
 
@@ -276,7 +276,7 @@ export default function Home() {
             <div style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(to right, #0F172A 0%, rgba(15,23,42,0.5) 40%, rgba(15,23,42,0.15) 100%)',
+              background: 'linear-gradient(to right, #0F172A 0%, rgba(15,23,42,0.4) 30%, rgba(15,23,42,0.05) 100%)',
               zIndex: 1
             }}></div>
 
