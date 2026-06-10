@@ -161,7 +161,7 @@ export default function Home() {
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase'
                 }}>
-                  EST. 1989 — SINGAPORE
+                  EST. 1999 — SINGAPORE
                 </span>
               </div>
 
