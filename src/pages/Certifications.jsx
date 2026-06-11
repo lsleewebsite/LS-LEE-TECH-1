@@ -1,785 +1,567 @@
 import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { useLocation } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+
+const NOTION_KEY = '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'
+const DATABASE_ID = '37c7a921a230808d9e92d444f1b62d44'
+const PROXY = 'https://corsproxy.io/?'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut"
-    }
-  }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }
 }
 
-export default function Safety() {
-  const location = useLocation()
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [showModal, setShowModal] = useState(false)
+function parseCerts(results) {
+  return results
+    .filter(page => page.properties?.Published?.checkbox === true)
+    .map(page => {
+      const p = page.properties
+      return {
+        id: page.id,
+        name: p.Name?.title?.[0]?.text?.content || 'Untitled',
+        body: p.Body?.rich_text?.[0]?.text?.content || '',
+        scope: p.Scope?.rich_text?.[0]?.text?.content || '',
+        certNumber: p.CertNumber?.rich_text?.[0]?.text?.content || '',
+        validFrom: p.ValidFrom?.date?.start || '',
+        validTo: p.ValidTo?.date?.start || '',
+        certificate: p.Certificate?.url || null,
+      }
+    })
+}
 
-  const certificates = [
-    {
-      id: 1,
-      title: 'ISO 45001:2018',
-      issuer: 'EQA IMS',
-      description: 'Occupational Health & Safety Management System',
-      date: '27 March 2020 - 26 March 2023',
-      certNumber: 'OSH-20-2239',
-      image: '/certificates/cert1.jpg',
-      scope: 'Fabrication & Installation of Pipeworks and Related Plant Installation',
-      why: 'Independent verification that our safety management systems meet international standards. Reduces your project risk and insurance liability.'
-    },
-    {
-      id: 2,
-      title: 'ISO 9001:2015',
-      issuer: 'EQA IMS',
-      description: 'Quality Management System',
-      date: '27 March 2020 - 26 March 2023',
-      certNumber: 'QS-20-2238',
-      image: '/certificates/cert2.jpg',
-      scope: 'Fabrication & Installation of Pipeworks and Related Plant Installation',
-      why: 'Ensures consistent quality across every phase of your project. Third-party audited processes, not just promises.'
-    },
-    {
-      id: 3,
-      title: 'bizSAFE STAR',
-      issuer: 'WSH Council Singapore',
-      description: 'Workplace Safety and Health Excellence',
-      date: 'Valid till 26/03/2023',
-      certNumber: 'E04940',
-      image: '/certificates/cert3.jpg',
-      scope: 'Highest level of bizSAFE certification demonstrating exemplary WSH performance',
-      why: 'The highest level of workplace safety certification in Singapore. Demonstrates proven safety culture and performance.'
-    },
-    {
-      id: 4,
-      title: 'BS OHSAS 18001:2007',
-      issuer: 'Certification International Singapore',
-      description: 'Occupational Health & Safety Management',
-      date: '16 March 2016 - 15 March 2019',
-      certNumber: 'CIS/200610',
-      image: '/certificates/cert4.jpg',
-      scope: 'Fabrication and installation of pipeworks and related plants installations',
-      why: 'International standard for occupational health and safety. Predecessor to ISO 45001, demonstrating long-term safety commitment.'
-    },
-    {
-      id: 5,
-      title: 'SS 506 Part 1:2009',
-      issuer: 'Certification International Singapore',
-      description: 'Singapore Standard for Occupational H&S Management',
-      date: '22 April 2016 - 15 March 2019',
-      certNumber: 'CIS/200610',
-      image: '/certificates/cert5.jpg',
-      scope: 'Fabrication and installation of pipeworks and related plants installations',
-      why: 'Singapore national standard for workplace safety. Demonstrates compliance with local regulatory requirements.'
-    }
-  ]
+function formatDate(dateStr) {
+  if (!dateStr) return ''
+  const date = new Date(dateStr)
+  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+}
 
+function Modal({ cert, onClose }) {
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [location])
-
-  const navigate = (direction) => {
-    if (direction === 'prev') {
-      setCurrentIndex((prev) => (prev === 0 ? certificates.length - 1 : prev - 1))
-    } else {
-      setCurrentIndex((prev) => (prev === certificates.length - 1 ? 0 : prev + 1))
-    }
-  }
-
-  const getCardStyle = (index) => {
-    const diff = index - currentIndex
-    const totalCards = certificates.length
-    
-    let position = diff
-    if (diff < -Math.floor(totalCards / 2)) {
-      position = diff + totalCards
-    } else if (diff > Math.floor(totalCards / 2)) {
-      position = diff - totalCards
-    }
-
-    if (position === 0) {
-      // Center card
-      return {
-        transform: 'translateX(0) scale(1) rotateY(0deg)',
-        zIndex: 50,
-        opacity: 1,
-        filter: 'brightness(1)'
-      }
-    } else if (position === -1) {
-      // Left card
-      return {
-        transform: 'translateX(-350px) scale(0.8) rotateY(45deg)',
-        zIndex: 30,
-        opacity: 0.6,
-        filter: 'brightness(0.7)'
-      }
-    } else if (position === 1) {
-      // Right card
-      return {
-        transform: 'translateX(350px) scale(0.8) rotateY(-45deg)',
-        zIndex: 30,
-        opacity: 0.6,
-        filter: 'brightness(0.7)'
-      }
-    } else {
-      // Hidden cards
-      return {
-        transform: position < 0 
-          ? 'translateX(-450px) scale(0.6) rotateY(60deg)'
-          : 'translateX(450px) scale(0.6) rotateY(-60deg)',
-        zIndex: 10,
-        opacity: 0,
-        filter: 'brightness(0.5)'
-      }
-    }
-  }
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = 'unset' }
+  }, [])
 
   return (
-    <div>
-      {/* Hero Section */}
-      <section style={{
-        padding: '100px 32px 80px',
-        background: '#0F172A',
-        color: '#FFF',
-        borderBottom: '2px solid #DC2626'
-      }}>
-        <div style={{ maxWidth: '1360px', margin: '0 auto', textAlign: 'center' }}>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{
-              fontSize: '56px',
-              fontWeight: 900,
-              marginBottom: '24px',
-              lineHeight: 1.1
-            }}
-          >
-            Safety & Certifications
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            style={{
-              fontSize: '18px',
-              color: '#94A3B8',
-              maxWidth: '800px',
-              margin: '0 auto',
-              lineHeight: 1.6
-            }}
-          >
-            Third-party verified safety systems and quality controls. Our certifications prove we can execute your project safely and to specification.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* Safety Statement Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
-        variants={fadeInUp}
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
         style={{
-          padding: '80px 32px',
-          background: '#FFF',
-          borderBottom: '2px solid #0F172A'
+          position: 'fixed',
+          inset: 0,
+          background: 'rgba(0,0,0,0.85)',
+          zIndex: 1000,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '32px'
         }}
       >
-        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '60px',
-            alignItems: 'center'
-          }}>
-            {/* Left - Statement */}
-            <div>
-              <h2 style={{
-                fontSize: '42px',
-                fontWeight: 900,
-                marginBottom: '24px',
-                lineHeight: 1.2,
-                color: '#0F172A'
-              }}>
-                Why Our Safety Record Matters to Your Project
-              </h2>
-              <p style={{
-                fontSize: '16px',
-                color: '#64748B',
-                lineHeight: 1.7,
-                marginBottom: '20px'
-              }}>
-                Every certification below represents an independent audit of our safety procedures, quality controls, and management systems. When you hire us, you are hiring a contractor with verified processes, not just promises.
-              </p>
-              <p style={{
-                fontSize: '16px',
-                color: '#64748B',
-                lineHeight: 1.7,
-                marginBottom: '20px'
-              }}>
-                Our ISO 45001 and bizSAFE STAR certifications mean fewer incidents on your site, lower insurance risk, and faster regulatory approvals. Our ISO 9001 certification means consistent quality across every phase of the project.
-              </p>
-              <p style={{
-                fontSize: '16px',
-                color: '#64748B',
-                lineHeight: 1.7
-              }}>
-                Over 2.4 million manhours without a lost-time incident. That is not luck. That is a documented, audited safety management system doing exactly what it was designed to do.
-              </p>
-            </div>
-
-            {/* Right - Key Facts */}
-            <div style={{
-              background: '#F8F9FA',
-              border: '2px solid #0F172A',
-              padding: '50px'
-            }}>
-              <div style={{
-                fontSize: '14px',
-                fontWeight: 700,
-                color: '#DC2626',
-                marginBottom: '32px',
-                textTransform: 'uppercase',
-                letterSpacing: '0.08em'
-              }}>
-                Track Record
-              </div>
-              
-              <div style={{
-                display: 'grid',
-                gap: '28px'
-              }}>
-                {[
-                  { value: '2.4M+', label: 'Safe Manhours Worked' },
-                  { value: '0', label: 'Lost-Time Incidents' },
-                  { value: '5', label: 'Active Safety Certifications' },
-                  { value: '100%', label: 'Project Safety Compliance' }
-                ].map((stat, i) => (
-                  <div key={i}>
-                    <div style={{
-                      fontSize: '36px',
-                      fontWeight: 900,
-                      color: '#0F172A',
-                      marginBottom: '6px',
-                      lineHeight: 1
-                    }}>
-                      {stat.value}
-                    </div>
-                    <div style={{
-                      fontSize: '13px',
-                      color: '#64748B',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em',
-                      fontWeight: 600
-                    }}>
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* 3D Carousel Section */}
-      <section style={{
-        padding: '100px 32px',
-        background: '#F8F9FA',
-        overflow: 'hidden'
-      }}>
-        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
-          
-          <h2 style={{
-            fontSize: '36px',
-            fontWeight: 800,
-            marginBottom: '16px',
-            textAlign: 'center',
-            color: '#0F172A'
-          }}>
-            Certified Safety & Quality Systems
-          </h2>
-          <p style={{
-            fontSize: '15px',
-            color: '#64748B',
-            textAlign: 'center',
-            marginBottom: '80px',
-            lineHeight: 1.6
-          }}>
-            Click any certificate to view full documentation
-          </p>
-
-          {/* 3D Carousel Container */}
-          <div style={{
-            position: 'relative',
-            height: '600px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            perspective: '2000px'
-          }}>
-            
-            {/* Certificate Cards */}
-            <div style={{
-              position: 'relative',
-              width: '600px',
-              height: '600px',
-              transformStyle: 'preserve-3d'
-            }}>
-              {certificates.map((cert, index) => {
-                const style = getCardStyle(index)
-                const isCenter = index === currentIndex
-
-                return (
-                  <div
-                    key={cert.id}
-                    onClick={() => isCenter ? setShowModal(true) : setCurrentIndex(index)}
-                    style={{
-                      position: 'absolute',
-                      left: '50%',
-                      top: '50%',
-                      marginLeft: '-250px',
-                      marginTop: '-300px',
-                      width: '500px',
-                      height: '600px',
-                      background: '#FFF',
-                      border: '3px solid #0F172A',
-                      cursor: 'pointer',
-                      transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
-                      transformStyle: 'preserve-3d',
-                      boxShadow: isCenter ? '0 20px 60px rgba(0,0,0,0.3)' : '0 10px 30px rgba(0,0,0,0.2)',
-                      ...style
-                    }}
-                  >
-                    {/* Certificate Preview */}
-                    <div style={{
-                      width: '100%',
-                      height: '100%',
-                      background: '#E5E7EB',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      padding: '40px',
-                      position: 'relative'
-                    }}>
-                      {isCenter && (
-                        <div style={{
-                          position: 'absolute',
-                          top: '20px',
-                          right: '20px',
-                          padding: '8px 16px',
-                          background: '#DC2626',
-                          color: '#FFF',
-                          fontSize: '11px',
-                          fontWeight: 700,
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.08em'
-                        }}>
-                          Click to View
-                        </div>
-                      )}
-
-                      <div style={{
-                        fontSize: '80px',
-                        fontWeight: 900,
-                        color: '#D1D5DB',
-                        marginBottom: '20px',
-                        lineHeight: 1
-                      }}>
-                        {String(cert.id).padStart(2, '0')}
-                      </div>
-                      
-                      <div style={{
-                        textAlign: 'center',
-                        color: '#94A3B8'
-                      }}>
-                        <div style={{
-                          fontSize: '14px',
-                          fontWeight: 600,
-                          letterSpacing: '0.1em',
-                          textTransform: 'uppercase',
-                          marginBottom: '12px'
-                        }}>
-                          [ Certificate Preview ]
-                        </div>
-                        <div style={{
-                          fontSize: '16px',
-                          fontWeight: 700,
-                          color: isCenter ? '#0F172A' : '#94A3B8',
-                          marginTop: '20px'
-                        }}>
-                          {cert.title}
-                        </div>
-                        <div style={{
-                          fontSize: '12px',
-                          color: '#DC2626',
-                          fontWeight: 600,
-                          marginTop: '8px',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.05em'
-                        }}>
-                          {cert.issuer}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-
-            {/* Navigation Buttons */}
-            <button
-              onClick={() => navigate('prev')}
-              style={{
-                position: 'absolute',
-                left: '0',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                width: '60px',
-                height: '60px',
-                background: '#0F172A',
-                border: '2px solid #0F172A',
-                color: '#FFF',
-                fontSize: '24px',
-                cursor: 'pointer',
-                transition: 'all 0.3s',
-                zIndex: 100
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.background = '#DC2626'
-                e.target.style.borderColor = '#DC2626'
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = '#0F172A'
-                e.target.style.borderColor = '#0F172A'
-              }}
-            >
-              ←
-            </button>
-
-            <button
-              onClick={() => navigate('next')}
-              style={{
-                position: 'absolute',
-                right: '0',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                width: '60px',
-                height: '60px',
-                background: '#0F172A',
-                border: '2px solid #0F172A',
-                color: '#FFF',
-                fontSize: '24px',
-                cursor: 'pointer',
-                transition: 'all 0.3s',
-                zIndex: 100
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.background = '#DC2626'
-                e.target.style.borderColor = '#DC2626'
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = '#0F172A'
-                e.target.style.borderColor = '#0F172A'
-              }}
-            >
-              →
-            </button>
-          </div>
-
-          {/* Text Below Carousel */}
-          <div style={{
-            textAlign: 'center',
-            marginTop: '60px'
-          }}>
-            <h3 style={{
-              fontSize: '24px',
-              fontWeight: 700,
-              color: '#0F172A',
-              marginBottom: '12px'
-            }}>
-              {certificates[currentIndex].title}
-            </h3>
-            <p style={{
-              fontSize: '14px',
-              color: '#DC2626',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              marginBottom: '16px'
-            }}>
-              {certificates[currentIndex].issuer}
-            </p>
-            <p style={{
-              fontSize: '15px',
-              color: '#64748B',
-              lineHeight: 1.7,
-              maxWidth: '700px',
-              margin: '0 auto'
-            }}>
-              {certificates[currentIndex].why}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Modal */}
-      {showModal && (
-        <div
-          onClick={() => setShowModal(false)}
+        <motion.div
+          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 40, scale: 0.95 }}
+          transition={{ duration: 0.3 }}
+          onClick={(e) => e.stopPropagation()}
           style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'rgba(15, 23, 42, 0.95)',
-            zIndex: 1000,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '40px',
-            cursor: 'pointer'
+            background: '#FFF',
+            width: '100%',
+            maxWidth: '680px',
+            maxHeight: '90vh',
+            overflow: 'auto',
+            position: 'relative',
+            border: '2px solid #0F172A'
           }}
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3 }}
-            onClick={(e) => e.stopPropagation()}
+          {/* Close Button */}
+          <button
+            onClick={onClose}
             style={{
-              background: '#FFF',
-              border: '3px solid #DC2626',
-              maxWidth: '900px',
-              maxHeight: '90vh',
-              overflow: 'auto',
-              cursor: 'default',
-              position: 'relative'
-            }}
-          >
-            {/* Close Button */}
-            <button
-              onClick={() => setShowModal(false)}
-              style={{
-                position: 'absolute',
-                top: '20px',
-                right: '20px',
-                width: '40px',
-                height: '40px',
-                background: '#DC2626',
-                border: 'none',
-                color: '#FFF',
-                fontSize: '24px',
-                cursor: 'pointer',
-                zIndex: 10,
-                fontWeight: 700
-              }}
-            >
-              ×
-            </button>
-
-            {/* Certificate Image Full Size */}
-            <div style={{
-              background: '#E5E7EB',
-              minHeight: '700px',
+              position: 'absolute',
+              top: '16px',
+              right: '16px',
+              width: '40px',
+              height: '40px',
+              background: '#DC2626',
+              color: '#FFF',
+              border: 'none',
+              fontSize: '20px',
+              cursor: 'pointer',
+              zIndex: 10,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '80px'
-            }}>
-              <div style={{
-                textAlign: 'center',
-                color: '#94A3B8'
-              }}>
-                <div style={{
-                  fontSize: '140px',
-                  fontWeight: 900,
-                  marginBottom: '24px',
-                  color: '#D1D5DB',
-                  lineHeight: 1
-                }}>
-                  {String(certificates[currentIndex].id).padStart(2, '0')}
-                </div>
-                <div style={{
-                  fontSize: '18px',
-                  fontWeight: 600,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  marginBottom: '16px'
-                }}>
-                  [ Full Certificate Scan ]
-                </div>
-                <div style={{
-                  fontSize: '16px',
-                  opacity: 0.7
-                }}>
-                  {certificates[currentIndex].title}
-                </div>
-              </div>
-            </div>
+              fontWeight: 700,
+              transition: 'background 0.2s'
+            }}
+            onMouseEnter={(e) => e.target.style.background = '#0F172A'}
+            onMouseLeave={(e) => e.target.style.background = '#DC2626'}
+          >
+            x
+          </button>
 
-            {/* Certificate Details */}
-            <div style={{
-              padding: '50px',
-              borderTop: '2px solid #0F172A'
-            }}>
-              <h3 style={{
-                fontSize: '32px',
-                fontWeight: 900,
-                marginBottom: '16px',
-                color: '#0F172A'
-              }}>
-                {certificates[currentIndex].title}
-              </h3>
-              <div style={{
-                fontSize: '15px',
-                color: '#DC2626',
-                fontWeight: 700,
-                marginBottom: '24px',
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em'
-              }}>
-                Issued by {certificates[currentIndex].issuer}
-              </div>
-              <p style={{
-                fontSize: '16px',
-                color: '#64748B',
-                lineHeight: 1.7,
-                marginBottom: '24px'
-              }}>
-                {certificates[currentIndex].why}
-              </p>
-              <div style={{
-                padding: '20px',
-                background: '#F8F9FA',
-                border: '1px solid #E5E7EB',
-                marginBottom: '20px'
-              }}>
-                <div style={{
-                  fontSize: '12px',
-                  fontWeight: 700,
-                  color: '#64748B',
-                  marginBottom: '8px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em'
-                }}>
-                  Certification Scope
-                </div>
-                <div style={{
-                  fontSize: '14px',
-                  color: '#0F172A',
-                  lineHeight: 1.6
-                }}>
-                  {certificates[currentIndex].scope}
-                </div>
-              </div>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '16px'
-              }}>
-                <div>
-                  <div style={{
+          {/* Certificate Image/Preview */}
+          <div style={{
+            height: '320px',
+            background: '#F1F5F9',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderBottom: '2px solid #E5E7EB',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            {cert.certificate ? (
+              <>
+                <img
+                  src={cert.certificate}
+                  alt={cert.name}
+                  style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
+                  onError={(e) => { e.target.style.display = 'none' }}
+                />
+                
+                  href={cert.certificate}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    position: 'absolute',
+                    top: '16px',
+                    right: '64px',
+                    padding: '8px 16px',
+                    background: '#DC2626',
+                    color: '#FFF',
                     fontSize: '11px',
                     fontWeight: 700,
-                    color: '#64748B',
-                    marginBottom: '6px',
+                    letterSpacing: '0.1em',
+                    fontFamily: 'IBM Plex Mono',
+                    textDecoration: 'none',
+                    transition: 'background 0.2s'
+                  }}
+                  onMouseEnter={(e) => e.target.style.background = '#0F172A'}
+                  onMouseLeave={(e) => e.target.style.background = '#DC2626'}
+                >
+                  CLICK TO VIEW
+                </a>
+              </>
+            ) : (
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: '64px', fontWeight: 900, color: '#CBD5E1', fontFamily: 'Archivo', marginBottom: '12px' }}>
+                  {String(1).padStart(2, '0')}
+                </div>
+                <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '11px', color: '#94A3B8', letterSpacing: '0.1em' }}>
+                  [ CERTIFICATE PREVIEW ]
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Details */}
+          <div style={{ padding: '40px' }}>
+            <h2 style={{
+              fontSize: '28px',
+              fontWeight: 900,
+              marginBottom: '8px',
+              fontFamily: 'Archivo, sans-serif',
+              color: '#0F172A'
+            }}>
+              {cert.name}
+            </h2>
+
+            {cert.body && (
+              <div style={{
+                fontSize: '13px',
+                fontWeight: 700,
+                color: '#DC2626',
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                fontFamily: 'IBM Plex Mono',
+                marginBottom: '24px'
+              }}>
+                ISSUED BY {cert.body}
+              </div>
+            )}
+
+            {cert.scope && (
+              <p style={{
+                fontSize: '15px',
+                color: '#475569',
+                lineHeight: 1.7,
+                marginBottom: '28px'
+              }}>
+                {cert.scope}
+              </p>
+            )}
+
+            {/* Cert Number + Validity */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              {cert.certNumber && (
+                <div style={{
+                  padding: '16px 20px',
+                  background: '#F8F9FA',
+                  border: '2px solid #E5E7EB'
+                }}>
+                  <div style={{
+                    fontFamily: 'IBM Plex Mono',
+                    fontSize: '10px',
+                    fontWeight: 700,
+                    color: '#94A3B8',
+                    letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    letterSpacing: '0.08em'
+                    marginBottom: '8px'
                   }}>
                     Certificate Number
                   </div>
                   <div style={{
-                    fontSize: '14px',
+                    fontSize: '15px',
+                    fontWeight: 700,
                     color: '#0F172A',
-                    fontWeight: 600,
-                    fontFamily: 'monospace'
+                    fontFamily: 'IBM Plex Mono'
                   }}>
-                    {certificates[currentIndex].certNumber}
+                    {cert.certNumber}
                   </div>
                 </div>
-                <div>
+              )}
+
+              {(cert.validFrom || cert.validTo) && (
+                <div style={{
+                  padding: '16px 20px',
+                  background: '#F8F9FA',
+                  border: '2px solid #E5E7EB'
+                }}>
                   <div style={{
-                    fontSize: '11px',
+                    fontFamily: 'IBM Plex Mono',
+                    fontSize: '10px',
                     fontWeight: 700,
-                    color: '#64748B',
-                    marginBottom: '6px',
+                    color: '#94A3B8',
+                    letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    letterSpacing: '0.08em'
+                    marginBottom: '8px'
                   }}>
                     Validity Period
                   </div>
                   <div style={{
                     fontSize: '14px',
+                    fontWeight: 700,
                     color: '#0F172A',
-                    fontWeight: 600
+                    fontFamily: 'IBM Plex Mono'
                   }}>
-                    {certificates[currentIndex].date}
+                    {formatDate(cert.validFrom)} — {formatDate(cert.validTo)}
                   </div>
                 </div>
-              </div>
+              )}
             </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  )
+}
+
+export default function Certifications() {
+  const [certs, setCerts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const [selectedCert, setSelectedCert] = useState(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  useEffect(() => {
+    async function fetchCerts() {
+      try {
+        const res = await fetch(
+          `${PROXY}https://api.notion.com/v1/databases/${DATABASE_ID}/query`,
+          {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${NOTION_KEY}`,
+              'Notion-Version': '2022-06-28',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({})
+          }
+        )
+        if (!res.ok) throw new Error(`Notion API error: ${res.status}`)
+        const data = await res.json()
+        setCerts(parseCerts(data.results))
+      } catch (err) {
+        console.error(err)
+        setError(err.message)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchCerts()
+  }, [])
+
+  const prev = () => setActiveIndex(i => i === 0 ? certs.length - 1 : i - 1)
+  const next = () => setActiveIndex(i => i === certs.length - 1 ? 0 : i + 1)
+
+  return (
+    <div>
+      {/* Hero */}
+      <section style={{ padding: '100px 32px 80px', background: '#0F172A', color: '#FFF', borderBottom: '2px solid #DC2626' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            <h1 style={{ fontSize: '56px', fontWeight: 900, marginBottom: '28px', lineHeight: 1.1, fontFamily: 'Archivo, sans-serif' }}>
+              Our <span style={{ color: '#DC2626' }}>Certifications</span>
+            </h1>
+            <p style={{ fontSize: '20px', color: '#94A3B8', maxWidth: '800px', lineHeight: 1.7 }}>
+              Industry-recognised certifications demonstrating our commitment to quality, safety, and technical excellence.
+            </p>
           </motion.div>
         </div>
+      </section>
+
+      {/* Carousel Section */}
+      <section style={{ padding: '100px 32px', background: '#F1F5F9' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontSize: '42px', fontWeight: 900, marginBottom: '12px', fontFamily: 'Archivo, sans-serif', color: '#0F172A' }}>
+              Certified Safety & Quality Systems
+            </h2>
+            <p style={{ fontSize: '16px', color: '#64748B', fontFamily: 'IBM Plex Sans' }}>
+              Click any certificate to view full documentation
+            </p>
+          </div>
+
+          {loading && (
+            <div style={{ textAlign: 'center', padding: '80px 0' }}>
+              <div style={{
+                width: '48px', height: '48px', border: '4px solid #E5E7EB',
+                borderTopColor: '#DC2626', borderRadius: '50%',
+                animation: 'spin 0.8s linear infinite', margin: '0 auto 24px'
+              }}></div>
+              <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '13px', color: '#64748B' }}>Loading certifications...</div>
+              <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+            </div>
+          )}
+
+          {error && (
+            <div style={{ textAlign: 'center', padding: '80px 0' }}>
+              <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '13px', color: '#DC2626', marginBottom: '8px' }}>Failed to load certifications</div>
+              <div style={{ fontSize: '13px', color: '#64748B' }}>{error}</div>
+            </div>
+          )}
+
+          {!loading && !error && certs.length === 0 && (
+            <div style={{ textAlign: 'center', padding: '80px 0' }}>
+              <div style={{
+                fontFamily: 'IBM Plex Mono',
+                fontSize: '13px',
+                color: '#64748B',
+                letterSpacing: '0.1em',
+                marginBottom: '8px'
+              }}>
+                NO CERTIFICATIONS AVAILABLE
+              </div>
+              <div style={{ fontSize: '14px', color: '#94A3B8' }}>
+                Check back soon
+              </div>
+            </div>
+          )}
+                  onMouseEnter={(e) => e.target.style.background = '#DC2626'}
+                  onMouseLeave={(e) => e.target.style.background = '#0F172A'}
+                >
+                  &larr;
+                </button>
+
+                {/* Cards */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '24px', overflow: 'hidden', width: '100%', maxWidth: '900px', justifyContent: 'center' }}>
+                  {certs.map((cert, i) => {
+                    const offset = i - activeIndex
+                    const isActive = offset === 0
+                    const isAdjacent = Math.abs(offset) === 1
+                    const isVisible = Math.abs(offset) <= 1
+
+                    if (!isVisible) return null
+
+                    return (
+                      <motion.div
+                        key={cert.id}
+                        onClick={() => isActive ? setSelectedCert(cert) : setActiveIndex(i)}
+                        animate={{
+                          scale: isActive ? 1 : 0.8,
+                          opacity: isActive ? 1 : 0.5,
+                          rotateY: offset * -15
+                        }}
+                        transition={{ duration: 0.4 }}
+                        style={{
+                          width: isActive ? '340px' : '240px',
+                          minWidth: isActive ? '340px' : '240px',
+                          height: isActive ? '460px' : '380px',
+                          background: '#FFF',
+                          border: `2px solid ${isActive ? '#0F172A' : '#E5E7EB'}`,
+                          cursor: 'pointer',
+                          position: 'relative',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          padding: '32px',
+                          transition: 'all 0.4s',
+                          boxShadow: isActive ? '0 20px 60px rgba(0,0,0,0.15)' : 'none',
+                          flexShrink: 0
+                        }}
+                      >
+                        {/* Click to view badge - active only */}
+                        {isActive && (
+                          <div style={{
+                            position: 'absolute',
+                            top: '16px',
+                            right: '16px',
+                            padding: '6px 12px',
+                            background: '#DC2626',
+                            color: '#FFF',
+                            fontSize: '10px',
+                            fontWeight: 700,
+                            letterSpacing: '0.1em',
+                            fontFamily: 'IBM Plex Mono'
+                          }}>
+                            CLICK TO VIEW
+                          </div>
+                        )}
+
+                        {/* Number */}
+                        <div style={{
+                          fontSize: isActive ? '80px' : '60px',
+                          fontWeight: 900,
+                          color: '#E2E8F0',
+                          fontFamily: 'Archivo',
+                          lineHeight: 1,
+                          marginBottom: '16px'
+                        }}>
+                          {String(i + 1).padStart(2, '0')}
+                        </div>
+
+                        {/* Preview placeholder */}
+                        <div style={{
+                          fontFamily: 'IBM Plex Mono',
+                          fontSize: '10px',
+                          color: '#94A3B8',
+                          letterSpacing: '0.1em',
+                          marginBottom: '24px'
+                        }}>
+                          [ CERTIFICATE PREVIEW ]
+                        </div>
+
+                        {/* Name */}
+                        <div style={{
+                          fontSize: isActive ? '18px' : '14px',
+                          fontWeight: 900,
+                          color: '#0F172A',
+                          fontFamily: 'Archivo',
+                          textAlign: 'center',
+                          marginBottom: '8px'
+                        }}>
+                          {cert.name}
+                        </div>
+
+                        {/* Body */}
+                        {cert.body && (
+                          <div style={{
+                            fontSize: '12px',
+                            fontWeight: 700,
+                            color: '#DC2626',
+                            fontFamily: 'IBM Plex Mono',
+                            letterSpacing: '0.05em',
+                            textAlign: 'center',
+                            textTransform: 'uppercase'
+                          }}>
+                            {cert.body}
+                          </div>
+                        )}
+                      </motion.div>
+                    )
+                  })}
+                </div>
+
+                {/* Next Button */}
+                <button
+                  onClick={next}
+                  style={{
+                    width: '56px', height: '56px', background: '#0F172A', color: '#FFF',
+                    border: 'none', fontSize: '20px', cursor: 'pointer', flexShrink: 0,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    transition: 'background 0.2s'
+                  }}
+                  onMouseEnter={(e) => e.target.style.background = '#DC2626'}
+                  onMouseLeave={(e) => e.target.style.background = '#0F172A'}
+                >
+                  &rarr;
+                </button>
+              </div>
+
+              {/* Active Cert Info Below */}
+              {certs[activeIndex] && (
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  style={{ textAlign: 'center', marginTop: '40px' }}
+                >
+                  <h3 style={{ fontSize: '28px', fontWeight: 900, marginBottom: '8px', fontFamily: 'Archivo', color: '#0F172A' }}>
+                    {certs[activeIndex].name}
+                  </h3>
+                  {certs[activeIndex].body && (
+                    <div style={{ fontSize: '13px', fontWeight: 700, color: '#DC2626', fontFamily: 'IBM Plex Mono', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>
+                      {certs[activeIndex].body}
+                    </div>
+                  )}
+                </motion.div>
+              )}
+
+              {/* Dots */}
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '32px' }}>
+                {certs.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveIndex(i)}
+                    style={{
+                      width: activeIndex === i ? '24px' : '8px',
+                      height: '8px',
+                      background: activeIndex === i ? '#DC2626' : '#CBD5E1',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s',
+                      padding: 0
+                    }}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      </section>
+
+      {/* Modal */}
+      {selectedCert && (
+        <Modal
+          cert={selectedCert}
+          onClose={() => setSelectedCert(null)}
+        />
       )}
 
-      {/* CTA Section */}
+      {/* CTA */}
       <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
-        variants={fadeInUp}
-        style={{
-          padding: '80px 32px',
-          background: '#DC2626',
-          color: '#FFF',
-          textAlign: 'center'
-        }}
+        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={fadeInUp}
+        style={{ padding: '100px 32px', background: '#DC2626', color: '#FFF', textAlign: 'center' }}
       >
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <h2 style={{
-            fontSize: '36px',
-            fontWeight: 800,
-            marginBottom: '24px'
-          }}>
-            Need Copies of Our Certifications for Your Tender?
+          <h2 style={{ fontSize: '42px', fontWeight: 900, marginBottom: '24px', lineHeight: 1.2, fontFamily: 'Archivo' }}>
+            Questions About Our Certifications?
           </h2>
-          <p style={{
-            fontSize: '16px',
-            marginBottom: '32px',
-            opacity: 0.9
-          }}>
-            We can provide certified copies of all our safety and quality certifications for your procurement or compliance team.
+          <p style={{ fontSize: '18px', marginBottom: '40px', opacity: 0.95, lineHeight: 1.7 }}>
+            Need detailed certification documentation or have questions about our compliance standards? Contact us.
           </p>
-          <button style={{
-            padding: '16px 36px',
-            background: '#FFF',
-            color: '#DC2626',
-            border: '2px solid #FFF',
-            fontWeight: 700,
-            fontSize: '15px',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-            cursor: 'pointer',
-            transition: 'all 0.3s'
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.background = '#0F172A'
-            e.target.style.color = '#FFF'
-            e.target.style.borderColor = '#0F172A'
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.background = '#FFF'
-            e.target.style.color = '#DC2626'
-            e.target.style.borderColor = '#FFF'
-          }}>
-            Request Certification Package →
-          </button>
+          <a href="/Contact"
+            style={{ display: 'inline-block', padding: '18px 40px', background: '#FFF', color: '#DC2626', border: '2px solid #FFF', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s', fontFamily: 'IBM Plex Sans' }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = '#0F172A'; e.currentTarget.style.color = '#FFF'; e.currentTarget.style.borderColor = '#0F172A' }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = '#FFF'; e.currentTarget.style.color = '#DC2626'; e.currentTarget.style.borderColor = '#FFF' }}
+          >
+            Get in Touch
+          </a>
         </div>
       </motion.section>
     </div>
