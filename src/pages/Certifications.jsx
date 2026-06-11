@@ -263,100 +263,108 @@ export default function Certifications() {
               <div style={{ fontSize: '14px', color: '#94A3B8' }}>Check back soon</div>
             </div>
           )}
-{/* Safety Stats */}
-      <section style={{ padding: '80px 32px', background: '#FFF' }}>
+          
+{/* Three Pillars */}
+      <section style={{ padding: '80px 32px', background: '#0F172A' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1.5fr',
-            gap: '80px',
-            alignItems: 'center'
-          }}>
-            {/* Left - Statement */}
-            <div>
-              <h2 style={{
-                fontSize: '42px',
-                fontWeight: 900,
-                marginBottom: '24px',
-                lineHeight: 1.1,
-                fontFamily: 'Archivo, sans-serif',
-                color: '#0F172A'
-              }}>
-                Safety is Not a Checkbox
-              </h2>
-              <div style={{ width: '60px', height: '4px', background: '#DC2626', marginBottom: '24px' }}></div>
-              <p style={{
-                fontSize: '17px',
-                color: '#475569',
-                lineHeight: 1.8
-              }}>
-                Every project we undertake is governed by a safety-first culture. From initial planning through commissioning, safety is embedded in every decision — not added at the end.
-              </p>
-            </div>
+          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontSize: '42px', fontWeight: 900, color: '#FFF', fontFamily: 'Archivo, sans-serif', marginBottom: '16px' }}>
+              What Our Certifications Mean for You
+            </h2>
+            <div style={{ width: '60px', height: '4px', background: '#DC2626', margin: '0 auto' }}></div>
+          </div>
 
-            {/* Right - Stats */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '24px'
-            }}>
-              {[
-                { value: '2.4M+', label: 'Safe Manhours', sub: 'Without Lost-Time Incident' },
-                { value: '0', label: 'Major Incidents', sub: 'In Past 5 Years' },
-                { value: 'bizSAFE', label: 'STAR Certified', sub: 'WSH Council Singapore' },
-                { value: '100%', label: 'Safety Trained', sub: 'All Field Staff' },
-              ].map((stat, i) => (
-                <div
-                  key={i}
-                  style={{
-                    padding: '32px 24px',
-                    background: '#F8F9FA',
-                    border: '2px solid #E5E7EB',
-                    textAlign: 'center',
-                    transition: 'all 0.3s'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#DC2626'
-                    e.currentTarget.style.background = '#FFF'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = '#E5E7EB'
-                    e.currentTarget.style.background = '#F8F9FA'
-                  }}
-                >
-                  <div style={{
-                    fontSize: '36px',
-                    fontWeight: 900,
-                    color: '#DC2626',
-                    marginBottom: '8px',
-                    fontFamily: 'Archivo, sans-serif'
-                  }}>
-                    {stat.value}
-                  </div>
-                  <div style={{
-                    fontSize: '14px',
-                    fontWeight: 700,
-                    color: '#0F172A',
-                    marginBottom: '4px',
-                    fontFamily: 'Archivo',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em'
-                  }}>
-                    {stat.label}
-                  </div>
-                  <div style={{
-                    fontSize: '12px',
-                    color: '#64748B',
-                    fontFamily: 'IBM Plex Sans'
-                  }}>
-                    {stat.sub}
-                  </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
+            {[
+              {
+                icon: (
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#DC2626" strokeWidth="2">
+                    <circle cx="24" cy="24" r="20" />
+                    <polyline points="24,12 24,24 32,28" />
+                  </svg>
+                ),
+                pillar: 'Experience',
+                headline: '25 Years of Certified Practice',
+                body: 'Our certifications are not new — they reflect decades of continuous compliance, renewal, and improvement across hundreds of projects.'
+              },
+              {
+                icon: (
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#DC2626" strokeWidth="2">
+                    <polyline points="4,24 18,38 44,10" />
+                  </svg>
+                ),
+                pillar: 'Quality',
+                headline: 'Third-Party Verified Standards',
+                body: 'ISO 9001 certification means our quality management systems are independently audited — not self-assessed. What we deliver is consistent, documented, and traceable.'
+              },
+              {
+                icon: (
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#DC2626" strokeWidth="2">
+                    <path d="M24 4 L42 10 V24 C42 34 34 42 24 44 C14 42 6 34 6 24 V10 Z" />
+                    <polyline points="16,24 22,30 32,18" />
+                  </svg>
+                ),
+                pillar: 'Safety',
+                headline: 'Compliance That Protects You',
+                body: 'bizSAFE STAR and ISO 45001 mean your project is covered by certified safety management systems. Fewer risks, lower liability, and a team that stops work before it becomes a problem.'
+              }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                style={{
+                  padding: '48px 36px',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '2px solid rgba(255,255,255,0.1)',
+                  transition: 'all 0.3s'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#DC2626'
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.08)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
+                }}
+              >
+                <div style={{ marginBottom: '24px' }}>{item.icon}</div>
+                <div style={{
+                  fontFamily: 'IBM Plex Mono',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  color: '#DC2626',
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  marginBottom: '12px'
+                }}>
+                  {item.pillar}
                 </div>
-              ))}
-            </div>
+                <h3 style={{
+                  fontSize: '22px',
+                  fontWeight: 900,
+                  color: '#FFF',
+                  fontFamily: 'Archivo',
+                  marginBottom: '16px',
+                  lineHeight: 1.2
+                }}>
+                  {item.headline}
+                </h3>
+                <p style={{
+                  fontSize: '15px',
+                  color: '#94A3B8',
+                  lineHeight: 1.7
+                }}>
+                  {item.body}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
+          
           {/* Carousel */}
           {!loading && !error && certs.length > 0 && (
             <React.Fragment>
