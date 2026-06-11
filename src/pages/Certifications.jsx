@@ -120,7 +120,7 @@ function Modal({ cert, onClose }) {
                   style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
                   onError={(e) => { e.target.style.display = 'none' }}
                 />
-                
+                <a
                   href={cert.certificate}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -137,23 +137,23 @@ function Modal({ cert, onClose }) {
                     fontFamily: 'IBM Plex Mono',
                     textDecoration: 'none',
                     transition: 'background 0.2s'
-                  }}
-                  onMouseEnter={(e) => e.target.style.background = '#0F172A'}
-                  onMouseLeave={(e) => e.target.style.background = '#DC2626'}
-                >
-                  CLICK TO VIEW
-                </a>
-              </>
-            ) : (
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '64px', fontWeight: 900, color: '#CBD5E1', fontFamily: 'Archivo', marginBottom: '12px' }}>
-                  {String(1).padStart(2, '0')}
-                </div>
-                <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '11px', color: '#94A3B8', letterSpacing: '0.1em' }}>
-                  [ CERTIFICATE PREVIEW ]
-                </div>
+                   }}
+                onMouseEnter={(e) => e.currentTarget.style.background = '#0F172A'}
+                onMouseLeave={(e) => e.currentTarget.style.background = '#DC2626'}
+              >
+                CLICK TO VIEW
+              </a>
+            </>
+          ) : (
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '64px', fontWeight: 900, color: '#CBD5E1', fontFamily: 'Archivo', marginBottom: '12px' }}>
+                {String(1).padStart(2, '0')}
               </div>
-            )}
+              <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '11px', color: '#94A3B8', letterSpacing: '0.1em' }}>
+                [ CERTIFICATE PREVIEW ]
+              </div>
+            </div>
+          )}
           </div>
 
           {/* Details */}
