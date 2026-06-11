@@ -5,6 +5,19 @@ const NOTION_KEY = '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'
 const DATABASE_ID = '37c7a921a23080cfa710e56c146ae5a1'
 const PROXY = 'https://corsproxy.io/?'
 
+const PLACEHOLDER_IMAGES = [
+  'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80',
+  'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80',
+  'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=800&q=80',
+  'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80',
+  'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=800&q=80',
+]
+
+function getPlaceholder(id) {
+  const index = id.charCodeAt(0) % PLACEHOLDER_IMAGES.length
+  return PLACEHOLDER_IMAGES[index]
+}
+
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }
@@ -19,12 +32,8 @@ function parseProjects(results) {
         id: page.id,
         title: p.Title?.title?.[0]?.text?.content || 'Untitled',
         category: p.Category?.select?.name || 'General',
-        client: p.Client?.rich_text?.[0]?.text?.content || '',
         year: p.Year?.number || '',
-        scope: p.Scope?.rich_text?.[0]?.text?.content || '',
         image: p.Image?.url || null,
-        tags: p.Tags?.multi_select?.map(t => t.name) || [],
-        featured: p.Featured?.checkbox || false,
       }
     })
 }
@@ -87,7 +96,7 @@ export default function Projects() {
       </section>
 
       {/* Filters */}
-      <section style={{ padding: '40px 32px', background: '#FFF', borderBottom: '2px solid #E5E7EB', position: 'sticky', top: '110px', zIndex: 30 }}>
+      <section style={{ padding: '32px', background: '#FFF', borderBottom: '2px solid #E5E7EB', position: 'sticky', top: '110px', zIndex: 30 }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
             {categories.map(filter => (
@@ -125,7 +134,7 @@ export default function Projects() {
             ))}
           </div>
           {!loading && (
-            <div style={{ textAlign: 'center', marginTop: '16px', fontSize: '13px', color: '#64748B', fontFamily: 'IBM Plex Mono' }}>
+            <div style={{ textAlign: 'center', marginTop: '12px', fontSize: '13px', color: '#64748B', fontFamily: 'IBM Plex Mono' }}>
               {filtered.length} {filtered.length === 1 ? 'project' : 'projects'}
             </div>
           )}
@@ -140,9 +149,12 @@ export default function Projects() {
           {loading && (
             <div style={{ textAlign: 'center', padding: '80px 0' }}>
               <div style={{
-                width: '48px', height: '48px', border: '4px solid #E5E7EB',
-                borderTopColor: '#DC2626', borderRadius: '50%',
-                animation: 'spin 0.8s linear infinite', margin: '0 auto 24px'
+                width: '48px', height: '48px',
+                border: '4px solid #E5E7EB',
+                borderTopColor: '#DC2626',
+                borderRadius: '50%',
+                animation: 'spin 0.8s linear infinite',
+                margin: '0 auto 24px'
               }}></div>
               <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '13px', color: '#64748B', letterSpacing: '0.1em' }}>
                 Loading projects...
@@ -170,9 +182,13 @@ export default function Projects() {
             </div>
           )}
 
-          {/* Projects Grid */}
+          {/* Grid */}
           {!loading && !error && filtered.length > 0 && (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '32px' }}>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
+              gap: '32px'
+            }}>
               {filtered.map((project, i) => (
                 <motion.div
                   key={project.id}
@@ -184,8 +200,7 @@ export default function Projects() {
                     border: '2px solid #0F172A',
                     overflow: 'hidden',
                     transition: 'all 0.3s',
-                    cursor: 'pointer',
-                    gridColumn: project.featured ? 'span 2' : 'span 1'
+                    cursor: 'pointer'
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = '#DC2626'
@@ -199,36 +214,29 @@ export default function Projects() {
                   }}
                 >
                   {/* Image */}
-                  <div style={{
-                    height: project.featured ? '320px' : '220px',
-                    background: '#E5E7EB',
-                    overflow: 'hidden',
-                    borderBottom: '2px solid #0F172A',
-                    position: 'relative'
-                  }}>
-                    {project.image ? (
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
-                        onError={(e) => { e.target.style.display = 'none' }}
-                      />
-                    ) : (
-                      <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '11px', color: '#94A3B8', letterSpacing: '0.1em' }}>[ PROJECT IMAGE ]</div>
-                      </div>
-                    )}
-                    {project.featured && (
-                      <div style={{ position: 'absolute', top: '16px', right: '16px', padding: '6px 14px', background: '#DC2626', color: '#FFF', fontSize: '10px', fontWeight: 700, letterSpacing: '0.1em', fontFamily: 'IBM Plex Mono' }}>
-                        FEATURED
-                      </div>
-                    )}
+                  <div style={{ height: '220px', overflow: 'hidden', borderBottom: '2px solid #0F172A' }}>
+                    <img
+                      src={project.image || getPlaceholder(project.id)}
+                      alt={project.title}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transition: 'transform 0.4s' }}
+                      onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+                      onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                      onError={(e) => { e.target.src = getPlaceholder(project.id) }}
+                    />
                   </div>
 
-                  {/* Details */}
-                  <div style={{ padding: '28px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '14px' }}>
-                      <div style={{ padding: '4px 10px', background: '#0F172A', color: '#FFF', fontSize: '10px', fontWeight: 700, letterSpacing: '0.1em', fontFamily: 'IBM Plex Mono' }}>
+                  {/* Info */}
+                  <div style={{ padding: '24px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+                      <div style={{
+                        padding: '4px 10px',
+                        background: '#0F172A',
+                        color: '#FFF',
+                        fontSize: '10px',
+                        fontWeight: 700,
+                        letterSpacing: '0.1em',
+                        fontFamily: 'IBM Plex Mono'
+                      }}>
                         {project.category.toUpperCase()}
                       </div>
                       {project.year && (
@@ -238,31 +246,15 @@ export default function Projects() {
                       )}
                     </div>
 
-                    <h3 style={{ fontSize: '22px', fontWeight: 900, marginBottom: '10px', lineHeight: 1.2, fontFamily: 'Archivo, sans-serif', color: '#0F172A' }}>
+                    <h3 style={{
+                      fontSize: '20px',
+                      fontWeight: 900,
+                      lineHeight: 1.2,
+                      fontFamily: 'Archivo, sans-serif',
+                      color: '#0F172A'
+                    }}>
                       {project.title}
                     </h3>
-
-                    {project.client && (
-                      <div style={{ fontSize: '13px', color: '#DC2626', fontWeight: 600, marginBottom: '12px', fontFamily: 'IBM Plex Sans' }}>
-                        {project.client}
-                      </div>
-                    )}
-
-                    {project.scope && (
-                      <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.7, marginBottom: '20px' }}>
-                        {project.scope}
-                      </p>
-                    )}
-
-                    {project.tags.length > 0 && (
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                        {project.tags.map((tag, j) => (
-                          <span key={j} style={{ padding: '4px 10px', background: '#F8F9FA', border: '1px solid #E5E7EB', fontSize: '11px', color: '#475569', fontFamily: 'IBM Plex Mono', letterSpacing: '0.02em' }}>
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
                   </div>
                 </motion.div>
               ))}
@@ -283,9 +275,11 @@ export default function Projects() {
           <p style={{ fontSize: '18px', marginBottom: '40px', opacity: 0.95, lineHeight: 1.7 }}>
             Whether you are planning a new facility or need support with an existing system, we are here to help.
           </p>
-          <a href="/Contact" style={{ display: 'inline-block', padding: '18px 40px', background: '#FFF', color: '#DC2626', border: '2px solid #FFF', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s', fontFamily: 'IBM Plex Sans' }}
+          <a href="/Contact"
+            style={{ display: 'inline-block', padding: '18px 40px', background: '#FFF', color: '#DC2626', border: '2px solid #FFF', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s', fontFamily: 'IBM Plex Sans' }}
             onMouseEnter={(e) => { e.currentTarget.style.background = '#0F172A'; e.currentTarget.style.color = '#FFF'; e.currentTarget.style.borderColor = '#0F172A' }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = '#FFF'; e.currentTarget.style.color = '#DC2626'; e.currentTarget.style.borderColor = '#FFF' }}>
+            onMouseLeave={(e) => { e.currentTarget.style.background = '#FFF'; e.currentTarget.style.color = '#DC2626'; e.currentTarget.style.borderColor = '#FFF' }}
+          >
             Get in Touch
           </a>
         </div>
