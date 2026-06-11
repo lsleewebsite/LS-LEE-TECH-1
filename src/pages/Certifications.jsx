@@ -7,7 +7,11 @@ const PROXY = 'https://corsproxy.io/?'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: 'easeOut' }
+  }
 }
 
 function parseCerts(results) {
@@ -15,6 +19,7 @@ function parseCerts(results) {
     .filter(page => page.properties?.Published?.checkbox === true)
     .map(page => {
       const p = page.properties
+
       return {
         id: page.id,
         name: p.Name?.title?.[0]?.text?.content || 'Untitled',
@@ -23,21 +28,30 @@ function parseCerts(results) {
         certNumber: p.CertNumber?.rich_text?.[0]?.text?.content || '',
         validFrom: p.ValidFrom?.date?.start || '',
         validTo: p.ValidTo?.date?.start || '',
-        certificate: p.Certificate?.url || null,
+        certificate: p.Certificate?.url || null
       }
     })
 }
 
 function formatDate(dateStr) {
   if (!dateStr) return ''
+
   const date = new Date(dateStr)
-  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+
+  return date.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  })
 }
 
 function Modal({ cert, onClose }) {
   useEffect(() => {
     document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = 'unset' }
+
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
   }, [])
 
   return (
@@ -48,9 +62,14 @@ function Modal({ cert, onClose }) {
         exit={{ opacity: 0 }}
         onClick={onClose}
         style={{
-          position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)',
-          zIndex: 1000, display: 'flex', alignItems: 'center',
-          justifyContent: 'center', padding: '32px'
+          position: 'fixed',
+          inset: 0,
+          background: 'rgba(0,0,0,0.85)',
+          zIndex: 1000,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '32px'
         }}
       >
         <motion.div
@@ -60,105 +79,243 @@ function Modal({ cert, onClose }) {
           transition={{ duration: 0.3 }}
           onClick={(e) => e.stopPropagation()}
           style={{
-            background: '#FFF', width: '100%', maxWidth: '680px',
-            maxHeight: '90vh', overflow: 'auto', position: 'relative',
+            background: '#FFF',
+            width: '100%',
+            maxWidth: '680px',
+            maxHeight: '90vh',
+            overflow: 'auto',
+            position: 'relative',
             border: '2px solid #0F172A'
           }}
         >
-          {/* Close Button */}
           <button
             onClick={onClose}
             style={{
-              position: 'absolute', top: '16px', right: '16px',
-              width: '40px', height: '40px', background: '#DC2626',
-              color: '#FFF', border: 'none', fontSize: '20px', cursor: 'pointer',
-              zIndex: 10, display: 'flex', alignItems: 'center',
-              justifyContent: 'center', fontWeight: 700, transition: 'background 0.2s'
+              position: 'absolute',
+              top: '16px',
+              right: '16px',
+              width: '40px',
+              height: '40px',
+              background: '#DC2626',
+              color: '#FFF',
+              border: 'none',
+              fontSize: '20px',
+              cursor: 'pointer',
+              zIndex: 10,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontWeight: 700,
+              transition: 'background 0.2s'
             }}
-            onMouseEnter={(e) => e.currentTarget.style.background = '#0F172A'}
-            onMouseLeave={(e) => e.currentTarget.style.background = '#DC2626'}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#0F172A'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = '#DC2626'
+            }}
           >
             x
           </button>
 
-          {/* Certificate Preview */}
-          <div style={{
-            height: '320px', background: '#F1F5F9', display: 'flex',
-            alignItems: 'center', justifyContent: 'center',
-            borderBottom: '2px solid #E5E7EB', position: 'relative', overflow: 'hidden'
-          }}>
+          <div
+            style={{
+              height: '320px',
+              background: '#F1F5F9',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderBottom: '2px solid #E5E7EB',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+          >
             {cert.certificate ? (
               <React.Fragment>
                 <img
                   src={cert.certificate}
                   alt={cert.name}
-                  style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
-                  onError={(e) => { e.target.style.display = 'none' }}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                    display: 'block'
+                  }}
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none'
+                  }}
                 />
+
                 <a
                   href={cert.certificate}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    position: 'absolute', top: '16px', right: '64px',
-                    padding: '8px 16px', background: '#DC2626', color: '#FFF',
-                    fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em',
-                    fontFamily: 'IBM Plex Mono', textDecoration: 'none', transition: 'background 0.2s'
+                    position: 'absolute',
+                    top: '16px',
+                    right: '64px',
+                    padding: '8px 16px',
+                    background: '#DC2626',
+                    color: '#FFF',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    letterSpacing: '0.1em',
+                    fontFamily: 'IBM Plex Mono',
+                    textDecoration: 'none',
+                    transition: 'background 0.2s'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = '#0F172A'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = '#DC2626'}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#0F172A'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = '#DC2626'
+                  }}
                 >
                   CLICK TO VIEW
                 </a>
               </React.Fragment>
             ) : (
               <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '64px', fontWeight: 900, color: '#CBD5E1', fontFamily: 'Archivo', marginBottom: '12px' }}>
+                <div
+                  style={{
+                    fontSize: '64px',
+                    fontWeight: 900,
+                    color: '#CBD5E1',
+                    fontFamily: 'Archivo',
+                    marginBottom: '12px'
+                  }}
+                >
                   {String(1).padStart(2, '0')}
                 </div>
-                <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '11px', color: '#94A3B8', letterSpacing: '0.1em' }}>
+
+                <div
+                  style={{
+                    fontFamily: 'IBM Plex Mono',
+                    fontSize: '11px',
+                    color: '#94A3B8',
+                    letterSpacing: '0.1em'
+                  }}
+                >
                   [ CERTIFICATE PREVIEW ]
                 </div>
               </div>
             )}
           </div>
 
-          {/* Details */}
           <div style={{ padding: '40px' }}>
-            <h2 style={{ fontSize: '28px', fontWeight: 900, marginBottom: '8px', fontFamily: 'Archivo, sans-serif', color: '#0F172A' }}>
+            <h2
+              style={{
+                fontSize: '28px',
+                fontWeight: 900,
+                marginBottom: '8px',
+                fontFamily: 'Archivo, sans-serif',
+                color: '#0F172A'
+              }}
+            >
               {cert.name}
             </h2>
 
             {cert.body && (
-              <div style={{ fontSize: '13px', fontWeight: 700, color: '#DC2626', textTransform: 'uppercase', letterSpacing: '0.08em', fontFamily: 'IBM Plex Mono', marginBottom: '24px' }}>
+              <div
+                style={{
+                  fontSize: '13px',
+                  fontWeight: 700,
+                  color: '#DC2626',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  fontFamily: 'IBM Plex Mono',
+                  marginBottom: '24px'
+                }}
+              >
                 ISSUED BY {cert.body}
               </div>
             )}
 
             {cert.scope && (
-              <p style={{ fontSize: '15px', color: '#475569', lineHeight: 1.7, marginBottom: '28px' }}>
+              <p
+                style={{
+                  fontSize: '15px',
+                  color: '#475569',
+                  lineHeight: 1.7,
+                  marginBottom: '28px'
+                }}
+              >
                 {cert.scope}
               </p>
             )}
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: '16px'
+              }}
+            >
               {cert.certNumber && (
-                <div style={{ padding: '16px 20px', background: '#F8F9FA', border: '2px solid #E5E7EB' }}>
-                  <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '10px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>
+                <div
+                  style={{
+                    padding: '16px 20px',
+                    background: '#F8F9FA',
+                    border: '2px solid #E5E7EB'
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: 'IBM Plex Mono',
+                      fontSize: '10px',
+                      fontWeight: 700,
+                      color: '#94A3B8',
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
+                      marginBottom: '8px'
+                    }}
+                  >
                     Certificate Number
                   </div>
-                  <div style={{ fontSize: '15px', fontWeight: 700, color: '#0F172A', fontFamily: 'IBM Plex Mono' }}>
+
+                  <div
+                    style={{
+                      fontSize: '15px',
+                      fontWeight: 700,
+                      color: '#0F172A',
+                      fontFamily: 'IBM Plex Mono'
+                    }}
+                  >
                     {cert.certNumber}
                   </div>
                 </div>
               )}
 
               {(cert.validFrom || cert.validTo) && (
-                <div style={{ padding: '16px 20px', background: '#F8F9FA', border: '2px solid #E5E7EB' }}>
-                  <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '10px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>
+                <div
+                  style={{
+                    padding: '16px 20px',
+                    background: '#F8F9FA',
+                    border: '2px solid #E5E7EB'
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: 'IBM Plex Mono',
+                      fontSize: '10px',
+                      fontWeight: 700,
+                      color: '#94A3B8',
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
+                      marginBottom: '8px'
+                    }}
+                  >
                     Validity Period
                   </div>
-                  <div style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', fontFamily: 'IBM Plex Mono' }}>
+
+                  <div
+                    style={{
+                      fontSize: '14px',
+                      fontWeight: 700,
+                      color: '#0F172A',
+                      fontFamily: 'IBM Plex Mono'
+                    }}
+                  >
                     {formatDate(cert.validFrom)} - {formatDate(cert.validTo)}
                   </div>
                 </div>
@@ -186,14 +343,18 @@ export default function Certifications() {
           {
             method: 'POST',
             headers: {
-              'Authorization': `Bearer ${NOTION_KEY}`,
+              Authorization: `Bearer ${NOTION_KEY}`,
               'Notion-Version': '2022-06-28',
-              'Content-Type': 'application/json',
+              'Content-Type': 'application/json'
             },
             body: JSON.stringify({})
           }
         )
-        if (!res.ok) throw new Error(`Notion API error: ${res.status}`)
+
+        if (!res.ok) {
+          throw new Error(`Notion API error: ${res.status}`)
+        }
+
         const data = await res.json()
         setCerts(parseCerts(data.results))
       } catch (err) {
@@ -203,225 +364,422 @@ export default function Certifications() {
         setLoading(false)
       }
     }
+
     fetchCerts()
   }, [])
 
-  const prev = () => setActiveIndex(i => i === 0 ? certs.length - 1 : i - 1)
-  const next = () => setActiveIndex(i => i === certs.length - 1 ? 0 : i + 1)
+  const prev = () => {
+    setActiveIndex(i => (i === 0 ? certs.length - 1 : i - 1))
+  }
+
+  const next = () => {
+    setActiveIndex(i => (i === certs.length - 1 ? 0 : i + 1))
+  }
 
   return (
     <div>
       {/* Hero */}
-      <section style={{ padding: '100px 32px 80px', background: '#0F172A', color: '#FFF', borderBottom: '2px solid #DC2626' }}>
+      <section
+        style={{
+          padding: '100px 32px 80px',
+          background: '#0F172A',
+          color: '#FFF',
+          borderBottom: '2px solid #DC2626'
+        }}
+      >
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <h1 style={{ fontSize: '56px', fontWeight: 900, marginBottom: '28px', lineHeight: 1.1, fontFamily: 'Archivo, sans-serif' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1
+              style={{
+                fontSize: '56px',
+                fontWeight: 900,
+                marginBottom: '28px',
+                lineHeight: 1.1,
+                fontFamily: 'Archivo, sans-serif'
+              }}
+            >
               Our <span style={{ color: '#DC2626' }}>Certifications</span>
             </h1>
-            <p style={{ fontSize: '20px', color: '#94A3B8', maxWidth: '800px', lineHeight: 1.7 }}>
+
+            <p
+              style={{
+                fontSize: '20px',
+                color: '#94A3B8',
+                maxWidth: '800px',
+                lineHeight: 1.7
+              }}
+            >
               Industry-recognised certifications demonstrating our commitment to quality, safety, and technical excellence.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Carousel Section */}
-      <section style={{ padding: '100px 32px', background: '#F1F5F9' }}>
+      {/* Three Pillars Strip */}
+      <section
+        style={{
+          padding: '80px 32px',
+          background: '#0F172A',
+          borderTop: '1px solid rgba(255,255,255,0.08)'
+        }}
+      >
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '42px', fontWeight: 900, marginBottom: '12px', fontFamily: 'Archivo, sans-serif', color: '#0F172A' }}>
-              Certified Safety & Quality Systems
-            </h2>
-            <p style={{ fontSize: '16px', color: '#64748B', fontFamily: 'IBM Plex Sans' }}>
-              Click any certificate to view full documentation
-            </p>
-          </div>
-
-          {/* Loading */}
-          {loading && (
-            <div style={{ textAlign: 'center', padding: '80px 0' }}>
-              <div style={{ width: '48px', height: '48px', border: '4px solid #E5E7EB', borderTopColor: '#DC2626', borderRadius: '50%', animation: 'spin 0.8s linear infinite', margin: '0 auto 24px' }}></div>
-              <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '13px', color: '#64748B' }}>Loading certifications...</div>
-              <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-            </div>
-          )}
-
-          {/* Error */}
-          {error && (
-            <div style={{ textAlign: 'center', padding: '80px 0' }}>
-              <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '13px', color: '#DC2626', marginBottom: '8px' }}>Failed to load certifications</div>
-              <div style={{ fontSize: '13px', color: '#64748B' }}>{error}</div>
-            </div>
-          )}
-
-          {/* Empty */}
-          {!loading && !error && certs.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '80px 0' }}>
-              <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '13px', color: '#64748B', letterSpacing: '0.1em', marginBottom: '8px' }}>
-                NO CERTIFICATIONS AVAILABLE
-              </div>
-              <div style={{ fontSize: '14px', color: '#94A3B8' }}>Check back soon</div>
-            </div>
-          )}
-          
-{/* Three Pillars */}
-      <section style={{ padding: '80px 32px', background: '#0F172A' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '42px', fontWeight: 900, color: '#FFF', fontFamily: 'Archivo, sans-serif', marginBottom: '16px' }}>
-              What Our Certifications Mean for You
-            </h2>
-            <div style={{ width: '60px', height: '4px', background: '#DC2626', margin: '0 auto' }}></div>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: 0,
+              borderTop: '1px solid rgba(255,255,255,0.1)',
+              borderLeft: '1px solid rgba(255,255,255,0.1)'
+            }}
+          >
             {[
               {
                 icon: (
-                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#DC2626" strokeWidth="2">
-                    <circle cx="24" cy="24" r="20" />
-                    <polyline points="24,12 24,24 32,28" />
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#DC2626" strokeWidth="1.5">
+                    <circle cx="20" cy="20" r="16" />
+                    <polyline points="20,10 20,20 27,24" />
                   </svg>
                 ),
                 pillar: 'Experience',
-                headline: '25 Years of Certified Practice',
-                body: 'Our certifications are not new — they reflect decades of continuous compliance, renewal, and improvement across hundreds of projects.'
+                guarantee: 'Over two decades of continuous certification renewal — not first-time compliance.'
               },
               {
                 icon: (
-                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#DC2626" strokeWidth="2">
-                    <polyline points="4,24 18,38 44,10" />
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#DC2626" strokeWidth="1.5">
+                    <polyline points="4,20 16,32 36,8" />
                   </svg>
                 ),
                 pillar: 'Quality',
-                headline: 'Third-Party Verified Standards',
-                body: 'ISO 9001 certification means our quality management systems are independently audited — not self-assessed. What we deliver is consistent, documented, and traceable.'
+                guarantee: 'ISO 9001 means every process is documented, audited, and built to deliver consistent results.'
               },
               {
                 icon: (
-                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#DC2626" strokeWidth="2">
-                    <path d="M24 4 L42 10 V24 C42 34 34 42 24 44 C14 42 6 34 6 24 V10 Z" />
-                    <polyline points="16,24 22,30 32,18" />
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#DC2626" strokeWidth="1.5">
+                    <path d="M20 4 L34 9 V20 C34 28 28 34 20 36 C12 34 6 28 6 20 V9 Z" />
+                    <polyline points="14,20 18,24 26,16" />
                   </svg>
                 ),
                 pillar: 'Safety',
-                headline: 'Compliance That Protects You',
-                body: 'bizSAFE STAR and ISO 45001 mean your project is covered by certified safety management systems. Fewer risks, lower liability, and a team that stops work before it becomes a problem.'
+                guarantee: 'bizSAFE STAR and ISO 45001 certified — your project is protected by independently verified safety systems.'
               }
             ].map((item, i) => (
               <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
+                key={item.pillar}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
                 style={{
-                  padding: '48px 36px',
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '2px solid rgba(255,255,255,0.1)',
+                  padding: '56px 48px',
+                  borderRight: '1px solid rgba(255,255,255,0.1)',
+                  borderBottom: '1px solid rgba(255,255,255,0.1)',
                   transition: 'all 0.3s'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#DC2626'
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.08)'
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
+                  e.currentTarget.style.background = 'transparent'
                 }}
               >
-                <div style={{ marginBottom: '24px' }}>{item.icon}</div>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  color: '#DC2626',
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
-                  marginBottom: '12px'
-                }}>
+                <div style={{ marginBottom: '24px' }}>
+                  {item.icon}
+                </div>
+
+                <div
+                  style={{
+                    fontFamily: 'IBM Plex Mono',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    color: '#DC2626',
+                    letterSpacing: '0.2em',
+                    textTransform: 'uppercase',
+                    marginBottom: '16px'
+                  }}
+                >
                   {item.pillar}
                 </div>
-                <h3 style={{
-                  fontSize: '22px',
-                  fontWeight: 900,
-                  color: '#FFF',
-                  fontFamily: 'Archivo',
-                  marginBottom: '16px',
-                  lineHeight: 1.2
-                }}>
-                  {item.headline}
-                </h3>
-                <p style={{
-                  fontSize: '15px',
-                  color: '#94A3B8',
-                  lineHeight: 1.7
-                }}>
-                  {item.body}
+
+                <p
+                  style={{
+                    fontSize: '16px',
+                    color: '#94A3B8',
+                    lineHeight: 1.7,
+                    margin: 0
+                  }}
+                >
+                  {item.guarantee}
                 </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-          
-          {/* Carousel */}
+
+      {/* Carousel Section */}
+      <section
+        style={{
+          padding: '100px 32px',
+          background: '#F1F5F9'
+        }}
+      >
+        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2
+              style={{
+                fontSize: '42px',
+                fontWeight: 900,
+                marginBottom: '12px',
+                fontFamily: 'Archivo, sans-serif',
+                color: '#0F172A'
+              }}
+            >
+              Certified Safety & Quality Systems
+            </h2>
+
+            <p
+              style={{
+                fontSize: '16px',
+                color: '#64748B',
+                fontFamily: 'IBM Plex Sans'
+              }}
+            >
+              Click any certificate to view full documentation
+            </p>
+          </div>
+
+          {loading && (
+            <div style={{ textAlign: 'center', padding: '80px 0' }}>
+              <div
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  border: '4px solid #E5E7EB',
+                  borderTopColor: '#DC2626',
+                  borderRadius: '50%',
+                  animation: 'spin 0.8s linear infinite',
+                  margin: '0 auto 24px'
+                }}
+              />
+
+              <div
+                style={{
+                  fontFamily: 'IBM Plex Mono',
+                  fontSize: '13px',
+                  color: '#64748B'
+                }}
+              >
+                Loading certifications...
+              </div>
+
+              <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+            </div>
+          )}
+
+          {error && (
+            <div style={{ textAlign: 'center', padding: '80px 0' }}>
+              <div
+                style={{
+                  fontFamily: 'IBM Plex Mono',
+                  fontSize: '13px',
+                  color: '#DC2626',
+                  marginBottom: '8px'
+                }}
+              >
+                Failed to load certifications
+              </div>
+
+              <div style={{ fontSize: '13px', color: '#64748B' }}>
+                {error}
+              </div>
+            </div>
+          )}
+
+          {!loading && !error && certs.length === 0 && (
+            <div style={{ textAlign: 'center', padding: '80px 0' }}>
+              <div
+                style={{
+                  fontFamily: 'IBM Plex Mono',
+                  fontSize: '13px',
+                  color: '#64748B',
+                  letterSpacing: '0.1em',
+                  marginBottom: '8px'
+                }}
+              >
+                NO CERTIFICATIONS AVAILABLE
+              </div>
+
+              <div style={{ fontSize: '14px', color: '#94A3B8' }}>
+                Check back soon
+              </div>
+            </div>
+          )}
+
           {!loading && !error && certs.length > 0 && (
             <React.Fragment>
-              <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '24px', padding: '40px 0' }}>
-
-                {/* Prev Button */}
+              <div
+                style={{
+                  position: 'relative',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '32px',
+                  padding: '60px 0'
+                }}
+              >
                 <button
                   onClick={prev}
-                  style={{ width: '56px', height: '56px', background: '#0F172A', color: '#FFF', border: 'none', fontSize: '20px', cursor: 'pointer', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s' }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = '#DC2626'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = '#0F172A'}
+                  style={{
+                    width: '56px',
+                    height: '56px',
+                    background: '#0F172A',
+                    color: '#FFF',
+                    border: 'none',
+                    fontSize: '20px',
+                    cursor: 'pointer',
+                    flexShrink: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'background 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#DC2626'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = '#0F172A'
+                  }}
                 >
                   &larr;
                 </button>
 
-                {/* Cards */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '24px', overflow: 'hidden', width: '100%', maxWidth: '900px', justifyContent: 'center' }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '32px',
+                    overflow: 'hidden',
+                    width: '100%',
+                    maxWidth: '1100px',
+                    justifyContent: 'center'
+                  }}
+                >
                   {certs.map((cert, i) => {
                     const offset = i - activeIndex
                     const isActive = offset === 0
                     const isVisible = Math.abs(offset) <= 1
+
                     if (!isVisible) return null
 
                     return (
                       <motion.div
                         key={cert.id}
-                        onClick={() => isActive ? setSelectedCert(cert) : setActiveIndex(i)}
-                        animate={{ scale: isActive ? 1 : 0.8, opacity: isActive ? 1 : 0.5, rotateY: offset * -15 }}
+                        onClick={() => {
+                          if (isActive) {
+                            setSelectedCert(cert)
+                          } else {
+                            setActiveIndex(i)
+                          }
+                        }}
+                        animate={{
+                          scale: isActive ? 1 : 0.75,
+                          opacity: isActive ? 1 : 0.4,
+                          rotateY: offset * -15
+                        }}
                         transition={{ duration: 0.4 }}
                         style={{
-                          width: isActive ? '340px' : '240px',
-                          minWidth: isActive ? '340px' : '240px',
-                          height: isActive ? '460px' : '380px',
+                          width: isActive ? '420px' : '280px',
+                          minWidth: isActive ? '420px' : '280px',
+                          height: isActive ? '560px' : '440px',
                           background: '#FFF',
                           border: `2px solid ${isActive ? '#0F172A' : '#E5E7EB'}`,
-                          cursor: 'pointer', position: 'relative', display: 'flex',
-                          flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                          padding: '32px', transition: 'all 0.4s',
-                          boxShadow: isActive ? '0 20px 60px rgba(0,0,0,0.15)' : 'none', flexShrink: 0
+                          cursor: 'pointer',
+                          position: 'relative',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          padding: '40px',
+                          transition: 'all 0.4s',
+                          boxShadow: isActive ? '0 24px 80px rgba(0,0,0,0.18)' : 'none',
+                          flexShrink: 0
                         }}
                       >
                         {isActive && (
-                          <div style={{ position: 'absolute', top: '16px', right: '16px', padding: '6px 12px', background: '#DC2626', color: '#FFF', fontSize: '10px', fontWeight: 700, letterSpacing: '0.1em', fontFamily: 'IBM Plex Mono' }}>
+                          <div
+                            style={{
+                              position: 'absolute',
+                              top: '20px',
+                              right: '20px',
+                              padding: '6px 14px',
+                              background: '#DC2626',
+                              color: '#FFF',
+                              fontSize: '10px',
+                              fontWeight: 700,
+                              letterSpacing: '0.1em',
+                              fontFamily: 'IBM Plex Mono'
+                            }}
+                          >
                             CLICK TO VIEW
                           </div>
                         )}
-                        <div style={{ fontSize: isActive ? '80px' : '60px', fontWeight: 900, color: '#E2E8F0', fontFamily: 'Archivo', lineHeight: 1, marginBottom: '16px' }}>
+
+                        <div
+                          style={{
+                            fontSize: isActive ? '96px' : '72px',
+                            fontWeight: 900,
+                            color: '#E2E8F0',
+                            fontFamily: 'Archivo',
+                            lineHeight: 1,
+                            marginBottom: '20px'
+                          }}
+                        >
                           {String(i + 1).padStart(2, '0')}
                         </div>
-                        <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '10px', color: '#94A3B8', letterSpacing: '0.1em', marginBottom: '24px' }}>
+
+                        <div
+                          style={{
+                            fontFamily: 'IBM Plex Mono',
+                            fontSize: '10px',
+                            color: '#94A3B8',
+                            letterSpacing: '0.1em',
+                            marginBottom: '28px'
+                          }}
+                        >
                           [ CERTIFICATE PREVIEW ]
                         </div>
-                        <div style={{ fontSize: isActive ? '18px' : '14px', fontWeight: 900, color: '#0F172A', fontFamily: 'Archivo', textAlign: 'center', marginBottom: '8px' }}>
+
+                        <div
+                          style={{
+                            fontSize: isActive ? '22px' : '16px',
+                            fontWeight: 900,
+                            color: '#0F172A',
+                            fontFamily: 'Archivo',
+                            textAlign: 'center',
+                            marginBottom: '10px',
+                            lineHeight: 1.2
+                          }}
+                        >
                           {cert.name}
                         </div>
+
                         {cert.body && (
-                          <div style={{ fontSize: '12px', fontWeight: 700, color: '#DC2626', fontFamily: 'IBM Plex Mono', letterSpacing: '0.05em', textAlign: 'center', textTransform: 'uppercase' }}>
+                          <div
+                            style={{
+                              fontSize: '12px',
+                              fontWeight: 700,
+                              color: '#DC2626',
+                              fontFamily: 'IBM Plex Mono',
+                              letterSpacing: '0.05em',
+                              textAlign: 'center',
+                              textTransform: 'uppercase'
+                            }}
+                          >
                             {cert.body}
                           </div>
                         )}
@@ -430,44 +788,95 @@ export default function Certifications() {
                   })}
                 </div>
 
-                {/* Next Button */}
                 <button
                   onClick={next}
-                  style={{ width: '56px', height: '56px', background: '#0F172A', color: '#FFF', border: 'none', fontSize: '20px', cursor: 'pointer', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s' }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = '#DC2626'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = '#0F172A'}
+                  style={{
+                    width: '56px',
+                    height: '56px',
+                    background: '#0F172A',
+                    color: '#FFF',
+                    border: 'none',
+                    fontSize: '20px',
+                    cursor: 'pointer',
+                    flexShrink: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'background 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#DC2626'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = '#0F172A'
+                  }}
                 >
                   &rarr;
                 </button>
               </div>
 
-              {/* Active Cert Info */}
               {certs[activeIndex] && (
                 <motion.div
                   key={activeIndex}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4 }}
-                  style={{ textAlign: 'center', marginTop: '40px' }}
+                  style={{
+                    textAlign: 'center',
+                    marginTop: '20px'
+                  }}
                 >
-                  <h3 style={{ fontSize: '28px', fontWeight: 900, marginBottom: '8px', fontFamily: 'Archivo', color: '#0F172A' }}>
+                  <h3
+                    style={{
+                      fontSize: '28px',
+                      fontWeight: 900,
+                      marginBottom: '8px',
+                      fontFamily: 'Archivo',
+                      color: '#0F172A'
+                    }}
+                  >
                     {certs[activeIndex].name}
                   </h3>
+
                   {certs[activeIndex].body && (
-                    <div style={{ fontSize: '13px', fontWeight: 700, color: '#DC2626', fontFamily: 'IBM Plex Mono', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>
+                    <div
+                      style={{
+                        fontSize: '13px',
+                        fontWeight: 700,
+                        color: '#DC2626',
+                        fontFamily: 'IBM Plex Mono',
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase'
+                      }}
+                    >
                       {certs[activeIndex].body}
                     </div>
                   )}
                 </motion.div>
               )}
 
-              {/* Dots */}
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '32px' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  marginTop: '40px'
+                }}
+              >
                 {certs.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setActiveIndex(i)}
-                    style={{ width: activeIndex === i ? '24px' : '8px', height: '8px', background: activeIndex === i ? '#DC2626' : '#CBD5E1', border: 'none', borderRadius: '4px', cursor: 'pointer', transition: 'all 0.3s', padding: 0 }}
+                    style={{
+                      width: activeIndex === i ? '24px' : '8px',
+                      height: '8px',
+                      background: activeIndex === i ? '#DC2626' : '#CBD5E1',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s',
+                      padding: 0
+                    }}
                   />
                 ))}
               </div>
@@ -476,28 +885,74 @@ export default function Certifications() {
         </div>
       </section>
 
-      {/* Modal */}
       {selectedCert && (
         <Modal cert={selectedCert} onClose={() => setSelectedCert(null)} />
       )}
 
       {/* CTA */}
       <motion.section
-        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={fadeInUp}
-        style={{ padding: '100px 32px', background: '#DC2626', color: '#FFF', textAlign: 'center' }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={fadeInUp}
+        style={{
+          padding: '100px 32px',
+          background: '#DC2626',
+          color: '#FFF',
+          textAlign: 'center'
+        }}
       >
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '42px', fontWeight: 900, marginBottom: '24px', lineHeight: 1.2, fontFamily: 'Archivo' }}>
+          <h2
+            style={{
+              fontSize: '42px',
+              fontWeight: 900,
+              marginBottom: '24px',
+              lineHeight: 1.2,
+              fontFamily: 'Archivo'
+            }}
+          >
             Questions About Our Certifications?
           </h2>
-          <p style={{ fontSize: '18px', marginBottom: '40px', opacity: 0.95, lineHeight: 1.7 }}>
+
+          <p
+            style={{
+              fontSize: '18px',
+              marginBottom: '40px',
+              opacity: 0.95,
+              lineHeight: 1.7
+            }}
+          >
             Need detailed certification documentation or have questions about our compliance standards? Contact us.
           </p>
+
           <a
             href="/Contact"
-            style={{ display: 'inline-block', padding: '18px 40px', background: '#FFF', color: '#DC2626', border: '2px solid #FFF', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s', fontFamily: 'IBM Plex Sans' }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = '#0F172A'; e.currentTarget.style.color = '#FFF'; e.currentTarget.style.borderColor = '#0F172A' }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = '#FFF'; e.currentTarget.style.color = '#DC2626'; e.currentTarget.style.borderColor = '#FFF' }}
+            style={{
+              display: 'inline-block',
+              padding: '18px 40px',
+              background: '#FFF',
+              color: '#DC2626',
+              border: '2px solid #FFF',
+              fontWeight: 700,
+              fontSize: '15px',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              textDecoration: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.3s',
+              fontFamily: 'IBM Plex Sans'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#0F172A'
+              e.currentTarget.style.color = '#FFF'
+              e.currentTarget.style.borderColor = '#0F172A'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = '#FFF'
+              e.currentTarget.style.color = '#DC2626'
+              e.currentTarget.style.borderColor = '#FFF'
+            }}
           >
             Get in Touch
           </a>
