@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const NOTION_KEY = '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'
+const NOTION_KEY = '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'
 const DATABASE_ID = '37c7a921a23080cfa710e56c146ae5a1'
 const PROXY = 'https://corsproxy.io/?'
 
