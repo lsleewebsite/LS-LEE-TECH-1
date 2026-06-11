@@ -6,7 +6,7 @@ import About from "./pages/About.jsx"
 import Industries from "./pages/Industries.jsx"
 import Services from "./pages/Services.jsx"
 import Projects from "./pages/Projects.jsx"
-import Safety from "./pages/Certifications.jsx"
+import Certifications from "./pages/Certifications.jsx"
 import Contact from "./pages/Contact.jsx"
 
 function Wrap({ name, Page }) {
@@ -26,7 +26,7 @@ export default function App() {
       <Route path="/Industries" element={<Wrap name="Industries" Page={Industries} />} />
       <Route path="/Services" element={<Wrap name="Services" Page={Services} />} />
       <Route path="/Projects" element={<Wrap name="Projects" Page={Projects} />} />
-      <Route path="/Certifications" element={<Wrap name="Certifications" Page={Safety} />} />
+      <Route path="/Certifications" element={<Wrap name="Certifications" Page={Certifications} />} />
       <Route path="/Contact" element={<Wrap name="Contact" Page={Contact} />} />
       <Route path="*" element={<Navigate to="/Home" replace />} />
     </Routes>
