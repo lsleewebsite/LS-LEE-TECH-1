@@ -31,7 +31,7 @@ function parseProjects(results) {
       return {
         id: page.id,
         title: p.Title?.title?.[0]?.text?.content || 'Untitled',
-        category: p.Category?.select?.name || 'General',
+        category: p.Category?.multi_select?.name || 'General',
         year: p.Year?.number || '',
         image: p.Image?.url || null,
       }
