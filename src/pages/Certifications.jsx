@@ -263,7 +263,100 @@ export default function Certifications() {
               <div style={{ fontSize: '14px', color: '#94A3B8' }}>Check back soon</div>
             </div>
           )}
+{/* Safety Stats */}
+      <section style={{ padding: '80px 32px', background: '#FFF' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1.5fr',
+            gap: '80px',
+            alignItems: 'center'
+          }}>
+            {/* Left - Statement */}
+            <div>
+              <h2 style={{
+                fontSize: '42px',
+                fontWeight: 900,
+                marginBottom: '24px',
+                lineHeight: 1.1,
+                fontFamily: 'Archivo, sans-serif',
+                color: '#0F172A'
+              }}>
+                Safety is Not a Checkbox
+              </h2>
+              <div style={{ width: '60px', height: '4px', background: '#DC2626', marginBottom: '24px' }}></div>
+              <p style={{
+                fontSize: '17px',
+                color: '#475569',
+                lineHeight: 1.8
+              }}>
+                Every project we undertake is governed by a safety-first culture. From initial planning through commissioning, safety is embedded in every decision — not added at the end.
+              </p>
+            </div>
 
+            {/* Right - Stats */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '24px'
+            }}>
+              {[
+                { value: '2.4M+', label: 'Safe Manhours', sub: 'Without Lost-Time Incident' },
+                { value: '0', label: 'Major Incidents', sub: 'In Past 5 Years' },
+                { value: 'bizSAFE', label: 'STAR Certified', sub: 'WSH Council Singapore' },
+                { value: '100%', label: 'Safety Trained', sub: 'All Field Staff' },
+              ].map((stat, i) => (
+                <div
+                  key={i}
+                  style={{
+                    padding: '32px 24px',
+                    background: '#F8F9FA',
+                    border: '2px solid #E5E7EB',
+                    textAlign: 'center',
+                    transition: 'all 0.3s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = '#DC2626'
+                    e.currentTarget.style.background = '#FFF'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = '#E5E7EB'
+                    e.currentTarget.style.background = '#F8F9FA'
+                  }}
+                >
+                  <div style={{
+                    fontSize: '36px',
+                    fontWeight: 900,
+                    color: '#DC2626',
+                    marginBottom: '8px',
+                    fontFamily: 'Archivo, sans-serif'
+                  }}>
+                    {stat.value}
+                  </div>
+                  <div style={{
+                    fontSize: '14px',
+                    fontWeight: 700,
+                    color: '#0F172A',
+                    marginBottom: '4px',
+                    fontFamily: 'Archivo',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em'
+                  }}>
+                    {stat.label}
+                  </div>
+                  <div style={{
+                    fontSize: '12px',
+                    color: '#64748B',
+                    fontFamily: 'IBM Plex Sans'
+                  }}>
+                    {stat.sub}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
           {/* Carousel */}
           {!loading && !error && certs.length > 0 && (
             <React.Fragment>
