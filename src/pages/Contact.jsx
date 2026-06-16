@@ -9,11 +9,9 @@ const fadeInUp = {
 // PLACEHOLDER — replace with your Formspree endpoint once email is set up
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID_HERE'
 
-const WHATSAPP_NUMBER = '6580001234' // placeholder — replace with real number, no + or spaces
-
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', company: '', email: '', phone: '', message: '' })
-  const [status, setStatus] = useState('idle') // idle | sending | success | error
+  const [status, setStatus] = useState('idle')
 
   const handleChange = (field) => (e) => {
     setFormData({ ...formData, [field]: e.target.value })
@@ -60,7 +58,7 @@ export default function Contact() {
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
 
-            {/* Left — Contact Info */}
+            {/* Left - Contact Info */}
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}>
               <h2 style={{ fontSize: '36px', fontWeight: 900, marginBottom: '24px', fontFamily: 'Archivo, sans-serif', color: '#0F172A' }}>
                 Contact Information
@@ -86,7 +84,7 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* Email */}
+                {/* Email - blank placeholder */}
                 <div style={{ display: 'flex', gap: '16px', alignItems: 'start' }}>
                   <div style={{ width: '44px', height: '44px', background: '#F8F9FA', border: '2px solid #E5E7EB', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2">
@@ -98,13 +96,13 @@ export default function Contact() {
                     <div style={{ fontSize: '11px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '6px', fontFamily: 'IBM Plex Mono' }}>
                       Email
                     </div>
-                    <a href="mailto:projects@lslee.com.sg" style={{ fontSize: '15px', color: '#0F172A', textDecoration: 'none' }}>
-                      projects@lslee.com.sg
-                    </a>
+                    <div style={{ fontSize: '15px', color: '#94A3B8' }}>
+                      &nbsp;
+                    </div>
                   </div>
                 </div>
 
-                {/* WhatsApp */}
+                {/* Phone - blank placeholder */}
                 <div style={{ display: 'flex', gap: '16px', alignItems: 'start' }}>
                   <div style={{ width: '44px', height: '44px', background: '#F8F9FA', border: '2px solid #E5E7EB', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2">
@@ -113,31 +111,11 @@ export default function Contact() {
                   </div>
                   <div>
                     <div style={{ fontSize: '11px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '6px', fontFamily: 'IBM Plex Mono' }}>
-                      WhatsApp
+                      Phone
                     </div>
-                    <a
-                      href={`https://wa.me/${WHATSAPP_NUMBER}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                        padding: '10px 20px',
-                        background: '#0F172A',
-                        color: '#FFF',
-                        fontSize: '13px',
-                        fontWeight: 700,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.05em',
-                        textDecoration: 'none',
-                        transition: 'background 0.2s'
-                      }}
-                      onMouseEnter={(e) => e.currentTarget.style.background = '#DC2626'}
-                      onMouseLeave={(e) => e.currentTarget.style.background = '#0F172A'}
-                    >
-                      Chat on WhatsApp
-                    </a>
+                    <div style={{ fontSize: '15px', color: '#94A3B8' }}>
+                      &nbsp;
+                    </div>
                   </div>
                 </div>
               </div>
@@ -156,7 +134,7 @@ export default function Contact() {
               </div>
             </motion.div>
 
-            {/* Right — Form */}
+            {/* Right - Form */}
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}>
               <h2 style={{ fontSize: '36px', fontWeight: 900, marginBottom: '24px', fontFamily: 'Archivo, sans-serif', color: '#0F172A' }}>
                 Send Us a Message
@@ -246,7 +224,7 @@ export default function Contact() {
 
                   {status === 'error' && (
                     <div style={{ padding: '12px 16px', background: '#FEF2F2', border: '2px solid #DC2626', fontSize: '13px', color: '#DC2626' }}>
-                      Something went wrong. Please try again or email us directly.
+                      Something went wrong. Please try again.
                     </div>
                   )}
 
