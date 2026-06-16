@@ -115,7 +115,7 @@ export default function Contact() {
                     <div style={{ fontSize: '11px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '6px', fontFamily: 'IBM Plex Mono' }}>
                       WhatsApp
                     </div>
-                    
+                    <a
                       href={`https://wa.me/${WHATSAPP_NUMBER}`}
                       target="_blank"
                       rel="noopener noreferrer"
