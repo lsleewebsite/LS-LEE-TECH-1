@@ -457,16 +457,14 @@ export default function Certifications() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4 }}
-                  style={{ textAlign: 'center', marginTop: '20px' }}
+                  style={{ textAlign: 'center', marginTop: '20px', height: '70px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
                 >
                   <h3 style={{ fontSize: '28px', fontWeight: 900, marginBottom: '8px', fontFamily: 'Archivo', color: '#0F172A' }}>
                     {certs[activeIndex].name}
                   </h3>
-                  {certs[activeIndex].issuedBy && (
-                    <div style={{ fontSize: '13px', fontWeight: 700, color: '#DC2626', fontFamily: 'IBM Plex Mono', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                      {certs[activeIndex].issuedBy}
-                    </div>
-                  )}
+                  <div style={{ fontSize: '13px', fontWeight: 700, color: '#DC2626', fontFamily: 'IBM Plex Mono', letterSpacing: '0.08em', textTransform: 'uppercase', minHeight: '16px' }}>
+                    {certs[activeIndex].issuedBy || ''}
+                  </div>
                 </motion.div>
               )}
 
