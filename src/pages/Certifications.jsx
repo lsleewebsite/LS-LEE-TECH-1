@@ -679,111 +679,46 @@ export default function Certifications() {
                     return (
                       <motion.div
                         key={cert.id}
-                        onClick={() => {
-                          if (isActive) {
-                            setSelectedCert(cert)
-                          } else {
-                            setActiveIndex(i)
-                          }
-                        }}
-                        animate={{
-                          scale: isActive ? 1 : 0.75,
-                          opacity: isActive ? 1 : 0.4,
-                          rotateY: offset * -15
-                        }}
+                        onClick={() => isActive ? setSelectedCert(cert) : setActiveIndex(i)}
+                        animate={{ scale: isActive ? 1 : 0.75, opacity: isActive ? 1 : 0.4, rotateY: offset * -15 }}
                         transition={{ duration: 0.4 }}
                         style={{
                           width: isActive ? '420px' : '280px',
                           minWidth: isActive ? '420px' : '280px',
                           height: isActive ? '560px' : '440px',
-                          background: '#FFF',
+                          background: '#F8F9FA',
                           border: `2px solid ${isActive ? '#0F172A' : '#E5E7EB'}`,
-                          cursor: 'pointer',
-                          position: 'relative',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          padding: '40px',
-                          transition: 'all 0.4s',
-                          boxShadow: isActive ? '0 24px 80px rgba(0,0,0,0.18)' : 'none',
-                          flexShrink: 0
+                          cursor: 'pointer', position: 'relative', display: 'flex',
+                          alignItems: 'center', justifyContent: 'center',
+                          padding: '0', transition: 'all 0.4s', overflow: 'hidden',
+                          boxShadow: isActive ? '0 24px 80px rgba(0,0,0,0.18)' : 'none', flexShrink: 0
                         }}
                       >
                         {isActive && (
-                          <div
-                            style={{
-                              position: 'absolute',
-                              top: '20px',
-                              right: '20px',
-                              padding: '6px 14px',
-                              background: '#DC2626',
-                              color: '#FFF',
-                              fontSize: '10px',
-                              fontWeight: 700,
-                              letterSpacing: '0.1em',
-                              fontFamily: 'IBM Plex Mono'
-                            }}
-                          >
+                          <div style={{ position: 'absolute', top: '20px', right: '20px', padding: '6px 14px', background: '#DC2626', color: '#FFF', fontSize: '10px', fontWeight: 700, letterSpacing: '0.1em', fontFamily: 'IBM Plex Mono', zIndex: 2 }}>
                             CLICK TO VIEW
                           </div>
                         )}
 
-                        <div
-                          style={{
-                            fontSize: isActive ? '96px' : '72px',
-                            fontWeight: 900,
-                            color: '#E2E8F0',
-                            fontFamily: 'Archivo',
-                            lineHeight: 1,
-                            marginBottom: '20px'
-                          }}
-                        >
-                          {String(i + 1).padStart(2, '0')}
-                        </div>
-
-                        <div
-                          style={{
-                            fontFamily: 'IBM Plex Mono',
-                            fontSize: '10px',
-                            color: '#94A3B8',
-                            letterSpacing: '0.1em',
-                            marginBottom: '28px'
-                          }}
-                        >
-                          [ CERTIFICATE PREVIEW ]
-                        </div>
-
-                        <div
-                          style={{
-                            fontSize: isActive ? '22px' : '16px',
-                            fontWeight: 900,
-                            color: '#0F172A',
-                            fontFamily: 'Archivo',
-                            textAlign: 'center',
-                            marginBottom: '10px',
-                            lineHeight: 1.2
-                          }}
-                        >
-                          {cert.name}
-                        </div>
-
-                        {cert.body && (
-                          <div
-                            style={{
-                              fontSize: '12px',
-                              fontWeight: 700,
-                              color: '#DC2626',
-                              fontFamily: 'IBM Plex Mono',
-                              letterSpacing: '0.05em',
-                              textAlign: 'center',
-                              textTransform: 'uppercase'
-                            }}
-                          >
-                            {cert.body}
+                        {cert.certificate ? (
+                          <img
+                            src={cert.certificate}
+                            alt={cert.name}
+                            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                            onError={(e) => { e.target.style.display = 'none' }}
+                          />
+                        ) : (
+                          <div style={{ textAlign: 'center', padding: '40px' }}>
+                            <div style={{ fontSize: isActive ? '96px' : '72px', fontWeight: 900, color: '#E2E8F0', fontFamily: 'Archivo', lineHeight: 1, marginBottom: '20px' }}>
+                              {String(i + 1).padStart(2, '0')}
+                            </div>
+                            <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '10px', color: '#94A3B8', letterSpacing: '0.1em' }}>
+                              [ CERTIFICATE PREVIEW ]
+                            </div>
                           </div>
                         )}
                       </motion.div>
+                    )
                     )
                   })}
                 </div>
