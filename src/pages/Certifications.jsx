@@ -61,7 +61,7 @@ function Modal({ cert, onClose }) {
           transition={{ duration: 0.3 }}
           onClick={(e) => e.stopPropagation()}
           style={{
-            background: '#FFF', width: '100%', maxWidth: '800px',
+            background: '#FFF', width: '100%', maxWidth: '860px',
             maxHeight: '90vh', overflow: 'auto', position: 'relative',
             border: '2px solid #0F172A'
           }}
@@ -70,8 +70,8 @@ function Modal({ cert, onClose }) {
             onClick={onClose}
             style={{
               position: 'absolute', top: '16px', right: '16px',
-              width: '40px', height: '40px', background: '#DC2626',
-              color: '#FFF', border: 'none', fontSize: '20px', cursor: 'pointer',
+              width: '44px', height: '44px', background: '#DC2626',
+              color: '#FFF', border: 'none', fontSize: '22px', cursor: 'pointer',
               zIndex: 10, display: 'flex', alignItems: 'center',
               justifyContent: 'center', fontWeight: 700, transition: 'background 0.2s'
             }}
@@ -99,17 +99,17 @@ function Modal({ cert, onClose }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    position: 'absolute', top: '16px', right: '64px',
-                    padding: '8px 16px', background: '#DC2626', color: '#FFF',
-                    fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em',
+                    position: 'absolute', top: '16px', right: '70px',
+                    padding: '14px 24px', background: '#DC2626', color: '#FFF',
+                    fontSize: '14px', fontWeight: 700, letterSpacing: '0.08em',
                     fontFamily: 'IBM Plex Mono', textDecoration: 'none', transition: 'background 0.2s',
-                    display: 'flex', alignItems: 'center', gap: '6px'
+                    display: 'flex', alignItems: 'center', gap: '10px'
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.background = '#0F172A'}
                   onMouseLeave={(e) => e.currentTarget.style.background = '#DC2626'}
                 >
                   OPEN FULL IMAGE
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFF" strokeWidth="2.5">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFF" strokeWidth="2.5">
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                     <polyline points="15,3 21,3 21,9" />
                     <line x1="10" y1="14" x2="21" y2="3" />
@@ -121,59 +121,59 @@ function Modal({ cert, onClose }) {
                 <div style={{ fontSize: '64px', fontWeight: 900, color: '#CBD5E1', fontFamily: 'Archivo', marginBottom: '12px' }}>
                   {String(1).padStart(2, '0')}
                 </div>
-                <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '11px', color: '#94A3B8', letterSpacing: '0.1em' }}>
+                <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '13px', color: '#94A3B8', letterSpacing: '0.1em' }}>
                   [ CERTIFICATE PREVIEW ]
                 </div>
               </div>
             )}
           </div>
 
-          <div style={{ padding: '40px' }}>
-            <h2 style={{ fontSize: '28px', fontWeight: 900, marginBottom: '8px', fontFamily: 'Archivo, sans-serif', color: '#0F172A' }}>
+          <div style={{ padding: '48px' }}>
+            <h2 style={{ fontSize: '34px', fontWeight: 900, marginBottom: '12px', fontFamily: 'Archivo, sans-serif', color: '#0F172A', lineHeight: 1.2 }}>
               {cert.name}
             </h2>
 
             {cert.issuedBy && (
-              <div style={{ fontSize: '13px', fontWeight: 700, color: '#DC2626', textTransform: 'uppercase', letterSpacing: '0.08em', fontFamily: 'IBM Plex Mono', marginBottom: '24px' }}>
+              <div style={{ fontSize: '16px', fontWeight: 700, color: '#DC2626', textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: 'IBM Plex Mono', marginBottom: '28px' }}>
                 ISSUED BY {cert.issuedBy}
               </div>
             )}
 
             {cert.body && (
-              <p style={{ fontSize: '15px', color: '#475569', lineHeight: 1.7, marginBottom: '20px' }}>
+              <p style={{ fontSize: '18px', color: '#475569', lineHeight: 1.8, marginBottom: '28px' }}>
                 {cert.body}
               </p>
             )}
 
             {cert.scope && (
-              <div style={{ padding: '16px 20px', background: '#F8F9FA', border: '2px solid #E5E7EB', marginBottom: '20px' }}>
-                <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '10px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>
+              <div style={{ padding: '24px 28px', background: '#F8F9FA', border: '2px solid #E5E7EB', marginBottom: '24px' }}>
+                <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '13px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '12px' }}>
                   Certification Scope
                 </div>
-                <div style={{ fontSize: '14px', color: '#0F172A', lineHeight: 1.6 }}>
+                <div style={{ fontSize: '17px', color: '#0F172A', lineHeight: 1.7 }}>
                   {cert.scope}
                 </div>
               </div>
             )}
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
               {cert.certNumber && (
-                <div style={{ padding: '16px 20px', background: '#F8F9FA', border: '2px solid #E5E7EB' }}>
-                  <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '10px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>
+                <div style={{ padding: '24px 28px', background: '#F8F9FA', border: '2px solid #E5E7EB' }}>
+                  <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '13px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '12px' }}>
                     Certificate Number
                   </div>
-                  <div style={{ fontSize: '15px', fontWeight: 700, color: '#0F172A', fontFamily: 'IBM Plex Mono' }}>
+                  <div style={{ fontSize: '19px', fontWeight: 700, color: '#0F172A', fontFamily: 'IBM Plex Mono' }}>
                     {cert.certNumber}
                   </div>
                 </div>
               )}
 
               {(cert.validFrom || cert.validTo) && (
-                <div style={{ padding: '16px 20px', background: '#F8F9FA', border: '2px solid #E5E7EB' }}>
-                  <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '10px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>
+                <div style={{ padding: '24px 28px', background: '#F8F9FA', border: '2px solid #E5E7EB' }}>
+                  <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '13px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '12px' }}>
                     Validity Period
                   </div>
-                  <div style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', fontFamily: 'IBM Plex Mono' }}>
+                  <div style={{ fontSize: '17px', fontWeight: 700, color: '#0F172A', fontFamily: 'IBM Plex Mono' }}>
                     {formatDate(cert.validFrom)} - {formatDate(cert.validTo)}
                   </div>
                 </div>
@@ -365,10 +365,12 @@ export default function Certifications() {
                   &larr;
                 </button>
 
-                {/* Fixed-height stage so layout never jumps */}
                 <div style={{ position: 'relative', width: '100%', maxWidth: '1100px', height: '560px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   {certs.map((cert, i) => {
-                    const offset = i - activeIndex
+                    const total = certs.length
+                    let offset = i - activeIndex
+                    if (offset > total / 2) offset -= total
+                    if (offset < -total / 2) offset += total
                     const isActive = offset === 0
                     const isVisible = Math.abs(offset) <= 1
                     if (!isVisible) return null
@@ -510,4 +512,4 @@ export default function Certifications() {
       </motion.section>
     </div>
   )
-}
+}v
