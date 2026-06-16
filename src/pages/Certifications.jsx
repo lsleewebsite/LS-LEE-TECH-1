@@ -81,7 +81,7 @@ function Modal({ cert, onClose }) {
           style={{
             background: '#FFF',
             width: '100%',
-            maxWidth: '680px',
+            maxWidth: '800px',
             maxHeight: '90vh',
             overflow: 'auto',
             position: 'relative',
@@ -120,7 +120,7 @@ function Modal({ cert, onClose }) {
 
           <div
             style={{
-              height: '320px',
+              height: '500px',
               background: '#F1F5F9',
               display: 'flex',
               alignItems: 'center',
