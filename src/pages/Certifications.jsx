@@ -512,4 +512,4 @@ export default function Certifications() {
       </motion.section>
     </div>
   )
-}v
+}
