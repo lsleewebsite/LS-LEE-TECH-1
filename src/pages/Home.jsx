@@ -276,7 +276,7 @@ export default function Home() {
               { num: '01', icon: <I.Wrench />, title: 'Project Engineering', tag: 'Turnkey Mechanical Structural' },
               { num: '02', icon: <I.Gauge />, title: 'Plant Maintenance', tag: '24/7 Operations Support' },
               { num: '03', icon: <I.Trailer />, title: 'Servicing & Testing', tag: 'Destructive and Non Destructive Testing', },
-              { num: '04', icon: <I.Snow />, title: 'Cryogenic Storage & Hoses', tag: 'Vacuum-Insulated Equipment', desc: 'Custom fabrication and maintenance for cryogenic transfer systems and industrial gas applications.' },
+              { num: '04', icon: <I.Snow />, title: 'Cryogenic Storage & Hoses', tag: 'Vacuum-Insulated Equipment', },
             ].map((it, i) => (
               <motion.a href="/Services" key={i} variants={cardVariant} transition={{ duration: 0.5 }}
                 style={{ padding: '36px', background: 'rgba(255,255,255,0.05)', border: '2px solid rgba(255,255,255,0.1)', textDecoration: 'none', color: 'inherit', transition: 'all 0.3s', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '16px' }}
