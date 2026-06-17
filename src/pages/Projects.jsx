@@ -5,6 +5,9 @@ const NOTION_KEY = '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'
 const DATABASE_ID = '37c7a921a23080cfa710e56c146ae5a1'
 const PROXY = 'https://corsproxy.io/?'
 
+const INDUSTRIES = ['Semiconductor', 'Data Center', 'Industrial Gas & Process', 'New Energy / Hydrogen']
+const SERVICES = ['Project Engineering', 'Plant Maintenance', 'Servicing & Testing', 'Cryogenic Storage & Hoses', 'Electrical & Instrumentation']
+
 const PLACEHOLDER_IMAGES = [
   'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80',
   'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80',
@@ -36,7 +39,7 @@ function parseProjects(results) {
       return {
         id: page.id,
         title: p.Title?.title?.[0]?.text?.content || 'Untitled',
-        category: p.Category?.multi_select?.[0]?.name || 'General',
+        categories: p.Category?.multi_select?.map(c => c.name) || [],
         year: p.Year?.number || '',
         image: p.Image?.url || null,
         images: images,
@@ -189,12 +192,14 @@ function Modal({ project, onClose }) {
             background: '#FFF'
           }}>
             <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap' }}>
-              <div style={{
-                padding: '6px 14px', background: '#0F172A', color: '#FFF',
-                fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', fontFamily: 'IBM Plex Mono'
-              }}>
-                {project.category.toUpperCase()}
-              </div>
+              {project.categories.map((cat, ci) => (
+                <div key={ci} style={{
+                  padding: '6px 14px', background: '#0F172A', color: '#FFF',
+                  fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', fontFamily: 'IBM Plex Mono'
+                }}>
+                  {cat.toUpperCase()}
+                </div>
+              ))}
               {project.year && (
                 <div style={{
                   padding: '6px 14px', background: '#F8F9FA', border: '2px solid #E5E7EB',
@@ -240,9 +245,10 @@ export default function Projects() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [activeFilter, setActiveFilter] = useState('All')
+  const [filterOpen, setFilterOpen] = useState(false)
   const [selectedProject, setSelectedProject] = useState(null)
 
-    useEffect(() => {
+  useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     const categoryParam = params.get('category')
     if (categoryParam) {
@@ -280,10 +286,9 @@ export default function Projects() {
     fetchProjects()
   }, [])
 
-  const categories = ['All', ...new Set(projects.map(p => p.category))]
   const filtered = activeFilter === 'All'
     ? projects
-    : projects.filter(p => p.category === activeFilter)
+    : projects.filter(p => p.categories.includes(activeFilter))
 
   return (
     <div>
@@ -304,36 +309,94 @@ export default function Projects() {
       {/* Filters */}
       <section style={{ padding: '32px', background: '#FFF', borderBottom: '2px solid #E5E7EB', position: 'sticky', top: '110px', zIndex: 30 }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            {categories.map(filter => (
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ position: 'relative' }}>
               <button
-                key={filter}
-                onClick={() => setActiveFilter(filter)}
+                onClick={() => setFilterOpen(!filterOpen)}
                 style={{
-                  padding: '12px 28px',
-                  background: activeFilter === filter ? '#DC2626' : '#FFF',
-                  color: activeFilter === filter ? '#FFF' : '#0F172A',
-                  border: `2px solid ${activeFilter === filter ? '#DC2626' : '#0F172A'}`,
+                  display: 'flex', alignItems: 'center', gap: '10px',
+                  padding: '14px 28px',
+                  background: activeFilter !== 'All' ? '#DC2626' : '#FFF',
+                  color: activeFilter !== 'All' ? '#FFF' : '#0F172A',
+                  border: `2px solid ${activeFilter !== 'All' ? '#DC2626' : '#0F172A'}`,
                   fontWeight: 700, fontSize: '13px', textTransform: 'uppercase',
                   letterSpacing: '0.05em', cursor: 'pointer', transition: 'all 0.2s',
                   fontFamily: 'IBM Plex Sans, sans-serif'
                 }}
-                onMouseEnter={(e) => {
-                  if (activeFilter !== filter) {
-                    e.target.style.background = '#0F172A'
-                    e.target.style.color = '#FFF'
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (activeFilter !== filter) {
-                    e.target.style.background = '#FFF'
-                    e.target.style.color = '#0F172A'
-                  }
-                }}
               >
-                {filter}
+                {activeFilter === 'All' ? 'Filter Projects' : activeFilter}
+                <span style={{ fontSize: '11px' }}>{filterOpen ? '▲' : '▼'}</span>
               </button>
-            ))}
+
+              {filterOpen && (
+                <div style={{
+                  position: 'absolute', top: 'calc(100% + 8px)', left: '50%', transform: 'translateX(-50%)',
+                  background: '#FFF', border: '2px solid #0F172A', minWidth: '320px',
+                  boxShadow: '0 12px 32px rgba(0,0,0,0.15)', zIndex: 50, padding: '20px'
+                }}>
+                  <button
+                    onClick={() => { setActiveFilter('All'); setFilterOpen(false) }}
+                    style={{
+                      width: '100%', textAlign: 'left', padding: '10px 12px',
+                      background: activeFilter === 'All' ? '#0F172A' : 'transparent',
+                      color: activeFilter === 'All' ? '#FFF' : '#0F172A',
+                      border: 'none', fontWeight: 700, fontSize: '13px',
+                      cursor: 'pointer', marginBottom: '12px', fontFamily: 'IBM Plex Sans'
+                    }}
+                  >
+                    All Projects
+                  </button>
+
+                  <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '10px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px', paddingTop: '8px', borderTop: '1px solid #E5E7EB' }}>
+                    Industries
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '16px' }}>
+                    {INDUSTRIES.map(ind => {
+                      const hasMatch = projects.some(p => p.categories.includes(ind))
+                      return (
+                        <button
+                          key={ind}
+                          onClick={() => { setActiveFilter(ind); setFilterOpen(false) }}
+                          style={{
+                            width: '100%', textAlign: 'left', padding: '8px 12px',
+                            background: activeFilter === ind ? '#DC2626' : 'transparent',
+                            color: activeFilter === ind ? '#FFF' : (hasMatch ? '#DC2626' : '#94A3B8'),
+                            border: 'none', fontWeight: 600, fontSize: '13px',
+                            cursor: 'pointer', fontFamily: 'IBM Plex Sans'
+                          }}
+                        >
+                          {ind}
+                        </button>
+                      )
+                    })}
+                  </div>
+
+                  <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '10px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px', paddingTop: '8px', borderTop: '1px solid #E5E7EB' }}>
+                    Services
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    {SERVICES.map(svc => {
+                      const hasMatch = projects.some(p => p.categories.includes(svc))
+                      return (
+                        <button
+                          key={svc}
+                          onClick={() => { setActiveFilter(svc); setFilterOpen(false) }}
+                          style={{
+                            width: '100%', textAlign: 'left', padding: '8px 12px',
+                            background: activeFilter === svc ? '#DC2626' : 'transparent',
+                            color: activeFilter === svc ? '#FFF' : (hasMatch ? '#DC2626' : '#94A3B8'),
+                            border: 'none', fontWeight: 600, fontSize: '13px',
+                            cursor: 'pointer', fontFamily: 'IBM Plex Sans'
+                          }}
+                        >
+                          {svc}
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
           {!loading && (
             <div style={{ textAlign: 'center', marginTop: '12px', fontSize: '13px', color: '#64748B', fontFamily: 'IBM Plex Mono' }}>
@@ -426,15 +489,19 @@ export default function Projects() {
 
                   {/* Info */}
                   <div style={{ padding: '24px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                      <div style={{
-                        padding: '4px 10px', background: '#0F172A', color: '#FFF',
-                        fontSize: '10px', fontWeight: 700, letterSpacing: '0.1em', fontFamily: 'IBM Plex Mono'
-                      }}>
-                        {project.category.toUpperCase()}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px', gap: '8px' }}>
+                      <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                        {project.categories.map((cat, ci) => (
+                          <div key={ci} style={{
+                            padding: '4px 10px', background: '#0F172A', color: '#FFF',
+                            fontSize: '10px', fontWeight: 700, letterSpacing: '0.1em', fontFamily: 'IBM Plex Mono'
+                          }}>
+                            {cat.toUpperCase()}
+                          </div>
+                        ))}
                       </div>
                       {project.year && (
-                        <div style={{ fontSize: '13px', color: '#64748B', fontFamily: 'IBM Plex Mono' }}>
+                        <div style={{ fontSize: '13px', color: '#64748B', fontFamily: 'IBM Plex Mono', flexShrink: 0 }}>
                           {project.year}
                         </div>
                       )}
