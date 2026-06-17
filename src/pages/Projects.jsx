@@ -95,7 +95,6 @@ function Modal({ project, onClose }) {
             gridTemplateColumns: '1fr 1fr'
           }}
         >
-          {/* Close Button */}
           <button
             onClick={onClose}
             style={{
@@ -122,7 +121,6 @@ function Modal({ project, onClose }) {
             x
           </button>
 
-          {/* Left - Image */}
           <div style={{ position: 'relative', height: '560px', background: '#E5E7EB', overflow: 'hidden' }}>
             <img
               src={allImages[currentImage]}
@@ -181,7 +179,6 @@ function Modal({ project, onClose }) {
             )}
           </div>
 
-          {/* Right - Details */}
           <div style={{
             padding: '48px 40px',
             display: 'flex',
@@ -244,7 +241,7 @@ export default function Projects() {
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [activeFilter, setActiveFilter] = useState('All')
+  const [activeFilters, setActiveFilters] = useState([])
   const [filterOpen, setFilterOpen] = useState(false)
   const [selectedProject, setSelectedProject] = useState(null)
 
@@ -252,7 +249,7 @@ export default function Projects() {
     const params = new URLSearchParams(window.location.search)
     const categoryParam = params.get('category')
     if (categoryParam) {
-      setActiveFilter(categoryParam)
+      setActiveFilters([categoryParam])
     }
   }, [])
 
@@ -286,9 +283,17 @@ export default function Projects() {
     fetchProjects()
   }, [])
 
-  const filtered = activeFilter === 'All'
+  const toggleFilter = (value) => {
+    setActiveFilters(prev =>
+      prev.includes(value) ? prev.filter(f => f !== value) : [...prev, value]
+    )
+  }
+
+  const clearFilters = () => setActiveFilters([])
+
+  const filtered = activeFilters.length === 0
     ? projects
-    : projects.filter(p => p.categories.includes(activeFilter))
+    : projects.filter(p => activeFilters.some(f => p.categories.includes(f)))
 
   return (
     <div>
@@ -316,15 +321,15 @@ export default function Projects() {
                 style={{
                   display: 'flex', alignItems: 'center', gap: '10px',
                   padding: '14px 28px',
-                  background: activeFilter !== 'All' ? '#DC2626' : '#FFF',
-                  color: activeFilter !== 'All' ? '#FFF' : '#0F172A',
-                  border: `2px solid ${activeFilter !== 'All' ? '#DC2626' : '#0F172A'}`,
+                  background: activeFilters.length > 0 ? '#DC2626' : '#FFF',
+                  color: activeFilters.length > 0 ? '#FFF' : '#0F172A',
+                  border: `2px solid ${activeFilters.length > 0 ? '#DC2626' : '#0F172A'}`,
                   fontWeight: 700, fontSize: '13px', textTransform: 'uppercase',
                   letterSpacing: '0.05em', cursor: 'pointer', transition: 'all 0.2s',
                   fontFamily: 'IBM Plex Sans, sans-serif'
                 }}
               >
-                {activeFilter === 'All' ? 'Filter Projects' : activeFilter}
+                {activeFilters.length === 0 ? 'Filter Projects' : `${activeFilters.length} Filter${activeFilters.length > 1 ? 's' : ''} Applied`}
                 <span style={{ fontSize: '11px' }}>{filterOpen ? '▲' : '▼'}</span>
               </button>
 
@@ -334,37 +339,33 @@ export default function Projects() {
                   background: '#FFF', border: '2px solid #0F172A', minWidth: '320px',
                   boxShadow: '0 12px 32px rgba(0,0,0,0.15)', zIndex: 50, padding: '20px'
                 }}>
-                  <button
-                    onClick={() => { setActiveFilter('All'); setFilterOpen(false) }}
-                    style={{
-                      width: '100%', textAlign: 'left', padding: '10px 12px',
-                      background: activeFilter === 'All' ? '#0F172A' : 'transparent',
-                      color: activeFilter === 'All' ? '#FFF' : '#0F172A',
-                      border: 'none', fontWeight: 700, fontSize: '13px',
-                      cursor: 'pointer', marginBottom: '12px', fontFamily: 'IBM Plex Sans'
-                    }}
-                  >
-                    All Projects
-                  </button>
-
-                  <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '10px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px', paddingTop: '8px', borderTop: '1px solid #E5E7EB' }}>
+                  <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '10px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>
                     Industries
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '16px' }}>
                     {INDUSTRIES.map(ind => {
                       const hasMatch = projects.some(p => p.categories.includes(ind))
+                      const isActive = activeFilters.includes(ind)
                       return (
                         <button
                           key={ind}
-                          onClick={() => { setActiveFilter(ind); setFilterOpen(false) }}
+                          onClick={() => toggleFilter(ind)}
                           style={{
                             width: '100%', textAlign: 'left', padding: '8px 12px',
-                            background: activeFilter === ind ? '#DC2626' : 'transparent',
-                            color: activeFilter === ind ? '#FFF' : (hasMatch ? '#DC2626' : '#94A3B8'),
+                            display: 'flex', alignItems: 'center', gap: '10px',
+                            background: isActive ? '#DC2626' : 'transparent',
+                            color: isActive ? '#FFF' : (hasMatch ? '#DC2626' : '#94A3B8'),
                             border: 'none', fontWeight: 600, fontSize: '13px',
                             cursor: 'pointer', fontFamily: 'IBM Plex Sans'
                           }}
                         >
+                          <span style={{
+                            width: '14px', height: '14px', border: `2px solid ${isActive ? '#FFF' : (hasMatch ? '#DC2626' : '#94A3B8')}`,
+                            background: isActive ? '#FFF' : 'transparent', flexShrink: 0,
+                            display: 'flex', alignItems: 'center', justifyContent: 'center'
+                          }}>
+                            {isActive && <span style={{ width: '8px', height: '8px', background: '#DC2626' }}></span>}
+                          </span>
                           {ind}
                         </button>
                       )
@@ -374,30 +375,81 @@ export default function Projects() {
                   <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '10px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px', paddingTop: '8px', borderTop: '1px solid #E5E7EB' }}>
                     Services
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: activeFilters.length > 0 ? '16px' : '0' }}>
                     {SERVICES.map(svc => {
                       const hasMatch = projects.some(p => p.categories.includes(svc))
+                      const isActive = activeFilters.includes(svc)
                       return (
                         <button
                           key={svc}
-                          onClick={() => { setActiveFilter(svc); setFilterOpen(false) }}
+                          onClick={() => toggleFilter(svc)}
                           style={{
                             width: '100%', textAlign: 'left', padding: '8px 12px',
-                            background: activeFilter === svc ? '#DC2626' : 'transparent',
-                            color: activeFilter === svc ? '#FFF' : (hasMatch ? '#DC2626' : '#94A3B8'),
+                            display: 'flex', alignItems: 'center', gap: '10px',
+                            background: isActive ? '#DC2626' : 'transparent',
+                            color: isActive ? '#FFF' : (hasMatch ? '#DC2626' : '#94A3B8'),
                             border: 'none', fontWeight: 600, fontSize: '13px',
                             cursor: 'pointer', fontFamily: 'IBM Plex Sans'
                           }}
                         >
+                          <span style={{
+                            width: '14px', height: '14px', border: `2px solid ${isActive ? '#FFF' : (hasMatch ? '#DC2626' : '#94A3B8')}`,
+                            background: isActive ? '#FFF' : 'transparent', flexShrink: 0,
+                            display: 'flex', alignItems: 'center', justifyContent: 'center'
+                          }}>
+                            {isActive && <span style={{ width: '8px', height: '8px', background: '#DC2626' }}></span>}
+                          </span>
                           {svc}
                         </button>
                       )
                     })}
                   </div>
+
+                  {activeFilters.length > 0 && (
+                    <button
+                      onClick={clearFilters}
+                      style={{
+                        width: '100%', padding: '10px 12px', background: '#F8F9FA',
+                        border: '2px solid #E5E7EB', fontWeight: 700, fontSize: '12px',
+                        color: '#64748B', cursor: 'pointer', fontFamily: 'IBM Plex Sans',
+                        textTransform: 'uppercase', letterSpacing: '0.05em'
+                      }}
+                    >
+                      Clear All Filters
+                    </button>
+                  )}
                 </div>
               )}
             </div>
           </div>
+
+          {activeFilters.length > 0 && (
+            <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '16px' }}>
+              {activeFilters.map(filter => (
+                <div
+                  key={filter}
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: '8px',
+                    padding: '6px 8px 6px 14px', background: '#0F172A', color: '#FFF',
+                    fontSize: '12px', fontWeight: 700, fontFamily: 'IBM Plex Sans'
+                  }}
+                >
+                  {filter}
+                  <button
+                    onClick={() => toggleFilter(filter)}
+                    style={{
+                      width: '20px', height: '20px', background: 'transparent',
+                      border: 'none', color: '#FFF', cursor: 'pointer', fontSize: '14px',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0
+                    }}
+                  >
+                    x
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+
           {!loading && (
             <div style={{ textAlign: 'center', marginTop: '12px', fontSize: '13px', color: '#64748B', fontFamily: 'IBM Plex Mono' }}>
               {filtered.length} {filtered.length === 1 ? 'project' : 'projects'}
@@ -465,7 +517,6 @@ export default function Projects() {
                     e.currentTarget.style.boxShadow = 'none'
                   }}
                 >
-                  {/* Image */}
                   <div style={{ height: '220px', overflow: 'hidden', borderBottom: '2px solid #0F172A', position: 'relative' }}>
                     <img
                       src={project.image || getPlaceholder(project.id)}
@@ -487,7 +538,6 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  {/* Info */}
                   <div style={{ padding: '24px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px', gap: '8px' }}>
                       <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
@@ -517,7 +567,6 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* Modal */}
       {selectedProject && (
         <Modal
           project={selectedProject}
@@ -525,7 +574,6 @@ export default function Projects() {
         />
       )}
 
-      {/* CTA */}
       <motion.section
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={fadeInUp}
         style={{ padding: '100px 32px', background: '#DC2626', color: '#FFF', textAlign: 'center' }}
