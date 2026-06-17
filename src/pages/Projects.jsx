@@ -305,7 +305,6 @@ export default function Projects() {
               Our <span style={{ color: '#DC2626' }}>Projects</span>
             </h1>
             <p style={{ fontSize: '20px', color: '#94A3B8', maxWidth: '800px', lineHeight: 1.7 }}>
-              A selection of mechanical engineering projects across Singapore's critical industrial sectors.
             </p>
           </motion.div>
         </div>
