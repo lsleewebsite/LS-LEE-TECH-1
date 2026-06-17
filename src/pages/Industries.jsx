@@ -347,7 +347,7 @@ export default function Industries() {
 
                 {/* View Projects Button */}
                 <a 
-                  href={`/Projects?category=${encodeURIComponent(industry.title)}`}
+                  href={`${import.meta.env.BASE_URL}Projects?category=${encodeURIComponent(industry.title)}`}
                   style={{
                     display: 'inline-block',
                     padding: '16px 28px',
