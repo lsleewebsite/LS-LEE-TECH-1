@@ -98,7 +98,7 @@ export default function Industries() {
     {
       id: 'datacenter',
       icon: <Icon.Server />,
-      title: 'Data Center',
+      title: 'Data Centres',
       tagline: 'Hydrogen Infrastructure for Next-Gen Power Systems',
       description: 'Hydrogen pipeline infrastructure and gas systems support for data centre energy requirements. As data centers transition to hydrogen fuel cells for backup power, we deliver the mechanical infrastructure to make it work.',
       capabilities: [
@@ -113,7 +113,7 @@ export default function Industries() {
     {
       id: 'industrial-gas',
       icon: <Icon.Plant />,
-      title: 'Industrial Gas & Process',
+      title: 'Industrial Gas',
       tagline: 'Turnkey Engineering for Gas and Process Plants',
       description: 'Turnkey project engineering, plant integration and maintenance for gas and process plants. From air separation units to specialty gas production, we handle the full project lifecycle.',
       capabilities: [
@@ -126,9 +126,9 @@ export default function Industries() {
       ]
     },
     {
-      id: 'hydrogen',
+      id: 'new-energy',
       icon: <Icon.H2 />,
-      title: 'New Energy / Hydrogen',
+      title: 'New Energy',
       tagline: 'Tube Trailer Testing and Hydrogen Infrastructure',
       description: 'Hydrogen trailer testing, servicing, refurbishment and certification support. As the hydrogen economy scales, we provide the testing, certification, and maintenance services to keep tube trailers and transport systems operational.',
       capabilities: [
@@ -201,7 +201,7 @@ export default function Industries() {
           gap: '12px'
         }}>
           {industries.map((industry) => (
-            <a
+            
               key={industry.id}
               href={`#${industry.id}`}
               style={{
