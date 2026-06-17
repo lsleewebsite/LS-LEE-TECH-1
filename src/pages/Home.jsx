@@ -438,22 +438,6 @@ export default function Home() {
     </div>
   </div>
 </motion.section>
-    {/* View All Button */}
-    <div style={{ textAlign: 'center', marginTop: '40px' }}>
-      <a href="/Services" style={{
-        display: 'inline-flex', alignItems: 'center', gap: '10px',
-        padding: '18px 40px', background: '#DC2626', color: '#FFF',
-        border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif',
-        fontWeight: 700, fontSize: '15px', textTransform: 'uppercase',
-        letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s'
-      }}
-      onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
-      onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
-        View All Services <I.Arrow />
-      </a>
-    </div>
-  </div>
-</motion.section>
       
       {/* PROJECTS */}
       <motion.section id="projects" initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }} variants={fadeInUp} style={{ background: '#FFF', padding: '80px 32px' }}>
