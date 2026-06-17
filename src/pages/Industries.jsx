@@ -62,10 +62,8 @@ const fadeInUp = {
 export default function Industries() {
   const location = useLocation()
 
-  // Scroll to section on load if hash is present
   useEffect(() => {
     if (location.hash) {
-      // If there's a hash, scroll to that section
       const id = location.hash.replace('#', '')
       setTimeout(() => {
         const element = document.getElementById(id)
@@ -76,7 +74,6 @@ export default function Industries() {
         }
       }, 100)
     } else {
-      // If no hash, scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }, [location])
@@ -95,13 +92,6 @@ export default function Industries() {
         'VMB and gas cabinet systems',
         'Leak testing and qualification',
         'Preventive maintenance programs'
-      ],
-      applications: [
-        'New fab construction',
-        'Capacity expansion projects',
-        'Process tool installations',
-        'Gas system upgrades',
-        'Preventive maintenance'
       ]
     },
     {
@@ -117,13 +107,6 @@ export default function Industries() {
         'Leak detection systems',
         'Emergency shutdown integration',
         'Compliance and certification'
-      ],
-      applications: [
-        'Hydrogen fuel cell backup systems',
-        'Pipeline infrastructure',
-        'Storage system integration',
-        'Safety system installation',
-        'Regulatory compliance support'
       ]
     },
     {
@@ -139,14 +122,6 @@ export default function Industries() {
         'Shutdown and turnaround support',
         'Plant maintenance contracts',
         'Emergency response services'
-      ],
-      applications: [
-        'Air separation units (ASU)',
-        'Specialty gas production',
-        'Chemical process plants',
-        'Plant expansions',
-        'Turnaround projects',
-        'Long-term maintenance'
       ]
     },
     {
@@ -162,14 +137,6 @@ export default function Industries() {
         'Tube bundle refurbishment',
         'Leak testing and repair',
         'Fleet management support'
-      ],
-      applications: [
-        'Tube trailer certification',
-        'Fleet testing programs',
-        'Emergency repairs',
-        'Refurbishment projects',
-        'Hydrogen infrastructure support',
-        'Transport system maintenance'
       ]
     }
   ]
@@ -215,7 +182,7 @@ export default function Industries() {
         </div>
       </section>
 
-     {/* Sticky Sub-Navigation */}
+      {/* Sticky Sub-Navigation */}
       <div style={{
         position: 'sticky',
         top: '110px',
@@ -233,7 +200,7 @@ export default function Industries() {
           gap: '12px'
         }}>
           {industries.map((industry) => (
-            <a
+            
               key={industry.id}
               href={`#${industry.id}`}
               style={{
@@ -332,30 +299,30 @@ export default function Industries() {
                 </p>
               </div>
 
-              {/* Right Column - Details */}
+              {/* Right Column - Capabilities */}
               <div style={{
                 display: 'grid',
                 gap: '32px'
               }}>
-                {/* Capabilities */}
                 <div style={{
-                  padding: '40px',
-                  background: '#FFF',
-                  border: '2px solid #0F172A'
+                  padding: '48px',
+                  background: '#0F172A',
+                  color: '#FFF'
                 }}>
                   <h3 style={{
-                    fontSize: '20px',
-                    fontWeight: 700,
-                    marginBottom: '24px',
+                    fontSize: '24px',
+                    fontWeight: 900,
+                    marginBottom: '32px',
                     textTransform: 'uppercase',
-                    letterSpacing: '0.05em'
+                    letterSpacing: '0.05em',
+                    color: '#FFF'
                   }}>
                     Our Capabilities
                   </h3>
                   <div style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '16px'
+                    gap: '24px'
                   }}>
                     {industry.capabilities.map((cap, i) => (
                       <div
@@ -363,9 +330,10 @@ export default function Industries() {
                         style={{
                           display: 'flex',
                           alignItems: 'start',
-                          gap: '12px',
-                          fontSize: '14px',
-                          color: '#0F172A'
+                          gap: '14px',
+                          fontSize: '17px',
+                          color: '#FFF',
+                          lineHeight: 1.5
                         }}
                       >
                         <div style={{ color: '#DC2626', marginTop: '2px', flexShrink: 0 }}>
@@ -377,48 +345,9 @@ export default function Industries() {
                   </div>
                 </div>
 
-                {/* Applications */}
-                <div style={{
-                  padding: '40px',
-                  background: '#0F172A',
-                  color: '#FFF'
-                }}>
-                  <h3 style={{
-                    fontSize: '20px',
-                    fontWeight: 700,
-                    marginBottom: '24px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em'
-                  }}>
-                    Typical Applications
-                  </h3>
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '16px'
-                  }}>
-                    {industry.applications.map((app, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'start',
-                          gap: '12px',
-                          fontSize: '14px'
-                        }}
-                      >
-                        <div style={{ color: '#DC2626', marginTop: '2px', flexShrink: 0 }}>
-                          <Icon.Check />
-                        </div>
-                        <span>{app}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
                 {/* View Projects Button */}
                 <a 
-                  href={`/Projects#${industry.id}`}
+                  href={`/Projects?category=${encodeURIComponent(industry.title)}`}
                   style={{
                     display: 'inline-block',
                     padding: '16px 28px',
