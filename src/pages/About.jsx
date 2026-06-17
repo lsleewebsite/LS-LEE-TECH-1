@@ -84,49 +84,56 @@ export default function About() {
     <div>
       {/* Hero */}
       <section style={{
-        padding: "120px 32px 100px",
+        padding: "0",
         background: "#0F172A",
         color: "#FFF",
         borderBottom: "2px solid #DC2626",
       }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div style={{
-              fontFamily: "IBM Plex Mono",
-              fontSize: "12px",
-              fontWeight: 700,
-              color: "#DC2626",
-              letterSpacing: "0.15em",
-              marginBottom: "24px",
-              textTransform: "uppercase",
-            }}>
-              About Us
+        <div style={{ display: "grid", gridTemplateColumns: "40% 60%", minHeight: "500px" }}>
+
+          {/* Left Text */}
+          <div style={{
+            padding: "100px 60px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 style={{
+                fontSize: "56px",
+                fontWeight: 900,
+                lineHeight: 1.1,
+                fontFamily: "Archivo, sans-serif",
+              }}>
+                About Us
+              </h1>
+            </motion.div>
+          </div>
+
+          {/* Right Image Placeholder */}
+          <div style={{
+            background: "#E5E7EB",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "relative",
+          }}>
+            <div style={{ textAlign: "center" }}>
+              <div style={{
+                fontFamily: "IBM Plex Mono, monospace",
+                fontSize: "12px",
+                fontWeight: 700,
+                color: "#64748B",
+                letterSpacing: "0.1em",
+              }}>
+                [ ABOUT IMAGE ]
+              </div>
             </div>
-
-            <h1 style={{
-              fontSize: "56px",
-              fontWeight: 900,
-              lineHeight: 1.1,
-              marginBottom: "32px",
-              maxWidth: "900px",
-            }}>
-              We Have Been Building Critical Gas Infrastructure Since Most Fabs in Singapore Were Just Blueprints
-            </h1>
-
-            <p style={{
-              fontSize: "20px",
-              color: "#94A3B8",
-              lineHeight: 1.7,
-              maxWidth: "800px",
-            }}>
-              35 years of mechanical engineering for industries where a single leak, wrong fitting, or missed inspection
-              can cost millions in downtime or worse. We are still here because we do not cut corners.
-            </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
