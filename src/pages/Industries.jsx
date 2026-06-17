@@ -347,8 +347,8 @@ export default function Industries() {
                 </div>
 
                 {/* View Projects Button */}
-                <a 
-                  href={`${import.meta.env.BASE_URL}Projects?category=${encodeURIComponent(industry.title)}`}
+                <Link 
+                  to={`/Projects?category=${encodeURIComponent(industry.title)}`}
                   style={{
                     display: 'inline-block',
                     padding: '16px 28px',
@@ -378,7 +378,7 @@ export default function Industries() {
                   }}
                 >
                   View {industry.title} Projects →
-                </a>
+                </Link>
               </div>
             </div>
           </div>
