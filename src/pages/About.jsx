@@ -280,7 +280,7 @@ export default function About() {
             marginBottom: "16px",
             fontFamily: "Archivo"
           }}>
-            Clients We Have Served
+            Our Presence
           </h2>
           <div style={{ width: "60px", height: "4px", background: "#DC2626" }}></div>
         </div>
