@@ -62,6 +62,11 @@ const I = {
       <circle cx="14" cy="14" r="2" />
     </svg>
   ),
+  Bolt: (p) => (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="2" {...p}>
+      <polygon points="16,3 7,16 13,16 11,25 21,12 15,12" strokeLinejoin="round" />
+    </svg>
+  ),
   Arrow: (p) => (
     <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="2" {...p}>
       <line x1="0" y1="5" x2="13" y2="5" /><polyline points="9,1 13,5 9,9" />
@@ -325,12 +330,12 @@ export default function Home() {
             e.currentTarget.querySelector('.svc-icon').style.color = '#FFF'
           }}
         >
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div className="svc-icon" style={{ color: '#FFF', transition: 'color 0.3s' }}>
+              {React.cloneElement(it.icon, { width: 52, height: 52 })}
+            </div>
             <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '40px', fontWeight: 900, color: 'rgba(255,255,255,0.1)', lineHeight: 1 }}>
               {String(i + 1).padStart(2, '0')}
-            </div>
-            <div className="svc-icon" style={{ color: '#FFF', transition: 'color 0.3s' }}>
-              {it.icon}
             </div>
           </div>
           <div>
@@ -341,9 +346,6 @@ export default function Home() {
               {it.tag}
             </div>
           </div>
-          <p style={{ fontSize: '14px', color: '#94A3B8', lineHeight: 1.7, margin: 0 }}>
-            {it.desc}
-          </p>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: 'auto', fontSize: '13px', fontWeight: 700, color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             Learn More <I.Arrow />
           </div>
@@ -365,7 +367,7 @@ export default function Home() {
           tag: 'Vacuum-Insulated Equipment',
         },
         {
-          icon: <I.Chip />,
+          icon: <I.Bolt />,
           title: 'Controls & Automation',
           tag: 'Electrical & Instrumentation',
         },
@@ -400,8 +402,13 @@ export default function Home() {
             e.currentTarget.querySelector('.svc-icon-sm').style.color = '#FFF'
           }}
         >
-          <div className="svc-icon-sm" style={{ color: '#FFF', transition: 'color 0.3s' }}>
-            {it.icon}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div className="svc-icon-sm" style={{ color: '#FFF', transition: 'color 0.3s' }}>
+              {React.cloneElement(it.icon, { width: 44, height: 44 })}
+            </div>
+            <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '32px', fontWeight: 900, color: 'rgba(255,255,255,0.1)', lineHeight: 1 }}>
+              {String(i + 3).padStart(2, '0')}
+            </div>
           </div>
           <div>
             <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '19px', fontWeight: 900, marginBottom: '6px', lineHeight: 1.2, color: '#FFF' }}>
@@ -411,13 +418,26 @@ export default function Home() {
               {it.tag}
             </div>
           </div>
-          <p style={{ fontSize: '13px', color: '#94A3B8', lineHeight: 1.6, margin: 0 }}>
-            {it.desc}
-          </p>
         </motion.a>
       ))}
     </div>
 
+    {/* View All Button */}
+    <div style={{ textAlign: 'center', marginTop: '40px' }}>
+      <a href="/Services" style={{
+        display: 'inline-flex', alignItems: 'center', gap: '10px',
+        padding: '18px 40px', background: '#DC2626', color: '#FFF',
+        border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif',
+        fontWeight: 700, fontSize: '15px', textTransform: 'uppercase',
+        letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s'
+      }}
+      onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
+      onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
+        View All Services <I.Arrow />
+      </a>
+    </div>
+  </div>
+</motion.section>
     {/* View All Button */}
     <div style={{ textAlign: 'center', marginTop: '40px' }}>
       <a href="/Services" style={{
