@@ -228,15 +228,14 @@ export default function Home() {
             <h2 style={{ fontSize: '48px', fontWeight: 900, marginBottom: '16px', fontFamily: 'Archivo, sans-serif' }}>
               Supporting <span style={{ color: '#DC2626' }}>Key Industries</span>
             </h2>
-            <p style={{ fontSize: '18px', color: '#64748B', maxWidth: '700px', margin: '0 auto' }}>Where safety meets precision engineering</p>
           </div>
 
           <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }} style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px' }}>
             {[
-              { icon: <I.Chip style={{ width: 80, height: 80 }} />, title: 'Semiconductor', tag: 'UHP Gas Systems' },
-              { icon: <I.Server style={{ width: 80, height: 80 }} />, title: 'Data Center', tag: 'H₂ Infrastructure' },
-              { icon: <I.Plant style={{ width: 80, height: 80 }} />, title: 'Industrial Gas', tag: 'Process Plants' },
-              { icon: <I.H2 style={{ width: 80, height: 80 }} />, title: 'New Energy', tag: 'Trailer Testing' },
+              { icon: <I.Chip style={{ width: 80, height: 80 }} />, title: 'Semiconductor' },
+              { icon: <I.Server style={{ width: 80, height: 80 }} />, title: 'Data Center' },
+              { icon: <I.Plant style={{ width: 80, height: 80 }} />, title: 'Industrial Gas' },
+              { icon: <I.H2 style={{ width: 80, height: 80 }} />, title: 'New Energy' },
             ].map((it, i) => (
               <motion.a href="/Industries" key={i} variants={cardVariant} transition={{ duration: 0.5 }}
                 style={{ padding: '60px 32px', background: '#FFF', border: '2px solid #E5E7EB', textAlign: 'center', textDecoration: 'none', color: 'inherit', transition: 'all 0.3s', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}
@@ -274,9 +273,9 @@ export default function Home() {
 
           <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }} style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}>
             {[
-              { num: '01', icon: <I.Wrench />, title: 'Project Engineering', tag: 'Turnkey Mechanical Structural', desc: 'Complete project lifecycle from engineering through commissioning for industrial gas plants and process facilities.' },
-              { num: '02', icon: <I.Gauge />, title: 'Plant Maintenance', tag: '24/7 Operations Support', desc: 'Comprehensive maintenance programs to maximize uptime and asset life across critical infrastructure.' },
-              { num: '03', icon: <I.Trailer />, title: 'Servicing & Testing', tag: 'Destructive and Non Destructive Testing', desc: 'Specialized testing and certification for high pressure tube trailers with fleet management support.' },
+              { num: '01', icon: <I.Wrench />, title: 'Project Engineering', tag: 'Turnkey Mechanical Structural' },
+              { num: '02', icon: <I.Gauge />, title: 'Plant Maintenance', tag: '24/7 Operations Support' },
+              { num: '03', icon: <I.Trailer />, title: 'Servicing & Testing', tag: 'Destructive and Non Destructive Testing', },
               { num: '04', icon: <I.Snow />, title: 'Cryogenic Storage & Hoses', tag: 'Vacuum-Insulated Equipment', desc: 'Custom fabrication and maintenance for cryogenic transfer systems and industrial gas applications.' },
             ].map((it, i) => (
               <motion.a href="/Services" key={i} variants={cardVariant} transition={{ duration: 0.5 }}
