@@ -261,7 +261,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* SERVICES - Circle Layout */}
+{/* SERVICES */}
 <motion.section
   id="services"
   initial="hidden"
@@ -269,10 +269,10 @@ export default function Home() {
   viewport={{ once: true, margin: '-100px' }}
   transition={{ duration: 0.6 }}
   variants={fadeInUp}
-  style={{ background: '#0F172A', color: '#FFF', padding: '100px 32px' }}
+  style={{ background: '#0F172A', color: '#FFF', padding: '80px 32px' }}
 >
   <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-    <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+    <div style={{ textAlign: 'center', marginBottom: '48px' }}>
       <h2 style={{ fontSize: '48px', fontWeight: 900, marginBottom: '16px', color: '#FFF', fontFamily: 'Archivo, sans-serif' }}>
         Integrated <span style={{ color: '#DC2626' }}>Engineering Services</span>
       </h2>
@@ -281,119 +281,165 @@ export default function Home() {
       </p>
     </div>
 
-    {/* Circle Container */}
-    <div style={{ position: 'relative', width: '100%', maxWidth: '600px', height: '600px', margin: '0 auto' }}>
-
-      {/* Center Hub */}
-      <a
-        href="/Services"
-        style={{
-          position: 'absolute',
-          left: '50%',
-          top: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '140px',
-          height: '140px',
-          borderRadius: '50%',
-          background: '#DC2626',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
-          padding: '8px',
-          textDecoration: 'none',
-          cursor: 'pointer',
-          transition: 'all 0.3s',
-          zIndex: 5
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.background = '#FFF'
-          e.currentTarget.querySelector('.hub-text').style.color = '#DC2626'
-          e.currentTarget.querySelector('.hub-text').textContent = 'View All'
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.background = '#DC2626'
-          e.currentTarget.querySelector('.hub-text').style.color = '#FFF'
-          e.currentTarget.querySelector('.hub-text').textContent = 'Our Services'
-        }}
-      >
-        <div
-          className="hub-text"
-          style={{
-            fontFamily: 'Archivo, sans-serif',
-            fontSize: '16px',
-            fontWeight: 900,
-            color: '#FFF',
-            transition: 'color 0.3s'
-          }}
-        >
-          Our Services
-        </div>
-      </a>
-
-      {/* Service Cards positioned around the circle */}
+    {/* Top Row - 2 Large Cards */}
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', marginBottom: '24px' }}>
       {[
-        { title: 'Project Engineering', tag: 'Turnkey Construction', pos: { left: '50%', top: '0%', transform: 'translate(-50%, 0%)' } },
-        { title: 'Plant Maintenance', tag: '24/7 Operations', pos: { left: '95%', top: '28%', transform: 'translate(-100%, -50%)' } },
-        { title: 'Servicing & Testing', tag: 'DOT/ISO Certified', pos: { left: '78%', top: '82%', transform: 'translate(-50%, -50%)' } },
-        { title: 'Cryogenic Storage & Hoses', tag: 'Vacuum-Insulated', pos: { left: '22%', top: '82%', transform: 'translate(-50%, -50%)' } },
-        { title: 'Controls & Automation', tag: 'Electrical & Instrumentation', pos: { left: '5%', top: '28%', transform: 'translate(0%, -50%)' } },
-      ].map((service, i) => (
+        {
+          icon: <I.Wrench />,
+          title: 'Project Engineering',
+          tag: 'Turnkey Mechanical Structural',
+          desc: 'Complete project lifecycle from engineering through commissioning for industrial gas plants and process facilities.'
+        },
+        {
+          icon: <I.Gauge />,
+          title: 'Plant Maintenance',
+          tag: '24/7 Operations Support',
+          desc: 'Comprehensive maintenance programs to maximize uptime and asset life across critical infrastructure.'
+        },
+      ].map((it, i) => (
         <motion.a
           href="/Services"
           key={i}
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: i * 0.1 }}
+          variants={cardVariant}
+          transition={{ duration: 0.5 }}
           style={{
-            position: 'absolute',
-            ...service.pos,
-            width: '170px',
+            padding: '36px',
             background: 'rgba(255,255,255,0.05)',
-            border: '2px solid rgba(255,255,255,0.15)',
-            padding: '20px',
-            textAlign: 'center',
+            border: '2px solid rgba(255,255,255,0.1)',
             textDecoration: 'none',
             color: 'inherit',
             transition: 'all 0.3s',
             cursor: 'pointer',
-            zIndex: 2
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '16px'
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.borderColor = '#DC2626'
-            e.currentTarget.style.background = 'rgba(220,38,38,0.1)'
+            e.currentTarget.style.background = 'rgba(255,255,255,0.08)'
+            e.currentTarget.style.transform = 'translateY(-4px)'
+            e.currentTarget.querySelector('.svc-icon').style.color = '#DC2626'
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'
+            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
             e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.querySelector('.svc-icon').style.color = '#FFF'
           }}
         >
-          <h3 style={{
-            fontFamily: 'Archivo, sans-serif',
-            fontSize: '15px',
-            fontWeight: 900,
-            color: '#FFF',
-            marginBottom: '6px',
-            lineHeight: 1.2
-          }}>
-            {service.title}
-          </h3>
-          <div style={{
-            fontFamily: 'IBM Plex Mono, monospace',
-            fontSize: '10px',
-            fontWeight: 600,
-            color: '#DC2626',
-            letterSpacing: '0.05em',
-            textTransform: 'uppercase'
-          }}>
-            {service.tag}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '40px', fontWeight: 900, color: 'rgba(255,255,255,0.1)', lineHeight: 1 }}>
+              {String(i + 1).padStart(2, '0')}
+            </div>
+            <div className="svc-icon" style={{ color: '#FFF', transition: 'color 0.3s' }}>
+              {it.icon}
+            </div>
+          </div>
+          <div>
+            <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '24px', fontWeight: 900, marginBottom: '8px', lineHeight: 1.2, color: '#FFF' }}>
+              {it.title}
+            </h3>
+            <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+              {it.tag}
+            </div>
+          </div>
+          <p style={{ fontSize: '14px', color: '#94A3B8', lineHeight: 1.7, margin: 0 }}>
+            {it.desc}
+          </p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: 'auto', fontSize: '13px', fontWeight: 700, color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            Learn More <I.Arrow />
           </div>
         </motion.a>
       ))}
     </div>
+
+    {/* Bottom Row - 3 Equal Cards */}
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+      {[
+        {
+          icon: <I.Trailer />,
+          title: 'Servicing & Testing',
+          tag: 'Destructive & Non-Destructive Testing',
+          desc: 'Specialized testing and certification for high pressure tube trailers with fleet management support.'
+        },
+        {
+          icon: <I.Snow />,
+          title: 'Cryogenic Storage & Hoses',
+          tag: 'Vacuum-Insulated Equipment',
+          desc: 'Custom fabrication and maintenance for cryogenic transfer systems and industrial gas applications.'
+        },
+        {
+          icon: <I.Chip />,
+          title: 'Controls & Automation',
+          tag: 'Electrical & Instrumentation',
+          desc: 'Electrical installation, instrumentation, and automation systems for process control and monitoring.'
+        },
+      ].map((it, i) => (
+        <motion.a
+          href="/Services"
+          key={i}
+          variants={cardVariant}
+          transition={{ duration: 0.5 }}
+          style={{
+            padding: '32px 28px',
+            background: 'rgba(255,255,255,0.05)',
+            border: '2px solid rgba(255,255,255,0.1)',
+            textDecoration: 'none',
+            color: 'inherit',
+            transition: 'all 0.3s',
+            cursor: 'pointer',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '14px'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = '#DC2626'
+            e.currentTarget.style.background = 'rgba(255,255,255,0.08)'
+            e.currentTarget.style.transform = 'translateY(-4px)'
+            e.currentTarget.querySelector('.svc-icon-sm').style.color = '#DC2626'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
+            e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.querySelector('.svc-icon-sm').style.color = '#FFF'
+          }}
+        >
+          <div className="svc-icon-sm" style={{ color: '#FFF', transition: 'color 0.3s' }}>
+            {it.icon}
+          </div>
+          <div>
+            <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '19px', fontWeight: 900, marginBottom: '6px', lineHeight: 1.2, color: '#FFF' }}>
+              {it.title}
+            </h3>
+            <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+              {it.tag}
+            </div>
+          </div>
+          <p style={{ fontSize: '13px', color: '#94A3B8', lineHeight: 1.6, margin: 0 }}>
+            {it.desc}
+          </p>
+        </motion.a>
+      ))}
+    </div>
+
+    {/* View All Button */}
+    <div style={{ textAlign: 'center', marginTop: '40px' }}>
+      <a href="/Services" style={{
+        display: 'inline-flex', alignItems: 'center', gap: '10px',
+        padding: '18px 40px', background: '#DC2626', color: '#FFF',
+        border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif',
+        fontWeight: 700, fontSize: '15px', textTransform: 'uppercase',
+        letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s'
+      }}
+      onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
+      onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
+        View All Services <I.Arrow />
+      </a>
+    </div>
   </div>
 </motion.section>
+      
       {/* PROJECTS */}
       <motion.section id="projects" initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }} variants={fadeInUp} style={{ background: '#FFF', padding: '80px 32px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
