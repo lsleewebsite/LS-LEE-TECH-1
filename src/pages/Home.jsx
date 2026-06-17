@@ -288,13 +288,11 @@ export default function Home() {
           icon: <I.Wrench />,
           title: 'Project Engineering',
           tag: 'Turnkey Mechanical Structural',
-          desc: 'Complete project lifecycle from engineering through commissioning for industrial gas plants and process facilities.'
         },
         {
           icon: <I.Gauge />,
           title: 'Plant Maintenance',
           tag: '24/7 Operations Support',
-          desc: 'Comprehensive maintenance programs to maximize uptime and asset life across critical infrastructure.'
         },
       ].map((it, i) => (
         <motion.a
@@ -360,19 +358,16 @@ export default function Home() {
           icon: <I.Trailer />,
           title: 'Servicing & Testing',
           tag: 'Destructive & Non-Destructive Testing',
-          desc: 'Specialized testing and certification for high pressure tube trailers with fleet management support.'
         },
         {
           icon: <I.Snow />,
           title: 'Cryogenic Storage & Hoses',
           tag: 'Vacuum-Insulated Equipment',
-          desc: 'Custom fabrication and maintenance for cryogenic transfer systems and industrial gas applications.'
         },
         {
           icon: <I.Chip />,
           title: 'Controls & Automation',
           tag: 'Electrical & Instrumentation',
-          desc: 'Electrical installation, instrumentation, and automation systems for process control and monitoring.'
         },
       ].map((it, i) => (
         <motion.a
