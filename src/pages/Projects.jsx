@@ -5,8 +5,8 @@ const NOTION_KEY = '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'
 const DATABASE_ID = '37c7a921a23080cfa710e56c146ae5a1'
 const PROXY = 'https://corsproxy.io/?'
 
-const INDUSTRIES = ['Semiconductor', 'Data Center', 'Industrial Gas & Process', 'New Energy / Hydrogen']
-const SERVICES = ['Project Engineering', 'Plant Maintenance', 'Servicing & Testing', 'Cryogenic Storage & Hoses', 'Electrical & Instrumentation']
+const INDUSTRIES = ['Semiconductor', 'Data Centres', 'Industrial Gas', 'New Energy']
+const SERVICES = ['Project Engineering', 'Plant Maintenance', 'Servicing & Testing', 'Cryogenic Storages & Hoses', 'Electrical & Instrumental']
 
 const PLACEHOLDER_IMAGES = [
   'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80',
