@@ -242,6 +242,14 @@ export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('All')
   const [selectedProject, setSelectedProject] = useState(null)
 
+    useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const categoryParam = params.get('category')
+    if (categoryParam) {
+      setActiveFilter(categoryParam)
+    }
+  }, [])
+
   useEffect(() => {
     async function fetchProjects() {
       try {
