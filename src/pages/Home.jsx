@@ -368,8 +368,8 @@ export default function Home() {
         },
         {
           icon: <I.Bolt />,
-          title: 'Controls & Automation',
-          tag: 'Electrical & Instrumentation',
+          title: 'Electrical & Instrumentation',
+          tag: 'Controls & Automation',
         },
       ].map((it, i) => (
         <motion.a
@@ -417,6 +417,9 @@ export default function Home() {
             <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
               {it.tag}
             </div>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: 'auto', fontSize: '12px', fontWeight: 700, color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            Learn More <I.Arrow />
           </div>
         </motion.a>
       ))}
