@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // Icon Components
 const Icon = {
