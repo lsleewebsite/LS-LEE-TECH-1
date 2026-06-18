@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'v
 
 const I = {
   Chip: (p) => (
@@ -148,7 +149,7 @@ export default function Home() {
                   onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
                   Explore Our Industries <I.Arrow />
                 </a>
-                <a href="/Projects" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: 'transparent', color: '#FFF', border: '2px solid rgba(255,255,255,0.3)', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
+                <a  style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: 'transparent', color: '#FFF', border: '2px solid rgba(255,255,255,0.3)', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
                   onMouseEnter={(e) => { e.target.style.borderColor = '#FFF'; e.target.style.background = 'rgba(255,255,255,0.1)' }}
                   onMouseLeave={(e) => { e.target.style.borderColor = 'rgba(255,255,255,0.3)'; e.target.style.background = 'transparent' }}>
                   View Projects
@@ -495,8 +496,8 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <motion.a
-              href="/Projects"
+            <MotionLink
+              to="/Projects"
               variants={cardVariant}
               transition={{ duration: 0.5, delay: 0.25 }}
               style={{ gridColumn: 'span 3', background: '#0F172A', border: '2px solid #0F172A', color: '#FFF', padding: '40px 24px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', textDecoration: 'none', transition: 'all 0.3s', cursor: 'pointer' }}
@@ -509,7 +510,7 @@ export default function Home() {
               <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '20px', fontWeight: 900, lineHeight: 1.3 }}>
                 View All Projects
               </div>
-            </motion.a>
+            </MotionLink>
 
             <motion.div variants={cardVariant} transition={{ duration: 0.5, delay: 0.3 }} style={{ gridColumn: 'span 4', background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden', transition: 'all 0.3s', cursor: 'pointer' }}
               onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-4px)' }}
