@@ -53,6 +53,11 @@ const Icon = {
       <line x1="0" y1="5" x2="13" y2="5" /><polyline points="9,1 13,5 9,9" />
     </svg>
   ),
+  Check: (p) => (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.5" {...p}>
+      <polyline points="3,10 8,15 17,4" />
+    </svg>
+  ),
 
   // --- Capability icons ---
   Cube: (p) => (
@@ -401,7 +406,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Services Panel: sidebar + flipping content card */}
+      {/* Services Panel: sidebar + content card */}
       <section id="services-panel" style={{ padding: '80px 32px', background: '#F8F9FA' }}>
         <div style={{
           width: '80%',
@@ -409,7 +414,7 @@ export default function Services() {
           display: 'flex',
           alignItems: 'stretch',
           gap: '32px',
-          minHeight: '560px'
+          minHeight: '600px'
         }}>
           {/* Sidebar list */}
           <div style={{
@@ -488,23 +493,21 @@ export default function Services() {
             </div>
           </div>
 
-          {/* Flip card */}
-          <div style={{ flex: 1, perspective: '1600px' }}>
+          {/* Content card */}
+          <div style={{ flex: 1 }}>
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={service.id}
-                initial={{ rotateY: 90, opacity: 0 }}
-                animate={{ rotateY: 0, opacity: 1 }}
-                exit={{ rotateY: -90, opacity: 0 }}
-                transition={{ duration: 0.28, ease: 'easeInOut' }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, ease: 'easeInOut' }}
                 style={{
                   height: '100%',
                   background: '#FFF',
                   border: '2px solid #E5E7EB',
-                  padding: '44px',
+                  padding: '56px',
                   boxSizing: 'border-box',
-                  transformStyle: 'preserve-3d',
-                  backfaceVisibility: 'hidden',
                   display: 'flex',
                   flexDirection: 'column'
                 }}
@@ -513,95 +516,81 @@ export default function Services() {
                   fontFamily: 'IBM Plex Mono, monospace',
                   fontSize: '12px',
                   color: '#94A3B8',
-                  marginBottom: '8px'
+                  marginBottom: '10px'
                 }}>
                   {service.num} / 05
                 </div>
                 <h2 style={{
                   fontFamily: 'Archivo, sans-serif',
-                  fontSize: '30px',
+                  fontSize: '34px',
                   fontWeight: 900,
                   color: '#0F172A',
-                  marginBottom: '8px',
+                  marginBottom: '10px',
                   lineHeight: 1.15
                 }}>
                   {service.title}
                 </h2>
                 <div style={{
                   fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '12px',
+                  fontSize: '13px',
                   fontWeight: 700,
                   color: '#DC2626',
                   textTransform: 'uppercase',
                   letterSpacing: '0.06em',
-                  marginBottom: '20px'
+                  marginBottom: '24px'
                 }}>
                   {service.tagline}
                 </div>
                 <p style={{
-                  fontSize: '15px',
-                  color: '#64748B',
-                  lineHeight: 1.7,
-                  marginBottom: '28px',
-                  maxWidth: '720px'
+                  fontSize: '17px',
+                  color: '#475569',
+                  lineHeight: 1.8,
+                  marginBottom: '32px'
                 }}>
                   {service.description}
                 </p>
 
                 <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  color: '#0F172A',
-                  marginBottom: '16px'
+                  padding: '40px',
+                  background: '#0F172A',
+                  color: '#FFF',
+                  marginBottom: '32px'
                 }}>
-                  Key Capabilities
-                </div>
-
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                  gap: '14px',
-                  marginBottom: '28px'
-                }}>
-                  {service.capabilities.map((cap, i) => {
-                    const CapIcon = cap.icon
-                    return (
+                  <div style={{
+                    fontFamily: 'IBM Plex Mono, monospace',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: '#FFF',
+                    marginBottom: '24px'
+                  }}>
+                    Key Capabilities
+                  </div>
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(2, 1fr)',
+                    gap: '20px'
+                  }}>
+                    {service.capabilities.map((cap, i) => (
                       <div
                         key={i}
                         style={{
-                          border: '2px solid #E5E7EB',
-                          padding: '16px',
                           display: 'flex',
-                          flexDirection: 'column',
-                          gap: '8px',
-                          background: '#FFF'
+                          alignItems: 'start',
+                          gap: '12px',
+                          fontSize: '17px',
+                          color: '#FFF',
+                          lineHeight: 1.45
                         }}
                       >
-                        <div style={{ color: '#DC2626' }}>
-                          <CapIcon />
+                        <div style={{ color: '#DC2626', marginTop: '2px', flexShrink: 0 }}>
+                          <Icon.Check />
                         </div>
-                        <div style={{
-                          fontFamily: 'Archivo, sans-serif',
-                          fontSize: '14px',
-                          fontWeight: 800,
-                          color: '#0F172A',
-                          lineHeight: 1.3
-                        }}>
-                          {cap.name}
-                        </div>
-                        <div style={{
-                          fontSize: '12px',
-                          color: '#64748B',
-                          lineHeight: 1.5
-                        }}>
-                          {cap.detail}
-                        </div>
+                        <span>{cap.name}</span>
                       </div>
-                    )
-                  })}
+                    ))}
+                  </div>
                 </div>
 
                 <Link
