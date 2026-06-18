@@ -202,9 +202,14 @@ export default function Contact() {
                         type="tel"
                         name="phone"
                         value={formData.phone}
-                        onChange={handleChange('phone')}
-                        style={{ width: '100%', padding: '14px 16px', border: '2px solid #E5E7EB', fontSize: '14px', fontFamily: 'IBM Plex Sans' }}
+                        onChange={handlePhoneChange}
+                        placeholder="8 digit number"
+                        maxLength={8}
+                        style={{ width: '100%', padding: '14px 16px', border: `2px solid ${errors.phone ? '#DC2626' : '#E5E7EB'}`, fontSize: '14px', fontFamily: 'IBM Plex Sans' }}
                       />
+                      {errors.phone && (
+                        <div style={{ color: '#DC2626', fontSize: '12px', marginTop: '6px' }}>{errors.phone}</div>
+                      )}
                     </div>
                   </div>
 
