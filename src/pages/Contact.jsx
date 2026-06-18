@@ -12,7 +12,17 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xdavvrpg'
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', company: '', email: '', phone: '', message: '' })
   const [status, setStatus] = useState('idle')
+  const [errors, setErrors] = useState({})
 
+  const handlePhoneChange = (e) => {
+    const digitsOnly = e.target.value.replace(/\D/g, '').slice(0, 8)
+    setFormData({ ...formData, phone: digitsOnly })
+    if (digitsOnly.length > 0 && digitsOnly.length < 8) {
+      setErrors({ ...errors, phone: 'Phone number must be 8 digits' })
+    } else {
+      setErrors({ ...errors, phone: '' })
+    }
+  }
   const handleChange = (field) => (e) => {
     setFormData({ ...formData, [field]: e.target.value })
   }
