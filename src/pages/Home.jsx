@@ -255,7 +255,7 @@ export default function Home() {
                   <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '24px', fontWeight: 900, marginBottom: '8px', color: '#0F172A' }}>{it.title}</h3>
                   <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 600, color: '#64748B', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{it.tag}</div>
                 </div>
-              </motion.a>
+              </MotionLink>
             ))}
           </motion.div>
 
