@@ -413,7 +413,9 @@ export default function About() {
           <a
             href="/Contact"
             style={{
-              display: "inline-block",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "12px",
               padding: "18px 40px",
               background: "#FFF",
               color: "#DC2626",
