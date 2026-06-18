@@ -141,7 +141,7 @@ export default function Contact() {
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
               gap: '80px',
-              alignItems: 'start'
+              alignItems: 'stretch'
             }}
           >
             {/* Left - Contact Info */}
@@ -150,6 +150,11 @@ export default function Contact() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={fadeInUp}
+              style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%'
+              }}
             >
               <h2
                 style={{
@@ -249,6 +254,7 @@ export default function Contact() {
                   border: '2px solid #0F172A',
                   overflow: 'hidden',
                   height: '320px'
+                  marginTop:'auto'
                 }}
               >
                 <iframe
