@@ -495,12 +495,21 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <motion.div variants={cardVariant} transition={{ duration: 0.5, delay: 0.25 }} style={{ gridColumn: 'span 3', background: '#0F172A', border: '2px solid #0F172A', color: '#FFF', padding: '32px 20px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', transition: 'all 0.3s', cursor: 'pointer' }}
+            <motion.a
+              href="/Projects"
+              variants={cardVariant}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              style={{ gridColumn: 'span 3', background: '#0F172A', border: '2px solid #0F172A', color: '#FFF', padding: '32px 20px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', textDecoration: 'none', transition: 'all 0.3s', cursor: 'pointer' }}
               onMouseEnter={(e) => { e.currentTarget.style.background = '#DC2626'; e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-4px)' }}
               onMouseLeave={(e) => { e.currentTarget.style.background = '#0F172A'; e.currentTarget.style.borderColor = '#0F172A'; e.currentTarget.style.transform = 'translateY(0)' }}>
-              <div style={{ fontSize: '56px', fontFamily: 'Archivo, sans-serif', fontWeight: 900, marginBottom: '12px', lineHeight: 1 }}>XX</div>
-              <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 600, letterSpacing: '0.1em', opacity: 0.8 }}>COMPLETED PROJECTS</div>
-            </motion.div>
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginBottom: '16px' }}>
+                <line x1="6" y1="16" x2="26" y2="16" />
+                <polyline points="18,8 26,16 18,24" />
+              </svg>
+              <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '17px', fontWeight: 900, lineHeight: 1.3 }}>
+                View All Projects
+              </div>
+            </motion.a>
 
             <motion.div variants={cardVariant} transition={{ duration: 0.5, delay: 0.3 }} style={{ gridColumn: 'span 4', background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden', transition: 'all 0.3s', cursor: 'pointer' }}
               onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-4px)' }}
@@ -514,18 +523,6 @@ export default function Home() {
                 <p style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.5 }}>Vacuum-insulated transfer lines for LNG operations.</p>
               </div>
             </motion.div>
-
-          </motion.div>
-
-          <div style={{ textAlign: 'center' }}>
-            <a href="/Projects" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: '#DC2626', color: '#FFF', border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
-              onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
-              onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
-              View Full Portfolio <I.Arrow />
-            </a>
-          </div>
-        </div>
-      </motion.section>
 
       {/* CONTACT */}
       <motion.section id="contact" style={{ padding: '80px 32px', background: '#0F172A', textAlign: 'center' }} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }} variants={fadeInUp}>
