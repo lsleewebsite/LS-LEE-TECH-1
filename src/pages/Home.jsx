@@ -95,6 +95,8 @@ const cardVariant = {
   visible: { opacity: 1, y: 0 }
 }
 
+const MotionLink = motion(Link)
+
 export default function Home() {
   const [formData, setFormData] = useState({
     name: '', company: '', email: '', phone: '', scope: '', message: ''
