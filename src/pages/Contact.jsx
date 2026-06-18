@@ -7,7 +7,7 @@ const fadeInUp = {
 }
 
 // PLACEHOLDER — replace with your Formspree endpoint once email is set up
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID_HERE'
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xdavvrpg'
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', company: '', email: '', phone: '', message: '' })
