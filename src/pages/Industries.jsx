@@ -404,14 +404,13 @@ export default function Industries() {
             fontWeight: 800,
             marginBottom: '24px'
           }}>
-            Ready to Discuss Your Industry-Specific Requirements?
+            Ready to Discuss Your Needs?
           </h2>
           <p style={{
             fontSize: '16px',
             marginBottom: '32px',
             opacity: 0.9
           }}>
-            Talk to an engineer who understands your vertical. No sales pitch — just technical expertise.
           </p>
           <button style={{
             padding: '16px 36px',
