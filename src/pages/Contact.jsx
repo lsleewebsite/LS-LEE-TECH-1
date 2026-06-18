@@ -253,7 +253,7 @@ export default function Contact() {
                 style={{
                   border: '2px solid #0F172A',
                   overflow: 'hidden',
-                  height: '320px'
+                  height: '320px',
                   marginTop:'auto'
                 }}
               >
