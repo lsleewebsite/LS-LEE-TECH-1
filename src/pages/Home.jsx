@@ -240,12 +240,12 @@ export default function Home() {
 
           <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }} style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px' }}>
             {[
-              { icon: <I.Chip style={{ width: 80, height: 80 }} />, title: 'Semiconductor' },
-              { icon: <I.Server style={{ width: 80, height: 80 }} />, title: 'Data Center' },
-              { icon: <I.Plant style={{ width: 80, height: 80 }} />, title: 'Industrial Gas' },
-              { icon: <I.H2 style={{ width: 80, height: 80 }} />, title: 'New Energy' },
+              { icon: <I.Chip style={{ width: 80, height: 80 }} />, title: 'Semiconductor', anchor: 'semiconductor' },
+              { icon: <I.Server style={{ width: 80, height: 80 }} />, title: 'Data Center', anchor: 'datacenter' },
+              { icon: <I.Plant style={{ width: 80, height: 80 }} />, title: 'Industrial Gas', anchor: 'industrial-gas' },
+              { icon: <I.H2 style={{ width: 80, height: 80 }} />, title: 'New Energy', anchor: 'new-energy' },
             ].map((it, i) => (
-              <motion.a href="/Industries" key={i} variants={cardVariant} transition={{ duration: 0.5 }}
+              <MotionLink to={{ pathname: '/Industries', hash: `#${it.anchor}` }} key={i} variants={cardVariant} transition={{ duration: 0.5 }}
                 style={{ padding: '60px 32px', background: '#FFF', border: '2px solid #E5E7EB', textAlign: 'center', textDecoration: 'none', color: 'inherit', transition: 'all 0.3s', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}
                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-8px)'; e.currentTarget.querySelector('.ind-icon-large').style.color = '#DC2626' }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.querySelector('.ind-icon-large').style.color = '#0F172A' }}
