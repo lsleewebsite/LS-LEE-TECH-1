@@ -44,7 +44,7 @@ export default function Contact() {
       ...prev,
       phone:
         digitsOnly.length > 0 && digitsOnly.length < 8
-          ? 'XXXX XXXX'
+          ? 'Please enter a valid 8-digit phone number'
           : ''
     }))
   }
@@ -55,7 +55,7 @@ export default function Contact() {
     if (formData.phone && formData.phone.length !== 8) {
       setErrors((prev) => ({
         ...prev,
-        phone: 'Phone number must be 8 digits'
+        phone: 'e.g. 9123 4567'
       }))
       return
     }
@@ -470,18 +470,9 @@ export default function Contact() {
                         name="phone"
                         value={formData.phone}
                         onChange={handlePhoneChange}
-                        placeholder="8 digit number"
-                        maxLength={8}
-                        style={{
-                          width: '100%',
-                          boxSizing: 'border-box',
-                          padding: '14px 16px',
-                          border: `2px solid ${
-                            errors.phone ? '#DC2626' : '#E5E7EB'
-                          }`,
-                          fontSize: '14px',
-                          fontFamily: 'IBM Plex Sans'
-                        }}
+                        placeholder="XXXX XXXX"
+                        maxLength={9}
+                        style={{ width: '100%', padding: '14px 16px', border: `2px solid ${errors.phone ? '#DC2626' : '#E5E7EB'}`, fontSize: '14px', fontFamily: 'IBM Plex Sans' }}
                       />
 
                       {errors.phone && (
