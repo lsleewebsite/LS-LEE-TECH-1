@@ -472,7 +472,7 @@ export default function Services() {
             fontWeight: 800,
             marginBottom: '24px'
           }}>
-            Need a Scope of Work or Technical Proposal?
+            Tell us about your project. We'll put together a detailed scope.
           </h2>
           <p style={{
             fontSize: '16px',
