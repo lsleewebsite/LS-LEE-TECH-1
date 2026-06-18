@@ -499,14 +499,14 @@ export default function Home() {
               href="/Projects"
               variants={cardVariant}
               transition={{ duration: 0.5, delay: 0.25 }}
-              style={{ gridColumn: 'span 3', background: '#0F172A', border: '2px solid #0F172A', color: '#FFF', padding: '32px 20px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', textDecoration: 'none', transition: 'all 0.3s', cursor: 'pointer' }}
+              style={{ gridColumn: 'span 3', background: '#0F172A', border: '2px solid #0F172A', color: '#FFF', padding: '40px 24px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', textDecoration: 'none', transition: 'all 0.3s', cursor: 'pointer' }}
               onMouseEnter={(e) => { e.currentTarget.style.background = '#DC2626'; e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-4px)' }}
               onMouseLeave={(e) => { e.currentTarget.style.background = '#0F172A'; e.currentTarget.style.borderColor = '#0F172A'; e.currentTarget.style.transform = 'translateY(0)' }}>
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginBottom: '16px' }}>
+              <svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginBottom: '20px' }}>
                 <line x1="6" y1="16" x2="26" y2="16" />
                 <polyline points="18,8 26,16 18,24" />
               </svg>
-              <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '17px', fontWeight: 900, lineHeight: 1.3 }}>
+              <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '20px', fontWeight: 900, lineHeight: 1.3 }}>
                 View All Projects
               </div>
             </motion.a>
