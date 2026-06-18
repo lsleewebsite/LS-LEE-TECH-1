@@ -44,7 +44,7 @@ export default function Contact() {
       ...prev,
       phone:
         digitsOnly.length > 0 && digitsOnly.length < 8
-          ? 'Phone number must be 8 digits'
+          ? 'XXXX XXXX'
           : ''
     }))
   }
