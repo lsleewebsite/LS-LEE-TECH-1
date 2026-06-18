@@ -534,7 +534,6 @@ export default function Home() {
             Ready to Discuss <span style={{ color: '#DC2626' }}>Your Project?</span>
           </h2>
           <p style={{ fontSize: '18px', color: '#94A3B8', marginBottom: '40px', lineHeight: 1.7 }}>
-            Connect with our engineering specialists for professional consultation on your next project. We deliver technical solutions built on decades of industry experience.
           </p>
           <a href="mailto:projects@lslee.com.sg" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: '#DC2626', color: '#FFF', border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
             onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
