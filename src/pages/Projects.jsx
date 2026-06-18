@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLocation } from 'react-router-dom'
 
 const NOTION_KEY = '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'
 const DATABASE_ID = '37c7a921a23080cfa710e56c146ae5a1'
@@ -238,6 +239,7 @@ function Modal({ project, onClose }) {
 }
 
 export default function Projects() {
+  const location = useLocation()
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -246,12 +248,12 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null)
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
+    const params = new URLSearchParams(location.search)
     const categoryParam = params.get('category')
     if (categoryParam) {
       setActiveFilters([categoryParam])
     }
-  }, [])
+  }, [location.search])
 
   useEffect(() => {
     async function fetchProjects() {
