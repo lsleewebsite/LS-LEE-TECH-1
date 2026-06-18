@@ -524,6 +524,10 @@ export default function Home() {
               </div>
             </motion.div>
 
+          </motion.div>
+        </div>
+      </motion.section>
+
       {/* CONTACT */}
       <motion.section id="contact" style={{ padding: '80px 32px', background: '#0F172A', textAlign: 'center' }} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }} variants={fadeInUp}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
