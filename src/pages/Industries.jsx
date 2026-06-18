@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { useLocation } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 
 // Icon Components
 const Icon = {
@@ -50,8 +49,8 @@ const Icon = {
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: {
       duration: 0.8,
@@ -69,7 +68,7 @@ export default function Industries() {
       setTimeout(() => {
         const element = document.getElementById(id)
         if (element) {
-          const yOffset = -120
+          const yOffset = -180
           const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
           window.scrollTo({ top: y, behavior: 'smooth' })
         }
@@ -78,7 +77,7 @@ export default function Industries() {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }, [location])
-  
+
   const industries = [
     {
       id: 'semiconductor',
@@ -201,7 +200,7 @@ export default function Industries() {
           gap: '12px'
         }}>
           {industries.map((industry) => (
-            <a
+            
               key={industry.id}
               href={`#${industry.id}`}
               style={{
@@ -347,7 +346,7 @@ export default function Industries() {
                 </div>
 
                 {/* View Projects Button */}
-                <Link 
+                <Link
                   to={`/Projects?category=${encodeURIComponent(industry.title)}`}
                   style={{
                     display: 'inline-block',
@@ -412,30 +411,40 @@ export default function Industries() {
             opacity: 0.9
           }}>
           </p>
-          <button style={{
-            padding: '16px 36px',
-            background: '#FFF',
-            color: '#DC2626',
-            border: '2px solid #FFF',
-            fontWeight: 700,
-            fontSize: '15px',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-            cursor: 'pointer',
-            transition: 'all 0.3s'
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.background = '#0F172A'
-            e.target.style.color = '#FFF'
-            e.target.style.borderColor = '#0F172A'
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.background = '#FFF'
-            e.target.style.color = '#DC2626'
-            e.target.style.borderColor = '#FFF'
-          }}>
-            Contact Our Team →
-          </button>
+          <Link
+            to="/Contact"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '12px',
+              padding: '16px 36px',
+              background: '#FFF',
+              color: '#DC2626',
+              border: '2px solid #FFF',
+              fontWeight: 700,
+              fontSize: '15px',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              textDecoration: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.3s'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#0F172A'
+              e.currentTarget.style.color = '#FFF'
+              e.currentTarget.style.borderColor = '#0F172A'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = '#FFF'
+              e.currentTarget.style.color = '#DC2626'
+              e.currentTarget.style.borderColor = '#FFF'
+            }}
+          >
+            Contact Our Team
+            <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="0" y1="5" x2="13" y2="5" /><polyline points="9,1 13,5 9,9" />
+            </svg>
+          </Link>
         </div>
       </motion.section>
     </div>
