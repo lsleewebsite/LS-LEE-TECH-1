@@ -51,17 +51,15 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    if (formData.phone && formData.phone.length !== 8) {
+    const phoneDigits = formData.phone.replace(/\D/g, '')
+    if (formData.phone && phoneDigits.length !== 8) {
       setErrors((prev) => ({
         ...prev,
-        phone: 'e.g. 9123 4567'
+        phone: 'Please enter a valid 8-digit phone number'
       }))
       return
     }
-
     setStatus('sending')
-
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
@@ -470,7 +468,7 @@ export default function Contact() {
                         name="phone"
                         value={formData.phone}
                         onChange={handlePhoneChange}
-                        placeholder="XXXX XXXX"
+                        placeholder="e.g. 9123 4567"
                         maxLength={9}
                         style={{ width: '100%', padding: '14px 16px', border: `2px solid ${errors.phone ? '#DC2626' : '#E5E7EB'}`, fontSize: '14px', fontFamily: 'IBM Plex Sans' }}
                       />
