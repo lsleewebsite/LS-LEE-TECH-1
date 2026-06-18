@@ -479,7 +479,6 @@ export default function Services() {
             marginBottom: '32px',
             opacity: 0.9
           }}>
-            Tell us about your project. We'll put together a detailed scope, schedule, and budget.
           </p>
           <button style={{
             padding: '16px 36px',
