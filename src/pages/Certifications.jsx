@@ -496,7 +496,6 @@ export default function Certifications() {
             Questions About Our Certifications?
           </h2>
           <p style={{ fontSize: '18px', marginBottom: '40px', opacity: 0.95, lineHeight: 1.7 }}>
-            Need detailed certification documentation or have questions about our compliance standards? Contact us.
           </p>
           <a
             href="/Contact"
