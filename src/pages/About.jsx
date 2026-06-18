@@ -408,8 +408,6 @@ export default function About() {
             opacity: 0.95,
             lineHeight: 1.7,
           }}>
-            Whether you are scoping a new plant, planning a turnaround, or troubleshooting a system nobody else wants to
-            touch, we have probably seen it.
           </p>
 
           <a
