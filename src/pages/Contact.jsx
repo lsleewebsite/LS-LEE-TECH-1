@@ -94,6 +94,8 @@ export default function Contact() {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
 
               {/* Map */}
               <div style={{ border: '2px solid #0F172A', overflow: 'hidden', height: '320px' }}>
