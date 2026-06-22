@@ -179,8 +179,6 @@ export default function Layout({ currentPageName, children }) {
             {[
               { name: 'About', to: '/About' },
               { name: 'Projects', to: '/Projects' },
-              { name: 'Industries', to: '/Industries' },
-              { name: 'Services', to: '/Services' },
             ].map((item) => (
               <Link key={item.name} to={item.to}
                 style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
