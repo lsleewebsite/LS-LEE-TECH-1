@@ -2,12 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation, Link } from 'react-router-dom'
 
-// ---------------------------------------------------------------------------
-// Icons
-// ---------------------------------------------------------------------------
-// Row-level icons (one per service) match the set already used on Home.jsx.
-// Capability-level icons are a small, consistent line-art set built to match
-// that same style (24x24 viewBox, currentColor stroke, rounded joins).
 const Icon = {
   Wrench: (p) => (
     <svg width="40" height="40" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="2" {...p}>
@@ -58,8 +52,6 @@ const Icon = {
       <polyline points="3,10 8,15 17,4" />
     </svg>
   ),
-
-  // --- Capability icons ---
   Cube: (p) => (
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}>
       <polygon points="12,3 21,8 21,16 12,21 3,16 3,8" />
@@ -244,9 +236,6 @@ const Icon = {
   )
 }
 
-// ---------------------------------------------------------------------------
-// Data
-// ---------------------------------------------------------------------------
 const services = [
   {
     id: 'project-engineering',
@@ -256,12 +245,12 @@ const services = [
     tagline: 'Turnkey Mechanical Construction',
     description: 'Complete project lifecycle management from engineering through commissioning. Gas plant equipment erection, underground piping, steel structure fabrication, and metering skid station construction.',
     capabilities: [
-      { icon: Icon.Cube, name: '3D Modeling', detail: 'Detailed engineering drawings and 3D models built before fabrication begins.' },
-      { icon: Icon.Spark, name: 'Welding & Fabrication', detail: 'In-house certified welding and fabrication shop for custom components.' },
-      { icon: Icon.Pipe, name: 'Underground Piping', detail: 'Trenching, laying, and tie-in of underground process and utility piping.' },
-      { icon: Icon.Beam, name: 'Steel Structures', detail: 'Structural steel design, fabrication, and on-site erection.' },
-      { icon: Icon.Skid, name: 'Metering Skids', detail: 'Fabrication of gas metering skid stations to client specification.' },
-      { icon: Icon.Install, name: 'Installation & Commissioning', detail: 'Equipment installation through to final commissioning and handover.' }
+      { name: '3D Modeling' },
+      { name: 'Welding & Fabrication' },
+      { name: 'Underground Piping' },
+      { name: 'Steel Structures' },
+      { name: 'Metering Skids' },
+      { name: 'Installation & Commissioning' }
     ]
   },
   {
@@ -272,12 +261,12 @@ const services = [
     tagline: '24/7 Operations Support',
     description: 'Comprehensive maintenance programs to maximize uptime and asset life. Routine servicing, shutdown coordination, emergency response, and long-term maintenance contracts.',
     capabilities: [
-      { icon: Icon.Calendar, name: 'Preventive Maintenance', detail: 'Scheduled servicing programs that extend asset life and reduce downtime.' },
-      { icon: Icon.PowerOff, name: 'Shutdown Planning', detail: 'Coordinated turnaround and shutdown planning to minimize plant downtime.' },
-      { icon: Icon.Alert, name: 'Emergency Repair', detail: 'Rapid-response repair teams available around the clock.' },
-      { icon: Icon.Rotate, name: 'Rotating Equipment', detail: 'Overhaul and refurbishment of pumps, compressors, and rotating machinery.' },
-      { icon: Icon.Inspect, name: 'Pipeline Inspection', detail: 'Routine inspection and repair of process and transfer pipelines.' },
-      { icon: Icon.Valve, name: 'Valve Testing', detail: 'Functional testing and certification of safety and process valves.' }
+      { name: 'Preventive Maintenance' },
+      { name: 'Shutdown Planning' },
+      { name: 'Emergency Repair' },
+      { name: 'Rotating Equipment' },
+      { name: 'Pipeline Inspection' },
+      { name: 'Valve Testing' }
     ]
   },
   {
@@ -288,12 +277,12 @@ const services = [
     tagline: 'Destructive & Non-Destructive Testing',
     description: 'Specialized testing and certification for hydrogen tube trailers. Hydrostatic testing, DOT/ISO recertification, valve servicing, and comprehensive fleet management programs.',
     capabilities: [
-      { icon: Icon.Pressure, name: 'Hydrostatic Testing', detail: 'Pressure testing of tube trailers and vessels to verify structural integrity.' },
-      { icon: Icon.Seal, name: 'DOT/ISO Recertification', detail: 'Recertification of tube trailers to DOT and ISO transport standards.' },
-      { icon: Icon.Valve, name: 'Valve & Manifold Service', detail: 'Inspection, servicing, and repair of valves and trailer manifolds.' },
-      { icon: Icon.TubeBundle, name: 'Tube Bundle Inspection', detail: 'Internal and external inspection of tube bundles for wear and damage.' },
-      { icon: Icon.Leak, name: 'Leak Testing', detail: 'Helium and pressure-based leak detection across the fleet.' },
-      { icon: Icon.Fleet, name: 'Fleet Management', detail: 'Ongoing fleet tracking and maintenance scheduling programs.' }
+      { name: 'Hydrostatic Testing' },
+      { name: 'DOT/ISO Recertification' },
+      { name: 'Valve & Manifold Service' },
+      { name: 'Tube Bundle Inspection' },
+      { name: 'Leak Testing' },
+      { name: 'Fleet Management' }
     ]
   },
   {
@@ -304,12 +293,12 @@ const services = [
     tagline: 'Vacuum-Insulated Equipment',
     description: 'Custom fabrication and maintenance for cryogenic applications. Vacuum-insulated hose assemblies and transfer lines for LIN, LOX, LAR, and LNG service with full certification.',
     capabilities: [
-      { icon: Icon.Hose, name: 'Hose Assembly', detail: 'Custom fabrication of hose assemblies to spec for cryogenic service.' },
-      { icon: Icon.VacuumLine, name: 'Vacuum-Insulated Lines', detail: 'Transfer lines built for LIN, LOX, LAR, and LNG cryogenic service.' },
-      { icon: Icon.Fitting, name: 'End Fitting Installation', detail: 'Fitting installation with full pressure and vacuum testing.' },
-      { icon: Icon.Wrench, name: 'Hose Repair', detail: 'Repair and recertification of in-service hose assemblies.' },
-      { icon: Icon.Leak, name: 'Leak Detection', detail: 'Detection and repair of leaks across cryogenic transfer equipment.' },
-      { icon: Icon.Swap, name: 'Emergency Replacement', detail: 'Rapid replacement service to minimize unplanned downtime.' }
+      { name: 'Hose Assembly' },
+      { name: 'Vacuum-Insulated Lines' },
+      { name: 'End Fitting Installation' },
+      { name: 'Hose Repair' },
+      { name: 'Leak Detection' },
+      { name: 'Emergency Replacement' }
     ]
   },
   {
@@ -320,12 +309,12 @@ const services = [
     tagline: 'Controls & Automation',
     description: 'Electrical installation and instrumentation support for gas plant and process facilities. Panel wiring, control system integration, and calibration services to keep automated systems running accurately and safely.',
     capabilities: [
-      { icon: Icon.Panel, name: 'Panel Wiring', detail: 'Control panel wiring and installation for process and utility systems.' },
-      { icon: Icon.Dial, name: 'Instrumentation Calibration', detail: 'Calibration of field instruments to maintain measurement accuracy.' },
-      { icon: Icon.Chip, name: 'PLC & SCADA', detail: 'Integration of PLC and SCADA systems for plant automation.' },
-      { icon: Icon.Loop, name: 'Loop Testing', detail: 'End-to-end loop testing and commissioning of control circuits.' },
-      { icon: Icon.Cable, name: 'Cable & Conduit', detail: 'Installation of cable trays, conduit, and containment systems.' },
-      { icon: Icon.Hazard, name: 'Hazardous Area (Ex)', detail: 'Installation of equipment rated for hazardous area classifications.' }
+      { name: 'Panel Wiring' },
+      { name: 'Instrumentation Calibration' },
+      { name: 'PLC & SCADA' },
+      { name: 'Loop Testing' },
+      { name: 'Cable & Conduit' },
+      { name: 'Hazardous Area (Ex)' }
     ]
   }
 ]
@@ -335,9 +324,6 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
 }
 
-// ---------------------------------------------------------------------------
-// Component
-// ---------------------------------------------------------------------------
 export default function Services() {
   const location = useLocation()
   const [selectedId, setSelectedId] = useState('project-engineering')
@@ -379,13 +365,7 @@ export default function Services() {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section style={{
-        padding: '100px 32px 80px',
-        background: '#0F172A',
-        color: '#FFF',
-        borderBottom: '2px solid #DC2626'
-      }}>
+      <section style={{ padding: '100px 32px 80px', background: '#0F172A', color: '#FFF', borderBottom: '2px solid #DC2626' }}>
         <div style={{ maxWidth: '1360px', margin: '0 auto', textAlign: 'center' }}>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -406,25 +386,17 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Services Panel: sidebar + content card */}
       <section id="services-panel" style={{ padding: '80px 32px', background: '#F8F9FA' }}>
         <div style={{
-          width: '80%',
+          maxWidth: '900px',
           margin: '0 auto',
           display: 'flex',
           alignItems: 'stretch',
           gap: '32px',
           minHeight: '600px'
         }}>
-          {/* Sidebar list */}
-          <div style={{
-            position: 'relative',
-            width: '320px',
-            flexShrink: 0,
-            background: '#FFF',
-            border: '2px solid #E5E7EB',
-            overflow: 'hidden'
-          }}>
+          {/* Sidebar */}
+          <div style={{ position: 'relative', width: '300px', flexShrink: 0, background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden' }}>
             <div style={{
               position: 'absolute',
               left: '8px',
@@ -448,8 +420,8 @@ export default function Services() {
                       flex: 1,
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '16px',
-                      padding: '0 28px',
+                      gap: '14px',
+                      padding: '0 24px',
                       background: 'transparent',
                       border: 'none',
                       borderBottom: i < services.length - 1 ? '1px solid #E5E7EB' : 'none',
@@ -458,34 +430,17 @@ export default function Services() {
                       fontFamily: 'inherit'
                     }}
                   >
-                    <span style={{
-                      fontFamily: 'IBM Plex Mono, monospace',
-                      fontSize: '12px',
-                      fontWeight: 600,
-                      color: isActive ? '#DC2626' : '#94A3B8',
-                      width: '20px',
-                      flexShrink: 0
-                    }}>
+                    <span style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 600, color: isActive ? '#DC2626' : '#94A3B8', width: '18px', flexShrink: 0 }}>
                       {s.num}
                     </span>
                     <div style={{ color: isActive ? '#DC2626' : '#0F172A', flexShrink: 0, transition: 'color 0.3s' }}>
-                      {React.cloneElement(s.icon, { width: 26, height: 26 })}
+                      {React.cloneElement(s.icon, { width: 24, height: 24 })}
                     </div>
                     <div style={{ minWidth: 0 }}>
-                      <div style={{
-                        fontFamily: 'Archivo, sans-serif',
-                        fontWeight: 800,
-                        fontSize: '15px',
-                        lineHeight: 1.25,
-                        color: isActive ? '#0F172A' : '#475569',
-                        marginBottom: '2px',
-                        transition: 'color 0.3s'
-                      }}>
+                      <div style={{ fontFamily: 'Archivo, sans-serif', fontWeight: 800, fontSize: '14px', lineHeight: 1.25, color: isActive ? '#0F172A' : '#475569', marginBottom: '2px', transition: 'color 0.3s' }}>
                         {s.title}
                       </div>
-                      <div style={{ fontSize: '11px', color: '#94A3B8' }}>
-                        {s.tagline}
-                      </div>
+                      <div style={{ fontSize: '11px', color: '#94A3B8' }}>{s.tagline}</div>
                     </div>
                   </button>
                 )
@@ -506,85 +461,33 @@ export default function Services() {
                   height: '100%',
                   background: '#FFF',
                   border: '2px solid #E5E7EB',
-                  padding: '56px',
+                  padding: '48px',
                   boxSizing: 'border-box',
                   display: 'flex',
                   flexDirection: 'column'
                 }}
               >
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '12px',
-                  color: '#94A3B8',
-                  marginBottom: '10px'
-                }}>
+                <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '12px', color: '#94A3B8', marginBottom: '10px' }}>
                   {service.num} / 05
                 </div>
-                <h2 style={{
-                  fontFamily: 'Archivo, sans-serif',
-                  fontSize: '34px',
-                  fontWeight: 900,
-                  color: '#0F172A',
-                  marginBottom: '10px',
-                  lineHeight: 1.15
-                }}>
+                <h2 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '32px', fontWeight: 900, color: '#0F172A', marginBottom: '8px', lineHeight: 1.15 }}>
                   {service.title}
                 </h2>
-                <div style={{
-                  fontFamily: 'IBM Plex Mono, monospace',
-                  fontSize: '13px',
-                  fontWeight: 700,
-                  color: '#DC2626',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.06em',
-                  marginBottom: '24px'
-                }}>
+                <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '12px', fontWeight: 700, color: '#DC2626', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '20px' }}>
                   {service.tagline}
                 </div>
-                <p style={{
-                  fontSize: '17px',
-                  color: '#475569',
-                  lineHeight: 1.8,
-                  marginBottom: '32px'
-                }}>
+                <p style={{ fontSize: '16px', color: '#475569', lineHeight: 1.75, marginBottom: '28px' }}>
                   {service.description}
                 </p>
 
-                <div style={{
-                  padding: '40px',
-                  background: '#0F172A',
-                  color: '#FFF',
-                  marginBottom: '32px'
-                }}>
-                  <div style={{
-                    fontFamily: 'IBM Plex Mono, monospace',
-                    fontSize: '12px',
-                    fontWeight: 700,
-                    letterSpacing: '0.08em',
-                    textTransform: 'uppercase',
-                    color: '#FFF',
-                    marginBottom: '24px'
-                  }}>
+                <div style={{ padding: '24px', background: '#0F172A', marginBottom: '28px' }}>
+                  <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#FFF', marginBottom: '16px' }}>
                     Key Capabilities
                   </div>
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '20px'
-                  }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>
                     {service.capabilities.map((cap, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'start',
-                          gap: '12px',
-                          fontSize: '17px',
-                          color: '#FFF',
-                          lineHeight: 1.45
-                        }}
-                      >
-                        <div style={{ color: '#DC2626', marginTop: '2px', flexShrink: 0 }}>
+                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14px', color: '#FFF', lineHeight: 1.4 }}>
+                        <div style={{ color: '#DC2626', flexShrink: 0 }}>
                           <Icon.Check />
                         </div>
                         <span>{cap.name}</span>
@@ -595,34 +498,9 @@ export default function Services() {
 
                 <Link
                   to={`/Projects?category=${encodeURIComponent(service.title)}`}
-                  style={{
-                    marginTop: 'auto',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '10px',
-                    padding: '14px 28px',
-                    background: 'transparent',
-                    color: '#0F172A',
-                    border: '2px solid #0F172A',
-                    fontWeight: 700,
-                    fontSize: '13px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em',
-                    textDecoration: 'none',
-                    transition: 'all 0.3s',
-                    cursor: 'pointer',
-                    width: 'fit-content'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = '#DC2626'
-                    e.currentTarget.style.color = '#FFF'
-                    e.currentTarget.style.borderColor = '#DC2626'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'transparent'
-                    e.currentTarget.style.color = '#0F172A'
-                    e.currentTarget.style.borderColor = '#0F172A'
-                  }}
+                  style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 28px', background: 'transparent', color: '#0F172A', border: '2px solid #0F172A', fontWeight: 700, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', transition: 'all 0.3s', cursor: 'pointer', width: 'fit-content' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = '#DC2626'; e.currentTarget.style.color = '#FFF'; e.currentTarget.style.borderColor = '#DC2626' }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#0F172A'; e.currentTarget.style.borderColor = '#0F172A' }}
                 >
                   View Related Projects
                   <Icon.Arrow />
@@ -633,7 +511,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -650,32 +527,9 @@ export default function Services() {
           </p>
           <Link
             to="/Contact"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '12px',
-              padding: '16px 36px',
-              background: '#FFF',
-              color: '#DC2626',
-              border: '2px solid #FFF',
-              fontWeight: 700,
-              fontSize: '15px',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              textDecoration: 'none',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#0F172A'
-              e.currentTarget.style.color = '#FFF'
-              e.currentTarget.style.borderColor = '#0F172A'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#FFF'
-              e.currentTarget.style.color = '#DC2626'
-              e.currentTarget.style.borderColor = '#FFF'
-            }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', padding: '16px 36px', background: '#FFF', color: '#DC2626', border: '2px solid #FFF', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = '#0F172A'; e.currentTarget.style.color = '#FFF'; e.currentTarget.style.borderColor = '#0F172A' }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = '#FFF'; e.currentTarget.style.color = '#DC2626'; e.currentTarget.style.borderColor = '#FFF' }}
           >
             Request Proposal
             <Icon.Arrow />
