@@ -292,48 +292,17 @@ export default function Home() {
     {/* Top Row - 2 Large Cards */}
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', marginBottom: '24px' }}>
       {[
-        {
-          icon: <I.Wrench />,
-          title: 'Project Engineering',
-          tag: 'Turnkey Mechanical Structural',
-          id: 'project-engineering',
-        },
-        {
-          icon: <I.Gauge />,
-          title: 'Plant Maintenance',
-          tag: '24/7 Operations Support',
-          id: 'plant-maintenance',
-        },
+        { icon: <I.Wrench />, title: 'Project Engineering', tag: 'Turnkey Mechanical Structural', id: 'project-engineering' },
+        { icon: <I.Gauge />, title: 'Plant Maintenance', tag: '24/7 Operations Support', id: 'plant-maintenance' },
       ].map((it, i) => (
-        <motion.a
-          href={`/Services?service=${it.id}`}
+        <MotionLink
+          to={`/Services?service=${it.id}`}
           key={i}
           variants={cardVariant}
           transition={{ duration: 0.5 }}
-          style={{
-            padding: '36px',
-            background: 'rgba(255,255,255,0.05)',
-            border: '2px solid rgba(255,255,255,0.1)',
-            textDecoration: 'none',
-            color: 'inherit',
-            transition: 'all 0.3s',
-            cursor: 'pointer',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '16px'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = '#DC2626'
-            e.currentTarget.style.background = 'rgba(255,255,255,0.08)'
-            e.currentTarget.style.transform = 'translateY(-4px)'
-            e.currentTarget.querySelector('.svc-icon').style.color = '#DC2626'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
-            e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
-            e.currentTarget.style.transform = 'translateY(0)'
-            e.currentTarget.querySelector('.svc-icon').style.color = '#FFF'
-          }}
+          style={{ padding: '36px', background: 'rgba(255,255,255,0.05)', border: '2px solid rgba(255,255,255,0.1)', textDecoration: 'none', color: 'inherit', transition: 'all 0.3s', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '16px' }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.querySelector('.svc-icon').style.color = '#DC2626' }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.querySelector('.svc-icon').style.color = '#FFF' }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
             <div className="svc-icon" style={{ color: '#FFF', transition: 'color 0.3s' }}>
@@ -344,71 +313,31 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '24px', fontWeight: 900, marginBottom: '8px', lineHeight: 1.2, color: '#FFF' }}>
-              {it.title}
-            </h3>
-            <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-              {it.tag}
-            </div>
+            <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '24px', fontWeight: 900, marginBottom: '8px', lineHeight: 1.2, color: '#FFF' }}>{it.title}</h3>
+            <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{it.tag}</div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: 'auto', fontSize: '13px', fontWeight: 700, color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             Learn More <I.Arrow />
           </div>
-        </motion.a>
+        </MotionLink>
       ))}
     </div>
 
     {/* Bottom Row - 3 Equal Cards */}
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
       {[
-        {
-          icon: <I.Trailer />,
-          title: 'Servicing & Testing',
-          tag: 'Destructive & Non-Destructive Testing',
-          id: 'servicing-testing',
-        },
-        {
-          icon: <I.Snow />,
-          title: 'Cryogenic Storage & Hoses',
-          tag: 'Vacuum-Insulated Equipment',
-          id: 'cryogenic-storage',
-        },
-        {
-          icon: <I.Bolt />,
-          title: 'Electrical & Instrumentation',
-          tag: 'Controls & Automation',
-          id: 'electrical-instrumentation',
-        },
+        { icon: <I.Trailer />, title: 'Servicing & Testing', tag: 'Destructive & Non-Destructive Testing', id: 'servicing-testing' },
+        { icon: <I.Snow />, title: 'Cryogenic Storage & Hoses', tag: 'Vacuum-Insulated Equipment', id: 'cryogenic-storage' },
+        { icon: <I.Bolt />, title: 'Electrical & Instrumentation', tag: 'Controls & Automation', id: 'electrical-instrumentation' },
       ].map((it, i) => (
-        <motion.a
-          href={`/Services?service=${it.id}`}
+        <MotionLink
+          to={`/Services?service=${it.id}`}
           key={i}
           variants={cardVariant}
           transition={{ duration: 0.5 }}
-          style={{
-            padding: '32px 28px',
-            background: 'rgba(255,255,255,0.05)',
-            border: '2px solid rgba(255,255,255,0.1)',
-            textDecoration: 'none',
-            color: 'inherit',
-            transition: 'all 0.3s',
-            cursor: 'pointer',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '14px'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = '#DC2626'
-            e.currentTarget.style.background = 'rgba(255,255,255,0.08)'
-            e.currentTarget.style.transform = 'translateY(-4px)'
-            e.currentTarget.querySelector('.svc-icon-sm').style.color = '#DC2626'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
-            e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
-            e.currentTarget.style.transform = 'translateY(0)'
-            e.currentTarget.querySelector('.svc-icon-sm').style.color = '#FFF'
-          }}
+          style={{ padding: '32px 28px', background: 'rgba(255,255,255,0.05)', border: '2px solid rgba(255,255,255,0.1)', textDecoration: 'none', color: 'inherit', transition: 'all 0.3s', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '14px' }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.querySelector('.svc-icon-sm').style.color = '#DC2626' }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.querySelector('.svc-icon-sm').style.color = '#FFF' }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
             <div className="svc-icon-sm" style={{ color: '#FFF', transition: 'color 0.3s' }}>
@@ -419,31 +348,21 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '19px', fontWeight: 900, marginBottom: '6px', lineHeight: 1.2, color: '#FFF' }}>
-              {it.title}
-            </h3>
-            <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-              {it.tag}
-            </div>
+            <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '19px', fontWeight: 900, marginBottom: '6px', lineHeight: 1.2, color: '#FFF' }}>{it.title}</h3>
+            <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{it.tag}</div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: 'auto', fontSize: '12px', fontWeight: 700, color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             Learn More <I.Arrow />
           </div>
-        </motion.a>
+        </MotionLink>
       ))}
     </div>
 
     {/* View All Button */}
     <div style={{ textAlign: 'center', marginTop: '40px' }}>
-      <a href="/Services" style={{
-        display: 'inline-flex', alignItems: 'center', gap: '10px',
-        padding: '18px 40px', background: '#DC2626', color: '#FFF',
-        border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif',
-        fontWeight: 700, fontSize: '15px', textTransform: 'uppercase',
-        letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s'
-      }}
-      onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
-      onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
+      <a href="/Services" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: '#DC2626', color: '#FFF', border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
+        onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
+        onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
         View All Services <I.Arrow />
       </a>
     </div>
