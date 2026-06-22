@@ -264,20 +264,11 @@ export default function Layout({ currentPageName, children }) {
             <img 
               src="/LS-LEE-TECH-1/logo.png" 
               alt="LS Lee Technology" 
-              style={{ 
-                height: '60px',
-                width: 'auto',
-                marginBottom: '16px'
-              }} 
+              style={{ height: '60px', width: 'auto', marginBottom: '16px' }} 
             />
-            <p style={{ fontSize: '13px', color: '#5B6573', lineHeight: 1.6, margin: '16px 0 24px' }}>
-              Mechanical engineering contractor serving Singapore's gas and process industries since 2003.
+            <p style={{ fontSize: '13px', color: '#5B6573', lineHeight: 1.6, margin: '16px 0 0' }}>
+              Mechanical engineering contractor serving Singapore's gas and process industries since 1999.
             </p>
-            <div style={{ fontFamily: 'IBM Plex Mono', fontSize: '11px', letterSpacing: '0.08em', color: '#5B6573', lineHeight: 1.7 }}>
-              [ HQ ] SINGAPORE<br/>
-              +65 6XXX XXXX<br/>
-              projects@lslee.com.sg
-            </div>
           </div>
           
           <div style={{ padding: '48px 32px', borderRight: '2px solid #0A1628' }}>
@@ -301,12 +292,22 @@ export default function Layout({ currentPageName, children }) {
             <h5 style={{ fontFamily: 'IBM Plex Mono', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#5B6573', marginBottom: '24px' }}>
               Services
             </h5>
-            {['Project Engineering', 'Plant Maintenance', 'Trailer Testing', 'Cryogenic Hose'].map((service) => (
-              <a key={service} href="#services" style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
+            {[
+              { name: 'Project Engineering', id: 'project-engineering' },
+              { name: 'Plant Maintenance', id: 'plant-maintenance' },
+              { name: 'Servicing & Testing', id: 'servicing-testing' },
+              { name: 'Cryogenic Storage & Hoses', id: 'cryogenic-storage' },
+              { name: 'Electrical & Instrumentation', id: 'electrical-instrumentation' },
+            ].map((service) => (
+              <Link
+                key={service.id}
+                to={`/Services?service=${service.id}`}
+                style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
                 onMouseEnter={(e) => e.target.style.color = '#DC2626'}
-                onMouseLeave={(e) => e.target.style.color = '#0A1628'}>
-                {service}
-              </a>
+                onMouseLeave={(e) => e.target.style.color = '#0A1628'}
+              >
+                {service.name}
+              </Link>
             ))}
           </div>
 
@@ -314,8 +315,13 @@ export default function Layout({ currentPageName, children }) {
             <h5 style={{ fontFamily: 'IBM Plex Mono', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#5B6573', marginBottom: '24px' }}>
               Company
             </h5>
-            {[{ name: 'About', link: '/About' }, { name: 'Projects', link: '/Projects' }, { name: 'Certifications', link: '/Certifications' }, { name: 'Careers', link: '#' }].map((item) => (
-              <Link key={item.name} to={item.link} style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
+            {[
+              { name: 'About', to: '/About' },
+              { name: 'Projects', to: '/Projects' },
+              { name: 'Industries', to: '/Industries' },
+              { name: 'Services', to: '/Services' },
+            ].map((item) => (
+              <Link key={item.name} to={item.to} style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
                 onMouseEnter={(e) => e.target.style.color = '#DC2626'}
                 onMouseLeave={(e) => e.target.style.color = '#0A1628'}>
                 {item.name}
@@ -332,6 +338,11 @@ export default function Layout({ currentPageName, children }) {
               onMouseLeave={(e) => e.target.style.color = '#0A1628'}>
               Start Enquiry
             </Link>
+            <Link to="/Contact" style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
+              onMouseEnter={(e) => e.target.style.color = '#DC2626'}
+              onMouseLeave={(e) => e.target.style.color = '#0A1628'}>
+              Get in Touch
+            </Link>
           </div>
         </div>
 
@@ -346,7 +357,7 @@ export default function Layout({ currentPageName, children }) {
           fontSize: '11px',
           letterSpacing: '0.1em'
         }}>
-          <span>© 2026 LS LEE ENGINEERING PTE. LTD. — UEN 200300000X</span>
+          <span>© 2026 LS LEE TECHNOLOGY PTE. LTD.</span>
           <div style={{ display: 'flex', gap: '24px' }}>
             <a href="#" style={{ color: 'rgba(255,255,255,0.6)', transition: 'color 0.15s' }}
               onMouseEnter={(e) => e.target.style.color = '#DC2626'}
@@ -357,6 +368,5 @@ export default function Layout({ currentPageName, children }) {
           </div>
         </div>
       </footer>
-    </div>
   )
 }
