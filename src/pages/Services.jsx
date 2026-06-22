@@ -37,11 +37,6 @@ const Icon = {
       <polygon points="16,3 7,16 13,16 11,25 21,12 15,12" strokeLinejoin="round" />
     </svg>
   ),
-  Chevron: (p) => (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" {...p}>
-      <polyline points="6,9 12,15 18,9" />
-    </svg>
-  ),
   Arrow: (p) => (
     <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="2" {...p}>
       <line x1="0" y1="5" x2="13" y2="5" /><polyline points="9,1 13,5 9,9" />
@@ -388,12 +383,12 @@ export default function Services() {
 
       <section id="services-panel" style={{ padding: '80px 32px', background: '#F8F9FA' }}>
         <div style={{
-          maxWidth: '900px',
+          maxWidth: '1200px',
           margin: '0 auto',
           display: 'flex',
           alignItems: 'stretch',
-          gap: '32px',
-          minHeight: '600px'
+          gap: '40px',
+          minHeight: '640px'
         }}>
           {/* Sidebar */}
           <div style={{ position: 'relative', width: '300px', flexShrink: 0, background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden' }}>
@@ -461,7 +456,7 @@ export default function Services() {
                   height: '100%',
                   background: '#FFF',
                   border: '2px solid #E5E7EB',
-                  padding: '48px',
+                  padding: '56px',
                   boxSizing: 'border-box',
                   display: 'flex',
                   flexDirection: 'column'
@@ -470,23 +465,23 @@ export default function Services() {
                 <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '12px', color: '#94A3B8', marginBottom: '10px' }}>
                   {service.num} / 05
                 </div>
-                <h2 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '32px', fontWeight: 900, color: '#0F172A', marginBottom: '8px', lineHeight: 1.15 }}>
+                <h2 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '40px', fontWeight: 900, color: '#0F172A', marginBottom: '8px', lineHeight: 1.15 }}>
                   {service.title}
                 </h2>
-                <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '12px', fontWeight: 700, color: '#DC2626', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '20px' }}>
+                <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '14px', fontWeight: 700, color: '#DC2626', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '20px' }}>
                   {service.tagline}
                 </div>
-                <p style={{ fontSize: '16px', color: '#475569', lineHeight: 1.75, marginBottom: '28px' }}>
+                <p style={{ fontSize: '18px', color: '#475569', lineHeight: 1.8, marginBottom: '32px' }}>
                   {service.description}
                 </p>
 
-                <div style={{ padding: '24px', background: '#0F172A', marginBottom: '28px' }}>
+                <div style={{ padding: '28px', background: '#0F172A', marginBottom: '32px' }}>
                   <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#FFF', marginBottom: '16px' }}>
                     Key Capabilities
                   </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
                     {service.capabilities.map((cap, i) => (
-                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14px', color: '#FFF', lineHeight: 1.4 }}>
+                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '16px', color: '#FFF', lineHeight: 1.4 }}>
                         <div style={{ color: '#DC2626', flexShrink: 0 }}>
                           <Icon.Check />
                         </div>
