@@ -296,15 +296,17 @@ export default function Home() {
           icon: <I.Wrench />,
           title: 'Project Engineering',
           tag: 'Turnkey Mechanical Structural',
+          id: 'project-engineering',
         },
         {
           icon: <I.Gauge />,
           title: 'Plant Maintenance',
           tag: '24/7 Operations Support',
+          id: 'plant-maintenance',
         },
       ].map((it, i) => (
         <motion.a
-          href="/Services"
+          href={`/Services?service=${it.id}`}
           key={i}
           variants={cardVariant}
           transition={{ duration: 0.5 }}
@@ -363,20 +365,23 @@ export default function Home() {
           icon: <I.Trailer />,
           title: 'Servicing & Testing',
           tag: 'Destructive & Non-Destructive Testing',
+          id: 'servicing-testing',
         },
         {
           icon: <I.Snow />,
           title: 'Cryogenic Storage & Hoses',
           tag: 'Vacuum-Insulated Equipment',
+          id: 'cryogenic-storage',
         },
         {
           icon: <I.Bolt />,
           title: 'Electrical & Instrumentation',
           tag: 'Controls & Automation',
+          id: 'electrical-instrumentation',
         },
       ].map((it, i) => (
         <motion.a
-          href="/Services"
+          href={`/Services?service=${it.id}`}
           key={i}
           variants={cardVariant}
           transition={{ duration: 0.5 }}
