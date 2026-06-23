@@ -257,7 +257,6 @@ const services = [
     num: '02',
     icon: <Icon.Gauge />,
     title: 'Plant Maintenance',
-    tagline: '24/7 Operations Support',
     description: 'Comprehensive maintenance programs to maximize uptime and asset life.',
     capabilities: [
       { icon: Icon.Calendar, name: 'Preventive Maintenance', detail: 'Scheduled servicing programs that extend asset life and reduce downtime.' },
@@ -273,8 +272,7 @@ const services = [
     num: '03',
     icon: <Icon.Trailer />,
     title: 'Servicing & Testing',
-    tagline: 'Destructive & Non-Destructive Testing',
-    description: 'Specialized testing and certification for hydrogen tube trailers. Hydrostatic testing, DOT/ISO recertification, valve servicing, and comprehensive fleet management programs.',
+    description: 'Specialised testing and certification for hydrogen tube trailers',
     capabilities: [
       { icon: Icon.Pressure, name: 'Hydrostatic Testing', detail: 'Pressure testing of tube trailers and vessels to verify structural integrity.' },
       { icon: Icon.Seal, name: 'DOT/ISO Recertification', detail: 'Recertification of tube trailers to DOT and ISO transport standards.' },
@@ -290,8 +288,7 @@ const services = [
     icon: <Icon.Snow />,
     title: 'Cryogenic Storage & Hoses',
     filterKey: 'Cryogenic Storages & Hoses',
-    tagline: 'Vacuum-Insulated Equipment',
-    description: 'Custom fabrication and maintenance for cryogenic applications. Vacuum-insulated hose assemblies and transfer lines for LIN, LOX, LAR, and LNG service with full certification.',
+    description: 'Custom fabrication and maintenance for cryogenic applications.',
     capabilities: [
       { icon: Icon.Hose, name: 'Hose Assembly', detail: 'Custom fabrication of hose assemblies to spec for cryogenic service.' },
       { icon: Icon.VacuumLine, name: 'Vacuum-Insulated Lines', detail: 'Transfer lines built for LIN, LOX, LAR, and LNG cryogenic service.' },
@@ -307,8 +304,7 @@ const services = [
     icon: <Icon.Bolt />,
     title: 'Electrical & Instrumentation',
     filterKey: 'Electrical & Instrumental',
-    tagline: 'Controls & Automation',
-    description: 'Electrical installation and instrumentation support for gas plant and process facilities. Panel wiring, control system integration, and calibration services to keep automated systems running accurately and safely.',
+    description: 'Instrumentation, controls and electrical installation for process plants.',
     capabilities: [
       { icon: Icon.Panel, name: 'Panel Wiring', detail: 'Control panel wiring and installation for process and utility systems.' },
       { icon: Icon.Dial, name: 'Instrumentation Calibration', detail: 'Calibration of field instruments to maintain measurement accuracy.' },
