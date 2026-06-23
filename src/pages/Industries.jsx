@@ -112,14 +112,15 @@ export default function Industries() {
       id: 'industrial-gas',
       icon: <Icon.Plant />,
       title: 'Industrial Gas',
-      tagline: 'Turnkey Engineering for Gas and Process Plants',
-      description: 'Turnkey project engineering, plant integration and maintenance for gas and process plants. From air separation units to specialty gas production, we handle the full project lifecycle.',
+      tagline: 'End-to-End Engineering partner for industrial gas operations',
+      description: 'Engineering fabrication testing and maintenance services for the industrial and specialty gas production plants',
       capabilities: [
         'HP tube testing & Certification',
         'Shutdown and turnaround support',
         'Preventive Maintenance',
         'Design & Fabrication of metering skids',
-        'ISO tube trailer fabrication'
+        'ISO tube trailer fabrication & maintenance',
+        'Cryogenic hose fabrication & maintenance'
       ]
     },
     {
