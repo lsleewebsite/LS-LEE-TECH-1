@@ -141,7 +141,7 @@ export default function Home() {
                 Delivering Mechanical & Structural Solutions for the Process Industry
               </h1>
 
-              <p style={{ fontSize: '18px', color: '#94A3B8', lineHeight: 1.7, marginBottom: '40px', maxWidth: '550px' }}>
+              <p style={{ fontSize: '26px', color: '#94A3B8', lineHeight: 1.7, marginBottom: '40px', maxWidth: '550px' }}>
                 Where experience meets uncompromised quality and safety.
               </p>
 
