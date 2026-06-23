@@ -8,7 +8,7 @@ const I = {
       <rect x="7" y="7" width="14" height="14" />
       <rect x="10" y="10" width="8" height="8" />
       <line x1="4" y1="10" x2="7" y2="10" /><line x1="4" y1="14" x2="7" y2="14" /><line x1="4" y1="18" x2="7" y2="18" />
-      <line x1="21" y1="10" x2="24" y2="10" /><line x1="21" y1="14" x2="24" y2="14" /><line x1="21" y1="18" x2="24" y2="18" />
+      <line x1="21" y1="10" x2="24" y2="10" /><line x1="21" yfv1="14" x2="24" y2="14" /><line x1="21" y1="18" x2="24" y2="18" />
       <line x1="10" y1="4" x2="10" y2="7" /><line x1="14" y1="4" x2="14" y2="7" /><line x1="18" y1="4" x2="18" y2="7" />
       <line x1="10" y1="21" x2="10" y2="24" /><line x1="14" y1="21" x2="14" y2="24" /><line x1="18" y1="21" x2="18" y2="24" />
     </svg>
@@ -138,11 +138,11 @@ export default function Home() {
               </div>
 
               <h1 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '52px', fontWeight: 900, color: '#FFF', lineHeight: 1.1, marginBottom: '24px' }}>
-                Mechanical & Structural Solutions for Singapore's Process Industry
+                Delivering Mechanical & Structural Solutions for the Process Industry
               </h1>
 
               <p style={{ fontSize: '18px', color: '#94A3B8', lineHeight: 1.7, marginBottom: '40px', maxWidth: '550px' }}>
-                Delivering quality mechanical and structural engineering solutions to the process industry, guided by a track record built over decades.
+                Where experience meets uncompromised quality and safety.
               </p>
 
               <div style={{ display: 'flex', gap: '16px' }}>
