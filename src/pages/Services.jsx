@@ -507,7 +507,7 @@ export default function Services() {
 
                 <div style={{ padding: '28px', background: '#0F172A', marginBottom: '32px' }}>
                   <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '12px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#FFF', marginBottom: '16px' }}>
-                    Key Capabilities
+                    Key Services
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
                     {service.capabilities.map((cap, i) => (
