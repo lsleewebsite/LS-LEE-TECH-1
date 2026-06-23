@@ -127,15 +127,15 @@ export default function Industries() {
       id: 'new-energy',
       icon: <Icon.H2 />,
       title: 'New Energy',
-      tagline: 'Tube Trailer Testing and Hydrogen Infrastructure',
-      description: 'Hydrogen trailer testing, servicing, refurbishment and certification support. As the hydrogen economy scales, we provide the testing, certification, and maintenance services to keep tube trailers and transport systems operational.',
+      tagline: 'Supporting the hydrogen economy',
+      description: '-',
       capabilities: [
-        'Hydrostatic and pneumatic testing',
-        'DOT and ISO recertification',
-        'Valve and manifold servicing',
-        'Tube bundle refurbishment',
-        'Leak testing and repair',
-        'Fleet management support'
+        '-',
+        '-',
+        '-',
+        '-',
+        '-',
+        '-'
       ]
     }
   ]
@@ -175,8 +175,6 @@ export default function Industries() {
               lineHeight: 1.6
             }}
           >
-            Four high-stakes verticals where uptime, purity, and pressure integrity are non-negotiable.
-            We engineer the mechanical infrastructure that keeps them running.
           </motion.p>
         </div>
       </section>
