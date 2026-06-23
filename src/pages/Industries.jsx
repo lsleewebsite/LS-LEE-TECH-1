@@ -115,12 +115,11 @@ export default function Industries() {
       tagline: 'Turnkey Engineering for Gas and Process Plants',
       description: 'Turnkey project engineering, plant integration and maintenance for gas and process plants. From air separation units to specialty gas production, we handle the full project lifecycle.',
       capabilities: [
-        'Turnkey plant construction',
-        'Process piping installation',
-        'Equipment installation and tie-in',
+        'HP tube testing & Certification',
         'Shutdown and turnaround support',
-        'Plant maintenance contracts',
-        'Emergency response services'
+        'Preventive Maintenance',
+        'Design & Fabrication of metering skids',
+        'ISO tube trailer fabrication'
       ]
     },
     {
