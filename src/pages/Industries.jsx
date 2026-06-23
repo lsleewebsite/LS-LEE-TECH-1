@@ -86,12 +86,12 @@ export default function Industries() {
       tagline: 'Ultra-High-Purity Gas Systems for Wafer Fabrication',
       description: 'Construction, Integration and Maintenance of gas process plant for semiconductor manufacturing facilities.',
       capabilities: [
+        'Process plant installation',
+        'Equipment testing & comissioning',
         'UHP gas distribution piping',
-        'Tool hook-up and integration',
-        'Gas panel fabrication and installation',
-        'VMB and gas cabinet systems',
-        'Leak testing and qualification',
-        'Preventive maintenance programs'
+        'Piping certification & Qualification',
+        'Structural & Insulation works',
+        'Preventive Maintenance'
       ]
     },
     {
