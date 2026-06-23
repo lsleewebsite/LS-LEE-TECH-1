@@ -383,7 +383,6 @@ export default function Services() {
             transition={{ duration: 0.8, delay: 0.2 }}
             style={{ fontSize: '18px', color: '#94A3B8', maxWidth: '800px', margin: '0 auto', lineHeight: 1.6 }}
           >
-            Five integrated service lines delivering end-to-end mechanical and electrical solutions for Singapore's critical infrastructure.
           </motion.p>
         </div>
       </section>
