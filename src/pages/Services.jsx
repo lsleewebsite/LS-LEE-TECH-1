@@ -242,8 +242,7 @@ const services = [
     num: '01',
     icon: <Icon.Wrench />,
     title: 'Project Engineering',
-    tagline: 'Turnkey Mechanical Construction',
-    description: 'Complete project lifecycle management from engineering through commissioning. Gas plant equipment erection, underground piping, steel structure fabrication, and metering skid station construction.',
+    description: 'Complete project lifecycle management from engineering through commissioning.',
     capabilities: [
       { icon: Icon.Cube, name: '3D Modeling', detail: 'Detailed engineering drawings and 3D models built before fabrication begins.' },
       { icon: Icon.Spark, name: 'Welding & Fabrication', detail: 'In-house certified welding and fabrication shop for custom components.' },
