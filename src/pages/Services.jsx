@@ -258,7 +258,7 @@ const services = [
     icon: <Icon.Gauge />,
     title: 'Plant Maintenance',
     tagline: '24/7 Operations Support',
-    description: 'Comprehensive maintenance programs to maximize uptime and asset life. Routine servicing, shutdown coordination, emergency response, and long-term maintenance contracts.',
+    description: 'Comprehensive maintenance programs to maximize uptime and asset life.',
     capabilities: [
       { icon: Icon.Calendar, name: 'Preventive Maintenance', detail: 'Scheduled servicing programs that extend asset life and reduce downtime.' },
       { icon: Icon.PowerOff, name: 'Shutdown Planning', detail: 'Coordinated turnaround and shutdown planning to minimize plant downtime.' },
