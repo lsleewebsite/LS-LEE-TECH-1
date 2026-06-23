@@ -84,7 +84,7 @@ export default function Industries() {
       icon: <Icon.Chip />,
       title: 'Semiconductor',
       tagline: 'Ultra-High-Purity Gas Systems for Wafer Fabrication',
-      description: 'Construction, Integration and Maintenance of gas process plant for semiconductor manufacturing facilities.,
+      description: 'Construction, Integration and Maintenance of gas process plant for semiconductor manufacturing facilities.',
       capabilities: [
         'UHP gas distribution piping',
         'Tool hook-up and integration',
