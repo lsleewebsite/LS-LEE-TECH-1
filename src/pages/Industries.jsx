@@ -99,14 +99,13 @@ export default function Industries() {
       icon: <Icon.Server />,
       title: 'Data Centres',
       tagline: 'Hydrogen Infrastructure for Next-Gen Power Systems',
-      description: 'Hydrogen infrastructure gas distribution network for fuel cell systems.',
+      description: 'Hydrogen infrastructure and gas distribution network for fuel cell systems.',
       capabilities: [
-        'Hydrogen pipeline design and installation',
+        'Design & Installation of hydrogen pipeline network',
         'Fuel cell integration support',
-        'Safety system installation',
-        'Leak detection systems',
-        'Emergency shutdown integration',
-        'Compliance and certification'
+        'Gas detection and monitoring systems',
+        'Flow & Pressure monitoring system',
+        'Compliance & certification'
       ]
     },
     {
