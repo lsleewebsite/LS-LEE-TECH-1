@@ -599,7 +599,7 @@ export default function Services() {
               e.currentTarget.style.borderColor = '#FFF'
             }}
           >
-            Request Proposal
+            Contact Us
             <Icon.Arrow />
           </Link>
         </div>
