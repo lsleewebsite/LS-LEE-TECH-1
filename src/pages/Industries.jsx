@@ -99,7 +99,7 @@ export default function Industries() {
       icon: <Icon.Server />,
       title: 'Data Centres',
       tagline: 'Hydrogen Infrastructure for Next-Gen Power Systems',
-      description: 'Hydrogen pipeline infrastructure and gas systems support for data centre energy requirements. As data centers transition to hydrogen fuel cells for backup power, we deliver the mechanical infrastructure to make it work.',
+      description: 'Hydrogen infrastructure gas distribution network for fuel cell systems.',
       capabilities: [
         'Hydrogen pipeline design and installation',
         'Fuel cell integration support',
