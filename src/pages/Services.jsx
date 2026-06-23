@@ -272,7 +272,7 @@ const services = [
     num: '03',
     icon: <Icon.Trailer />,
     title: 'Servicing & Testing',
-    description: 'Specialised testing and certification for hydrogen tube trailers',
+    description: 'Specialised testing and certification for hydrogen tube trailers.',
     capabilities: [
       { icon: Icon.Pressure, name: 'Hydrostatic Testing', detail: 'Pressure testing of tube trailers and vessels to verify structural integrity.' },
       { icon: Icon.Seal, name: 'DOT/ISO Recertification', detail: 'Recertification of tube trailers to DOT and ISO transport standards.' },
