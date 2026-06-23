@@ -566,10 +566,9 @@ export default function Services() {
       >
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '36px', fontWeight: 800, marginBottom: '24px', fontFamily: 'Archivo, sans-serif' }}>
-            Tell Us About Your Project
+            Tell Us About Your Needs
           </h2>
           <p style={{ fontSize: '16px', marginBottom: '32px', opacity: 0.9, lineHeight: 1.6 }}>
-            Share your scope and we'll put together a detailed proposal.
           </p>
           <Link
             to="/Contact"
