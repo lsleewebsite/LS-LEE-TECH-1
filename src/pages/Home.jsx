@@ -219,7 +219,7 @@ export default function Home() {
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.background = 'rgba(220,38,38,0.06)' }}
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = cert.highlight ? 'rgba(220,38,38,0.3)' : '#E5E7EB'; e.currentTarget.style.background = cert.highlight ? 'rgba(220,38,38,0.06)' : '#FFF' }}
                 >
-                  <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '9px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '10px' }}>{cert.issuer}</div>
+                  <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '12px', fontWeight: 700, color: '#64748B', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '10px' }}>{cert.issuer}</div>
                   <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '18px', fontWeight: 900, color: '#DC2626' }}>{cert.name}</div>
                 </div>
               ))
