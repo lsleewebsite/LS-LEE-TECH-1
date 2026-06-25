@@ -149,10 +149,10 @@ export default function About() {
             {[
               {
                 icon: (
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#DC2626" strokeWidth="1.5">
-                    <path d="M6 20 C10 12 30 12 34 20 C30 28 10 28 6 20 Z" />
-                    <circle cx="20" cy="20" r="5" />
-                    <circle cx="20" cy="20" r="2" fill="#DC2626" stroke="none" />
+                  <svg width="64" height="64" viewBox="0 0 40 40" fill="none" stroke="#DC2626" strokeWidth="2">
+                    <path d="M4 20 C9 11 31 11 36 20 C31 29 9 29 4 20 Z" />
+                    <circle cx="20" cy="20" r="6" />
+                    <circle cx="20" cy="20" r="2.5" fill="#DC2626" stroke="none" />
                   </svg>
                 ),
                 pillar: 'Our Vision',
@@ -160,11 +160,12 @@ export default function About() {
               },
               {
                 icon: (
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#DC2626" strokeWidth="1.5">
+                  <svg width="64" height="64" viewBox="0 0 40 40" fill="none" stroke="#DC2626" strokeWidth="2">
                     <circle cx="20" cy="20" r="15" />
                     <line x1="20" y1="5" x2="20" y2="35" />
                     <line x1="5" y1="20" x2="35" y2="20" />
-                    <polygon points="20,7 22.5,14 17.5,14" fill="#DC2626" stroke="none" />
+                    <polygon points="20,6 23,14 17,14" fill="#DC2626" stroke="none" />
+                    <circle cx="20" cy="20" r="2.5" fill="#DC2626" stroke="none" />
                   </svg>
                 ),
                 pillar: 'Our Mission',
@@ -172,7 +173,7 @@ export default function About() {
               },
               {
                 icon: (
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#DC2626" strokeWidth="1.5">
+                  <svg width="64" height="64" viewBox="0 0 40 40" fill="none" stroke="#DC2626" strokeWidth="2">
                     <polygon points="20,4 23,14.5 34,14.5 25.5,21 28,32 20,25.5 12,32 14.5,21 6,14.5 17,14.5" />
                   </svg>
                 ),
@@ -187,7 +188,7 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
                 style={{
-                  padding: '56px 48px',
+                  padding: '64px 48px',
                   borderRight: '1px solid rgba(255,255,255,0.1)',
                   borderBottom: '1px solid rgba(255,255,255,0.1)',
                   transition: 'all 0.3s'
@@ -195,19 +196,18 @@ export default function About() {
                 onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.04)'}
                 onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
               >
-                <div style={{ marginBottom: '24px' }}>{item.icon}</div>
+                <div style={{ marginBottom: '28px' }}>{item.icon}</div>
                 <div style={{
-                  fontFamily: 'IBM Plex Mono',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  color: '#DC2626',
-                  letterSpacing: '0.2em',
+                  fontFamily: 'Archivo, sans-serif',
+                  fontSize: '26px',
+                  fontWeight: 900,
+                  color: '#FFF',
                   textTransform: 'uppercase',
-                  marginBottom: '16px'
+                  marginBottom: '20px'
                 }}>
                   {item.pillar}
                 </div>
-                <p style={{ fontSize: '16px', color: '#94A3B8', lineHeight: 1.7, margin: 0 }}>
+                <p style={{ fontSize: '17px', color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>
                   {item.guarantee}
                 </p>
               </motion.div>
