@@ -268,12 +268,10 @@ const services = [
     title: 'Plant Maintenance',
     description: 'Comprehensive maintenance programs to maximize uptime and asset life.',
     capabilities: [
-      { icon: Icon.Calendar, name: 'Preventive Maintenance', detail: 'Scheduled servicing programs that extend asset life and reduce downtime.' },
-      { icon: Icon.PowerOff, name: 'Shutdown Planning', detail: 'Coordinated turnaround and shutdown planning to minimize plant downtime.' },
-      { icon: Icon.Alert, name: 'Emergency Repair', detail: 'Rapid-response repair teams available around the clock.' },
-      { icon: Icon.Rotate, name: 'Rotating Equipment', detail: 'Overhaul and refurbishment of pumps, compressors, and rotating machinery.' },
-      { icon: Icon.Inspect, name: 'Pipeline Inspection', detail: 'Routine inspection and repair of process and transfer pipelines.' },
-      { icon: Icon.Valve, name: 'Valve Testing', detail: 'Functional testing and certification of safety and process valves.' }
+      { icon: Icon.Calendar, name: 'Preventive Maintenance Program', detail: 'Scheduled servicing programs that extend asset life and reduce downtime.' },
+      { icon: Icon.PowerOff, name: 'Shutdown Planning and Emergency Repairs', detail: 'Coordinated turnaround and shutdown planning to minimize plant downtime.' },
+      { icon: Icon.Alert, name: 'Addition and Alteration Works', detail: 'Rapid-response repair teams available around the clock.' },
+      { icon: Icon.Rotate, name: 'Pipeline Network Inspection, Protection & Testing', detail: 'Overhaul and refurbishment of pumps, compressors, and rotating machinery.' },
     ]
   },
   {
@@ -283,12 +281,11 @@ const services = [
     title: 'Servicing & Testing',
     description: 'Specialised testing and certification for high pressure tube trailers.',
     capabilities: [
-      { icon: Icon.Pressure, name: 'Hydrostatic Testing', detail: 'Pressure testing of tube trailers and vessels to verify structural integrity.' },
-      { icon: Icon.Seal, name: 'DOT/ISO Recertification', detail: 'Recertification of tube trailers to DOT and ISO transport standards.' },
-      { icon: Icon.Valve, name: 'Valve & Manifold Service', detail: 'Inspection, servicing, and repair of valves and trailer manifolds.' },
-      { icon: Icon.TubeBundle, name: 'Tube Bundle Inspection', detail: 'Internal and external inspection of tube bundles for wear and damage.' },
-      { icon: Icon.Leak, name: 'Leak Testing', detail: 'Helium and pressure-based leak detection across the fleet.' },
-      { icon: Icon.Fleet, name: 'Fleet Management', detail: 'Ongoing fleet tracking and maintenance scheduling programs.' }
+      { icon: Icon.Pressure, name: 'High Pressure Hydrostatic Testing', detail: 'Pressure testing of tube trailers and vessels to verify structural integrity.' },
+      { icon: Icon.Seal, name: 'Non-Destructive Testing (NDT)', detail: 'Recertification of tube trailers to DOT and ISO transport standards.' },
+      { icon: Icon.Valve, name: 'ISO Tube Skid and Bundle Fabrication', detail: 'Inspection, servicing, and repair of valves and trailer manifolds.' },
+      { icon: Icon.TubeBundle, name: 'Inspection and Testing', detail: 'Internal and external inspection of tube bundles for wear and damage.' },
+      { icon: Icon.Leak, name: 'Emergency Replacement', detail: 'Helium and pressure-based leak detection across the fleet.' },
     ]
   },
   {
@@ -299,9 +296,9 @@ const services = [
     filterKey: 'Cryogenic Storages & Hoses',
     description: 'Custom fabrication and maintenance for cryogenic applications.',
     capabilities: [
-      { icon: Icon.Hose, name: 'Hose Assembly', detail: 'Custom fabrication of hose assemblies to spec for cryogenic service.' },
+      { icon: Icon.Hose, name: 'Cryogenic Hose Fabrication and Repair', detail: 'Custom fabrication of hose assemblies to spec for cryogenic service.' },
       { icon: Icon.VacuumLine, name: 'Vacuum-Insulated Lines', detail: 'Transfer lines built for LIN, LOX, LAR, and LNG cryogenic service.' },
-      { icon: Icon.Fitting, name: 'End Fitting Installation', detail: 'Fitting installation with full pressure and vacuum testing.' },
+      { icon: Icon.Fitting, name: 'Testing and Certification', detail: 'Fitting installation with full pressure and vacuum testing.' },
       { icon: Icon.Wrench, name: 'Hose Repair', detail: 'Repair and recertification of in-service hose assemblies.' },
       { icon: Icon.Leak, name: 'Leak Detection', detail: 'Detection and repair of leaks across cryogenic transfer equipment.' },
       { icon: Icon.Swap, name: 'Emergency Replacement', detail: 'Rapid replacement service to minimize unplanned downtime.' }
@@ -315,12 +312,11 @@ const services = [
     filterKey: 'Electrical & Instrumental',
     description: 'Instrumentation, controls and electrical installation for process plants.',
     capabilities: [
-      { icon: Icon.Panel, name: 'Panel Wiring', detail: 'Control panel wiring and installation for process and utility systems.' },
-      { icon: Icon.Dial, name: 'Instrumentation Calibration', detail: 'Calibration of field instruments to maintain measurement accuracy.' },
-      { icon: Icon.Chip, name: 'PLC & SCADA', detail: 'Integration of PLC and SCADA systems for plant automation.' },
-      { icon: Icon.Loop, name: 'Loop Testing', detail: 'End-to-end loop testing and commissioning of control circuits.' },
-      { icon: Icon.Cable, name: 'Cable & Conduit', detail: 'Installation of cable trays, conduit, and containment systems.' },
-      { icon: Icon.Hazard, name: 'Hazardous Area (Ex)', detail: 'Installation of equipment rated for hazardous area classifications.' }
+      { icon: Icon.Panel, name: 'Engineering, installation and maintenance services', detail: 'Control panel wiring and installation for process and utility systems.' },
+      { icon: Icon.Dial, name: 'Supply of process instruments and field products', detail: 'Calibration of field instruments to maintain measurement accuracy.' },
+      { icon: Icon.Chip, name: 'Field and Bench Calibration Services', detail: 'Integration of PLC and SCADA systems for plant automation.' },
+      { icon: Icon.Loop, name: 'Emergency On-Call Services', detail: 'End-to-end loop testing and commissioning of control circuits.' },
+      { icon: Icon.Cable, name: 'Plant E&I Maintenance Program', detail: 'Installation of cable trays, conduit, and containment systems.' },
     ]
   }
 ]
