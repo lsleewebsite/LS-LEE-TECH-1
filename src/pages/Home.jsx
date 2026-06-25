@@ -40,6 +40,15 @@ const I = {
       <path d="M14 14 L4 24" /><circle cx="4.5" cy="23.5" r="1.2" />
     </svg>
   ),
+  Lego: (p) => (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="2" {...p}>
+      <rect x="2" y="17" width="16" height="9" />
+      <rect x="4" y="13" width="4" height="4" />
+      <rect x="10" y="8" width="16" height="9" />
+      <rect x="12" y="4" width="4" height="4" />
+      <rect x="19" y="4" width="4" height="4" />
+    </svg>
+  ),
   Gauge: (p) => (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="2" {...p}>
       <path d="M4 18 A10 10 0 0 1 24 18" /><line x1="4" y1="18" x2="24" y2="18" />
@@ -292,7 +301,7 @@ export default function Home() {
     {/* Top Row - 2 Large Cards */}
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', marginBottom: '24px' }}>
       {[
-        { icon: <I.Wrench />, title: 'Project Engineering', tag: 'Turnkey Mechanical Structural', id: 'project-engineering' },
+        { icon: <I.Lego />, title: 'Project Engineering', tag: 'Turnkey Mechanical Structural', id: 'project-engineering' },
         { icon: <I.Gauge />, title: 'Plant Maintenance', tag: '24/7 Operations Support', id: 'plant-maintenance' },
       ].map((it, i) => (
         <MotionLink
