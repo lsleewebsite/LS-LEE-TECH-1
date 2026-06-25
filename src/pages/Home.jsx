@@ -107,29 +107,6 @@ const cardVariant = {
 const MotionLink = motion(Link)
 
 export default function Home() {
-  const [formData, setFormData] = useState({
-    name: '', company: '', email: '', phone: '', scope: '', message: ''
-  })
-  const [errors, setErrors] = useState({})
-  const [submitted, setSubmitted] = useState(false)
-
-  const handleChange = (field) => (e) => {
-    setFormData({ ...formData, [field]: e.target.value })
-    if (errors[field]) setErrors({ ...errors, [field]: '' })
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const newErrors = {}
-    if (!formData.name.trim()) newErrors.name = 'Name required'
-    if (!formData.company.trim()) newErrors.company = 'Company required'
-    if (!formData.email.trim() || !formData.email.includes('@')) newErrors.email = 'Valid email required'
-    if (!formData.scope) newErrors.scope = 'Please select a scope'
-    if (!formData.message.trim()) newErrors.message = 'Project notes required'
-    if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return }
-    setSubmitted(true)
-  }
-
   return (
     <div>
       {/* HERO */}
@@ -145,45 +122,31 @@ export default function Home() {
                   EST. 1999 — SINGAPORE
                 </span>
               </div>
-
               <h1 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '52px', fontWeight: 900, color: '#FFF', lineHeight: 1.1, marginBottom: '24px' }}>
                 Delivering Mechanical & Structural Solutions for the Process Industry
               </h1>
-
-              <p style={{ fontSize: '26px', color: '#94A3B8', lineHeight: 1.7, marginBottom: '40px' }}>
+              <p style={{ fontSize: '26px', color: '#94A3B8', lineHeight: 1.6, marginBottom: '40px' }}>
                 Where experience meets uncompromised quality and safety.
               </p>
-
-              <div style={{ display: 'flex', gap: '24px', animation: 'certScroll 35s linear infinite', width: 'max-content', padding: '8px 0' }}>
-            {[...Array(4)].map((_, repeatIndex) => (
-              [
-                { name: 'ISO 9001' },
-                { name: 'ISO 45001' },
-                { name: 'Biz Safe Star' },
-                { name: 'Non-Destructive Testing (NDT) Level II/III' },
-                { name: 'ASME' },
-              ].map((cert, i) => (
-                <div key={`${repeatIndex}-${i}`}
-                  style={{ minWidth: '220px', padding: '28px 24px', background: '#FFF', border: '2px solid #E5E7EB', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.3s' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.background = 'rgba(220,38,38,0.06)' }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.background = '#FFF' }}
-                >
-                  <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '22px', fontWeight: 900, color: '#DC2626', textAlign: 'center' }}>{cert.name}</div>
-                </div>
-              ))
-            ))}
+              <div style={{ display: 'flex', gap: '16px' }}>
+                <a href="#industries" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: '#DC2626', color: '#FFF', border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
+                  onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
+                  onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
+                  Explore Our Industries <I.Arrow />
+                </a>
+                <a href="/Projects" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: 'transparent', color: '#FFF', border: '2px solid rgba(255,255,255,0.3)', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
+                  onMouseEnter={(e) => { e.target.style.borderColor = '#FFF'; e.target.style.background = 'rgba(255,255,255,0.1)' }}
+                  onMouseLeave={(e) => { e.target.style.borderColor = 'rgba(255,255,255,0.3)'; e.target.style.background = 'transparent' }}>
+                  View Projects
+                </a>
+              </div>
+            </motion.div>
           </div>
 
           {/* Right Image */}
           <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }} style={{ position: 'relative', overflow: 'hidden' }}>
-            <img
-              src={`${import.meta.env.BASE_URL}HeroImage.png`}
-              alt="LS Lee Technology"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
-            />
-            {/* Gradient Overlay Only */}
+            <img src={`${import.meta.env.BASE_URL}HeroImage.png`} alt="LS Lee Technology" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, #0F172A 0%, rgba(15,23,42,0.4) 30%, rgba(15,23,42,0.05) 100%)', zIndex: 1 }}></div>
-            {/* Red Accent Line */}
             <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '3px', background: '#DC2626', zIndex: 2 }}></div>
           </motion.div>
 
@@ -195,10 +158,7 @@ export default function Home() {
       </section>
 
       {/* CERTIFICATIONS CAROUSEL */}
-      <motion.section
-        initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }} variants={fadeInUp}
-        style={{ background: '#F1F5F9', padding: '80px 0' }}
-      >
+      <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }} variants={fadeInUp} style={{ background: '#F1F5F9', padding: '80px 0' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto 48px', padding: '0 32px', textAlign: 'center' }}>
           <h2 style={{ fontSize: '32px', fontWeight: 900, color: '#0F172A', fontFamily: 'Archivo, sans-serif', marginBottom: '12px' }}>
             Certified. Compliant. <span style={{ color: '#DC2626' }}>Trusted.</span>
@@ -213,19 +173,18 @@ export default function Home() {
           <div style={{ display: 'flex', gap: '24px', animation: 'certScroll 35s linear infinite', width: 'max-content', padding: '8px 0' }}>
             {[...Array(4)].map((_, repeatIndex) => (
               [
-                { name: 'NDT / DT', issuer: 'Cylinder Testing' },
-                { name: 'bizSAFE Star', issuer: 'WSH Council', highlight: true },
-                { name: 'ISO 9001:2015', issuer: 'Quality Management' },
-                { name: 'ISO 45001:2018', issuer: 'Safety Management' },
-                { name: 'Professional Engineer', issuer: 'Compliance' },
+                { name: 'ISO 9001' },
+                { name: 'ISO 45001' },
+                { name: 'Biz Safe Star' },
+                { name: 'Non-Destructive Testing (NDT) Level II/III' },
+                { name: 'ASME' },
               ].map((cert, i) => (
                 <div key={`${repeatIndex}-${i}`}
-                  style={{ minWidth: '220px', padding: '28px 24px', background: cert.highlight ? 'rgba(220,38,38,0.06)' : '#FFF', border: `2px solid ${cert.highlight ? 'rgba(220,38,38,0.3)' : '#E5E7EB'}`, flexShrink: 0, transition: 'all 0.3s' }}
+                  style={{ minWidth: '220px', padding: '28px 24px', background: '#FFF', border: '2px solid #E5E7EB', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.3s' }}
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.background = 'rgba(220,38,38,0.06)' }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = cert.highlight ? 'rgba(220,38,38,0.3)' : '#E5E7EB'; e.currentTarget.style.background = cert.highlight ? 'rgba(220,38,38,0.06)' : '#FFF' }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.background = '#FFF' }}
                 >
-                  <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '12px', fontWeight: 700, color: '#64748B', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '10px' }}>{cert.issuer}</div>
-                  <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '18px', fontWeight: 900, color: '#DC2626' }}>{cert.name}</div>
+                  <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '22px', fontWeight: 900, color: '#DC2626', textAlign: 'center' }}>{cert.name}</div>
                 </div>
               ))
             ))}
@@ -264,7 +223,6 @@ export default function Home() {
                 <div className="ind-icon-large" style={{ color: '#0F172A', transition: 'color 0.3s' }}>{it.icon}</div>
                 <div>
                   <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '24px', fontWeight: 900, marginBottom: '8px', color: '#0F172A' }}>{it.title}</h3>
-                  <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 600, color: '#64748B', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{it.tag}</div>
                 </div>
               </MotionLink>
             ))}
@@ -280,106 +238,79 @@ export default function Home() {
         </div>
       </motion.section>
 
-{/* SERVICES */}
-<motion.section
-  id="services"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, margin: '-100px' }}
-  transition={{ duration: 0.6 }}
-  variants={fadeInUp}
-  style={{ background: '#0F172A', color: '#FFF', padding: '80px 32px' }}
->
-  <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-    <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-      <h2 style={{ fontSize: '48px', fontWeight: 900, marginBottom: '16px', color: '#FFF', fontFamily: 'Archivo, sans-serif' }}>
-        Integrated <span style={{ color: '#DC2626' }}>Engineering Services</span>
-      </h2>
-      <p style={{ fontSize: '18px', color: '#94A3B8', maxWidth: '700px', margin: '0 auto' }}>
-        Five core capabilities delivering turnkey mechanical and electrical solutions
-      </p>
-    </div>
+      {/* SERVICES */}
+      <motion.section id="services" initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }} variants={fadeInUp} style={{ background: '#0F172A', color: '#FFF', padding: '80px 32px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <h2 style={{ fontSize: '48px', fontWeight: 900, marginBottom: '16px', color: '#FFF', fontFamily: 'Archivo, sans-serif' }}>
+              Integrated <span style={{ color: '#DC2626' }}>Engineering Services</span>
+            </h2>
+            <p style={{ fontSize: '18px', color: '#94A3B8', maxWidth: '700px', margin: '0 auto' }}>
+              Five core capabilities delivering turnkey mechanical and electrical solutions
+            </p>
+          </div>
 
-    {/* Top Row - 2 Large Cards */}
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', marginBottom: '24px' }}>
-      {[
-        { icon: <I.Lego />, title: 'Project Engineering', tag: 'Turnkey Mechanical Structural', id: 'project-engineering' },
-        { icon: <I.Gauge />, title: 'Plant Maintenance', tag: '24/7 Operations Support', id: 'plant-maintenance' },
-      ].map((it, i) => (
-        <MotionLink
-          to={`/Services?service=${it.id}`}
-          key={i}
-          variants={cardVariant}
-          transition={{ duration: 0.5 }}
-          style={{ padding: '36px', background: 'rgba(255,255,255,0.05)', border: '2px solid rgba(255,255,255,0.1)', textDecoration: 'none', color: 'inherit', transition: 'all 0.3s', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '16px' }}
-          onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.querySelector('.svc-icon').style.color = '#DC2626' }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.querySelector('.svc-icon').style.color = '#FFF' }}
-        >
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-            <div className="svc-icon" style={{ color: '#FFF', transition: 'color 0.3s' }}>
-              {React.cloneElement(it.icon, { width: 52, height: 52 })}
-            </div>
-            <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '40px', fontWeight: 900, color: 'rgba(255,255,255,0.1)', lineHeight: 1 }}>
-              {String(i + 1).padStart(2, '0')}
-            </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', marginBottom: '24px' }}>
+            {[
+              { icon: <I.Lego />, title: 'Project Engineering', tag: 'Turnkey Mechanical Structural', id: 'project-engineering' },
+              { icon: <I.Gauge />, title: 'Plant Maintenance', tag: '24/7 Operations Support', id: 'plant-maintenance' },
+            ].map((it, i) => (
+              <MotionLink to={`/Services?service=${it.id}`} key={i} variants={cardVariant} transition={{ duration: 0.5 }}
+                style={{ padding: '36px', background: 'rgba(255,255,255,0.05)', border: '2px solid rgba(255,255,255,0.1)', textDecoration: 'none', color: 'inherit', transition: 'all 0.3s', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '16px' }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.querySelector('.svc-icon').style.color = '#DC2626' }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.querySelector('.svc-icon').style.color = '#FFF' }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                  <div className="svc-icon" style={{ color: '#FFF', transition: 'color 0.3s' }}>{React.cloneElement(it.icon, { width: 52, height: 52 })}</div>
+                  <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '40px', fontWeight: 900, color: 'rgba(255,255,255,0.1)', lineHeight: 1 }}>{String(i + 1).padStart(2, '0')}</div>
+                </div>
+                <div>
+                  <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '24px', fontWeight: 900, marginBottom: '8px', lineHeight: 1.2, color: '#FFF' }}>{it.title}</h3>
+                  <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{it.tag}</div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: 'auto', fontSize: '13px', fontWeight: 700, color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  Learn More <I.Arrow />
+                </div>
+              </MotionLink>
+            ))}
           </div>
-          <div>
-            <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '24px', fontWeight: 900, marginBottom: '8px', lineHeight: 1.2, color: '#FFF' }}>{it.title}</h3>
-            <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{it.tag}</div>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: 'auto', fontSize: '13px', fontWeight: 700, color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            Learn More <I.Arrow />
-          </div>
-        </MotionLink>
-      ))}
-    </div>
 
-    {/* Bottom Row - 3 Equal Cards */}
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
-      {[
-        { icon: <I.Trailer />, title: 'Servicing & Testing', tag: 'Destructive & Non-Destructive Testing', id: 'servicing-testing' },
-        { icon: <I.Snow />, title: 'Cryogenic Storage & Hoses', tag: 'Vacuum-Insulated Equipment', id: 'cryogenic-storage' },
-        { icon: <I.Bolt />, title: 'Electrical & Instrumentation', tag: 'Controls & Automation', id: 'electrical-instrumentation' },
-      ].map((it, i) => (
-        <MotionLink
-          to={`/Services?service=${it.id}`}
-          key={i}
-          variants={cardVariant}
-          transition={{ duration: 0.5 }}
-          style={{ padding: '32px 28px', background: 'rgba(255,255,255,0.05)', border: '2px solid rgba(255,255,255,0.1)', textDecoration: 'none', color: 'inherit', transition: 'all 0.3s', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '14px' }}
-          onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.querySelector('.svc-icon-sm').style.color = '#DC2626' }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.querySelector('.svc-icon-sm').style.color = '#FFF' }}
-        >
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-            <div className="svc-icon-sm" style={{ color: '#FFF', transition: 'color 0.3s' }}>
-              {React.cloneElement(it.icon, { width: 44, height: 44 })}
-            </div>
-            <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '32px', fontWeight: 900, color: 'rgba(255,255,255,0.1)', lineHeight: 1 }}>
-              {String(i + 3).padStart(2, '0')}
-            </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+            {[
+              { icon: <I.Trailer />, title: 'Servicing & Testing', tag: 'Destructive & Non-Destructive Testing', id: 'servicing-testing' },
+              { icon: <I.Snow />, title: 'Cryogenic Storage & Hoses', tag: 'Vacuum-Insulated Equipment', id: 'cryogenic-storage' },
+              { icon: <I.Bolt />, title: 'Electrical & Instrumentation', tag: 'Controls & Automation', id: 'electrical-instrumentation' },
+            ].map((it, i) => (
+              <MotionLink to={`/Services?service=${it.id}`} key={i} variants={cardVariant} transition={{ duration: 0.5 }}
+                style={{ padding: '32px 28px', background: 'rgba(255,255,255,0.05)', border: '2px solid rgba(255,255,255,0.1)', textDecoration: 'none', color: 'inherit', transition: 'all 0.3s', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '14px' }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.querySelector('.svc-icon-sm').style.color = '#DC2626' }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.querySelector('.svc-icon-sm').style.color = '#FFF' }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                  <div className="svc-icon-sm" style={{ color: '#FFF', transition: 'color 0.3s' }}>{React.cloneElement(it.icon, { width: 44, height: 44 })}</div>
+                  <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '32px', fontWeight: 900, color: 'rgba(255,255,255,0.1)', lineHeight: 1 }}>{String(i + 3).padStart(2, '0')}</div>
+                </div>
+                <div>
+                  <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '19px', fontWeight: 900, marginBottom: '6px', lineHeight: 1.2, color: '#FFF' }}>{it.title}</h3>
+                  <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{it.tag}</div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: 'auto', fontSize: '12px', fontWeight: 700, color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  Learn More <I.Arrow />
+                </div>
+              </MotionLink>
+            ))}
           </div>
-          <div>
-            <h3 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '19px', fontWeight: 900, marginBottom: '6px', lineHeight: 1.2, color: '#FFF' }}>{it.title}</h3>
-            <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '10px', fontWeight: 700, color: '#DC2626', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{it.tag}</div>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: 'auto', fontSize: '12px', fontWeight: 700, color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            Learn More <I.Arrow />
-          </div>
-        </MotionLink>
-      ))}
-    </div>
 
-    {/* View All Button */}
-    <div style={{ textAlign: 'center', marginTop: '40px' }}>
-      <a href="/Services" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: '#DC2626', color: '#FFF', border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
-        onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
-        onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
-        View All Services <I.Arrow />
-      </a>
-    </div>
-  </div>
-</motion.section>
-      
+          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+            <a href="/Services" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: '#DC2626', color: '#FFF', border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
+              onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
+              onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
+              View All Services <I.Arrow />
+            </a>
+          </div>
+        </div>
+      </motion.section>
+
       {/* PROJECTS */}
       <motion.section id="projects" initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }} variants={fadeInUp} style={{ background: '#FFF', padding: '80px 32px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -391,7 +322,6 @@ export default function Home() {
           </div>
 
           <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }} style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '20px', marginBottom: '40px' }}>
-
             <motion.div variants={cardVariant} transition={{ duration: 0.5 }} style={{ gridColumn: 'span 8', background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden', transition: 'all 0.3s', cursor: 'pointer' }}
               onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-4px)' }}
               onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.transform = 'translateY(0)' }}>
@@ -433,20 +363,14 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <MotionLink
-              to="/Projects"
-              variants={cardVariant}
-              transition={{ duration: 0.5, delay: 0.25 }}
+            <MotionLink to="/Projects" variants={cardVariant} transition={{ duration: 0.5, delay: 0.25 }}
               style={{ gridColumn: 'span 3', background: '#0F172A', border: '2px solid #0F172A', color: '#FFF', padding: '40px 24px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', textDecoration: 'none', transition: 'all 0.3s', cursor: 'pointer' }}
               onMouseEnter={(e) => { e.currentTarget.style.background = '#DC2626'; e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.transform = 'translateY(-4px)' }}
               onMouseLeave={(e) => { e.currentTarget.style.background = '#0F172A'; e.currentTarget.style.borderColor = '#0F172A'; e.currentTarget.style.transform = 'translateY(0)' }}>
               <svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginBottom: '20px' }}>
-                <line x1="6" y1="16" x2="26" y2="16" />
-                <polyline points="18,8 26,16 18,24" />
+                <line x1="6" y1="16" x2="26" y2="16" /><polyline points="18,8 26,16 18,24" />
               </svg>
-              <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '20px', fontWeight: 900, lineHeight: 1.3 }}>
-                View All Projects
-              </div>
+              <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '20px', fontWeight: 900, lineHeight: 1.3 }}>View All Projects</div>
             </MotionLink>
 
             <motion.div variants={cardVariant} transition={{ duration: 0.5, delay: 0.3 }} style={{ gridColumn: 'span 4', background: '#FFF', border: '2px solid #E5E7EB', overflow: 'hidden', transition: 'all 0.3s', cursor: 'pointer' }}
@@ -461,7 +385,6 @@ export default function Home() {
                 <p style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.5 }}>Vacuum-insulated transfer lines for LNG operations.</p>
               </div>
             </motion.div>
-
           </motion.div>
         </div>
       </motion.section>
@@ -472,8 +395,6 @@ export default function Home() {
           <h2 style={{ fontFamily: 'Archivo, sans-serif', fontSize: '48px', fontWeight: 900, marginBottom: '24px', color: '#FFF', lineHeight: 1.2 }}>
             Ready to Discuss <span style={{ color: '#DC2626' }}>Your Project?</span>
           </h2>
-          <p style={{ fontSize: '18px', color: '#94A3B8', marginBottom: '40px', lineHeight: 1.7 }}>
-          </p>
           <a href="mailto:projects@lslee.com.sg" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: '#DC2626', color: '#FFF', border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
             onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
             onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
