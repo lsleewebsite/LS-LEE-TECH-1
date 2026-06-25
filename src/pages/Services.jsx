@@ -436,7 +436,7 @@ export default function Services() {
                   >
                     <span style={{
                       fontFamily: 'IBM Plex Mono, monospace',
-                      fontSize: '16px',
+                      fontSize: '22px',
                       fontWeight: 700,
                       color: isActive ? '#DC2626' : '#CBD5E1',
                       width: '28px',
