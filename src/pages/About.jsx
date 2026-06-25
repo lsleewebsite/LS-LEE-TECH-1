@@ -163,7 +163,6 @@ export default function About() {
                     <circle cx="20" cy="20" r="15" />
                     <line x1="20" y1="5" x2="20" y2="35" />
                     <line x1="5" y1="20" x2="35" y2="20" />
-                    <polygon points="20,6 23,14 17,14" fill="#DC2626" stroke="none" />
                     <circle cx="20" cy="20" r="2.5" fill="#DC2626" stroke="none" />
                   </svg>
                 ),
