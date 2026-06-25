@@ -393,7 +393,7 @@ export default function About() {
           {/* Scrolling row */}
           <div style={{
             display: "flex",
-            gap: "48px",
+            gap: "24px",
             animation: "scroll 30s linear infinite",
             width: "max-content",
             alignItems: "center"
@@ -414,34 +414,33 @@ export default function About() {
                 <div
                   key={`${repeatIndex}-${i}`}
                   style={{
-                    height: '80px',
+                    height: '100px',
+                    width: '200px',
+                    background: '#FFF',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0,
-                    padding: '0 16px',
+                    padding: '16px 24px',
+                    boxSizing: 'border-box',
+                    transition: 'transform 0.3s'
                   }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
                 >
                   <img
                     src={logo.src}
                     alt={logo.alt}
                     style={{
-                      height: '48px',
-                      width: 'auto',
-                      maxWidth: '160px',
-                      objectFit: 'contain',
-                      filter: 'brightness(0) invert(1)',
-                      opacity: 0.7,
-                      transition: 'opacity 0.3s'
+                      height: '64px',
+                      width: '100%',
+                      objectFit: 'contain'
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
-                    onMouseLeave={(e) => e.currentTarget.style.opacity = '0.7'}
                   />
                 </div>
               ))
             ))}
           </div>
-        </div>
 
         <style>{`
           @keyframes scroll {
