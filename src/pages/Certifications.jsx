@@ -234,7 +234,6 @@ export default function Certifications() {
               Our <span style={{ color: '#DC2626' }}>Certifications</span>
             </h1>
             <p style={{ fontSize: '20px', color: '#94A3B8', maxWidth: '800px', lineHeight: 1.7 }}>
-              Industry-recognised certifications demonstrating our commitment to quality, safety, and technical excellence.
             </p>
           </motion.div>
         </div>
