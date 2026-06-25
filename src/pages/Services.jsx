@@ -10,13 +10,12 @@ const Icon = {
     </svg>
   ),
   Lego: (p) => (
-    <svg width="40" height="40" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}>
-      <rect x="1" y="16" width="18" height="10" rx="2" />
-      <rect x="3" y="12" width="4" height="4" rx="1.5" />
-      <rect x="9" y="6" width="18" height="10" rx="2" />
-      <rect x="11" y="2" width="4" height="4" rx="1.5" />
-      <rect x="17" y="2" width="4" height="4" rx="1.5" />
-      <rect x="23" y="2" width="4" height="4" rx="1.5" />
+    <svg width="40" height="40" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="2" {...p}>
+      <rect x="2" y="17" width="16" height="9" rx="1.5" />
+      <rect x="4" y="13" width="4" height="4" rx="1" />
+      <rect x="10" y="8" width="16" height="9" rx="1.5" />
+      <rect x="12" y="4" width="4" height="4" rx="1" />
+      <rect x="19" y="4" width="4" height="4" rx="1" />
     </svg>
   ),
   Gauge: (p) => (
