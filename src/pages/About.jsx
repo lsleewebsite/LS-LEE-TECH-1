@@ -393,23 +393,23 @@ export default function About() {
           {/* Scrolling row */}
           <div style={{
             display: "flex",
-            gap: "24px",
+            gap: "48px",
             animation: "scroll 30s linear infinite",
             width: "max-content",
             alignItems: "center"
           }}>
             {[...Array(3)].map((_, repeatIndex) => (
               [
-                { src: `${import.meta.env.BASE_URL}clients/DayOne (1).png`, alt: 'DayOne' },
-                { src: `${import.meta.env.BASE_URL}clients/Iwatani (1).png`, alt: 'Iwatani' },
-                { src: `${import.meta.env.BASE_URL}clients/Linde (1).png`, alt: 'The Linde Group' },
-                { src: `${import.meta.env.BASE_URL}clients/SSMC (1).png`, alt: 'SSMC' },
-                { src: `${import.meta.env.BASE_URL}clients/Soitec (1).png`, alt: 'Soitec' },
-                { src: `${import.meta.env.BASE_URL}clients/Global_Foundaries.png`, alt: 'GlobalFoundries' },
-                { src: `${import.meta.env.BASE_URL}clients/UMC (1).png`, alt: 'UMC' },
-                { src: `${import.meta.env.BASE_URL}clients/Siltronic_Logo (1).png`, alt: 'Siltronic' },
-                { src: `${import.meta.env.BASE_URL}clients/Micron (1).png`, alt: 'Micron' },
-                { src: `${import.meta.env.BASE_URL}clients/air_liquide_compact.png`, alt: 'Air Liquide' },
+                { src: `${import.meta.env.BASE_URL}clients/DayOne (1).png`, alt: 'DayOne', height: '100px' },
+                { src: `${import.meta.env.BASE_URL}clients/Iwatani (1).png`, alt: 'Iwatani', height: '100px' },
+                { src: `${import.meta.env.BASE_URL}clients/Linde (1).png`, alt: 'The Linde Group', height: '100px' },
+                { src: `${import.meta.env.BASE_URL}clients/SSMC (1).png`, alt: 'SSMC', height: '100px' },
+                { src: `${import.meta.env.BASE_URL}clients/Soitec (1).png`, alt: 'Soitec', height: '100px' },
+                { src: `${import.meta.env.BASE_URL}clients/Global_Foundaries.png`, alt: 'GlobalFoundries', height: '60px' },
+                { src: `${import.meta.env.BASE_URL}clients/UMC (1).png`, alt: 'UMC', height: '100px' },
+                { src: `${import.meta.env.BASE_URL}clients/Siltronic_Logo (1).png`, alt: 'Siltronic', height: '100px' },
+                { src: `${import.meta.env.BASE_URL}clients/Micron (1).png`, alt: 'Micron', height: '100px' },
+                { src: `${import.meta.env.BASE_URL}clients/air_liquide_compact.png`, alt: 'Air Liquide', height: '100px' },
               ].map((logo, i) => (
                 <div
                   key={`${repeatIndex}-${i}`}
@@ -420,16 +420,17 @@ export default function About() {
                     flexShrink: 0,
                     padding: '0 24px',
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
                 >
                   <img
                     src={logo.src}
                     alt={logo.alt}
                     style={{
-                      height: '64px',
-                      width: '100%',
-                      objectFit: 'contain'
+                      height: logo.height,
+                      width: 'auto',
+                      maxWidth: '200px',
+                      objectFit: 'contain',
+                      filter: 'brightness(0) invert(1)',
+                      opacity: 0.8
                     }}
                   />
                 </div>
