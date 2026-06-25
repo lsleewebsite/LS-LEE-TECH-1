@@ -394,7 +394,7 @@ export default function Services() {
           {/* Sidebar */}
           <div style={{
             position: 'relative',
-            width: '380px',
+            width: '420px',
             flexShrink: 0,
             background: '#FFF',
             border: '2px solid #E5E7EB',
@@ -424,8 +424,8 @@ export default function Services() {
                       flex: 1,
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '16px',
-                      padding: '0 28px',
+                      gap: '20px',
+                      padding: '0 32px',
                       background: 'transparent',
                       border: 'none',
                       borderBottom: i < services.length - 1 ? '1px solid #E5E7EB' : 'none',
@@ -436,30 +436,37 @@ export default function Services() {
                   >
                     <span style={{
                       fontFamily: 'IBM Plex Mono, monospace',
-                      fontSize: '12px',
-                      fontWeight: 600,
-                      color: isActive ? '#DC2626' : '#94A3B8',
-                      width: '20px',
+                      fontSize: '16px',
+                      fontWeight: 700,
+                      color: isActive ? '#DC2626' : '#CBD5E1',
+                      width: '28px',
                       flexShrink: 0
                     }}>
                       {s.num}
                     </span>
-                    <div style={{ color: isActive ? '#DC2626' : '#0F172A', flexShrink: 0, transition: 'color 0.3s' }}>
-                      {React.cloneElement(s.icon, { width: 26, height: 26 })}
+                    <div style={{
+                      color: isActive ? '#DC2626' : '#94A3B8',
+                      flexShrink: 0,
+                      transition: 'color 0.3s'
+                    }}>
+                      {React.cloneElement(s.icon, { width: 40, height: 40 })}
                     </div>
                     <div style={{ minWidth: 0 }}>
                       <div style={{
                         fontFamily: 'Archivo, sans-serif',
                         fontWeight: 800,
-                        fontSize: '15px',
+                        fontSize: '17px',
                         lineHeight: 1.25,
-                        color: isActive ? '#0F172A' : '#475569',
-                        marginBottom: '2px',
+                        color: isActive ? '#0F172A' : '#64748B',
+                        marginBottom: '4px',
                         transition: 'color 0.3s'
                       }}>
                         {s.title}
                       </div>
-                      <div style={{ fontSize: '11px', color: '#94A3B8' }}>
+                      <div style={{
+                        fontSize: '12px',
+                        color: isActive ? '#94A3B8' : '#CBD5E1'
+                      }}>
                         {s.tagline}
                       </div>
                     </div>
