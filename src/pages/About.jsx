@@ -90,8 +90,6 @@ export default function About() {
         borderBottom: "2px solid #DC2626",
       }}>
         <div style={{ display: "grid", gridTemplateColumns: "40% 60%", minHeight: "500px" }}>
-
-          {/* Left Text */}
           <div style={{
             padding: "100px 60px",
             display: "flex",
@@ -113,8 +111,6 @@ export default function About() {
               </h1>
             </motion.div>
           </div>
-
-          {/* Right Image Placeholder */}
           <div style={{
             background: "#E5E7EB",
             display: "flex",
@@ -212,7 +208,7 @@ export default function About() {
           </div>
         </div>
       </section>
-      
+
       {/* Story */}
       <motion.section
         initial="hidden"
@@ -245,22 +241,29 @@ export default function About() {
                 letterSpacing: "0.05em",
                 textTransform: "uppercase",
               }}>
-                1999 to Present
+                1989 to Present
               </p>
             </div>
-
             <div style={{ fontSize: "16px", color: "#64748B", lineHeight: 1.8 }}>
               <p style={{ marginBottom: "24px" }}>
-                L.S. Lee started in 1999 doing piping work for industrial gas plants. The semiconductor boom had not hit Singapore yet. Data centres were not burning gigawatts. Hydrogen was something you learned about in chemistry class, not something you moved around in 40-foot tube trailers.v
+                L.S. Lee started in 1989 as a three-person mechanical contractor doing piping work for industrial gas
+                plants. The semiconductor boom had not hit Singapore yet. Data centres were not burning gigawatts.
+                Hydrogen was something you learned about in chemistry class, not something you moved around in 40-foot
+                tube trailers at 250 bar.
               </p>
               <p style={{ marginBottom: "24px" }}>
-                We grew by doing one thing well and then doing it again. Integrating state-of-the-art industrial gas plants and distribution systems for one fab became twelve. Plant turnarounds became long-term maintenance contracts. One-off tube trailer testing led to a dedicated hydrogen tube testing facility.
+                We grew by doing one thing well and then doing it again. UHP gas distribution for one fab became UHP for
+                twelve fabs. Plant turnarounds became long-term maintenance contracts. One-off tube trailer testing
+                became Singapore's first dedicated hydrogen testing facility.
               </p>
               <p style={{ marginBottom: "24px" }}>
-                Today we are a 80-person team with in-house engineering capability, fabrication shop, high pressure testing facility, and maintenance crews running 24/7 support contracts. We have worked on projects you have heard of and many more you have not, because our clients care more about uptime than press releases.
+                Today we are a 50-person team with in-house design capability, fabrication shop, testing facility, and
+                maintenance crews running 24/7 support contracts. We have worked on projects you have heard of and plenty
+                you have not, because our clients care more about uptime than press releases.
               </p>
               <p>
-                The industry changed. We journeyed and changed with it. What did not change: if your name goes on the drawing, you own the outcome.
+                The industry changed. We changed with it. What did not change: if your name goes on the drawing, you own
+                the outcome.
               </p>
             </div>
           </div>
@@ -289,7 +292,6 @@ export default function About() {
           }}>
             Key Milestones
           </h2>
-
           <div style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
@@ -360,29 +362,16 @@ export default function About() {
           <div style={{ width: "60px", height: "4px", background: "#DC2626" }}></div>
         </div>
 
-        {/* Carousel Track */}
         <div style={{ overflow: "hidden", position: "relative" }}>
-          {/* Fade edges */}
           <div style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            bottom: 0,
-            width: "120px",
-            background: "linear-gradient(to right, #0F172A, transparent)",
-            zIndex: 2
+            position: "absolute", left: 0, top: 0, bottom: 0, width: "120px",
+            background: "linear-gradient(to right, #0F172A, transparent)", zIndex: 2
           }}></div>
           <div style={{
-            position: "absolute",
-            right: 0,
-            top: 0,
-            bottom: 0,
-            width: "120px",
-            background: "linear-gradient(to left, #0F172A, transparent)",
-            zIndex: 2
+            position: "absolute", right: 0, top: 0, bottom: 0, width: "120px",
+            background: "linear-gradient(to left, #0F172A, transparent)", zIndex: 2
           }}></div>
 
-          {/* Scrolling row */}
           <div style={{
             display: "flex",
             gap: "48px",
@@ -433,6 +422,7 @@ export default function About() {
               ))
             ))}
           </div>
+        </div>
 
         <style>{`
           @keyframes scroll {
@@ -464,7 +454,6 @@ export default function About() {
           }}>
             Talk to Someone Who Has Actually Done This Before
           </h2>
-
           <p style={{
             fontSize: "18px",
             marginBottom: "40px",
@@ -472,8 +461,7 @@ export default function About() {
             lineHeight: 1.7,
           }}>
           </p>
-
-          <a
+          
             href="/Contact"
             style={{
               display: "inline-flex",
