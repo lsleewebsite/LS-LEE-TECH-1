@@ -11,11 +11,11 @@ const Icon = {
   ),
   Lego: (p) => (
     <svg width="40" height="40" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="2" {...p}>
-      <rect x="2" y="17" width="16" height="9" rx="1.5" />
-      <rect x="4" y="13" width="4" height="4" rx="1" />
-      <rect x="10" y="8" width="16" height="9" rx="1.5" />
-      <rect x="12" y="4" width="4" height="4" rx="1" />
-      <rect x="19" y="4" width="4" height="4" rx="1" />
+      <rect x="2" y="17" width="16" height="9" />
+      <rect x="4" y="13" width="4" height="4" />
+      <rect x="10" y="8" width="16" height="9" />
+      <rect x="12" y="4" width="4" height="4" />
+      <rect x="19" y="4" width="4" height="4" />
     </svg>
   ),
   Gauge: (p) => (
