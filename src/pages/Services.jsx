@@ -255,9 +255,9 @@ const services = [
     capabilities: [
       { icon: Icon.Cube, name: 'Process Plant Installation and Integration', detail: 'Detailed engineering drawings and 3D models built before fabrication begins.' },
       { icon: Icon.Spark, name: 'Platform and Structures', detail: 'In-house certified welding and fabrication shop for custom components.' },
-      { icon: Icon.Pipe, name: 'Equipment Installation & Comissioning', detail: 'Trenching, laying, and tie-in of underground process and utility piping.' },
+      { icon: Icon.Pipe, name: 'Equipment Installation & Commissioning', detail: 'Trenching, laying, and tie-in of underground process and utility piping.' },
       { icon: Icon.Beam, name: 'Pipeline Network Fabrication and Commissioning', detail: 'Structural steel design, fabrication, and on-site erection.' },
-      { icon: Icon.Skid, name: 'Undergrounding Piping Network & Metering Systems', detail: 'Fabrication of gas metering skid stations to client specification.' },
+      { icon: Icon.Skid, name: 'Underground Piping Network & Metering Systems', detail: 'Fabrication of gas metering skid stations to client specification.' },
       { icon: Icon.Install, name: 'Cryogenic Network and Insulation', detail: 'Equipment installation through to final commissioning and handover.' }
     ]
   },
@@ -285,7 +285,8 @@ const services = [
       { icon: Icon.Seal, name: 'Non-Destructive Testing (NDT)', detail: 'Recertification of tube trailers to DOT and ISO transport standards.' },
       { icon: Icon.Valve, name: 'ISO Tube Skid and Bundle Fabrication', detail: 'Inspection, servicing, and repair of valves and trailer manifolds.' },
       { icon: Icon.TubeBundle, name: 'Inspection and Testing', detail: 'Internal and external inspection of tube bundles for wear and damage.' },
-      { icon: Icon.Leak, name: 'Emergency Replacement', detail: 'Helium and pressure-based leak detection across the fleet.' },
+      { icon: Icon.Leak, name: 'PE Endorsement', detail: 'Helium and pressure-based leak detection across the fleet.' },
+      { icon: Icon.Leak, name: 'Valve & Manifold Fabrication and Testing', detail: '67676767.' },
     ]
   },
   {
@@ -299,8 +300,6 @@ const services = [
       { icon: Icon.Hose, name: 'Cryogenic Hose Fabrication and Repair', detail: 'Custom fabrication of hose assemblies to spec for cryogenic service.' },
       { icon: Icon.VacuumLine, name: 'Vacuum-Insulated Lines', detail: 'Transfer lines built for LIN, LOX, LAR, and LNG cryogenic service.' },
       { icon: Icon.Fitting, name: 'Testing and Certification', detail: 'Fitting installation with full pressure and vacuum testing.' },
-      { icon: Icon.Wrench, name: 'Hose Repair', detail: 'Repair and recertification of in-service hose assemblies.' },
-      { icon: Icon.Leak, name: 'Leak Detection', detail: 'Detection and repair of leaks across cryogenic transfer equipment.' },
       { icon: Icon.Swap, name: 'Emergency Replacement', detail: 'Rapid replacement service to minimize unplanned downtime.' }
     ]
   },
