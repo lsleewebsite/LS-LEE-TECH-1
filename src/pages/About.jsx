@@ -414,16 +414,11 @@ export default function About() {
                 <div
                   key={`${repeatIndex}-${i}`}
                   style={{
-                    height: '100px',
-                    width: '200px',
-                    background: '#FFF',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0,
-                    padding: '16px 24px',
-                    boxSizing: 'border-box',
-                    transition: 'transform 0.3s'
+                    padding: '0 24px',
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
                   onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
