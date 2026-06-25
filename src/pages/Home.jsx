@@ -154,19 +154,24 @@ export default function Home() {
                 Where experience meets uncompromised quality and safety.
               </p>
 
-              <div style={{ display: 'flex', gap: '16px' }}>
-                <a href="#industries" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: '#DC2626', color: '#FFF', border: '2px solid #DC2626', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
-                  onMouseEnter={(e) => { e.target.style.background = '#FFF'; e.target.style.color = '#DC2626'; e.target.style.borderColor = '#FFF' }}
-                  onMouseLeave={(e) => { e.target.style.background = '#DC2626'; e.target.style.color = '#FFF'; e.target.style.borderColor = '#DC2626' }}>
-                  Explore Our Industries <I.Arrow />
-                </a>
-                <a  style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '18px 40px', background: 'transparent', color: '#FFF', border: '2px solid rgba(255,255,255,0.3)', fontFamily: 'Archivo, sans-serif', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
-                  onMouseEnter={(e) => { e.target.style.borderColor = '#FFF'; e.target.style.background = 'rgba(255,255,255,0.1)' }}
-                  onMouseLeave={(e) => { e.target.style.borderColor = 'rgba(255,255,255,0.3)'; e.target.style.background = 'transparent' }}>
-                  View Projects
-                </a>
-              </div>
-            </motion.div>
+              <div style={{ display: 'flex', gap: '24px', animation: 'certScroll 35s linear infinite', width: 'max-content', padding: '8px 0' }}>
+            {[...Array(4)].map((_, repeatIndex) => (
+              [
+                { name: 'ISO 9001' },
+                { name: 'ISO 45001' },
+                { name: 'Biz Safe Star' },
+                { name: 'Non-Destructive Testing (NDT) Level II/III' },
+                { name: 'ASME' },
+              ].map((cert, i) => (
+                <div key={`${repeatIndex}-${i}`}
+                  style={{ minWidth: '220px', padding: '28px 24px', background: '#FFF', border: '2px solid #E5E7EB', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.3s' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#DC2626'; e.currentTarget.style.background = 'rgba(220,38,38,0.06)' }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E5E7EB'; e.currentTarget.style.background = '#FFF' }}
+                >
+                  <div style={{ fontFamily: 'Archivo, sans-serif', fontSize: '22px', fontWeight: 900, color: '#DC2626', textAlign: 'center' }}>{cert.name}</div>
+                </div>
+              ))
+            ))}
           </div>
 
           {/* Right Image */}
