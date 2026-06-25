@@ -140,7 +140,7 @@ export default function Layout({ currentPageName, children }) {
           <div style={{ padding: '48px 32px', borderRight: '2px solid #0A1628' }}>
             <img src="/LS-LEE-TECH-1/logo.png" alt="LS Lee Technology" style={{ height: '60px', width: 'auto', marginBottom: '16px' }} />
             <p style={{ fontSize: '13px', color: '#5B6573', lineHeight: 1.6, margin: '16px 0 0' }}>
-              Mechanical engineering contractor serving Singapore's gas and process industries since 2003.
+              Mechanical engineering contractor serving Singapore's gas and process industries since 1999.
             </p>
           </div>
 
@@ -195,7 +195,6 @@ export default function Layout({ currentPageName, children }) {
               style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
               onMouseEnter={(e) => e.target.style.color = '#DC2626'}
               onMouseLeave={(e) => e.target.style.color = '#0A1628'}>
-              Start Enquiry
             </Link>
             <Link to="/Contact"
               style={{ display: 'block', padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', color: '#0A1628', transition: 'color 0.15s' }}
