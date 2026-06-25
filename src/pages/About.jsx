@@ -169,7 +169,7 @@ export default function About() {
                 letterSpacing: "0.05em",
                 textTransform: "uppercase",
               }}>
-                1989 to Present
+                1999 to Present
               </p>
             </div>
 
