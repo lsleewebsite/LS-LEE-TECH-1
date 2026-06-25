@@ -253,12 +253,12 @@ const services = [
     title: 'Project Engineering',
     description: 'Complete project lifecycle management from engineering through commissioning.',
     capabilities: [
-      { icon: Icon.Cube, name: '3D Modeling', detail: 'Detailed engineering drawings and 3D models built before fabrication begins.' },
-      { icon: Icon.Spark, name: 'Welding & Fabrication', detail: 'In-house certified welding and fabrication shop for custom components.' },
-      { icon: Icon.Pipe, name: 'Underground Piping', detail: 'Trenching, laying, and tie-in of underground process and utility piping.' },
-      { icon: Icon.Beam, name: 'Steel Structures', detail: 'Structural steel design, fabrication, and on-site erection.' },
-      { icon: Icon.Skid, name: 'Metering Skids', detail: 'Fabrication of gas metering skid stations to client specification.' },
-      { icon: Icon.Install, name: 'Installation & Commissioning', detail: 'Equipment installation through to final commissioning and handover.' }
+      { icon: Icon.Cube, name: 'Process Plant Installation and Integration', detail: 'Detailed engineering drawings and 3D models built before fabrication begins.' },
+      { icon: Icon.Spark, name: 'Platform and Structures', detail: 'In-house certified welding and fabrication shop for custom components.' },
+      { icon: Icon.Pipe, name: 'Equipment Installation & Comissioning', detail: 'Trenching, laying, and tie-in of underground process and utility piping.' },
+      { icon: Icon.Beam, name: 'Pipeline Network Fabrication and Commissioning', detail: 'Structural steel design, fabrication, and on-site erection.' },
+      { icon: Icon.Skid, name: 'Undergrounding Piping Network & Metering Systems', detail: 'Fabrication of gas metering skid stations to client specification.' },
+      { icon: Icon.Install, name: 'Cryogenic Network and Insulation', detail: 'Equipment installation through to final commissioning and handover.' }
     ]
   },
   {
