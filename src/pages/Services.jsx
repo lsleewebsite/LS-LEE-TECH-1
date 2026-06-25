@@ -394,7 +394,7 @@ export default function Services() {
           display: 'flex',
           alignItems: 'stretch',
           gap: '40px',
-          minHeight: '640px'
+          height: '700px'
         }}>
           {/* Sidebar */}
           <div style={{
@@ -492,13 +492,13 @@ export default function Services() {
                 transition={{ duration: 0.2, ease: 'easeInOut' }}
                 style={{
                   height: '100%',
-                  minHeight: '620px',
                   background: '#FFF',
                   border: '2px solid #E5E7EB',
                   padding: '56px',
                   boxSizing: 'border-box',
                   display: 'flex',
-                  flexDirection: 'column'
+                  flexDirection: 'column',
+                  overflowY: 'auto'
                 }}
               >
                 <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '12px', color: '#94A3B8', marginBottom: '10px' }}>
