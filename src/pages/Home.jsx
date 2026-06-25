@@ -206,16 +206,13 @@ export default function Home() {
           <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: '150px', background: 'linear-gradient(to left, #F1F5F9, transparent)', zIndex: 2 }}></div>
 
           <div style={{ display: 'flex', gap: '24px', animation: 'certScroll 35s linear infinite', width: 'max-content', padding: '8px 0' }}>
-            {[...Array(2)].map((_, repeatIndex) => (
+            {[...Array(4)].map((_, repeatIndex) => (
               [
+                { name: 'NDT / DT', issuer: 'Cylinder Testing' },
+                { name: 'bizSAFE Star', issuer: 'WSH Council', highlight: true },
                 { name: 'ISO 9001:2015', issuer: 'Quality Management' },
-                { name: 'ISO 45001:2018', issuer: 'Health & Safety' },
-                { name: 'bizSAFE STAR', issuer: 'WSH Council', highlight: true },
-                { name: 'ASME U-Stamp', issuer: 'Pressure Vessels' },
-                { name: 'DOT Approved', issuer: 'Cylinder Testing' },
-                { name: 'bizSAFE Level 5', issuer: 'WSH Council' },
-                { name: 'BCGA Certified', issuer: 'Gas Equipment' },
-                { name: 'NDT Level II', issuer: 'Non-Destructive Testing' },
+                { name: 'ISO 45001:2018', issuer: 'Safety Management' },
+                { name: 'Professional Engineer', issuer: 'Compliance' },
               ].map((cert, i) => (
                 <div key={`${repeatIndex}-${i}`}
                   style={{ minWidth: '220px', padding: '28px 24px', background: cert.highlight ? 'rgba(220,38,38,0.06)' : '#FFF', border: `2px solid ${cert.highlight ? 'rgba(220,38,38,0.3)' : '#E5E7EB'}`, flexShrink: 0, transition: 'all 0.3s' }}
