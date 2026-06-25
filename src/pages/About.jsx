@@ -16,34 +16,29 @@ const fadeInUp = {
 export default function About() {
   const timeline = [
     {
-      year: "1989",
+      year: "1999",
       event: "Founded",
-      detail: "Established as a mechanical contractor serving Singapore's emerging industrial gas sector",
+      detail: "Established as a mechanical and structural contractor serving Singapore’s emerging industrial gas sector",
     },
     {
-      year: "1995",
-      event: "First Major Fab Project",
-      detail: "Secured first semiconductor gas distribution project, launching our UHP expertise",
-    },
-    {
-      year: "2003",
+      year: "1999",
       event: "ISO Certification",
+      detail: "Achieved ISO quality and OHS certifications, formalising quality and safety management systems",
+    },
+    {
+      year: "2000",
+      event: "First Major Fab Project",
       detail: "Achieved ISO 9001:2000 certification, formalising quality management systems",
     },
     {
       year: "2010",
       event: "Hydrogen Testing Facility",
-      detail: "Commissioned dedicated tube trailer testing facility in Tuas, first of its kind in Singapore",
+      detail: "Secured first semiconductor plant installation and gas piping distribution projectv",
     },
     {
-      year: "2018",
-      event: "Safety Milestone",
-      detail: "Reached 2 million safe manhours without lost-time incident across active projects",
-    },
-    {
-      year: "2024",
-      event: "New Energy Expansion",
-      detail: "Expanded capabilities into hydrogen infrastructure for data centre fuel cells and clean energy",
+      year: "2022",
+      event: "Change of Ownership",
+      detail: "Acquired as part of a marine, water, gas services and engineering group of companies",
     },
   ]
 
