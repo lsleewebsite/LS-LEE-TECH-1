@@ -139,12 +139,11 @@ export default function About() {
 
       {/* Vision / Mission / Core Values */}
       <section style={{ padding: '80px 32px', background: '#0F172A', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            borderTop: '1px solid rgba(255,255,255,0.1)',
-            borderLeft: '1px solid rgba(255,255,255,0.1)'
+            gap: '24px'
           }}>
             {[
               {
@@ -188,22 +187,21 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
                 style={{
-                  padding: '64px 48px',
-                  borderRight: '1px solid rgba(255,255,255,0.1)',
-                  borderBottom: '1px solid rgba(255,255,255,0.1)',
+                  padding: '40px',
+                  border: '1px solid rgba(255,255,255,0.1)',
                   transition: 'all 0.3s'
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.04)'}
                 onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
               >
-                <div style={{ marginBottom: '28px' }}>{item.icon}</div>
+                <div style={{ marginBottom: '24px' }}>{item.icon}</div>
                 <div style={{
                   fontFamily: 'Archivo, sans-serif',
                   fontSize: '26px',
                   fontWeight: 900,
                   color: '#FFF',
                   textTransform: 'uppercase',
-                  marginBottom: '20px'
+                  marginBottom: '16px'
                 }}>
                   {item.pillar}
                 </div>
