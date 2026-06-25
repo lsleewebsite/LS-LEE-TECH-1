@@ -492,6 +492,7 @@ export default function Services() {
                 transition={{ duration: 0.2, ease: 'easeInOut' }}
                 style={{
                   height: '100%',
+                  minHeight: '620px',
                   background: '#FFF',
                   border: '2px solid #E5E7EB',
                   padding: '56px',
