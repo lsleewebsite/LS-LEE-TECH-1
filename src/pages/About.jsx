@@ -385,59 +385,54 @@ export default function About() {
           {/* Scrolling row */}
           <div style={{
             display: "flex",
-            gap: "32px",
+            gap: "48px",
             animation: "scroll 30s linear infinite",
-            width: "max-content"
+            width: "max-content",
+            alignItems: "center"
           }}>
-            {[...Array(2)].map((_, repeatIndex) => (
+            {[...Array(3)].map((_, repeatIndex) => (
               [
-                "Client A",
-                "Client B",
-                "Client C",
-                "Client D",
-                "Client E",
-                "Client F",
-                "Client G",
-                "Client H",
-                "Client I",
-                "Client J",
-              ].map((client, i) => (
+                { src: `${import.meta.env.BASE_URL}clients/DayOne.png`, alt: 'DayOne' },
+                { src: `${import.meta.env.BASE_URL}clients/Iwatani.png`, alt: 'Iwatani' },
+                { src: `${import.meta.env.BASE_URL}clients/Linde.png`, alt: 'The Linde Group' },
+                { src: `${import.meta.env.BASE_URL}clients/SSMC.png`, alt: 'SSMC' },
+                { src: `${import.meta.env.BASE_URL}clients/Soitec.png`, alt: 'Soitec' },
+                { src: `${import.meta.env.BASE_URL}clients/Global_Foundaries.png`, alt: 'GlobalFoundries' },
+                { src: `${import.meta.env.BASE_URL}clients/UMC.png`, alt: 'UMC' },
+                { src: `${import.meta.env.BASE_URL}clients/Siltronic_Logo.png`, alt: 'Siltronic' },
+                { src: `${import.meta.env.BASE_URL}clients/Micron.png`, alt: 'Micron' },
+                { src: `${import.meta.env.BASE_URL}clients/air_liquide_compact.png`, alt: 'Air Liquide' },
+              ].map((logo, i) => (
                 <div
                   key={`${repeatIndex}-${i}`}
                   style={{
-                    minWidth: "180px",
-                    height: "80px",
-                    background: "rgba(255,255,255,0.05)",
-                    border: "2px solid rgba(255,255,255,0.1)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    height: '80px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     flexShrink: 0,
-                    transition: "all 0.3s"
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = "#DC2626"
-                    e.currentTarget.style.background = "rgba(255,255,255,0.08)"
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"
-                    e.currentTarget.style.background = "rgba(255,255,255,0.05)"
+                    padding: '0 16px',
                   }}
                 >
-                  <div style={{
-                    fontFamily: "IBM Plex Mono",
-                    fontSize: "11px",
-                    color: "#475569",
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase"
-                  }}>
-                    {client}
-                  </div>
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    style={{
+                      height: '48px',
+                      width: 'auto',
+                      maxWidth: '160px',
+                      objectFit: 'contain',
+                      filter: 'brightness(0) invert(1)',
+                      opacity: 0.7,
+                      transition: 'opacity 0.3s'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+                    onMouseLeave={(e) => e.currentTarget.style.opacity = '0.7'}
+                  />
                 </div>
               ))
             ))}
           </div>
-        </div>
 
         <style>{`
           @keyframes scroll {
