@@ -137,6 +137,85 @@ export default function About() {
         </div>
       </section>
 
+      {/* Vision / Mission / Core Values */}
+      <section style={{ padding: '80px 32px', background: '#0F172A', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            borderTop: '1px solid rgba(255,255,255,0.1)',
+            borderLeft: '1px solid rgba(255,255,255,0.1)'
+          }}>
+            {[
+              {
+                icon: (
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#DC2626" strokeWidth="1.5">
+                    <path d="M6 20 C10 12 30 12 34 20 C30 28 10 28 6 20 Z" />
+                    <circle cx="20" cy="20" r="5" />
+                    <circle cx="20" cy="20" r="2" fill="#DC2626" stroke="none" />
+                  </svg>
+                ),
+                pillar: 'Our Vision',
+                guarantee: 'To be the preferred Engineering Company that gives total Customer Satisfaction with Quality products & Excellent Service.'
+              },
+              {
+                icon: (
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#DC2626" strokeWidth="1.5">
+                    <circle cx="20" cy="20" r="15" />
+                    <line x1="20" y1="5" x2="20" y2="35" />
+                    <line x1="5" y1="20" x2="35" y2="20" />
+                    <polygon points="20,7 22.5,14 17.5,14" fill="#DC2626" stroke="none" />
+                  </svg>
+                ),
+                pillar: 'Our Mission',
+                guarantee: "To be a Customer focus organization, providing total solutions with Quality products & Excellent Service exceeding customer's expectation."
+              },
+              {
+                icon: (
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#DC2626" strokeWidth="1.5">
+                    <polygon points="20,4 23,14.5 34,14.5 25.5,21 28,32 20,25.5 12,32 14.5,21 6,14.5 17,14.5" />
+                  </svg>
+                ),
+                pillar: 'Our Core Values',
+                guarantee: 'We shall be innovative & proactive in our work.'
+              }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                style={{
+                  padding: '56px 48px',
+                  borderRight: '1px solid rgba(255,255,255,0.1)',
+                  borderBottom: '1px solid rgba(255,255,255,0.1)',
+                  transition: 'all 0.3s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.04)'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+              >
+                <div style={{ marginBottom: '24px' }}>{item.icon}</div>
+                <div style={{
+                  fontFamily: 'IBM Plex Mono',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  color: '#DC2626',
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
+                  marginBottom: '16px'
+                }}>
+                  {item.pillar}
+                </div>
+                <p style={{ fontSize: '16px', color: '#94A3B8', lineHeight: 1.7, margin: 0 }}>
+                  {item.guarantee}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
       {/* Story */}
       <motion.section
         initial="hidden"
