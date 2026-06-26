@@ -46,6 +46,7 @@ export default async function handler(req, res) {
     if (!notionRes.ok) {
       return res.status(notionRes.status).json({
         error: 'Failed to fetch certifications from Notion',
+        details: data,
       })
     }
 
