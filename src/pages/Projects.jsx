@@ -23,7 +23,7 @@ const fadeInUp = { hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0, t
 function parseProjects(results) {
   return results.filter(p => p.properties?.Published?.checkbox === true).map(page => {
     const p = page.properties
-    const imagesRaw = p.Images?.rich_text?.[0]?.text?.content || ''
+    const imagesRaw = (p.Images?.rich_text || []).map(rt => rt.text?.content || '').join('')
     const images = imagesRaw.split(',').map(u => u.trim()).filter(u => u.length > 0)
     return {
       id: page.id,
